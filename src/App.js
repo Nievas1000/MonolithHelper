@@ -7,8 +7,8 @@ function App() {
   const [user, setUser] = useState({})
   
   const handleCallbackResponse = async (response) =>{
-    let user = jwtDecode(response.credential);
-    setUser(user);
+    let userData = jwtDecode(response.credential);
+    setUser(userData);
     try {
       let result = await axios.post(`${process.env.REACT_APP_BASE_URL}/user/login`,{
         user
