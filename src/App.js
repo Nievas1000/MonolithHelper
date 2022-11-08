@@ -8,12 +8,12 @@ function App() {
   
   const handleCallbackResponse = async (response) =>{
     let userData = jwtDecode(response.credential);
-    setUser(userData);
     try {
       let result = await axios.post(`${process.env.REACT_APP_BASE_URL}/user/login`,{
-        user
+        user: userData
       });
-      console.log(result.data)
+      console.log(result.data[0])
+      setUser(result.data[0])
     } catch (error) {
       console.log(error);
     }
@@ -32,7 +32,8 @@ function App() {
 
     google.accounts.id.prompt();
   },[])
-
+  
+  console.log(user)
   return (
     <div className="App">
       <div className="row">
