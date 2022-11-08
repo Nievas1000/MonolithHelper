@@ -1,0 +1,16 @@
+name: Codojo CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-lastest
+    strategy:
+      matrix:
+        node-version: [15.x]
+    steps:
+      - uses: actions/checkout@v1
+      - run: npm install --no-audit --no-fund --no-optional
+      - run: npm run build
