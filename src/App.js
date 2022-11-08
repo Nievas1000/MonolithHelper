@@ -4,14 +4,13 @@ import jwtDecode from 'jwt-decode';
 import SignInForm from './components/SignInForm';
 
 function App() {
-  /* global google */
   const [user, setUser] = useState({})
-
+  
   const handleCallbackResponse = async (response) =>{
     let user = jwtDecode(response.credential);
     setUser(user);
     try {
-      let result = await axios.post('http://localhost:3001/login',{
+      let result = await axios.post(`${process.env.REACT_APP_BASE_URL}/user/login`,{
         user
       });
       console.log(result.data)
@@ -19,10 +18,10 @@ function App() {
       console.log(error);
     }
   }
-
   useEffect(() =>{
+    /* global google */
     google.accounts.id.initialize({
-      client_id: "684832352099-5t2dq3sg22l16rljk5c2cac3bo67hcn6.apps.googleusercontent.com",
+      client_id: process.env.REACT_APP_CLIENT_ID,
       callback : handleCallbackResponse
     })
 
