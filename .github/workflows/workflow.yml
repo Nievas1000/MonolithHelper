@@ -7,30 +7,18 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    env: 
-      BUCKET: d1tbyiuv7uxk1k.cloudfront.net
-      DIST: build
-      REGION: us-east-1
-      DIST_ID: E39J0ZAAL1C9RA
     strategy:
       matrix:
         node-version: [15.x]
     steps:
-      - name: Checkout
-          uses: actions/checkout@v2
-      - name: Configure AWS Credentials
-        uses: jakejarvis/s3-sync-action@master
+      - uses: actions/checkout@v1
+      - run: npm install
+      - run: npm run build
+      - uses: jakejarvis/s3-sync-action@master
         env:
           AWS_S3_BUCKET: ${{secrets.AWS_S3_BUCKET}}
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-      - name: Install Dependecies
-          run: npm install
-      - name: Build Static Website
-          run: npm run build
-      - name: Copy files to the production website with the AWS CLI
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id E39J0ZAAL1C9RA \
-            --paths "/*"
+          AWS_REGION: 'us-east-1'
+          SOURCE_DIR: 'build'
           
