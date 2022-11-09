@@ -28,7 +28,7 @@ jobs:
         run: npm install
 
       - name: Build Static Website
-        run: npm run pro
+        run: npm run build:pro
 
       - name: Copy files to the production website with the AWS CLI
         run: aws s3 sync --delete ${{env.DIST}} s3://${{env.BUCKET}}
