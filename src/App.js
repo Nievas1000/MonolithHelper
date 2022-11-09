@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import SignInForm from './components/SignInForm';
 
 function App() {
   const [user, setUser] = useState({})
@@ -42,9 +41,7 @@ function App() {
         </div>
         <div className="col-8 container-form d-flex justify-content-center align-items-center">
           <div className='zone-form'>
-            <h2 className='mb-3'>Sign to dribble.</h2>
             <div id='signInDiv' className='mb-4'></div>
-            <SignInForm />
           </div>
         </div>
       </div>
