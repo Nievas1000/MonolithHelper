@@ -9,7 +9,7 @@ function App() {
   const handleCallbackResponse = async (response) =>{
     let userData = jwtDecode(response.credential);
     try {
-      let result = await axios.post(`http://localhost:3001/user/login`,{
+      let result = await axios.post(`${process.env.REACT_APP_BASE_URL}/user/login`,{
         user: userData
       });
       console.log(result.data[0])
@@ -21,7 +21,7 @@ function App() {
   useEffect(() =>{
     /* global google */
     google.accounts.id.initialize({
-      client_id: "684832352099-5t2dq3sg22l16rljk5c2cac3bo67hcn6.apps.googleusercontent.com",
+      client_id: process.env.REACT_APP_CLIENT_ID,
       callback : handleCallbackResponse
     })
 
