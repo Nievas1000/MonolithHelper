@@ -12,7 +12,7 @@ jobs:
         node-version: [15.x]
     steps:
       - uses: actions/checkout@v1
-      - run: npm install --no-audit --no-fund --no-optional
+      - run: npm install
       - run: npm run build
       - uses: jakejarvis/s3-sync-action@master
         with:
