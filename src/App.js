@@ -1,50 +1,53 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import jwtDecode from 'jwt-decode';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { useState, useEffect } from 'react';
+import SignInForm from './components/SignInForm';
+import SignUpForm from './components/SignUpForm';
+import { Auth } from 'aws-amplify';
+import ConfirmSignUp from './components/ConfirmSignUp';
 
-function App({signOut, user}) {
-  const [user1, setUser] = useState({})
-  
-  const handleCallbackResponse = async (response) =>{
-    let userData = jwtDecode(response.credential);
-    try {
-      let result = await axios.post('http://localhost:3001/user/login',{
-        user: userData
-      });
-      console.log(result.data[0])
-      setUser(result.data[0])
-    } catch (error) {
-      console.log(error);
+function App() {
+  const [uiState, setUiState] = useState('signIn');
+  const [user, setUser] = useState({email:'',name:'',lastname:'',password:'', authCode:''});
+
+    useEffect(() =>{
+      const checkUser = async () =>{
+          const userLog = await Auth.currentAuthenticatedUser();
+          console.log(userLog.attributes);
+      }
+      checkUser()
+  }, [])
+
+    const handleChange = (e) =>{
+        setUser({
+            ...user,
+            [e.target.name]:e.target.value
+        })
     }
-  }
-  useEffect(() =>{
-    /* global google */
-    google.accounts.id.initialize({
-      client_id: "684832352099-5t2dq3sg22l16rljk5c2cac3bo67hcn6.apps.googleusercontent.com",
-      callback : handleCallbackResponse
-    })
 
-    google.accounts.id.renderButton(
-      document.getElementById("signInDiv"),
-      {theme:"filled_blue",size:"large"}
-    )
 
-    google.accounts.id.prompt();
-  },[])
-  
-  console.log(user1, user)
   return (
     <div className="App">
       <div className="row">
         <div className="col-4 container-codojo d-flex justify-content-center align-items-center">
             <h1>Codojo</h1>
         </div>
-        <div className="col-8 container-form d-flex justify-content-center align-items-center">
-          <div className='zone-form'>
-            <div id='signInDiv' className='mb-4'></div>
-            <button onClick={signOut}>Sign out</button>
-            <h1>Hola</h1>
+        <div className="col-8">
+          <div className="d-flex justify-content-end">
+            <a className='d-flex' role="button" onClick={()=> Auth.signOut()}>Sign Out</a>
+          </div>
+          <div className='container-form d-flex justify-content-center align-items-center'>
+            <div className='zone-form'>
+              {uiState === 'signIn' && (
+                <SignInForm setUiState={setUiState} user={user} handleChange={handleChange}/>
+              )}
+
+              {uiState === 'signUp' && (
+                <SignUpForm setUiState={setUiState} user={user} handleChange={handleChange}/>
+              )}
+
+              {uiState === 'confirmSingUp' && (
+                <ConfirmSignUp setUiState={setUiState} user={user} handleChange={handleChange}/>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -52,4 +55,4 @@ function App({signOut, user}) {
   );
 }
 
-export default withAuthenticator(App);
+export default App;

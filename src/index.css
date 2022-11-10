@@ -1,11 +1,8 @@
 .container-form{
   height: 100vh;
-  position: relative;
 }
 .zone-form{
   width: 40%;
-  position: absolute;
-  object-fit: cover;
 }
 .zone-form button{
   width: 40%;
@@ -13,4 +10,7 @@
 .container-codojo{
   background-color: black;
   color: white;
+}
+a{
+  text-decoration: none !important;
 }

@@ -6,16 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@aws-amplify/ui-react/styles.css';
 import { Amplify } from 'aws-amplify';
-import awsExports from './aws-exports';
-import { ThemeProvider } from '@aws-amplify/ui-react';
+import awsmobile from './aws-exports';
 
-Amplify.configure(awsExports);
+Amplify.configure(awsmobile);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ThemeProvider>
+  <React.StrictMode>
     <App />
-  </ThemeProvider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
