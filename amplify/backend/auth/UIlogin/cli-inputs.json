@@ -38,7 +38,7 @@
     "usernameAttributes": [
       "email"
     ],
-    "useDefault": "default",
+    "useDefault": "defaultSocial",
     "userPoolGroups": false,
     "userPoolGroupList": [],
     "adminQueries": false,
@@ -58,7 +58,13 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "hostedUI": false,
+    "hostedUI": true,
+    "hostedUIDomainName": "nievas",
+    "authProvidersUserPool": [
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"family_name\":\"family_name\",\"name\":\"name\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://d3k7je3o78czwo.cloudfront.net/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
     "authProviders": []
   }
 }
