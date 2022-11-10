@@ -1,15 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { Amplify } from 'aws-amplify';
-import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 
-import awsExports from './aws-exports';
-Amplify.configure(awsExports);
-
-function App() {
-  const [user, setUser] = useState({})
+function App({signOut, user}) {
+  const [user1, setUser] = useState({})
   
   const handleCallbackResponse = async (response) =>{
     let userData = jwtDecode(response.credential);
@@ -38,7 +33,7 @@ function App() {
     google.accounts.id.prompt();
   },[])
   
-  console.log(user)
+  console.log(user1)
   return (
     <div className="App">
       <div className="row">
@@ -48,14 +43,7 @@ function App() {
         <div className="col-8 container-form d-flex justify-content-center align-items-center">
           <div className='zone-form'>
             <div id='signInDiv' className='mb-4'></div>
-            <Authenticator>
-            {({ signOut, user }) => (
-              <main>
-                <h1>Hello {user.username}</h1>
-                <button onClick={signOut}>Sign out</button>
-              </main>
-            )}
-          </Authenticator>
+            <button onClick={signOut}>Sign Out</button>
           </div>
         </div>
       </div>
