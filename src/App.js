@@ -32,7 +32,7 @@ function App() {
         </div>
         <div className="col-8">
           <div className="d-flex justify-content-end">
-            <a className='d-flex' role="button" onClick={()=> Auth.signOut()}>Sign Out</a>
+            <p className='d-flex' role="button" onClick={()=> Auth.signOut()}>Sign Out</p>
           </div>
           <div className='container-form d-flex justify-content-center align-items-center'>
             <div className='zone-form'>

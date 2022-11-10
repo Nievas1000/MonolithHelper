@@ -34,7 +34,7 @@ const SignInForm = ({setUiState, user, handleChange}) =>{
                 </Button>
             </Form>
             <p className='d-flex mt-4'>Don't have an account?
-                <a className="d-flex" role="button" onClick={() => setUiState('signUp')}> Sign Up.</a>
+                <p className="d-flex" role="button" onClick={() => setUiState('signUp')}> Sign Up.</p>
             </p>
         </div>
     )

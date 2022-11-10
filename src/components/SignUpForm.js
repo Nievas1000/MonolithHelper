@@ -8,7 +8,7 @@ const SignUpForm = ({setUiState, user, handleChange}) =>{
     async function signUp(e) {
         e.preventDefault()
         try {
-            const { userLog } = await Auth.signUp({
+             await Auth.signUp({
                 username: user.email,
                 password: user.password,
                 attributes: {
@@ -54,7 +54,7 @@ const SignUpForm = ({setUiState, user, handleChange}) =>{
                 </Button>
             </Form>
             <p className='d-flex mt-4'>Already have an account?
-                <a className="d-flex" role="button" onClick={() => setUiState('signIn')}> Sign In.</a>
+                <p className="d-flex" role="button" onClick={() => setUiState('signIn')}> Sign In.</p>
             </p>
         </div>
     )
