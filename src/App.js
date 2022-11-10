@@ -33,7 +33,7 @@ function App({signOut, user}) {
     google.accounts.id.prompt();
   },[])
   
-  console.log(user.attributes)
+  console.log(user1, user)
   return (
     <div className="App">
       <div className="row">
