@@ -43,7 +43,7 @@ function App({signOut, user}) {
         <div className="col-8 container-form d-flex justify-content-center align-items-center">
           <div className='zone-form'>
             <div id='signInDiv' className='mb-4'></div>
-            <button onClick={signOut}>Sign Out</button>
+            <button onClick={signOut}>Sign out</button>
           </div>
         </div>
       </div>

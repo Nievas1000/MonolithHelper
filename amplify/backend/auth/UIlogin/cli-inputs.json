@@ -38,7 +38,7 @@
     "usernameAttributes": [
       "email"
     ],
-    "useDefault": "default",
+    "useDefault": "manual",
     "userPoolGroups": false,
     "userPoolGroupList": [],
     "adminQueries": false,
@@ -58,7 +58,14 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "hostedUI": false,
-    "authProviders": []
+    "hostedUI": true,
+    "authProviders": [],
+    "thirdPartyAuth": false,
+    "hostedUIDomainName": "ij3zs5swzkzb",
+    "authProvidersUserPool": [
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"family_name\":\"family_name\",\"name\":\"name\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}"
   }
 }
