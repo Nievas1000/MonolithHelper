@@ -5,12 +5,14 @@
   width: 40%;
 }
 .zone-form button{
-  width: 40%;
+  width: auto;
 }
 .container-codojo{
   background-color: black;
   color: white;
 }
-a{
-  text-decoration: none !important;
+
+.sign{
+  color: blue;
+  margin-left: 5px;
 }

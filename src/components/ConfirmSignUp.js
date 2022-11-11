@@ -26,7 +26,7 @@ const ConfirmSignUp = ({setUiState, user, handleChange}) =>{
                 <h5 className='mb-3'>An activation code has been sent to your email.</h5>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Confirmation code</Form.Label>
-                <Form.Control name='authCode' type="text" value={user.authCode} placeholder="Enter email" onChange={handleChange}/>
+                <Form.Control name='authCode' type="text" value={user.authCode} placeholder="Enter code" onChange={handleChange}/>
                 </Form.Group>
 
                 <Button variant="dark" type="submit" onClick={confirmSignUp}>

@@ -37,12 +37,12 @@ const SignUpForm = ({setUiState, user, handleChange}) =>{
 
                 <Form.Group className="mb-3">
                 <Form.Label>Name</Form.Label>
-                <Form.Control name='name' type="text" value={user.name} placeholder="Enter email" onChange={handleChange}/>
+                <Form.Control name='name' type="text" value={user.name} placeholder="Enter name" onChange={handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                 <Form.Label>Latname</Form.Label>
-                <Form.Control name='lastname' type="text" value={user.lastname} placeholder="Enter email" onChange={handleChange}/>
+                <Form.Control name='lastname' type="text" value={user.lastname} placeholder="Enter lastname" onChange={handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -53,9 +53,9 @@ const SignUpForm = ({setUiState, user, handleChange}) =>{
                 Sign Up
                 </Button>
             </Form>
-            <p className='d-flex mt-4'>Already have an account?
-                <p className="d-flex" role="button" onClick={() => setUiState('signIn')}> Sign In.</p>
-            </p>
+            <span className='d-flex mt-4'>Already have an account?
+                <p className="d-flex sign" role="button" onClick={() => setUiState('signIn')}> Sign In.</p>
+            </span>
         </div>
     )
 }

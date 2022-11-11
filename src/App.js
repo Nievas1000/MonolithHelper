@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react';
 import SignInForm from './components/SignInForm';
 import SignUpForm from './components/SignUpForm';
-import { Auth } from 'aws-amplify';
 import ConfirmSignUp from './components/ConfirmSignUp';
+import ForgotPasswordForm from './components/ForgotPasswordForm';
+import { Amplify, Auth } from 'aws-amplify';
+import awsmobile from './aws-exports';
+import ConfirmForgotPassword from './components/ConfirmForgotPassword';
+
+
+Amplify.configure(awsmobile);
+
 
 function App() {
   const [uiState, setUiState] = useState('signIn');
@@ -10,11 +17,15 @@ function App() {
 
     useEffect(() =>{
       const checkUser = async () =>{
-          const userLog = await Auth.currentAuthenticatedUser();
-          console.log(userLog.attributes);
+          try {
+            const userLog = await Auth.currentAuthenticatedUser();
+            console.log(userLog.attributes);
+          } catch (error) {
+            console.log(error);
+          }
       }
       checkUser()
-  }, [])
+    }, [])
 
     const handleChange = (e) =>{
         setUser({
@@ -47,6 +58,12 @@ function App() {
               {uiState === 'confirmSingUp' && (
                 <ConfirmSignUp setUiState={setUiState} user={user} handleChange={handleChange}/>
               )}
+              {uiState === 'forgotPassword' && (
+                <ForgotPasswordForm setUiState={setUiState} user={user} handleChange={handleChange}/>
+              )}
+              {uiState === 'forgotPasswordConfirm' && (
+                <ConfirmForgotPassword setUiState={setUiState} user={user} handleChange={handleChange}/>
+              )}
             </div>
           </div>
         </div>
@@ -55,4 +72,4 @@ function App() {
   );
 }
 
-export default App;
+export default  App;

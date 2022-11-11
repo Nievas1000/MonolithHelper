@@ -28,14 +28,15 @@ const SignInForm = ({setUiState, user, handleChange}) =>{
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control name='password' type="password" value={user.password} placeholder="Password" onChange={handleChange}/>
+                <p className='d-flex' onClick={() => setUiState('forgotPassword')}>I forgot my password</p>
                 </Form.Group>
                 <Button variant="dark" type="submit" onClick={signIn}>
                 Sign In
                 </Button>
             </Form>
-            <p className='d-flex mt-4'>Don't have an account?
-                <p className="d-flex" role="button" onClick={() => setUiState('signUp')}> Sign Up.</p>
-            </p>
+            <span className='d-flex mt-4'>Don't have an account?
+                <p className="d-flex sign" role="button" onClick={() => setUiState('signUp')}> Sign Up.</p>
+            </span>
         </div>
     )
 }
