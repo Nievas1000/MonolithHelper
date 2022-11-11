@@ -1,18 +1,20 @@
 import { Form, Button } from 'react-bootstrap';
 import { Auth } from 'aws-amplify';
 import GoogleButton from 'react-google-button'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
-const SignInForm = ({setUiState, user, handleChange}) =>{
+const SignInForm = ({user, handleChange}) =>{
+    const [error, setError] = useState(null);
 
     async function signIn(e) {
         e.preventDefault()
-        console.log(user);
         try {
             const user1 = await Auth.signIn(user.email, user.password);
             console.log(user1);
         } catch (error) {
-            console.log('error signing in', error);
+            setError(error.message)
         }
     }
     
@@ -28,14 +30,19 @@ const SignInForm = ({setUiState, user, handleChange}) =>{
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control name='password' type="password" value={user.password} placeholder="Password" onChange={handleChange}/>
-                <p className='d-flex' onClick={() => setUiState('forgotPassword')}>I forgot my password</p>
+                {error && (
+                    <div className="alert alert-danger d-flex mt-2" role="alert">
+                        {error + " Try again"}
+                    </div>
+                )}
+                <Link className='d-flex mt-2' to="/rocover">I forgot my password</Link>
                 </Form.Group>
                 <Button variant="dark" type="submit" onClick={signIn}>
                 Sign In
                 </Button>
             </Form>
             <span className='d-flex mt-4'>Don't have an account?
-                <p className="d-flex sign" role="button" onClick={() => setUiState('signUp')}> Sign Up.</p>
+                <Link to="/signup">SignUp</Link>
             </span>
         </div>
     )

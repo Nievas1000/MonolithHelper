@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Auth } from 'aws-amplify';
 import { Hub } from 'aws-amplify';
+import { useNavigate } from 'react-router-dom';
 
-const ConfirmSignUp = ({setUiState, user, handleChange}) =>{
+const ConfirmSignUp = ({user, handleChange}) =>{
+    const [error, setError] = useState(null);
+    const navigate = useNavigate()
 
     async function confirmSignUp(e) {
         e.preventDefault();
@@ -11,12 +15,14 @@ const ConfirmSignUp = ({setUiState, user, handleChange}) =>{
             Hub.listen('auth', ({ payload }) => {
                 const { event } = payload;
             if (event === 'autoSignIn') {
-                setUiState('signIn')
+                navigate("/")
             } else if (event === 'autoSignIn_failure') {
                 console.log("El codigo ingresado es erroneo");
             }
         })
-        } catch (err) { console.log({ err })}
+        } catch (err) { 
+            setError(err.message)
+        }
     
       }
     
@@ -28,7 +34,11 @@ const ConfirmSignUp = ({setUiState, user, handleChange}) =>{
                 <Form.Label>Confirmation code</Form.Label>
                 <Form.Control name='authCode' type="text" value={user.authCode} placeholder="Enter code" onChange={handleChange}/>
                 </Form.Group>
-
+                {error && (
+                    <div className="alert alert-danger d-flex mt-2" role="alert">
+                        {error}
+                    </div>
+                )}
                 <Button variant="dark" type="submit" onClick={confirmSignUp}>
                     Continue
                 </Button>

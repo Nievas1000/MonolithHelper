@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Auth } from 'aws-amplify';
 import GoogleButton from 'react-google-button'
+import { Link, useNavigate } from 'react-router-dom';
 
 
-const SignUpForm = ({setUiState, user, handleChange}) =>{
+const SignUpForm = ({user, handleChange}) =>{
+    const [error, setError] = useState(null);
+    const navigate = useNavigate()
 
     async function signUp(e) {
         e.preventDefault()
@@ -20,9 +24,10 @@ const SignUpForm = ({setUiState, user, handleChange}) =>{
                     enabled: true,
                 }
             });
-            setUiState('confirmSingUp')
+            navigate("/confirm")
         } catch (error) {
-            console.log('error signing up:', error);
+            setError(error.message);
+            console.log(error.message);
         }
     }
     
@@ -52,9 +57,14 @@ const SignUpForm = ({setUiState, user, handleChange}) =>{
                 <Button variant="dark" type="submit" onClick={signUp}>
                 Sign Up
                 </Button>
+                {error && (
+                    <div className="alert alert-danger d-flex mt-2" role="alert">
+                        {error + " Try again"}
+                    </div>
+                )}
             </Form>
             <span className='d-flex mt-4'>Already have an account?
-                <p className="d-flex sign" role="button" onClick={() => setUiState('signIn')}> Sign In.</p>
+            <Link to="/">SignUp</Link>
             </span>
         </div>
     )

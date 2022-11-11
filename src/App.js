@@ -6,13 +6,13 @@ import ForgotPasswordForm from './components/ForgotPasswordForm';
 import { Amplify, Auth } from 'aws-amplify';
 import awsmobile from './aws-exports';
 import ConfirmForgotPassword from './components/ConfirmForgotPassword';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 Amplify.configure(awsmobile);
 
 
 function App() {
-  const [uiState, setUiState] = useState('signIn');
   const [user, setUser] = useState({email:'',name:'',lastname:'',password:'', authCode:''});
 
     useEffect(() =>{
@@ -47,23 +47,15 @@ function App() {
           </div>
           <div className='container-form d-flex justify-content-center align-items-center'>
             <div className='zone-form'>
-              {uiState === 'signIn' && (
-                <SignInForm setUiState={setUiState} user={user} handleChange={handleChange}/>
-              )}
-
-              {uiState === 'signUp' && (
-                <SignUpForm setUiState={setUiState} user={user} handleChange={handleChange}/>
-              )}
-
-              {uiState === 'confirmSingUp' && (
-                <ConfirmSignUp setUiState={setUiState} user={user} handleChange={handleChange}/>
-              )}
-              {uiState === 'forgotPassword' && (
-                <ForgotPasswordForm setUiState={setUiState} user={user} handleChange={handleChange}/>
-              )}
-              {uiState === 'forgotPasswordConfirm' && (
-                <ConfirmForgotPassword setUiState={setUiState} user={user} handleChange={handleChange}/>
-              )}
+              <Router>
+                <Routes>
+                  <Route path='/' element={<SignInForm user={user} handleChange={handleChange}/>}/>
+                  <Route path='/signup' element={<SignUpForm user={user} handleChange={handleChange}/>}/>
+                  <Route path='/rocover' element={<ForgotPasswordForm user={user} handleChange={handleChange}/>}/>
+                  <Route path='/confirm' element={<ConfirmSignUp user={user} handleChange={handleChange}/>}/>
+                  <Route path='/confirmforgot' element={<ConfirmForgotPassword user={user} handleChange={handleChange}/>}/>
+                </Routes>
+              </Router>
             </div>
           </div>
         </div>

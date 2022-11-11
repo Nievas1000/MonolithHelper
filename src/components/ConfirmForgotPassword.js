@@ -1,15 +1,21 @@
 import { Form, Button } from 'react-bootstrap';
 import { Auth } from 'aws-amplify';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ConfirmForgotPassword = ({setUiState, user, handleChange}) =>{
-    
+const ConfirmForgotPassword = ({user, handleChange}) =>{
+    const [error, setError] = useState(null);
+    const navigate = useNavigate()
+
     async function forgotPasswordSubmit(e) {
         e.preventDefault()
         try {
             let data = await Auth.forgotPasswordSubmit(user.email, user.authCode, user.password)
-            console.log(data);
+            if(data === 'SUCCESS'){
+                navigate('/')
+            }
         } catch (error) {
-            console.log(error);
+            setError(error.message)
         }
       }
     
@@ -31,9 +37,14 @@ const ConfirmForgotPassword = ({setUiState, user, handleChange}) =>{
                     <Form.Label>New Password</Form.Label>
                     <Form.Control name='password' type="password" value={user.password} placeholder="Password" onChange={handleChange}/>
                 </Form.Group>
-                    <Button  variant="dark" type="submit" onClick={forgotPasswordSubmit}>
-                        Verify
-                    </Button>
+                {error && (
+                    <div className="alert alert-danger d-flex mt-2" role="alert">
+                        {error}
+                    </div>
+                )}
+                <Button  variant="dark" type="submit" onClick={forgotPasswordSubmit}>
+                    Verify
+                </Button>
             </Form>
         </div>
     )
