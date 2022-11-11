@@ -14,7 +14,7 @@ Amplify.configure(awsmobile);
 
 function App() {
   const [user, setUser] = useState({email:'',name:'',lastname:'',password:'', authCode:''});
-
+  console.log(process.env);
     useEffect(() =>{
       const checkUser = async () =>{
           try {

@@ -11,6 +11,7 @@
     "aws-amplify": "^4.3.43",
     "axios": "^1.1.3",
     "bootstrap": "^5.2.2",
+    "dotenv": "^16.0.3",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
@@ -25,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "local": "env-cmd -e LOCAL npm run start"
+    "local": "env-cmd -e LOCAL npm run start",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +49,7 @@
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.9",
+    "cypress": "^11.0.1",
     "react-refresh": "^0.14.0"
   }
 }
