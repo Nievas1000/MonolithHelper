@@ -35,8 +35,6 @@ jobs:
         env:
           CYPRESS_cognito_username: ${{secrets.CYPRESS_EMAIL_TEST}}
           CYPRESS_cognito_password: ${{secrets.CYPRESS_PASSWORD_TEST}}
-        with: 
-          command: npm run test:e2e
 
       - name: Copy files to the production website with the AWS CLI
         run: aws s3 sync --delete ${{env.DIST}} s3://${{env.BUCKET}}
