@@ -51,6 +51,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: dist
+          path: dist
       - name: E2E Test
         uses: cypress-io/github-action@v4
         env:
@@ -60,8 +61,6 @@ jobs:
   deploy:
     needs: [e2e_test]
     runs-on: ubuntu-latest
-    env:
-      DIST: build
     steps: 
       - name: Checkout
         uses: actions/checkout/@v3
