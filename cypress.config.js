@@ -3,8 +3,6 @@ const awsmobile = require('./src/aws-exports')
 
 module.exports = defineConfig({
   env:{
-    cognito_username: 'lautynievas09@gmail.com',
-    cognito_password: '12345678',
     awsConfig: awsmobile.default
   },
 
