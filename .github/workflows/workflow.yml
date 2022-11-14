@@ -32,9 +32,11 @@ jobs:
 
       - name: E2E Test
         uses: cypress-io/github-action@v4
-        with: 
+        with:
+          browser: chrome
+          headless: true
           start: npm start
-          command: npm run test:e2e
+          wait-on: http://localhost:3000
 
       - name: Copy files to the production website with the AWS CLI
         run: aws s3 sync --delete ${{env.DIST}} s3://${{env.BUCKET}}
