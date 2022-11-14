@@ -34,7 +34,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with: 
           command: npm run test:e2e
-          start: npm start
+          wait-on: http://localhost:3000/
 
       - name: Copy files to the production website with the AWS CLI
         run: aws s3 sync --delete ${{env.DIST}} s3://${{env.BUCKET}}
