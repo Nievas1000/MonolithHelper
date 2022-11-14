@@ -35,7 +35,7 @@ jobs:
           name: dist
           path: dist
 
-  e2e_test:
+  e2e:
     needs: [build]
     runs-on: ubuntu-latest
     steps: 
@@ -59,7 +59,7 @@ jobs:
           CYPRESS_cognito_password: ${{secrets.CYPRESS_PASSWORD_TEST}}
     
   deploy:
-    needs: [e2e_test]
+    needs: [e2e]
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout
