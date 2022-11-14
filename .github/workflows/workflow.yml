@@ -35,7 +35,7 @@ jobs:
           name: dist
           path: dist
 
-  e2e:
+  e2e_test:
     needs: [build]
     runs-on: ubuntu-latest
     steps: 
@@ -59,22 +59,25 @@ jobs:
           CYPRESS_cognito_password: ${{secrets.CYPRESS_PASSWORD_TEST}}
     
   deploy:
-    needs: [e2e]
+    needs: [e2e_test]
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout
         uses: actions/checkout/@v3
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws-region: ${{secrets.AWS_REGION}}
-        - name: Deploy to S3 Bucket 
-          if: ${{github.event_name == 'push'}}
-          run: aws s3 sync --delete ${{env.DIST}} s3://${{secrets.AWS_S3_BUCKET}}
+      - name: Deploy to S3 Bucket 
+        if: ${{github.event_name == 'push'}}
+        run: aws s3 sync --delete ${{env.DIST}} s3://${{secrets.AWS_S3_BUCKET}}
       - name: Invalidate the cache
         run: |
           aws cloudfront create-invalidation \
