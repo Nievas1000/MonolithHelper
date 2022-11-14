@@ -25,10 +25,15 @@ jobs:
           aws-region: ${{env.REGION}}
 
       - name: Install Dependencies 
-        run: npm install
+        run: npm ci
 
       - name: Build Static Website
         run: npm run build
+
+      - name: E2E Test
+        uses: cypress-io/github-action@v4
+        with: 
+          command: npm run test:e2e
 
       - name: Copy files to the production website with the AWS CLI
         run: aws s3 sync --delete ${{env.DIST}} s3://${{env.BUCKET}}

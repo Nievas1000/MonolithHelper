@@ -1,10 +1,3 @@
-describe('Open', () => {
-  it('frontpage local can be open', () => {
-    cy.visit('http://localhost:3000/')
-    cy.contains('Codojo')
-  })
-})
-
 describe('Cognito', function () {
   beforeEach(function () {
 
