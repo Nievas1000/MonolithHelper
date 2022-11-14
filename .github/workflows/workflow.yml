@@ -3,6 +3,8 @@ name: Codojo CI
 on:
   push:
     branches: [main]
+  pull_request: 
+    branches: [main]
 
 jobs:
   build:
@@ -11,6 +13,11 @@ jobs:
       DIST: build
 
     steps:
+      - name: Cancel Previus Builds
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{github.token}}
+  
       - name: Checkout
         uses: actions/checkout/@v2
 
@@ -33,7 +40,8 @@ jobs:
           CYPRESS_cognito_username: ${{secrets.CYPRESS_EMAIL_TEST}}
           CYPRESS_cognito_password: ${{secrets.CYPRESS_PASSWORD_TEST}}
 
-      - name: Copy files to the production website with the AWS CLI
+      - name: Deploy to S3 Bucket 
+        if: ${{github.event_name == 'push'}}
         run: aws s3 sync --delete ${{env.DIST}} s3://${{secrets.AWS_S3_BUCKET}}
 
       - name: Invalidate the cache
