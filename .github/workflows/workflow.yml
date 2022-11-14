@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Cancel Previus Builds
-          uses: styfle/cancel-workflow-action@0.9.1
-          with:
-            access_token: ${{github.token}}
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{github.token}}
 
   build:
     runs-on: ubuntu-latest
