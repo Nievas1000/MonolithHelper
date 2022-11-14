@@ -16,73 +16,73 @@ jobs:
           with:
             access_token: ${{github.token}}
 
-    build:
-      runs-on: ubuntu-latest
-      steps: 
-        - name: Checkout
-          uses: actions/checkout/@v3
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout/@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
           with:
-            fetch-depth: 0
-        - uses: actions/setup-node@v3
-            with:
-              node-version: 16
-        - name: Install Dependencies 
-          run: npm ci
-        - name: Build Static Website
-          run: npm run build
-        - uses: actions/upload-artifact@v3
-          with:
-            name: dist
-            path: dist
+            node-version: 16
+      - name: Install Dependencies 
+        run: npm ci
+      - name: Build Static Website
+        run: npm run build
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
 
-    e2e_test:
-      needs: [build]
-      runs-on: ubuntu-latest
-      steps: 
-        - name: Checkout
-          uses: actions/checkout/@v3
+  e2e_test:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout/@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
           with:
-            fetch-depth: 0
-        - uses: actions/setup-node@v3
-            with:
-              node-version: 16  
-        - name: Install Dependencies 
-          run: npm ci
-        - uses: actions/download-artifact@v3
+            node-version: 16  
+      - name: Install Dependencies 
+        run: npm ci
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist
+      - name: E2E Test
+          uses: cypress-io/github-action@v4
+          env:
+            CYPRESS_cognito_username: ${{secrets.CYPRESS_EMAIL_TEST}}
+            CYPRESS_cognito_password: ${{secrets.CYPRESS_PASSWORD_TEST}}
+    
+  deploy:
+    needs: [e2e_test]
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout/@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
           with:
-            name: dist
-            path: dist
-        - name: E2E Test
-            uses: cypress-io/github-action@v4
-            env:
-              CYPRESS_cognito_username: ${{secrets.CYPRESS_EMAIL_TEST}}
-              CYPRESS_cognito_password: ${{secrets.CYPRESS_PASSWORD_TEST}}
-      
-    deploy:
-      needs: [e2e_test]
-      runs-on: ubuntu-latest
-      steps: 
-        - name: Checkout
-          uses: actions/checkout/@v3
-          with:
-            fetch-depth: 0
-        - uses: actions/setup-node@v3
-            with:
-              node-version: 16
-        - name: Install Dependencies 
-          run: npm ci
-        - name: Configure AWS Credentials
-          uses: aws-actions/configure-aws-credentials@v1
-          with:
-            aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
-            aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-            aws-region: ${{secrets.AWS_REGION}}
-          - name: Deploy to S3 Bucket 
-            if: ${{github.event_name == 'push'}}
-            run: aws s3 sync --delete ${{env.DIST}} s3://${{secrets.AWS_S3_BUCKET}}
-        - name: Invalidate the cache
-          run: |
-            aws cloudfront create-invalidation \
-              --distribution-id ${{secrets.AWS_DIST_ID}} \
-              --paths "/*"
+            node-version: 16
+      - name: Install Dependencies 
+        run: npm ci
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: ${{secrets.AWS_REGION}}
+        - name: Deploy to S3 Bucket 
+          if: ${{github.event_name == 'push'}}
+          run: aws s3 sync --delete ${{env.DIST}} s3://${{secrets.AWS_S3_BUCKET}}
+      - name: Invalidate the cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{secrets.AWS_DIST_ID}} \
+            --paths "/*"
           
