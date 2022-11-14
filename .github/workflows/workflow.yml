@@ -8,10 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      BUCKET: codojo-s3
       DIST: build
-      REGION: us-east-1
-      DIST_ID: EX2DNKQ3BIWPH
 
     steps:
       - name: Checkout
@@ -22,7 +19,7 @@ jobs:
         with:
           aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          aws-region: ${{env.REGION}}
+          aws-region: ${{secrets.AWS_REGION}}
 
       - name: Install Dependencies 
         run: npm ci
@@ -37,11 +34,11 @@ jobs:
           CYPRESS_cognito_password: ${{secrets.CYPRESS_PASSWORD_TEST}}
 
       - name: Copy files to the production website with the AWS CLI
-        run: aws s3 sync --delete ${{env.DIST}} s3://${{env.BUCKET}}
+        run: aws s3 sync --delete ${{env.DIST}} s3://${{secrets.AWS_S3_BUCKET}}
 
       - name: Invalidate the cache
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id ${{env.DIST_ID}} \
+            --distribution-id ${{secrets.AWS_DIST_ID}} \
             --paths "/*"
           
