@@ -32,8 +32,8 @@ jobs:
         run: npm run build
       - uses: actions/upload-artifact@v3
         with:
-          name: dist
-          path: dist
+          name: build
+          path: build
 
   e2e_test:
     needs: [build]
@@ -48,8 +48,8 @@ jobs:
           node-version: '16'  
       - uses: actions/download-artifact@v3
         with:
-          name: dist
-          path: dist
+          name: build
+          path: build
       - name: E2E Test
         uses: cypress-io/github-action@v4
         env:
@@ -72,10 +72,10 @@ jobs:
           aws-region: ${{secrets.AWS_REGION}}
       - uses: actions/download-artifact@v3
         with:
-          name: dist
-          path: dist
+          name: build
+          path: build
       - name: Deploy to S3 Bucket
-        run: aws s3 sync dist s3://${{secrets.AWS_S3_BUCKET}} --delete
+        run: aws s3 sync build s3://${{secrets.AWS_S3_BUCKET}} --delete
       - name: Invalidate the cache
         run: |
           AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation \

@@ -48,5 +48,5 @@ Cypress.Commands.add('loginByCognitoApi', (username, password) => {
       log.end()
     })
   
-    cy.visit('https://d3k7je3o78czwo.cloudfront.net/')
+    cy.visit(' http://localhost:3000/')
   })
