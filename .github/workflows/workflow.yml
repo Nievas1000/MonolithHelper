@@ -60,7 +60,7 @@ jobs:
     needs: [e2e_test]
     runs-on: ubuntu-latest
     env:
-      DIST: dist
+      DIST: build
     steps: 
       - name: Checkout
         uses: actions/checkout/@v3
