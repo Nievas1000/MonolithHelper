@@ -1,32 +1,22 @@
 {
-  "auth": {
-    "UIlogin": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false,
-      "frontendAuthConfig": {
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "signupAttributes": [
-          "EMAIL",
-          "FAMILY_NAME",
-          "NAME"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": []
-        },
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
-      }
-    }
-  }
+	"auth": {
+		"UIlogin": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false,
+			"frontendAuthConfig": {
+				"socialProviders": [],
+				"usernameAttributes": ["EMAIL"],
+				"signupAttributes": ["EMAIL", "FAMILY_NAME", "NAME"],
+				"passwordProtectionSettings": {
+					"passwordPolicyMinLength": 8,
+					"passwordPolicyCharacters": []
+				},
+				"mfaConfiguration": "OFF",
+				"mfaTypes": ["SMS"],
+				"verificationMechanisms": ["EMAIL"]
+			}
+		}
+	}
 }

@@ -1,18 +1,18 @@
-.container-form{
-  height: 100vh;
+.container-form {
+	height: 100vh;
 }
-.zone-form{
-  width: 40%;
+.zone-form {
+	width: 40%;
 }
-.zone-form button{
-  width: auto;
+.zone-form button {
+	width: auto;
 }
-.container-codojo{
-  background-color: black;
-  color: white;
+.container-codojo {
+	background-color: black;
+	color: white;
 }
 
-.sign{
-  color: blue;
-  margin-left: 5px;
+.sign {
+	color: blue;
+	margin-left: 5px;
 }
