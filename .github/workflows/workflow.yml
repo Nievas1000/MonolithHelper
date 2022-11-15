@@ -78,7 +78,7 @@ jobs:
         run: aws s3 sync dist s3://codojo-s3 --delete
       - name: Invalidate the cache
         run: |
-          aws cloudfront create-invalidation \
+          AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation \
             --distribution-id ${{secrets.AWS_DIST_ID}} \
             --paths "/*"
           
