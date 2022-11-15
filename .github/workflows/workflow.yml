@@ -75,7 +75,7 @@ jobs:
           name: dist
           path: dist
       - name: Deploy to S3 Bucket
-        run: aws s3 sync dist s3://codojo-s3 --delete
+        run: aws s3 sync dist s3://${{secrets.AWS_S3_BUCKET}} --delete
       - name: Invalidate the cache
         run: |
           AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation \
