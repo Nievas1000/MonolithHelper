@@ -26,6 +26,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
+      - name: Install Dependencies 
+        run: npm ci
       - name: Lint
         run: npm run lint
  # Creates a build and uploads an artifact
