@@ -9,7 +9,7 @@ const awsmobile = {
 	aws_user_pools_id: 'us-east-1_McFYVji0V',
 	aws_user_pools_web_client_id: 'atkq5thji5t1te8pbrar8goj1',
 	oauth: {
-		domain: 'codojo-staging.auth.us-east-1.amazoncognito.com',
+		domain: 'b2xtfeocin84-staging.auth.us-east-1.amazoncognito.com',
 		scope: [
 			'phone',
 			'email',
@@ -17,10 +17,8 @@ const awsmobile = {
 			'profile',
 			'aws.cognito.signin.user.admin',
 		],
-		redirectSignIn:
-			'http://localhost:3000/,https://d3k7je3o78czwo.cloudfront.net/',
-		redirectSignOut:
-			'http://localhost:3000/,https://d3k7je3o78czwo.cloudfront.net/',
+		redirectSignIn: 'https://d3k7je3o78czwo.cloudfront.net/',
+		redirectSignOut: 'https://d3k7je3o78czwo.cloudfront.net/',
 		responseType: 'code',
 	},
 	federationTarget: 'COGNITO_USER_POOLS',
@@ -34,6 +32,8 @@ const awsmobile = {
 		passwordPolicyCharacters: [],
 	},
 	aws_cognito_verification_mechanisms: ['EMAIL'],
+	aws_user_files_s3_bucket: 'codojo-s3',
+	aws_user_files_s3_bucket_region: 'us-east-1',
 };
 
 module.exports = awsmobile;

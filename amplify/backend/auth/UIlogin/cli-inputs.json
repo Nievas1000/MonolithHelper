@@ -59,13 +59,13 @@
     "breakCircularDependency": true,
     "dependsOn": [],
     "hostedUI": true,
-    "hostedUIDomainName": "codojo",
+    "authProviders": [],
+    "thirdPartyAuth": false,
+    "hostedUIDomainName": "b2xtfeocin84",
     "authProvidersUserPool": [
       "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"family_name\":\"family_name\",\"name\":\"name\",\"username\":\"sub\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://d3k7je3o78czwo.cloudfront.net/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://d3k7je3o78czwo.cloudfront.net/\"]}",
-    "authProviders": [],
-    "thirdPartyAuth": false
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://d3k7je3o78czwo.cloudfront.net/\"],\"LogoutURLs\":[\"https://d3k7je3o78czwo.cloudfront.net/\"]}"
   }
 }

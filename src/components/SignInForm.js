@@ -12,6 +12,7 @@ const SignInForm = ({ user, handleChange }) => {
 		try {
 			const user1 = await Auth.signIn(user.email, user.password);
 			console.log(user1);
+			setError(null);
 		} catch (error) {
 			setError(error.message);
 		}
