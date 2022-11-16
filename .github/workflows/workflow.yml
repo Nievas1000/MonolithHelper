@@ -30,6 +30,18 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+
+#Configure security actions with snyk
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
  # Creates a build and uploads an artifact
   build:
     runs-on: ubuntu-latest
@@ -52,7 +64,7 @@ jobs:
 
 # Test components
   e2e_test:
-    needs: [build]
+    needs: [lint,security, build]
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout
