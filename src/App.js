@@ -18,7 +18,6 @@ function App() {
 		password: '',
 		authCode: '',
 	});
-
 	useEffect(() => {
 		const checkUser = async () => {
 			try {
@@ -42,7 +41,7 @@ function App() {
 		<div className='App'>
 			<div className='row'>
 				<div className='col-4 container-codojo d-flex justify-content-center align-items-center'>
-					<h1>Codojo</h1>
+					<h1>Codoj</h1>
 				</div>
 				<div className='col-8'>
 					<div className='d-flex justify-content-end'>
