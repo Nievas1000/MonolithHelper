@@ -18,6 +18,7 @@ function App() {
 		password: '',
 		authCode: '',
 	});
+
 	useEffect(() => {
 		const checkUser = async () => {
 			try {

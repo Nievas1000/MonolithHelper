@@ -1,42 +1,30 @@
 {
-  "auth": {
-    "UIlogin": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false,
-      "frontendAuthConfig": {
-        "socialProviders": [
-          "GOOGLE"
-        ],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "signupAttributes": [
-          "EMAIL",
-          "FAMILY_NAME",
-          "NAME"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": []
-        },
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
-      }
-    }
-  },
-  "storage": {
-    "uilogin0adc9b56": {
-      "service": "S3",
-      "serviceType": "imported",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": []
-    }
-  }
+	"auth": {
+		"UIlogin": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false,
+			"frontendAuthConfig": {
+				"socialProviders": ["GOOGLE"],
+				"usernameAttributes": ["EMAIL"],
+				"signupAttributes": ["EMAIL", "FAMILY_NAME", "NAME"],
+				"passwordProtectionSettings": {
+					"passwordPolicyMinLength": 8,
+					"passwordPolicyCharacters": []
+				},
+				"mfaConfiguration": "OFF",
+				"mfaTypes": ["SMS"],
+				"verificationMechanisms": ["EMAIL"]
+			}
+		}
+	},
+	"storage": {
+		"uilogin0adc9b56": {
+			"service": "S3",
+			"serviceType": "imported",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
 }

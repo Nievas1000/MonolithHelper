@@ -30,7 +30,7 @@
 		"cypress:open": "cypress open",
 		"test:e2e": "npx cypress run",
 		"format": "prettier --write .",
-		"lint": "eslint --fix . --ext .js,.jsx"
+		"lint": "eslint src/**/*.js"
 	},
 	"eslintConfig": {
 		"extends": [
