@@ -58,7 +58,7 @@ const SignInForm = ({ user, handleChange }) => {
 				</Button>
 			</Form>
 			<span className='d-flex mt-4'>
-				Don't have an account?
+				Don&apos;t have an account?
 				<Link to='/signup'>SignUp</Link>
 			</span>
 		</div>

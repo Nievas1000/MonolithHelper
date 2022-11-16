@@ -17,13 +17,15 @@ const awsmobile = {
 			'profile',
 			'aws.cognito.signin.user.admin',
 		],
-		redirectSignIn: 'http://localhost:3000/',
-		redirectSignOut: 'http://localhost:3000/',
+		redirectSignIn:
+			'http://localhost:3000/,https://d3k7je3o78czwo.cloudfront.net/',
+		redirectSignOut:
+			'http://localhost:3000/,https://d3k7je3o78czwo.cloudfront.net/',
 		responseType: 'code',
 	},
 	federationTarget: 'COGNITO_USER_POOLS',
 	aws_cognito_username_attributes: ['EMAIL'],
-	aws_cognito_social_providers: [],
+	aws_cognito_social_providers: ['GOOGLE'],
 	aws_cognito_signup_attributes: ['EMAIL', 'FAMILY_NAME', 'NAME'],
 	aws_cognito_mfa_configuration: 'OFF',
 	aws_cognito_mfa_types: ['SMS'],
