@@ -30,7 +30,7 @@
 		"test:e2e": "npx cypress run",
 		"format": "prettier --write .",
 		"lint": "eslint src/**/*.js",
-		"snyk:code": "snyk code test"
+		"snyk": "snyk code test"
 	},
 	"eslintConfig": {
 		"extends": [
