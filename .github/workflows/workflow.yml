@@ -42,7 +42,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --severity-threshold=low
+          args: snyk test --severity-threshold=low
 
  # Creates a build and uploads an artifact
   build:
