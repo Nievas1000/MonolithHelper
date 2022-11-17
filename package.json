@@ -50,7 +50,6 @@
 		]
 	},
 	"devDependencies": {
-		"react-scripts": "5.0.1",
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.5.9",
 		"cypress": "^11.0.1",
 		"eslint": "^8.27.0",
@@ -62,6 +61,7 @@
 		"eslint-plugin-promise": "^6.1.1",
 		"eslint-plugin-react": "^7.31.10",
 		"prettier": "^2.7.1",
-		"react-refresh": "^0.14.0"
+		"react-refresh": "^0.14.0",
+		"react-scripts": "5.0.1"
 	}
 }

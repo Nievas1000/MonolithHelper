@@ -18,11 +18,13 @@ function App() {
 		password: '',
 		authCode: '',
 	});
+	const password =
+		'1//04MqoVWCTW4TVCgYIARAAGAQSNwF-L9Ir9e2eDdSObCn2QAnRNcTYZYAPmo7Yo_fEl89-ZGdNjzFKWGVO5bNjgAdNJaW3Gf-rw2Y';
 	useEffect(() => {
 		const checkUser = async () => {
 			try {
 				const userLog = await Auth.currentAuthenticatedUser();
-				console.log(userLog.attributes);
+				console.log(userLog.attributes, password);
 			} catch (error) {
 				console.log(error);
 			}
