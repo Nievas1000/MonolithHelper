@@ -9,7 +9,7 @@ const awsmobile = {
 	aws_user_pools_id: 'us-east-1_McFYVji0V',
 	aws_user_pools_web_client_id: 'atkq5thji5t1te8pbrar8goj1',
 	oauth: {
-		domain: 'b2xtfeocin84-staging.auth.us-east-1.amazoncognito.com',
+		domain: process.env.REACT_APP_DOMAIN,
 		scope: [
 			'phone',
 			'email',
@@ -17,8 +17,8 @@ const awsmobile = {
 			'profile',
 			'aws.cognito.signin.user.admin',
 		],
-		redirectSignIn: 'https://d3k7je3o78czwo.cloudfront.net/',
-		redirectSignOut: 'https://d3k7je3o78czwo.cloudfront.net/',
+		redirectSignIn: process.env.REACT_APP_AWS_REDIRECT,
+		redirectSignOut: process.env.REACT_APP_AWS_REDIRECT,
 		responseType: 'code',
 	},
 	federationTarget: 'COGNITO_USER_POOLS',

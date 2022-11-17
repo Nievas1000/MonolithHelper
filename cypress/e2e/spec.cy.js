@@ -7,7 +7,8 @@ describe('Cognito', function () {
 		);
 	});
 
-	/* it('shows onboarding', function () {
-    cy.contains('Codojo')
-  }) */
+	it('shows onboarding', function () {
+		cy.visit('https://d3k7je3o78czwo.cloudfront.net/');
+		cy.contains('Codojo');
+	});
 });

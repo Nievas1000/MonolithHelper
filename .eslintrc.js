@@ -7,8 +7,8 @@ module.exports = {
 		'plugin:react/recommended',
 		'plugin:react/jsx-runtime',
 		'standard',
-		'eslint-config-prettier',
 		'plugin:cypress/recommended',
+		'eslint-config-prettier',
 	],
 	overrides: [],
 	parserOptions: {
