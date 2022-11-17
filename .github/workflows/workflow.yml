@@ -36,20 +36,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout/@v3
+        uses: actions/checkout@master 
+      - uses: snyk/actions/node@master
+      - uses: actions/setup-go@v1
         with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-      - name: Install Dependencies 
-        run: npm ci
-      - name: Check open source vulnerabilities and license issues
-        uses: snyk/actions/node@master
+          go-version: '1.13'
+      - name: Snyk monitor
+        run: snyk code test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      - name: Check for vulnerabilities in the code
-        run: npm run snyk
 
  # Creates a build and uploads an artifact
   build:
