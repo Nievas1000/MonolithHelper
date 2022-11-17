@@ -29,6 +29,7 @@
 		"cypress:open": "cypress open",
 		"test:e2e": "npx cypress run",
 		"format": "prettier --write .",
+		"react-scripts": "5.0.1",
 		"lint": "eslint src/**/*.js"
 	},
 	"eslintConfig": {
@@ -53,7 +54,6 @@
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.5.9",
 		"cypress": "^11.0.1",
 		"eslint": "^8.27.0",
-		"react-scripts": "5.0.1",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-config-standard": "^17.0.0",
 		"eslint-plugin-cypress": "^2.12.1",
