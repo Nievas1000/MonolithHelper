@@ -28,6 +28,7 @@
 		"local": "env-cmd -e LOCAL npm run start",
 		"cypress:open": "cypress open",
 		"test:e2e": "npx cypress run",
+		"react-scripts": "5.0.1",
 		"format": "prettier --write .",
 		"lint": "eslint src/**/*.js"
 	},
@@ -53,7 +54,6 @@
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.5.9",
 		"cypress": "^11.0.1",
 		"eslint": "^8.27.0",
-		"react-scripts": "5.0.1",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-config-standard": "^17.0.0",
 		"eslint-plugin-cypress": "^2.12.1",
