@@ -6,9 +6,10 @@ describe('Cognito', function () {
 			Cypress.env('cognito_password')
 		);
 	});
+});
 
-	it('shows onboarding', function () {
-		cy.visit('https://d3k7je3o78czwo.cloudfront.net/');
-		cy.contains('Codojo');
+describe('Google', function () {
+	beforeEach(function () {
+		cy.loginByGoogleApi();
 	});
 });

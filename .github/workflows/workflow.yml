@@ -85,6 +85,9 @@ jobs:
         env:
           CYPRESS_cognito_username: ${{secrets.CYPRESS_EMAIL_TEST}}
           CYPRESS_cognito_password: ${{secrets.CYPRESS_PASSWORD_TEST}}
+          CYPRESS_googleClientId: ${{secrets.GOOGLE_CLIENT_ID}}
+          CYPRESS_googleRefreshToken: ${{secrets.GOOGLE_REFRESH_TOKEN}}
+          CYPRESS_googleClientSecret: ${{secrets.GOOGLE_CLIENT_SECRET}
  # Deploy artifact to AWS
   deploy:
     needs: [e2e_test, build]

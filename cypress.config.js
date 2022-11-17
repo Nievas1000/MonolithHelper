@@ -7,6 +7,9 @@ module.exports = defineConfig({
 		cognito_username: process.env.AWS_COGNITO_USERNAME,
 		cognito_password: process.env.AWS_COGNITO_PASSWORD,
 		awsConfig: awsmobile.default,
+		googleRefreshToken: process.env.GOOGLE_REFRESH_TOKEN,
+		googleClientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+		googleClientSecret: process.env.REACT_APP_GOOGLE_CLIENT_SECRET,
 	},
 
 	e2e: {
