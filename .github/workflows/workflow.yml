@@ -76,7 +76,8 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'  
+          node-version: '16'
+      - run: touch ./src/aws-exports.js
       - uses: actions/download-artifact@v3
         with:
           name: build
