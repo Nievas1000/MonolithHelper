@@ -81,6 +81,7 @@ Cypress.Commands.add('loginByGoogleApi', () => {
 			};
 
 			window.localStorage.setItem('googleCypress', JSON.stringify(userItem));
+			cy.visit('https://d3k7je3o78czwo.cloudfront.net/');
 		});
 	});
 });

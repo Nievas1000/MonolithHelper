@@ -9,7 +9,7 @@ describe('Cognito', function () {
 });
 
 describe('Google', function () {
-	beforeEach(function () {
+	it('Test login Google', function () {
 		cy.loginByGoogleApi();
 	});
 });
