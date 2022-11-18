@@ -81,6 +81,7 @@ jobs:
         with:
           name: build
           path: build
+      - run: touch ./src/aws-exports.js
       - name: E2E Test
         uses: cypress-io/github-action@v4
         env:
