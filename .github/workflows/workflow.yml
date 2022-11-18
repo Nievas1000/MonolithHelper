@@ -77,12 +77,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'  
+      - run: touch ./src/aws-exports.js
       - uses: actions/download-artifact@v3
         with:
           name: build
           path: build
       - name: E2E Test
-        run: touch ./src/aws-exports.js
         uses: cypress-io/github-action@v4
         env:
           CYPRESS_cognito_username: ${{secrets.CYPRESS_EMAIL_TEST}}
