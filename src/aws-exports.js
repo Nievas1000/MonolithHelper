@@ -9,7 +9,7 @@ const awsmobile = {
 	aws_user_pools_id: 'us-east-1_McFYVji0V',
 	aws_user_pools_web_client_id: 'atkq5thji5t1te8pbrar8goj1',
 	oauth: {
-		domain: process.env.REACT_APP_AWS_REDIRECT,
+		domain: process.env.REACT_APP_AWS_DOMAIN,
 		scope: [
 			'phone',
 			'email',
