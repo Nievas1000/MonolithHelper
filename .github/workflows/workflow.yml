@@ -77,11 +77,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'  
-      - run: touch ./src/aws-exports.js
       - uses: actions/download-artifact@v3
         with:
           name: build
           path: build
+      - run: touch ./src/aws-exports.js
       - name: E2E Test
         uses: cypress-io/github-action@v4
         env:
