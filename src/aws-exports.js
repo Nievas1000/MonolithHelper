@@ -36,4 +36,4 @@ const awsmobile = {
 	aws_user_files_s3_bucket_region: 'us-east-1',
 };
 
-export default awsmobile;
+module.exports = awsmobile;
