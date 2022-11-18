@@ -81,8 +81,8 @@ jobs:
         with:
           name: build
           path: build
-      - run: touch ./src/aws-exports.js
       - name: E2E Test
+        run: touch ./src/aws-exports.js
         uses: cypress-io/github-action@v4
         env:
           CYPRESS_cognito_username: ${{secrets.CYPRESS_EMAIL_TEST}}
