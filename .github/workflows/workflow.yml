@@ -30,6 +30,14 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+      - name: Send Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,author,eventName,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
 #Configure security actions with snyk
   security:
@@ -42,7 +50,15 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --severity-threshold=low  
+          args: --severity-threshold=low
+      - name: Send Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,author,eventName,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
  # Creates a build and uploads an artifact
   build:
@@ -64,6 +80,14 @@ jobs:
         with:
           name: build
           path: build
+      - name: Send Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,author,eventName,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
 # Test components
   e2e_test:
@@ -91,6 +115,22 @@ jobs:
           CYPRESS_googleClientId: ${{secrets.GOOGLE_CLIENT_ID}}
           CYPRESS_googleRefreshToken: ${{secrets.GOOGLE_REFRESH_TOKEN}}
           CYPRESS_googleClientSecret: ${{secrets.GOOGLE_CLIENT_SECRET}}
+      - name: Send Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,author,eventName,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+      - name: Send Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,author,eventName,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
  # Deploy artifact to AWS
   deploy:
     needs: [e2e_test, build]
@@ -119,3 +159,11 @@ jobs:
           aws cloudfront create-invalidation \
             --distribution-id ${{secrets.AWS_DIST_ID}} \
             --paths "/*"
+      - name: Send Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,author,eventName,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
