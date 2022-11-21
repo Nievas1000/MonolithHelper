@@ -77,7 +77,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - run: touch ./.env.production
       - uses: actions/download-artifact@v3
         with:
           name: build
