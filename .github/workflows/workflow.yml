@@ -87,8 +87,8 @@ jobs:
         env:
           CYPRESS_cognito_username: ${{secrets.CYPRESS_EMAIL_TEST}}
           CYPRESS_cognito_password: ${{secrets.CYPRESS_PASSWORD_TEST}}
-          CYPRES_awsUserPoolId: ${{secrets.AWS_USER_POOL_ID}}
-          CYPRES_awsClientId: ${{secrets.AWS_WEB_CLIENT_ID}}
+          CYPRESS_awsUserPoolId: ${{secrets.AWS_USER_POOL_ID}}
+          CYPRESS_awsClientId: ${{secrets.AWS_WEB_CLIENT_ID}}
           CYPRESS_googleClientId: ${{secrets.GOOGLE_CLIENT_ID}}
           CYPRESS_googleRefreshToken: ${{secrets.GOOGLE_REFRESH_TOKEN}}
           CYPRESS_googleClientSecret: ${{secrets.GOOGLE_CLIENT_SECRET}}
