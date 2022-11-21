@@ -17,7 +17,6 @@ module.exports = {
 	},
 	plugins: ['react', 'cypress'],
 	rules: {
-		'react/prop-types': 'off',
 		curly: ['error', 'all'],
 	},
 };
