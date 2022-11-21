@@ -116,4 +116,11 @@ jobs:
           aws cloudfront create-invalidation \
             --distribution-id ${{secrets.AWS_DIST_ID}} \
             --paths "/*"
-          
+      - name: Send Slack Notification on Failure
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        if: ${{ failure() }}
