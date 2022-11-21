@@ -1,9 +1,12 @@
-import { Amplify, Auth } from 'aws-amplify';
-import awsmobile from '../../src/aws-exports';
-
-Amplify.configure(awsmobile);
+import { Auth } from 'aws-amplify';
 
 Cypress.Commands.add('loginByCognitoApi', (username, password) => {
+	const awsconfig = {
+		aws_user_pools_id: Cypress.env("userPoolId"),
+		aws_user_pools_web_client_id: Cypress.env("clientId"),
+	  };
+	Auth.configure(awsconfig);
+	
 	const log = Cypress.log({
 		displayName: 'COGNITO LOGIN',
 		message: [`🔐 Authenticating | ${username}`],
