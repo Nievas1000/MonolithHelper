@@ -59,7 +59,7 @@ jobs:
         run: npm ci 
       - run: touch ./.env-cmdrc.json
       - name: Build Static Website
-        run: npm run pro
+        run: npm run build
       - uses: actions/upload-artifact@v3
         with:
           name: build
