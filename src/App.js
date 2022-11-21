@@ -18,6 +18,7 @@ function App() {
 		password: '',
 		authCode: '',
 	});
+	console.log(process.env);
 	useEffect(() => {
 		const checkUser = async () => {
 			try {
