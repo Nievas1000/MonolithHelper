@@ -86,6 +86,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
+      - run: touch ./src/aws-exports.js
       - uses: actions/download-artifact@v3
         with:
           name: build
@@ -100,14 +101,6 @@ jobs:
           CYPRESS_googleClientId: ${{secrets.GOOGLE_CLIENT_ID}}
           CYPRESS_googleRefreshToken: ${{secrets.GOOGLE_REFRESH_TOKEN}}
           CYPRESS_googleClientSecret: ${{secrets.GOOGLE_CLIENT_SECRET}}
-      - name: Send Slack Notification on Failure
-        if: ${{ failure() }}
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          fields: repo,message,author,eventName,workflow,job,took
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
  # Deploy artifact to AWS
   deploy:
     needs: [e2e_test, build]
