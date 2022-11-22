@@ -30,14 +30,6 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
-      - name: Send Slack Notification on Failure
-        if: ${{ failure() }}
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          fields: repo,message,author,eventName,workflow,job,took
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
 #Configure security actions with snyk
   security:
@@ -66,7 +58,6 @@ jobs:
         run: npm ci
       - run: npm install
       - run: touch ./src/aws-exports.js
-      - run: CI=false npm run build --if-present
       - name: Build Static Website
         run: npm run build
       - uses: actions/upload-artifact@v3
