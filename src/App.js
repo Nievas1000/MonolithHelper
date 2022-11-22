@@ -7,6 +7,8 @@ import Amplify, { Auth } from 'aws-amplify';
 import awsmobile from './aws-exports';
 import ConfirmForgotPassword from './components/ConfirmForgotPassword';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import dotenv from 'dotenv'
+dotenv.config();
 
 Amplify.configure(awsmobile);
 
