@@ -3,12 +3,12 @@ import SignInForm from './components/SignInForm';
 import SignUpForm from './components/SignUpForm';
 import ConfirmSignUp from './components/ConfirmSignUp';
 import ForgotPasswordForm from './components/ForgotPasswordForm';
-import { Amplify, Auth } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 import awsmobile from './aws-exports';
 import ConfirmForgotPassword from './components/ConfirmForgotPassword';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-Amplify.configure(awsmobile);
+Auth.configure(awsmobile);
 
 function App() {
 	const [user, setUser] = useState({
