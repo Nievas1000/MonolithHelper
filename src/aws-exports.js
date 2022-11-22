@@ -10,7 +10,7 @@ const awsmobile = {
 	aws_user_pools_web_client_id:
 		process.env.REACT_APP_AWS_USER_POOLS_WEB_CLIENT_ID,
 	oauth: {
-		domain: process.env.REACT_APP_AWS_REDIRECT,
+		domain: process.env.REACT_APP_AWS_DOMAIN,
 		scope: [
 			'phone',
 			'email',
