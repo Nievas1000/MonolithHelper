@@ -56,7 +56,12 @@ jobs:
           node-version: '16'
       - name: Install Dependencies 
         run: npm ci
-      - run: npm install
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo REACT_APP_AWS_USER_POOLS_ID="us-east-1_McFYVji0V" >> .env
+          echo REACT_APP_AWS_USER_POOLS_WEB_CLIENT_ID="atkq5thji5t1te8pbrar8goj1" >> .env
+          cat .env
       - name: Build Static Website
         run: npm run build
       - uses: actions/upload-artifact@v3
