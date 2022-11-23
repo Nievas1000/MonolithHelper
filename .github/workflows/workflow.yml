@@ -35,12 +35,14 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: snyk/actions/node@master
-      - name: Snyk monitor
-        run: snyk code test
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Run Snyk to check for open source vulnerabilities
+        uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          run: snyk code test --severity-threshold=low
  # Creates a build and uploads an artifact
   build:
     runs-on: ubuntu-latest
