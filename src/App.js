@@ -18,11 +18,12 @@ function App() {
 		password: '',
 		authCode: '',
 	});
+	const password = '45412315612';
 	useEffect(() => {
 		const checkUser = async () => {
 			try {
 				const userLog = await Auth.currentAuthenticatedUser();
-				console.log(userLog.attributes);
+				console.log(userLog.attributes, password);
 			} catch (error) {
 				console.log(error);
 			}
