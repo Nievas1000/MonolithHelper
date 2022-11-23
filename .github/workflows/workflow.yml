@@ -34,9 +34,9 @@ jobs:
 #Configure security actions with snyk
   security:
     runs-on: ubuntu-latest
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     steps:
-      - name: Checkout
-        uses: actions/checkout/@v3
       - name: Set up Node 14
         uses: actions/setup-node@v3
         with:
@@ -47,8 +47,6 @@ jobs:
         run: snyk test
       - name: run Snyk Code Test
         run: snyk code test
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
  # Creates a build and uploads an artifact
   build:
     runs-on: ubuntu-latest
