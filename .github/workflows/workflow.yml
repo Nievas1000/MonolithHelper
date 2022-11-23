@@ -41,8 +41,7 @@ jobs:
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          run: snyk code test --severity-threshold=low
+      - run: snyk code test --severity-threshold=low
  # Creates a build and uploads an artifact
   build:
     runs-on: ubuntu-latest
