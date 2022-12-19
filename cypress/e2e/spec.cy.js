@@ -3,7 +3,7 @@ describe('Cognito', function () {
 	it('Test login aws', function () {
 		cy.loginByCognitoApi(
 			Cypress.env('cognito_username'),
-			Cypress.env('cognito_password')
+			Cypress.env('cognito_passwor')
 		);
 	});
 });
