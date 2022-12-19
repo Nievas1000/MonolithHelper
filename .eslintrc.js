@@ -19,6 +19,6 @@ module.exports = {
 	rules: {
 		'react/prop-types': 'off',
 		curly: ['error', 'all'],
-		camelcase: 'off'
+		camelcase: 'off',
 	},
 };
