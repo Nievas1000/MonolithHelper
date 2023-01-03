@@ -1,0 +1,27 @@
+name: automatic download to CodojoApp
+
+on:
+  workflow_dispatch:
+    branches: [test]
+jobs:
+# Cancel Previous Redundant Builds
+  download-app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: keithweaver/aws-s3-github-action@v1.0.0 # Verifies the recursive flag
+        name: sync folder
+        with:
+          command: sync
+          source: s3://appcodojo/CodojoApp-0.0.1-SNAPSHOT.jar
+          destination: ./public/app/
+          aws_access_key_id: AKIAZC2QT5JH7PXYIT75
+          aws_secret_access_key: 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
+          aws_region: us-east-1
+      - name: Commit changes
+        run: |
+         git config --local user.email "lautynievas09@gmail.com"
+         git config --local user.name "Lautaro Nievas"
+         git add .
+         git diff-index --quiet HEAD || git commit -m "add app" -a
+         git push origin test:test
