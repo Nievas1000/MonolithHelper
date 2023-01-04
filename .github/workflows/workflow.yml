@@ -53,6 +53,8 @@ jobs:
           node-version: 14
       - name: install Snyk CLI
         run: npm install -g snyk
+      - name: auth snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
       - name: run Snyk Open Source Test
         run: snyk test
       - name: run Snyk Code Test
