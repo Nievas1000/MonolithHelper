@@ -72,7 +72,7 @@ jobs:
 
 # Test components
   e2e_test:
-    needs: [lint,security, build]
+    needs: [lint, build]
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout
