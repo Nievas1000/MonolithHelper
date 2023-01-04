@@ -45,20 +45,11 @@ jobs:
     env:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     steps:
-      - name: Checkout
-        uses: actions/checkout/@v3
-      - name: Set up Node 14
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
-      - name: install Snyk CLI
-        run: npm install -g snyk
-      - name: auth snyk
-        run: snyk auth ${{ secrets.SNYK_TOKEN }}
-      - name: run Snyk Open Source Test
-        run: snyk test
-      - name: run Snyk Code Test
-        run: snyk code test
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: Send Slack Notification on Failure
         if: ${{ failure() }}
         uses: 8398a7/action-slack@v3
