@@ -25,3 +25,7 @@ jobs:
          git add .
          git diff-index --quiet HEAD || git commit -m "add app" -a
          git push origin test:test
+         
+  activate-workflow:
+    needs: [download-app]
+    uses: ./.github/workflows/workflow.yml
