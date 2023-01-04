@@ -25,3 +25,39 @@ jobs:
          git add .
          git diff-index --quiet HEAD || git commit -m "add app" -a
          git push origin main:main
+
+  build-app:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout/@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - uses: actions/upload-artifact@v3
+        with:
+          name: app
+          path: public/app
+
+  update-app:
+    needs: [e2e_test, build]
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout/@v3
+        with:
+          fetch-depth: 0
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: ${{secrets.AWS_REGION}}
+      - uses: actions/download-artifact@v3
+        with:
+          name: app
+          path: app
+      - name: Deploy to S3 Bucket
+        run: aws s3 sync --delete app s3://${{secrets.AWS_S3_BUCKET}}/app/

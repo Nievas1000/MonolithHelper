@@ -39,6 +39,9 @@ function App() {
 
 	return (
 		<div className='App'>
+			<a href='./app/CodojoApp-0.0.1-SNAPSHOT.jar' download>
+				Download
+			</a>
 			<div className='row'>
 				<div className='col-4 container-codojo d-flex justify-content-center align-items-center'>
 					<h1>Codojo</h1>
