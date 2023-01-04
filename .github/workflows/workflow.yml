@@ -39,7 +39,7 @@ jobs:
           fields: repo,message,author,eventName,workflow,job,took
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
- # Creates a build and uploads an artifact
+ # Creates a build and uploads anartifact
   build:
     runs-on: ubuntu-latest
     steps: 
