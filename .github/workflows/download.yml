@@ -27,6 +27,7 @@ jobs:
          git push origin main:main
 
   build-app:
+    needs: [download-app]
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout
@@ -42,7 +43,7 @@ jobs:
           path: public/app
 
   update-app:
-    needs: [e2e_test, build]
+    needs: [build-app]
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout
