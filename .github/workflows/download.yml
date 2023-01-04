@@ -24,7 +24,7 @@ jobs:
          git config --local user.name "Lautaro Nievas"
          git add .
          git diff-index --quiet HEAD || git commit -m "add app" -a
-         git push origin test:test
+         git push origin main:main
          
   activate-workflow:
     needs: [download-app]
