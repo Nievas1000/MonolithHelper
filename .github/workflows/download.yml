@@ -62,3 +62,8 @@ jobs:
           path: app
       - name: Update S3 Bucket
         run: aws s3 sync --delete app s3://${{secrets.AWS_S3_BUCKET}}/app/
+      - name: Invalidate the cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{secrets.AWS_DIST_ID}} \
+            --paths "/*"
