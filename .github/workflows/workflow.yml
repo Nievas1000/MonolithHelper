@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request: 
     branches: [main]
+  workflow_call:
 
 jobs:
 # Cancel Previous Redundant Builds
@@ -45,18 +46,25 @@ jobs:
     env:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     steps:
-      - uses: actions/checkout@master
-      - name: Run Snyk to check forvulnerabilities
-        uses: snyk/actions/node@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout/@v3
+      - name: Set up Node 14
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+      - name: install Snyk CLI
+        run: npm install -g snyk
+      - name: run Snyk Open Source Test
+        run: snyk test
+      - name: run Snyk Code Test
+        run: snyk code test
       - name: Send Slack Notification on Failure
         if: ${{ failure() }}
         uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
           fields: repo,message,author,eventName,workflow,job,took
-        env:
+        env: 
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
  # Creates a build and uploads an artifact
   build:
