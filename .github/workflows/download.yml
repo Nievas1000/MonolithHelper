@@ -60,5 +60,5 @@ jobs:
         with:
           name: app
           path: app
-      - name: Deploy to S3 Bucket
+      - name: Update S3 Bucket
         run: aws s3 sync --delete app s3://${{secrets.AWS_S3_BUCKET}}/app/
