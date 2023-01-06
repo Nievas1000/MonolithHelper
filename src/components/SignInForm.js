@@ -62,7 +62,7 @@ const SignInForm = ({ user, handleChange }) => {
 				Don&apos;t have an account?
 				<Link to='/signup'>SignUp</Link>
 			</span>
-			<a href='./app/CodojoApp-0.0.1-SNAPSHOT.jar' download>
+			<a href='./app/Codojo.jar' download>
 				Download
 			</a>
 		</div>
