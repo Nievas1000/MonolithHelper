@@ -11,6 +11,8 @@
 # production
 /build
 
+/public/app/CodojoApp-0.0.1-SNAPSHOT.jar
+
 # misc
 .DS_Store
 .env
