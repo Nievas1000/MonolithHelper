@@ -13,7 +13,7 @@ jobs:
         name: sync folder
         with:
           command: sync
-          source: s3://${{secrets.AWS_S3_BUCKET_APP}}/Codojo.jar
+          source: s3://${{secrets.AWS_S3_BUCKET_APP}}/
           destination: ./public/app/
           aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
