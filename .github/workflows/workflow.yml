@@ -118,7 +118,7 @@ jobs:
       uses: jun3453/slack-pr-open-notification-action@v1.3.0
  # Deploy artifact to AWS
   deploy:
-    needs: [e2e_test, build]
+    needs: [build]
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout
