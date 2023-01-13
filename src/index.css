@@ -7,12 +7,15 @@
 .zone-form button {
 	width: auto;
 }
-.container-codojo {
-	background-color: black;
-	color: white;
-}
 
 .sign {
 	color: blue;
 	margin-left: 5px;
+}
+.buttons-login{
+	display: flex;
+	justify-content: center;
+}
+.buttons-login button{
+ margin: 24px;
 }

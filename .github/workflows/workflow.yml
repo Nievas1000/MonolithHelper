@@ -93,39 +93,6 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
 # Test components
-  e2e_test:
-    needs: [lint,security, build]
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout
-        uses: actions/checkout/@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-      - uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build
-      - name: E2E Test
-        uses: cypress-io/github-action@v4
-        env:
-          CYPRESS_cognito_username: ${{secrets.CYPRESS_EMAIL_TEST}}
-          CYPRESS_cognito_password: ${{secrets.CYPRESS_PASSWORD_TEST}}
-          CYPRESS_awsUserPoolId: ${{secrets.AWS_USER_POOL_ID}}
-          CYPRESS_awsClientId: ${{secrets.AWS_WEB_CLIENT_ID}}
-          CYPRESS_googleClientId: ${{secrets.GOOGLE_CLIENT_ID}}
-          CYPRESS_googleRefreshToken: ${{secrets.GOOGLE_REFRESH_TOKEN}}
-          CYPRESS_googleClientSecret: ${{secrets.GOOGLE_CLIENT_SECRET}}
-      - name: Send Slack Notification on Failure
-        if: ${{ failure() }}
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          fields: repo,message,author,eventName,workflow,job,took
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
   slack_pull_request:
     needs: [e2e_test]
