@@ -14,7 +14,7 @@ const SignInForm = () => {
 				</LoginButton>
 				<LoginButton variant='primary'>
 					<GoogleIcon />
-					<ButtonText variant='two'>Github</ButtonText>
+					<ButtonText variant='two'>Google</ButtonText>
 				</LoginButton>
 			</div>
 			{/* <a href='./app/Codojo.jar' download>

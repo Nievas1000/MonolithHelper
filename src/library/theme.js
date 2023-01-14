@@ -20,7 +20,7 @@ export const LoginButton = styled('button')(
 				'&:hover': {
 					border: `solid 1px ${colors.primary.two}`,
 				},
-				'p:hover': {
+				'*:hover ~ p': {
 					color: colors.primary.two,
 				},
 			},
