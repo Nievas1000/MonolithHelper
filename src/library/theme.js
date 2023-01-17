@@ -5,13 +5,14 @@ import { colors } from './colors';
 export const Container = styled('div')(
 	space,
 	border,
+	color,
 	variant({
 		variants: {
 			center: {
 				display: 'flex',
 				justifyContent: 'center',
 				alingItems: 'center',
-				width: '100%',
+				width: 'auto',
 			},
 		},
 	})

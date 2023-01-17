@@ -6,11 +6,13 @@ import {
 	Text,
 	Title,
 } from '../library/theme';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import { colors } from '../library/colors';
-import { GoogleIcon } from '../library/icons';
+import { GitHubIcon, GoogleIcon } from '../library/icons';
+import useLoginGithub from '../hooks/useLoginGithub';
 
 const SignInForm = () => {
+	const [loginWithGitHub] = useLoginGithub();
+
 	return (
 		<div>
 			<Title className='d-flex justify-content-center' variant='four' mb={2}>
@@ -33,7 +35,7 @@ const SignInForm = () => {
 				Sign it with
 			</Text>
 			<Container variant='primary' className='d-flex justify-content-center'>
-				<LoginButton variant='primary' mr={24}>
+				<LoginButton variant='primary' mr={24} onClick={loginWithGitHub}>
 					<GitHubIcon />
 					<ButtonText variant='two'>Github</ButtonText>
 				</LoginButton>
@@ -42,9 +44,6 @@ const SignInForm = () => {
 					<ButtonText variant='two'>Google</ButtonText>
 				</LoginButton>
 			</Container>
-			{/* <a href='./app/Codojo.jar' download>
-				Download
-			</a> */}
 		</div>
 	);
 };
