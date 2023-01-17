@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import useGeneralLogin from './useGeneralLogin';
 
 const useLoginGithub = () => {
-	const [show] = useGeneralLogin();
+	const [loginUser] = useGeneralLogin();
 	const [activeGithub, setActiveGithub] = useState(false);
 	useEffect(() => {
 		const queryString = window.location.search;
@@ -40,21 +40,20 @@ const useLoginGithub = () => {
 		});
 		const data = response.data;
 		console.log(data);
-		show({
+		loginUser({
 			username: data.login,
 			name: data.name,
 		});
 	};
 
 	const loginWithGitHub = () => {
-		setActiveGithub(!activeGithub);
 		window.location.assign(
 			'https://github.com/login/oauth/authorize?client_id=' +
 				process.env.REACT_APP_GITHUB_CLIENT_ID
 		);
 	};
 
-	return [loginWithGitHub, activeGithub];
+	return [loginWithGitHub, activeGithub, setActiveGithub];
 };
 
 export default useLoginGithub;

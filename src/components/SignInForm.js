@@ -11,7 +11,12 @@ import { GitHubIcon, GoogleIcon } from '../library/icons';
 import useLoginGithub from '../hooks/useLoginGithub';
 
 const SignInForm = () => {
-	const [loginWithGitHub] = useLoginGithub();
+	const [loginWithGitHub, activeGithub, setActiveGithub] = useLoginGithub();
+
+	const selectGithub = () => {
+		loginWithGitHub();
+		setActiveGithub(!activeGithub);
+	};
 
 	return (
 		<div>
@@ -35,10 +40,17 @@ const SignInForm = () => {
 				Sign it with
 			</Text>
 			<Container variant='primary' className='d-flex justify-content-center'>
-				<LoginButton variant='primary' mr={24} onClick={loginWithGitHub}>
-					<GitHubIcon />
-					<ButtonText variant='two'>Github</ButtonText>
-				</LoginButton>
+				{!activeGithub ? (
+					<LoginButton variant='primary' mr={24} onClick={selectGithub}>
+						<GitHubIcon />
+						<ButtonText variant='two'>Github</ButtonText>
+					</LoginButton>
+				) : (
+					<LoginButton variant='active' mr={24} onClick={selectGithub}>
+						<GitHubIcon />
+						<ButtonText variant='two'>Github</ButtonText>
+					</LoginButton>
+				)}
 				<LoginButton variant='primary'>
 					<GoogleIcon />
 					<ButtonText variant='two'>Google</ButtonText>

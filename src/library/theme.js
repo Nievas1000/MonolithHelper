@@ -38,6 +38,19 @@ export const LoginButton = styled('button')(
 					color: colors.primary.two,
 				},
 			},
+			active: {
+				position: 'relative',
+				display: 'flex',
+				width: '108px',
+				height: '40px',
+				alingItems: 'flex-start',
+				flowDirection: 'row',
+				background: colors.primary.two,
+				border: 'none',
+				borderRadius: '8px',
+				gap: '8px',
+				padding: '8px 16px',
+			},
 		},
 	})
 );
