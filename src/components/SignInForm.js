@@ -1,14 +1,15 @@
+import useLoginGithub from '../hooks/useLoginGithub';
 import {
-	ButtonText,
-	Container,
-	LoginButton,
+	Title,
 	Subtitle,
 	Text,
-	Title,
-} from '../library/theme';
-import { colors } from '../library/colors';
-import { GitHubIcon, GoogleIcon } from '../library/icons';
-import useLoginGithub from '../hooks/useLoginGithub';
+	Container,
+	LoginButton,
+	colors,
+	GitHubIcon,
+	GoogleIcon,
+	ButtonText,
+} from 'design-kit-codojo';
 
 const SignInForm = () => {
 	const [loginWithGitHub, activeGithub, setActiveGithub] = useLoginGithub();
