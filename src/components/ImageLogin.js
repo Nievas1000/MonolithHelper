@@ -1,6 +1,11 @@
-import { colors } from '../library/colors';
-import { CodojoLogo } from '../library/icons';
-import { Container, Subtitle, Text, Title } from '../library/theme';
+import {
+	Container,
+	CodojoLogo,
+	Title,
+	colors,
+	Text,
+	Subtitle,
+} from 'design-kit-codojo';
 
 const ImageLogin = () => {
 	return (

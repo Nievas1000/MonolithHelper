@@ -1,17 +1,25 @@
 import {
-	ButtonText,
-	Container,
-	LoginButton,
+	Title,
+	colors,
 	Subtitle,
 	Text,
-	Title,
-} from '../library/theme';
-import { colors } from '../library/colors';
-import { GitHubIcon, GoogleIcon } from '../library/icons';
+	Container,
+	LoginButton,
+	GoogleIcon,
+	ButtonText,
+	GitHubIcon,
+} from 'design-kit-codojo';
 import useLoginGithub from '../hooks/useLoginGithub';
+import useLoginGoogle from '../hooks/useLoginGoogle';
 
 const SignInForm = () => {
 	const [loginWithGitHub, activeGithub, setActiveGithub] = useLoginGithub();
+	const [login, activeGoogle, setActiveGoogle] = useLoginGoogle();
+
+	const selectGoogle = () => {
+		login();
+		setActiveGoogle(!activeGoogle);
+	};
 
 	const selectGithub = () => {
 		loginWithGitHub();
@@ -51,10 +59,21 @@ const SignInForm = () => {
 						<ButtonText variant='two'>Github</ButtonText>
 					</LoginButton>
 				)}
-				<LoginButton variant='primary'>
-					<GoogleIcon />
-					<ButtonText variant='two'>Google</ButtonText>
-				</LoginButton>
+				{!activeGoogle ? (
+					<LoginButton
+						variant='primary'
+						className='g_id_signin'
+						onClick={() => selectGoogle()}
+					>
+						<GoogleIcon />
+						<ButtonText variant='two'>Google</ButtonText>
+					</LoginButton>
+				) : (
+					<LoginButton variant='active'>
+						<GoogleIcon />
+						<ButtonText variant='two'>Google</ButtonText>
+					</LoginButton>
+				)}
 			</Container>
 		</div>
 	);

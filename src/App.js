@@ -1,6 +1,6 @@
 import ImageLogin from './components/ImageLogin';
 import SignInForm from './components/SignInForm';
-import { Text, TextLink } from './library/theme';
+import { Text, TextLink } from 'design-kit-codojo';
 
 function App() {
 	return (
