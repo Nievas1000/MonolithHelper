@@ -72,8 +72,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - name: Install Dependencies 
-        run: npm install
       - name: 'Create env file'
         run: |
           echo "${{ secrets.ENV_FILE }}" > .env
