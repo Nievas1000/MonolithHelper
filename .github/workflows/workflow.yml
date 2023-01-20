@@ -85,7 +85,7 @@ jobs:
           name: build
           path: build
     
-  e2e_test:
+  test:
     needs: [lint,security, build]
     runs-on: ubuntu-latest
     steps: 
@@ -110,7 +110,7 @@ jobs:
 
 # Test components
   slack_pull_request:
-    needs: [e2e_test]
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
     - name: Notify slack pull request open
@@ -134,7 +134,7 @@ jobs:
       uses: jun3453/slack-pr-open-notification-action@v1.3.0
  # Deploy artifact to AWS
   deploy:
-    needs: [e2e_test, build]
+    needs: [test, build]
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout
