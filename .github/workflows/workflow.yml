@@ -74,7 +74,7 @@ jobs:
         with:
           node-version: '16'
       - name: Install Dependencies 
-        run: npm install --force
+        run: npm ci
       - name: 'Create env file'
         run: |
           echo "${{ secrets.ENV_FILE }}" > .env
@@ -100,7 +100,6 @@ jobs:
         with:
           name: build
           path: build
-      - run: npm install --force
       - name: E2E Test
         uses: cypress-io/github-action@v4
         env:
