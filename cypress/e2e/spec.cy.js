@@ -16,6 +16,9 @@ describe('Github', function () {
 		cy.get('#login_field').type('codojotest@gmail.com');
 		cy.get('#password').type('testgithub123');
 		cy.get('input[type="submit"]').click();
-		cy.contains('h2', 'Authorize Codojo.io');
+		cy.url().should(
+			'include',
+			`authorize?client_id=${Cypress.env('githubClientId')}`
+		);
 	});
 });
