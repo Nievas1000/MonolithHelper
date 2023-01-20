@@ -18,3 +18,14 @@ describe('Github', function () {
 		cy.get('input[type="submit"]').click();
 	});
 });
+
+describe('Test url', function () {
+	it('Use Policy', () => {
+		cy.visit('https://www.codojo.io/use-policy');
+		cy.contains('Codojo');
+	});
+	it('Privacity Policy', () => {
+		cy.visit('https://www.codojo.io/privacy');
+		cy.contains('Codojo');
+	});
+});

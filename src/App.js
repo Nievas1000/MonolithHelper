@@ -14,8 +14,14 @@ function App() {
 					<div className='d-flex justify-content-center'>
 						<Text variant='one'>
 							By logging in or signing up, you agree to abide by our policies
-							including our <TextLink variant='one'>Use Policy</TextLink> and{' '}
-							<TextLink variant='one'>Privacy Policy</TextLink>
+							including our{' '}
+							<TextLink variant='one' href='https://www.codojo.io/use-policy'>
+								Use Policy
+							</TextLink>{' '}
+							and{' '}
+							<TextLink variant='one' href='https://www.codojo.io/privacy'>
+								Privacy Policy
+							</TextLink>
 						</Text>
 					</div>
 				</div>
