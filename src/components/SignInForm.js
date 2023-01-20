@@ -17,8 +17,8 @@ const SignInForm = () => {
 	const [login, activeGoogle, setActiveGoogle] = useLoginGoogle();
 
 	const selectGoogle = () => {
+		setActiveGoogle(true);
 		login();
-		setActiveGoogle(!activeGoogle);
 	};
 
 	const selectGithub = () => {

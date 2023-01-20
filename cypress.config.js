@@ -6,6 +6,7 @@ module.exports = defineConfig({
 		googleRefreshToken: process.env.GOOGLE_REFRESH_TOKEN,
 		googleClientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
 		googleClientSecret: process.env.REACT_APP_GOOGLE_CLIENT_SECRET,
+		githubClientId: process.env.REACT_APP_GITHUB_CLIENT_ID,
 	},
 
 	e2e: {
