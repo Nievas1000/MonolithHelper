@@ -100,6 +100,7 @@ jobs:
         with:
           name: build
           path: build
+      - run: npm install --force
       - name: E2E Test
         uses: cypress-io/github-action@v4
         env:
@@ -107,14 +108,6 @@ jobs:
           CYPRESS_googleClientId: ${{secrets.GOOGLE_CLIENT_ID}}
           CYPRESS_googleRefreshToken: ${{secrets.GOOGLE_REFRESH_TOKEN}}
           CYPRESS_googleClientSecret: ${{secrets.GOOGLE_CLIENT_SECRET}}
-      - name: Send Slack Notification on Failure
-        if: ${{ failure() }}
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          fields: repo,message,author,eventName,workflow,job,took
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
 # Test components
   slack_pull_request:
