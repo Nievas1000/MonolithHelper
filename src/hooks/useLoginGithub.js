@@ -17,11 +17,16 @@ const useLoginGithub = () => {
 					const getAccessToken = async () => {
 						try {
 							const response = await axios.get(
-								`http://localhost:3001/getTokenGithub?code=${codeParams}`
+								`${process.env.REACT_APP_API_URL}/getTokenGithub?code=${codeParams}`,
+								{
+									headers: {
+										'x-api-key': process.env.REACT_APP_API_GATEWAY_TOKEN,
+									},
+								}
 							);
 							const data = response.data;
-							if (data.access_token) {
-								localStorage.setItem('accessToken', data.access_token);
+							if (data) {
+								localStorage.setItem('accessToken', data);
 								getDataByGithub();
 							}
 						} catch (error) {
@@ -37,11 +42,15 @@ const useLoginGithub = () => {
 	}, []);
 
 	const getDataByGithub = async () => {
-		const response = await axios.get('http://localhost:3001/getDataByGitHub', {
-			headers: {
-				Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
-			},
-		});
+		const response = await axios.get(
+			`${process.env.REACT_APP_API_URL}/getDataByGitHub`,
+			{
+				headers: {
+					Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
+					'x-api-key': process.env.REACT_APP_API_GATEWAY_TOKEN,
+				},
+			}
+		);
 		const data = response.data;
 		console.log(data);
 		loginUser({

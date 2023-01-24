@@ -26,9 +26,15 @@ const useLoginGoogle = () => {
 
 	const resgistry = async (user) => {
 		console.log(user);
-		const response = await axios.post('http://localhost:3001/login', user);
-		const data = response.data;
-		console.log(data);
+		try {
+			const response = await axios.post(
+				`${process.env.REACT_APP_API_URL}/login`,
+				user
+			);
+			console.log(response);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return [login, activeGoogle, setActiveGoogle];
