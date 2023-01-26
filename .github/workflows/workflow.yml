@@ -64,8 +64,9 @@ jobs:
 
  # Creates a build and uploads an artifact
   build:
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Checkout
         uses: actions/checkout/@v3
         with:
@@ -125,9 +126,8 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
-# Test components
   slack_pull_request:
-    needs: [test]
+    needs: [lint,security]
     runs-on: ubuntu-latest
     steps:
     - name: Notify slack pull request open
