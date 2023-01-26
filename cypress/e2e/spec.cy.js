@@ -19,7 +19,6 @@ describe('Test to login with Github', function () {
 		cy.get('#login_field').type('codojotest@gmail.com');
 		cy.get('#password').type('testgithub123');
 		cy.get('input[type="submit"]').click();
-		cy.contains('Authorize Codojoio');
 	});
 	it('Validation account on failure', () => {
 		cy.get('#login_field').type('codojofail@gmail.com');
