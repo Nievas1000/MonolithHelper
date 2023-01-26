@@ -126,9 +126,8 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
-# Test components
   slack_pull_request:
-    needs: [test]
+    needs: [lint,security]
     runs-on: ubuntu-latest
     steps:
     - name: Notify slack pull request open
