@@ -43,7 +43,7 @@ Cypress.Commands.add('loginByGoogleApiFail', () => {
 		body: {
 			grant_type: 'refresh_token',
 			client_id: Cypress.env('googleClientId'),
-			client_secret: 'GFGFDSHFSjkfdloeñghfdspñsopss',
+			client_secret: Cypress.env('googleClientSecretFail'),
 			refresh_token: Cypress.env('googleRefreshToken'),
 		},
 		failOnStatusCode: false,
