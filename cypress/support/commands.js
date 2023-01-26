@@ -1,4 +1,4 @@
-Cypress.Commands.add('loginByGoogleApi', () => {
+Cypress.Commands.add('loginByGoogleApiSucces', () => {
 	cy.log('Logging in to Google');
 	cy.request({
 		method: 'POST',
@@ -32,5 +32,24 @@ Cypress.Commands.add('loginByGoogleApi', () => {
 			window.localStorage.setItem('googleCypress', JSON.stringify(userItem));
 			cy.visit('https://d3k7je3o78czwo.cloudfront.net/');
 		});
+	});
+});
+
+Cypress.Commands.add('loginByGoogleApiFail', () => {
+	cy.log('Logging in to Google');
+	cy.request({
+		method: 'POST',
+		url: 'https://www.googleapis.com/oauth2/v4/token',
+		body: {
+			grant_type: 'refresh_token',
+			client_id: Cypress.env('googleClientId'),
+			client_secret: 'GFGFDSHFSjkfdloeñghfdspñsopss',
+			refresh_token: Cypress.env('googleRefreshToken'),
+		},
+		failOnStatusCode: false,
+	}).then((resp) => {
+		const { body, status } = resp;
+		expect(body.error).to.deep.equal('invalid_client');
+		expect(status).to.eq(401);
 	});
 });
