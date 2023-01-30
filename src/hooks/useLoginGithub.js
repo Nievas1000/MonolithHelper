@@ -25,8 +25,8 @@ const useLoginGithub = () => {
 								}
 							);
 							const data = response.data;
-							if (data) {
-								localStorage.setItem('accessToken', data);
+							if (data.data) {
+								localStorage.setItem('accessToken', data.data);
 								getDataByGithub();
 							}
 						} catch (error) {

@@ -47,7 +47,10 @@ const SignInForm = () => {
 			>
 				Sign it with
 			</Text>
-			<Container variant='primary' className='d-flex justify-content-center'>
+			<Container
+				variant='primary'
+				className='d-flex justify-content-center box'
+			>
 				{!activeGithub ? (
 					<LoginButton variant='primary' mr={24} onClick={selectGithub}>
 						<GitHubIcon />
