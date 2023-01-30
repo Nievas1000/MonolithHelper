@@ -15,16 +15,16 @@ describe('Test to login with Github', function () {
 			)}`
 		);
 	});
-	it('Validation account on succes', () => {
-		cy.get('#login_field').type('codojotest@gmail.com');
-		cy.get('#password').type('testgithub123');
-		cy.get('input[type="submit"]').click();
-	});
 	it('Validation account on failure', () => {
 		cy.get('#login_field').type('codojofail@gmail.com');
 		cy.get('#password').type('failgithub123');
 		cy.get('input[type="submit"]').click();
 		cy.contains('Incorrect username or password.');
+	});
+	it('Validation account on succes', () => {
+		cy.get('#login_field').type('codojotest@gmail.com');
+		cy.get('#password').type('testgithub123');
+		cy.get('input[type="submit"]').click();
 	});
 });
 

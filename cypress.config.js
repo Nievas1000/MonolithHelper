@@ -9,7 +9,7 @@ module.exports = defineConfig({
 		googleClientSecretFail: 'GFGFDSHFSjkf52dloeñghfdspñsopss2c2',
 		githubClientId: process.env.REACT_APP_GITHUB_CLIENT_ID,
 	},
-
+	chromeWebSecurity: false,
 	e2e: {
 		setupNodeEvents(on, config) {
 			on('task', {

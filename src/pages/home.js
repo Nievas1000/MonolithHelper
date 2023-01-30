@@ -1,22 +1,16 @@
-import { useEffect } from 'react';
-import { Auth } from 'aws-amplify';
+import { useState } from 'react';
+import DropdownApps from '../components/DropdownApps';
+import NavBar from '../components/NavBar';
 
 const Home = () => {
-	useEffect(() => {
-		const checkUser = async () => {
-			try {
-				const userLog = await Auth.currentAuthenticatedUser();
-				console.log(userLog.attributes);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		checkUser();
-	}, []);
-
+	const [activeDropdown, setActiveDropdown] = useState(false);
 	return (
-		<div className='d-flex justify-content-center align-items-center'>
-			Bienvenido a Codojo
+		<div className='container-my-app'>
+			<NavBar
+				setActiveDropdown={setActiveDropdown}
+				activeDropdown={activeDropdown}
+			/>
+			{activeDropdown ? <DropdownApps /> : null}
 		</div>
 	);
 };

@@ -1,9 +1,11 @@
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const useLoginGoogle = () => {
 	const [activeGoogle, setActiveGoogle] = useState(false);
+	const navigate = useNavigate();
 	const login = useGoogleLogin({
 		onSuccess: async (credentialResponse) => {
 			setActiveGoogle(!activeGoogle);
@@ -25,13 +27,15 @@ const useLoginGoogle = () => {
 	});
 
 	const resgistry = async (user) => {
-		console.log(user);
 		try {
 			const response = await axios.post(
 				`${process.env.REACT_APP_API_URL}/login`,
 				user
 			);
 			console.log(response);
+			if (response.status === 200) {
+				navigate('/my-app');
+			}
 		} catch (error) {
 			console.log(error);
 		}

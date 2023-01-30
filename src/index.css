@@ -1,3 +1,10 @@
+*, ::after, ::before {
+	box-sizing: content-box;
+}
+.box > *, ::after, ::before  {
+	box-sizing: border-box !important;
+}
+/*Login*/
 .login-image-header{
 	position: absolute;
 	width: 100%;
@@ -32,4 +39,29 @@
 	width: 100%;
 	position: absolute;
 	bottom: 0;
+}
+/*My app*/
+.container-my-app{
+	background-color: #1E1E1E;
+	height: 100vh;
+}
+.right-navbar{
+	display: flex;
+	right: 0;
+	position: absolute;
+}
+.user *{
+	margin: 5px;
+}
+.flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.d-flex{
+	display: flex;
+}
+.dropdownmy{
+	margin-top: 39px;
+	margin-left: 550px;
 }
