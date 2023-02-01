@@ -3,17 +3,17 @@ import { useEffect, useState } from 'react';
 import useGeneralLogin from './useGeneralLogin';
 
 const useLoginGithub = () => {
-	const [loginUser] = useGeneralLogin();
 	const [activeGithub, setActiveGithub] = useState(false);
+	const [registry] = useGeneralLogin();
 	useEffect(() => {
 		try {
 			const queryString = window.location.search;
 			const urlParams = new URLSearchParams(queryString);
 			const codeParams = urlParams.get('code');
-			if (localStorage.getItem('accessToken')) {
+			if (localStorage.getItem('accessTokenGithub')) {
 				getDataByGithub();
 			} else {
-				if (codeParams && localStorage.getItem('accessToken') === null) {
+				if (codeParams && localStorage.getItem('accessTokenGithub') === null) {
 					const getAccessToken = async () => {
 						try {
 							const response = await axios.get(
@@ -26,7 +26,7 @@ const useLoginGithub = () => {
 							);
 							const data = response.data;
 							if (data.data) {
-								localStorage.setItem('accessToken', data.data);
+								localStorage.setItem('accessTokenGithub', data.data);
 								getDataByGithub();
 							}
 						} catch (error) {
@@ -46,16 +46,16 @@ const useLoginGithub = () => {
 			`${process.env.REACT_APP_API_URL}/getDataByGitHub`,
 			{
 				headers: {
-					Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
+					Authorization: 'Bearer ' + localStorage.getItem('accessTokenGithub'),
 					'x-api-key': process.env.REACT_APP_API_GATEWAY_TOKEN,
 				},
 			}
 		);
 		const data = response.data;
-		console.log(data);
-		loginUser({
-			username: data.login,
-			name: data.name,
+		registry({
+			email: data.data.login,
+			firstName: data.data.name,
+			lastName: 'null',
 		});
 	};
 

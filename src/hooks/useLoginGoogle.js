@@ -1,14 +1,43 @@
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import useGeneralLogin from './useGeneralLogin';
 
 const useLoginGoogle = () => {
 	const [activeGoogle, setActiveGoogle] = useState(false);
-	const navigate = useNavigate();
+	const [registry] = useGeneralLogin();
+
+	useEffect(() => {
+		if (localStorage.getItem('accessTokenGoogle')) {
+			const loginGoogle = async () => {
+				const response = await axios.get(
+					'https://www.googleapis.com/oauth2/v3/userinfo',
+					{
+						headers: {
+							Authorization: `Bearer ${localStorage.getItem(
+								'accessTokenGoogle'
+							)}`,
+						},
+					}
+				);
+				const data = response.data;
+				registry({
+					email: data.email,
+					firstName: data.given_name,
+					lastName: data.family_name,
+				});
+			};
+			loginGoogle();
+		}
+	}, []);
+
 	const login = useGoogleLogin({
 		onSuccess: async (credentialResponse) => {
 			setActiveGoogle(!activeGoogle);
+			localStorage.setItem(
+				'accessTokenGoogle',
+				credentialResponse.access_token
+			);
 			const response = await axios.get(
 				'https://www.googleapis.com/oauth2/v3/userinfo',
 				{
@@ -18,28 +47,13 @@ const useLoginGoogle = () => {
 				}
 			);
 			const data = response.data;
-			resgistry({
+			registry({
 				email: data.email,
 				firstName: data.given_name,
 				lastName: data.family_name,
 			});
 		},
 	});
-
-	const resgistry = async (user) => {
-		try {
-			const response = await axios.post(
-				`${process.env.REACT_APP_API_URL}/login`,
-				user
-			);
-			console.log(response);
-			if (response.status === 200) {
-				navigate('/my-app');
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	};
 
 	return [login, activeGoogle, setActiveGoogle];
 };
