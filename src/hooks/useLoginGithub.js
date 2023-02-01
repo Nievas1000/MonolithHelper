@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import useGeneralLogin from './useGeneralLogin';
 
+// Hook para obtener un token de github mediante su api, que luego usamos ese token para obtener los datos del usuario con una consulta al backend, para poder hacer el login
 const useLoginGithub = () => {
 	const [activeGithub, setActiveGithub] = useState(false);
 	const [registry] = useGeneralLogin();
@@ -14,6 +15,7 @@ const useLoginGithub = () => {
 				getDataByGithub();
 			} else {
 				if (codeParams && localStorage.getItem('accessTokenGithub') === null) {
+					// Obtenemos token de github
 					const getAccessToken = async () => {
 						try {
 							const response = await axios.get(
@@ -41,6 +43,7 @@ const useLoginGithub = () => {
 		}
 	}, []);
 
+	// Obtenemos datos del usuario
 	const getDataByGithub = async () => {
 		const response = await axios.get(
 			`${process.env.REACT_APP_API_URL}/getDataByGitHub`,

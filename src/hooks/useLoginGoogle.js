@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import useGeneralLogin from './useGeneralLogin';
 
+// Hook para obtener los datos de un usuario mediante el oauth de google y luego hacer el login o registrar al usuario
 const useLoginGoogle = () => {
 	const [activeGoogle, setActiveGoogle] = useState(false);
 	const [registry] = useGeneralLogin();
@@ -31,6 +32,7 @@ const useLoginGoogle = () => {
 		}
 	}, []);
 
+	// Obtenemos token google y datos del usuario
 	const login = useGoogleLogin({
 		onSuccess: async (credentialResponse) => {
 			setActiveGoogle(!activeGoogle);

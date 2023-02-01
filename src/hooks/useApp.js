@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 
+// Hook que usamos para obtener los datos de las aplicaciones que tiene un usaurio mediante la userApplicationKey
 const useApp = () => {
 	const userApplicationKey = localStorage.getItem('userAppKey');
 	useEffect(() => {
