@@ -53,6 +53,9 @@
 .user *{
 	margin: 5px;
 }
+.add-app *{
+	margin: 5px;
+}
 .flex{
 	display: flex;
 	justify-content: center;
@@ -63,5 +66,36 @@
 }
 .dropdownmy{
 	margin-top: 39px;
-	margin-left: 550px;
+	margin-left: 100px;
+}
+.dropdownmy::-webkit-scrollbar{
+	width: 4px;
+	height: 4px;
+	margin-top: 20px;
+	background-color: #343635;
+}
+.dropdownmy::-webkit-scrollbar-thumb{
+	background: #47BC82;
+	border-radius: 2px;
+}
+@media only screen and (max-width:600px){
+	.container-img{
+		display: none;
+	}
+	.sign-in{
+		height: 100vh;
+	}
+	.container-policies{
+		position: absolute;
+		bottom: 0;
+	}
+	.add-app{
+		display: none !important;
+	}
+	.settigns{
+		display: none !important;
+	}
+	.open-app{
+		width: 140px !important;
+	}
 }

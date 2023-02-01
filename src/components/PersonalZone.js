@@ -10,7 +10,7 @@ import {
 const PersonalZone = () => {
 	return (
 		<div className='right-navbar'>
-			<Settings>
+			<Settings className='settigns'>
 				<Text variant='three' color={colors.grey.five} mt={12}>
 					Settings
 				</Text>
