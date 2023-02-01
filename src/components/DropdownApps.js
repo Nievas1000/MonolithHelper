@@ -5,8 +5,18 @@ import {
 	CrossIcon,
 	TabMore,
 } from 'design-kit-codojo';
+import { useDispatch, useSelector } from 'react-redux';
 
 const DropdownApps = () => {
+	const state = useSelector((state) => state);
+	const apps = state.dropdown;
+	const dispatch = useDispatch();
+	const remove = (app) => {
+		dispatch({
+			type: 'REMOVE_DROPDOWN',
+			payload: app,
+		});
+	};
 	return (
 		<ContainerMoreApps className='dropdownmy'>
 			<div className='flex'>
@@ -15,31 +25,27 @@ const DropdownApps = () => {
 				</Text>
 				<CrossIcon />
 			</div>
-			<TabMore variant='active'>
-				<Text variant='two' mt={12}>
-					test_9
-				</Text>
-			</TabMore>
-			<TabMore variant='primary'>
-				<Text variant='two' mt={12}>
-					test_10
-				</Text>
-			</TabMore>
-			<TabMore variant='primary'>
-				<Text variant='two' mt={12}>
-					test_11
-				</Text>
-			</TabMore>
-			<TabMore variant='primary'>
-				<Text variant='two' mt={12}>
-					test_12
-				</Text>
-			</TabMore>
-			<TabMore variant='primary'>
-				<Text variant='two' mt={12}>
-					test_12
-				</Text>
-			</TabMore>
+			{apps.length > 0 ? (
+				apps.map((app) => {
+					return (
+						<TabMore
+							variant='primary'
+							key={app.applicationName}
+							onClick={() => remove(app)}
+						>
+							<Text variant='two' mt={12}>
+								{app.applicationName}
+							</Text>
+						</TabMore>
+					);
+				})
+			) : (
+				<TabMore variant='primary'>
+					<Text variant='two' mt={12}>
+						There arent apps
+					</Text>
+				</TabMore>
+			)}
 		</ContainerMoreApps>
 	);
 };

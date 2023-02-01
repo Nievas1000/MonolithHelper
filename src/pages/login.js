@@ -7,10 +7,10 @@ const Login = () => {
 		<div className='d-flex'>
 			<ImageLogin />
 			<div className='container-information'>
-				<div className='sign-in'>
+				<div className='sign-in d-flex'>
 					<SignInForm />
 				</div>
-				<div className='d-flex justify-content-center'>
+				<div className='d-flex justify-content-center container-policies'>
 					<Text variant='one'>
 						By logging in or signing up, you agree to abide by our policies
 						including our{' '}
