@@ -1,23 +1,33 @@
 import { Tab, Text, LeafIcon, CrossIcon } from 'design-kit-codojo';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+/* import { useState } from 'react'; */
+import { useDispatch, useSelector } from 'react-redux';
 import useDropdownMenu from '../hooks/useDropdownMenu';
 const NavBarTabs = () => {
-	const apps = useSelector((state) => state.initialApps);
-	const [active, setActive] = useState();
+	const state = useSelector((state) => state);
+	const dispatch = useDispatch();
+	const apps = state.initialApps;
+	const selectedApp = state.selectedApp;
+	/* const [active, setActive] = useState(); */
 	const [addAppToDropdown] = useDropdownMenu();
-	const handleActive = (name) => {
-		setActive(name);
+	const handleActive = (app) => {
+		dispatch({
+			type: 'SELECT_APP',
+			payload: app,
+		});
 	};
 	return (
-		<div className='d-flex'>
+		<div className='tabs d-flex'>
 			{apps
 				? apps.map((app) => {
 						return (
 							<Tab
-								variant={active === app.applicationName ? 'active' : 'primary'}
+								variant={
+									selectedApp.applicationName === app.applicationName
+										? 'active'
+										: 'primary'
+								}
 								key={app.applicationName}
-								onClick={() => handleActive(app.applicationName)}
+								onClick={() => handleActive(app)}
 							>
 								<LeafIcon />
 								<Text variant='three' mt={13}>

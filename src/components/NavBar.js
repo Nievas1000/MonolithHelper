@@ -10,22 +10,12 @@ import {
 	AddIcon,
 	MiniArrowIcon,
 } from 'design-kit-codojo';
-import { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import useApp from '../hooks/useApp';
+import DropdownApps from './DropdownApps';
 import NavBarTabs from './NavBarTabs';
 import PersonalZone from './PersonalZone';
 
 const NavBar = ({ setActiveDropdown, activeDropdown }) => {
-	const apps = useSelector((state) => state.marginMore);
-	const dispatch = useDispatch();
-	const ref = useRef(null);
-	useEffect(() => {
-		dispatch({
-			type: 'SET_MARGIN_MORE',
-			payload: ref.current ? ref.current.offsetLeft : 0,
-		});
-	}, [ref.current, apps]);
 	useApp();
 	return (
 		<NavBarContainer>
@@ -37,15 +27,14 @@ const NavBar = ({ setActiveDropdown, activeDropdown }) => {
 					</Text>
 				</OpenAppTab>
 				<NavBarTabs />
-				<Tab
-					variant='more'
-					onClick={() => setActiveDropdown(!activeDropdown)}
-					ref={ref}
-				>
+				<Tab variant='more' onClick={() => setActiveDropdown(!activeDropdown)}>
 					<Text variant='three' color={colors.grey.five} mt={12}>
 						more...
 					</Text>
 					<MiniArrowIcon />
+					{activeDropdown ? (
+						<DropdownApps setActiveDropdown={setActiveDropdown} />
+					) : null}
 				</Tab>
 				<AddApplication className='add-app'>
 					<AddIcon />

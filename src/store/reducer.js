@@ -4,8 +4,7 @@ import { createStore } from 'redux';
 const initialState = {
 	dropdown: [],
 	initialApps: [],
-	marginMore: 0,
-	selectedApp: '',
+	selectedApp: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,8 +12,17 @@ const reducer = (state = initialState, action) => {
 		case 'INITIAL_APPS':
 			return {
 				...state,
-				initialApps: action.payload,
-				selectedApp: action.payload[0].applicationName,
+				initialApps: action.payload.slice(0, 3).sort((a, b) => {
+					if (a.date < b.date) {
+						return -1;
+					}
+					if (a.date > b.date) {
+						return 1;
+					}
+					return 0;
+				}),
+				dropdown: action.payload.slice(3),
+				selectedApp: action.payload[0],
 			};
 		case 'ADD_DROPDOWN':
 			return {
@@ -27,15 +35,16 @@ const reducer = (state = initialState, action) => {
 		case 'REMOVE_DROPDOWN':
 			return {
 				...state,
-				initialApps: [...state.initialApps, action.payload],
-				dropdown: state.dropdown.filter(
-					(app) => app.applicationName !== action.payload.applicationName
-				),
-			};
-		case 'SET_MARGIN_MORE':
-			return {
-				...state,
-				marginMore: action.payload,
+				initialApps:
+					state.initialApps.length < 4
+						? [...state.initialApps, action.payload]
+						: state.initialApps,
+				dropdown:
+					state.initialApps.length < 4
+						? state.dropdown.filter(
+								(app) => app.applicationName !== action.payload.applicationName
+						  )
+						: state.dropdown,
 			};
 		case 'SELECT_APP':
 			return {
