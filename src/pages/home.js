@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DropdownApps from '../components/DropdownApps';
+import DateApp from '../components/DateApp';
 import NavBar from '../components/NavBar';
 import useApp from '../hooks/useApp';
 
@@ -15,7 +15,7 @@ const Home = () => {
 				setActiveLogout={setActiveLogout}
 				activeLogout={activeLogout}
 			/>
-			{activeDropdown ? <DropdownApps /> : null}
+			<DateApp />
 		</div>
 	);
 };

@@ -1,0 +1,47 @@
+.login-image-header{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.container-img{
+	position:relative;
+  	display:inline-block;
+}
+.container-img img{
+	min-height: 100vh;
+}
+.container-img::before{
+	background: linear-gradient(180deg, #47BC82 22.91%, #131514 100%);
+	mix-blend-mode: multiply;
+	width: 100%;
+	position: absolute;
+	content: "";
+	height: 100%;
+}
+.sign-in{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 90%;
+}
+.container-information{
+	width: 100%;
+}
+.monolithTo{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+@media only screen and (max-width:600px){
+	.container-img{
+		display: none;
+	}
+	.sign-in{
+		height: 100vh;
+	}
+	.container-policies{
+		position: absolute;
+		bottom: 0;
+	}
+}

@@ -1,0 +1,64 @@
+.container-my-app{
+	background-color: #1E1E1E;
+	height: 100vh;
+	width: 100%;
+}
+.right-navbar{
+	display: flex;
+	right: 0;
+	position: absolute;
+}
+.user *{
+	margin: 5px;
+}
+.add-app *{
+	margin: 5px;
+}
+.flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.d-flex{
+	display: flex;
+}
+.dropdownmy{
+	top: 38px;
+	margin-left: -125px;
+}
+.signout{
+	right: 0;
+	position: absolute;
+	margin-top: 39px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.container-apps{
+	overflow-x: hidden;
+	max-height: 265px;
+}
+.container-apps::-webkit-scrollbar{
+	width: 4px;
+	height: 4px;
+	margin-top: 20px;
+	background-color: #343635;
+}
+.container-apps::-webkit-scrollbar-thumb{
+	background: #47BC82;
+	border-radius: 2px;
+}
+
+@media only screen and (max-width:600px){
+	.add-app{
+		display: none !important;
+	}
+	.settigns{
+		display: none !important;
+	}
+	.open-app{
+		width: 140px !important;
+	}
+	.tabs{
+		display: none !important;
+	}
+}
