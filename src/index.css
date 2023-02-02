@@ -44,6 +44,7 @@
 .container-my-app{
 	background-color: #1E1E1E;
 	height: 100vh;
+	width: 100%;
 }
 .right-navbar{
 	display: flex;
@@ -77,6 +78,13 @@
 .dropdownmy::-webkit-scrollbar-thumb{
 	background: #47BC82;
 	border-radius: 2px;
+}
+.signout{
+	right: 0;
+	position: absolute;
+	margin-top: 39px;
+	margin-right: 10px;
+	cursor: pointer;
 }
 @media only screen and (max-width:600px){
 	.container-img{

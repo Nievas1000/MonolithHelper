@@ -5,12 +5,15 @@ import useApp from '../hooks/useApp';
 
 const Home = () => {
 	const [activeDropdown, setActiveDropdown] = useState(false);
+	const [activeLogout, setActiveLogout] = useState(false);
 	useApp();
 	return (
 		<div className='container-my-app'>
 			<NavBar
 				setActiveDropdown={setActiveDropdown}
 				activeDropdown={activeDropdown}
+				setActiveLogout={setActiveLogout}
+				activeLogout={activeLogout}
 			/>
 			{activeDropdown ? <DropdownApps /> : null}
 		</div>
