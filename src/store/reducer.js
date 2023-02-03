@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 // Reduce donde se declaran los diferentes states de las app del usuario y sus respectivas acciones
 
 const initialState = {
+	allApps: [],
 	dropdown: [],
 	initialApps: [],
 	selectedApp: null,
@@ -12,6 +13,7 @@ const reducer = (state = initialState, action) => {
 		case 'INITIAL_APPS':
 			return {
 				...state,
+				allApps: action.payload,
 				initialApps: action.payload.slice(0, 3).sort((a, b) => {
 					if (a.date < b.date) {
 						return -1;
@@ -33,18 +35,21 @@ const reducer = (state = initialState, action) => {
 				),
 			};
 		case 'REMOVE_DROPDOWN':
+			console.log(state.initialApps);
 			return {
 				...state,
+				dropdown: state.dropdown.filter(
+					(app) => app.applicationName !== action.payload.applicationName,
+					state.initialApps.push(action.payload),
+					state.initialApps.length > 3
+						? state.dropdown.push(state.initialApps[0])
+						: [...state.initialApps]
+				),
 				initialApps:
-					state.initialApps.length < 4
-						? [...state.initialApps, action.payload]
-						: state.initialApps,
-				dropdown:
-					state.initialApps.length < 4
-						? state.dropdown.filter(
-								(app) => app.applicationName !== action.payload.applicationName
-						  )
-						: state.dropdown,
+					state.initialApps.length > 3
+						? state.initialApps.splice(1)
+						: [...state.initialApps],
+				selectedApp: action.payload,
 			};
 		case 'SELECT_APP':
 			return {

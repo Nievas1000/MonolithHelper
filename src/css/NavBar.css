@@ -25,6 +25,7 @@
 .dropdownmy{
 	top: 38px;
 	margin-left: -125px;
+	z-index: 1;
 }
 .signout{
 	right: 0;
@@ -47,14 +48,52 @@
 	background: #47BC82;
 	border-radius: 2px;
 }
-
-@media only screen and (max-width:600px){
-	.add-app{
-		display: none !important;
-	}
+.container-apps-responsive{
+	display: none;
+	overflow-x: hidden;
+	max-height: 265px;
+}
+.tab-responsive{
+	display: none;
+}
+@media only screen and (max-width:1410px){
 	.settigns{
 		display: none !important;
 	}
+
+}
+@media only screen and (max-width:1280px){
+	.add-app{
+		display: none !important;
+	}
+
+}
+@media only screen and (max-width:1150px){
+	.apps-full{
+		display: none;
+	}
+	.container-apps{
+		display: none;
+	}
+	.container-apps-responsive{
+		display: block;
+		position: relative;
+	}
+	.container-apps-responsive::-webkit-scrollbar{
+		width: 4px;
+		height: 4px;
+		margin-top: 20px;
+		background-color: #343635;
+	}
+	.container-apps-responsive::-webkit-scrollbar-thumb{
+		background: #47BC82;
+		border-radius: 2px;
+	}
+	.tab-responsive{
+		display: block;
+	}
+}
+@media only screen and (max-width:600px){
 	.open-app{
 		width: 140px !important;
 	}
