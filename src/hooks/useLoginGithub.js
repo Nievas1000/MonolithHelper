@@ -19,12 +19,7 @@ const useLoginGithub = () => {
 					const getAccessToken = async () => {
 						try {
 							const response = await axios.get(
-								`${process.env.REACT_APP_API_URL}/getTokenGithub?code=${codeParams}`,
-								{
-									headers: {
-										'x-api-key': process.env.REACT_APP_API_GATEWAY_TOKEN,
-									},
-								}
+								`${process.env.REACT_APP_API_URL}/getTokenGithub?code=${codeParams}`
 							);
 							const data = response.data;
 							if (data.data) {
@@ -50,7 +45,6 @@ const useLoginGithub = () => {
 			{
 				headers: {
 					Authorization: 'Bearer ' + localStorage.getItem('accessTokenGithub'),
-					'x-api-key': process.env.REACT_APP_API_GATEWAY_TOKEN,
 				},
 			}
 		);
