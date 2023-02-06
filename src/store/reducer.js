@@ -35,7 +35,6 @@ const reducer = (state = initialState, action) => {
 				),
 			};
 		case 'REMOVE_DROPDOWN':
-			console.log(state.initialApps);
 			return {
 				...state,
 				dropdown: state.dropdown.filter(

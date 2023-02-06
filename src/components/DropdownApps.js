@@ -3,7 +3,7 @@ import {
 	colors,
 	ContainerMoreApps,
 	CrossIcon,
-	TabMore,
+	TabDropdown,
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
 import useDropdownMenu from '../hooks/useDropdownMenu';
@@ -25,7 +25,7 @@ const DropdownApps = ({ setActiveDropdown }) => {
 				{apps.length > 0 ? (
 					apps.map((app) => {
 						return (
-							<TabMore
+							<TabDropdown
 								variant='primary'
 								key={app.applicationName}
 								onClick={() => remove(app)}
@@ -35,22 +35,22 @@ const DropdownApps = ({ setActiveDropdown }) => {
 										? `${app.applicationName.substring(0, 25)}...`
 										: app.applicationName}
 								</Text>
-							</TabMore>
+							</TabDropdown>
 						);
 					})
 				) : (
-					<TabMore variant='primary'>
+					<TabDropdown variant='primary'>
 						<Text variant='two' mt={12}>
 							There arent apps
 						</Text>
-					</TabMore>
+					</TabDropdown>
 				)}
 			</div>
 			<div className='container-apps-responsive'>
 				{allApps.length > 0 ? (
 					allApps.map((app) => {
 						return (
-							<TabMore
+							<TabDropdown
 								variant='primary'
 								key={app.applicationName}
 								onClick={() => selectApp(app)}
@@ -60,15 +60,15 @@ const DropdownApps = ({ setActiveDropdown }) => {
 										? `${app.applicationName.substring(0, 23)}...`
 										: app.applicationName}
 								</Text>
-							</TabMore>
+							</TabDropdown>
 						);
 					})
 				) : (
-					<TabMore variant='primary'>
+					<TabDropdown variant='primary'>
 						<Text variant='two' mt={12}>
 							There arent apps
 						</Text>
-					</TabMore>
+					</TabDropdown>
 				)}
 			</div>
 		</ContainerMoreApps>

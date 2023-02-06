@@ -34,19 +34,6 @@ const NavBarTabs = () => {
 						);
 				  })
 				: null}
-			<div className='tab-responsive'>
-				{/* <Tab variant='active'>
-					<LeafIcon />
-					<Text variant='three' mt={13}>
-						{apps[0].applicationName.length > 35
-							? `${apps[0].applicationName.substring(0, 35)}...`
-							: apps[0].applicationName}
-					</Text>
-					<div className='mb-1'>
-						<CrossIcon />
-					</div>
-				</Tab> */}
-			</div>
 		</div>
 	);
 };

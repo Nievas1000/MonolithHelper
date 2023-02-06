@@ -8,7 +8,7 @@ import {
 	CodojoLogoColor,
 	AddApplication,
 	AddIcon,
-	MiniArrowIcon,
+	MiniArrowIconExpand,
 } from 'design-kit-codojo';
 import useApp from '../hooks/useApp';
 import DropdownApps from './DropdownApps';
@@ -31,7 +31,7 @@ const NavBar = ({ setActiveDropdown, activeDropdown }) => {
 					<Text variant='three' color={colors.grey.five} mt={12}>
 						more...
 					</Text>
-					<MiniArrowIcon />
+					<MiniArrowIconExpand />
 					{activeDropdown ? (
 						<DropdownApps setActiveDropdown={setActiveDropdown} />
 					) : null}

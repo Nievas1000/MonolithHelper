@@ -11,21 +11,36 @@ const ImageLogin = () => {
 	return (
 		<div className='container-img'>
 			<div className='login-image-header'>
-				<Container variant='center' mt={80}>
+				<Container
+					className='d-flex justify-content-center align-items-center'
+					variant='center'
+					mt={80}
+				>
 					<CodojoLogo />
 				</Container>
-				<Container variant='center'>
+				<Container
+					className='d-flex justify-content-center align-items-center'
+					variant='center'
+				>
 					<Title variant='two' color={colors.grey.ten}>
 						Codojo
 					</Title>
 				</Container>
-				<Container variant='center' mt={12}>
+				<Container
+					className='d-flex justify-content-center align-items-center'
+					variant='center'
+					mt={12}
+				>
 					<Text variant='two' color={colors.grey.ten}>
-						The platform for Software Architects
+						The Platform for Software Architects
 					</Text>
 				</Container>
 				<div className='d-flex justify-content-center monolithTo'>
-					<Container variant='center' mb={56}>
+					<Container
+						className='d-flex justify-content-center align-items-center'
+						variant='center'
+						mb={56}
+					>
 						<Subtitle
 							variant='one'
 							color={colors.grey.ten}
