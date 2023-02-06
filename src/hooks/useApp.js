@@ -17,6 +17,7 @@ const useApp = () => {
 					}
 				);
 				const data = response.data;
+				console.log(data);
 				if (data.statusCode === 200) {
 					dispatch({
 						type: 'INITIAL_APPS',
