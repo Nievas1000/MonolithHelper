@@ -1,5 +1,5 @@
 import {
-	ArrowIcon,
+	ArrowIconExpand,
 	colors,
 	ContainerSignOut,
 	Settings,
@@ -8,14 +8,12 @@ import {
 	UserTab,
 } from 'design-kit-codojo';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const PersonalZone = () => {
 	const [activeLogout, setActiveLogout] = useState(false);
-	const navigate = useNavigate();
 	const handleLogout = () => {
 		localStorage.clear();
-		navigate('/login');
+		window.location.href = 'https://www.codojo.io/';
 	};
 	return (
 		<div className='right-navbar'>
@@ -26,11 +24,11 @@ const PersonalZone = () => {
 			</Settings>
 			<UserTab className='user' onClick={() => setActiveLogout(!activeLogout)}>
 				<UserIcon />
-				<ArrowIcon />
+				<ArrowIconExpand />
 			</UserTab>
 			{activeLogout ? (
-				<div className='signout'>
-					<ContainerSignOut onClick={handleLogout}>
+				<div className='signout' onClick={handleLogout}>
+					<ContainerSignOut>
 						<Text variant='two' color={colors.grey.six} ml={14}>
 							Sign Out
 						</Text>{' '}

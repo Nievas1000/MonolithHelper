@@ -19,9 +19,6 @@
 	justify-content: center;
 	align-items: center;
 }
-.d-flex{
-	display: flex;
-}
 .dropdownmy{
 	top: 38px;
 	margin-left: -125px;
@@ -33,6 +30,7 @@
 	margin-top: 39px;
 	margin-right: 10px;
 	cursor: pointer;
+	z-index: 1;
 }
 .container-apps{
 	overflow-x: hidden;

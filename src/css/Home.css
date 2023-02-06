@@ -2,3 +2,36 @@
     position: absolute;
     right: 0;
 }
+.container-classes{
+	overflow-x: hidden;
+	max-height: 265px;
+}
+.container-classes::-webkit-scrollbar{
+	width: 4px;
+	height: 4px;
+	margin-top: 20px;
+	background-color: #343635;
+}
+.container-classes::-webkit-scrollbar-thumb{
+	background: #47BC82;
+	border-radius: 2px;
+}
+.search-classes{
+    display: flex;
+    border-bottom: 1px solid #2D2F2E;
+}
+.icon-search{
+    position: absolute;
+    right: 0;
+    margin-right: 12px;
+    margin-top: 5px;
+}
+.input-search::placeholder{
+    font-size: 12px;
+    line-height: 18px;
+}
+@media only screen and (max-width:600px){
+    .container-home{
+        margin-left: 0 !important;
+    }
+}
