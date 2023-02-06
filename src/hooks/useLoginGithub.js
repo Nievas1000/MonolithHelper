@@ -49,6 +49,7 @@ const useLoginGithub = () => {
 			}
 		);
 		const data = response.data;
+		console.log(data);
 		registry({
 			email: data.data.login,
 			firstName: data.data.name,
