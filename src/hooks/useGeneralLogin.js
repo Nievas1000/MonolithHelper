@@ -9,10 +9,14 @@ const useGeneralLogin = () => {
 		try {
 			const response = await axios.post(
 				`${process.env.REACT_APP_API_URL}/login`,
-				user
+				user,
+				{
+					headers: {
+						'x-api-key': process.env.REACT_APP_API_GATEWAY_TOKEN,
+					},
+				}
 			);
 			const data = response.data;
-			console.log(data);
 			if (response.status === 200) {
 				localStorage.setItem('userAppKey', data.message.USER_APPLICATION_KEY);
 				navigate('/my-app');
