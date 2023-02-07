@@ -14,10 +14,14 @@ const useApp = () => {
 					{
 						type: 'get',
 						userApplicationKey,
+					},
+					{
+						headers: {
+							'x-api-key': process.env.REACT_APP_API_GATEWAY_TOKEN,
+						},
 					}
 				);
 				const data = response.data;
-				console.log(data);
 				if (data.statusCode === 200) {
 					dispatch({
 						type: 'INITIAL_APPS',

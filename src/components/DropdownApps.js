@@ -22,54 +22,42 @@ const DropdownApps = ({ setActiveDropdown }) => {
 				<CrossIcon onClick={() => setActiveDropdown(false)} />
 			</div>
 			<div className='container-apps'>
-				{apps.length > 0 ? (
-					apps.map((app) => {
-						return (
-							<TabDropdown
-								variant='primary'
-								key={app.applicationName}
-								onClick={() => remove(app)}
-							>
-								<Text variant='two' mt={12}>
-									{app.applicationName.length > 25
-										? `${app.applicationName.substring(0, 25)}...`
-										: app.applicationName}
-								</Text>
-							</TabDropdown>
-						);
-					})
-				) : (
-					<TabDropdown variant='primary'>
-						<Text variant='two' mt={12}>
-							There arent apps
-						</Text>
-					</TabDropdown>
-				)}
+				{apps.length > 0
+					? apps.map((app) => {
+							return (
+								<TabDropdown
+									variant='primary'
+									key={app.applicationName}
+									onClick={() => remove(app)}
+								>
+									<Text variant='two' mt={12}>
+										{app.applicationName.length > 25
+											? `${app.applicationName.substring(0, 25)}...`
+											: app.applicationName}
+									</Text>
+								</TabDropdown>
+							);
+					  })
+					: null}
 			</div>
 			<div className='container-apps-responsive'>
-				{allApps.length > 0 ? (
-					allApps.map((app) => {
-						return (
-							<TabDropdown
-								variant='primary'
-								key={app.applicationName}
-								onClick={() => selectApp(app)}
-							>
-								<Text variant='two' mt={12}>
-									{app.applicationName.length > 23
-										? `${app.applicationName.substring(0, 23)}...`
-										: app.applicationName}
-								</Text>
-							</TabDropdown>
-						);
-					})
-				) : (
-					<TabDropdown variant='primary'>
-						<Text variant='two' mt={12}>
-							There arent apps
-						</Text>
-					</TabDropdown>
-				)}
+				{allApps.length > 0
+					? allApps.map((app) => {
+							return (
+								<TabDropdown
+									variant='primary'
+									key={app.applicationName}
+									onClick={() => selectApp(app)}
+								>
+									<Text variant='two' mt={12}>
+										{app.applicationName.length > 23
+											? `${app.applicationName.substring(0, 23)}...`
+											: app.applicationName}
+									</Text>
+								</TabDropdown>
+							);
+					  })
+					: null}
 			</div>
 		</ContainerMoreApps>
 	);

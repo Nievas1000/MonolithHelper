@@ -95,6 +95,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
     
   test:
+    if: ${{ github.event_name == 'push' }}
     needs: [lint,security, build]
     runs-on: ubuntu-latest
     steps: 

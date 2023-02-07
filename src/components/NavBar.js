@@ -29,7 +29,7 @@ const NavBar = ({ setActiveDropdown, activeDropdown }) => {
 					</Text>
 				</OpenAppTab>
 				<NavBarTabs />
-				{apps.length > 3 ? (
+				{apps.length > 0 ? (
 					<Tab
 						variant='more'
 						onClick={() => setActiveDropdown(!activeDropdown)}
