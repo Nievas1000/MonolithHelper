@@ -13,18 +13,8 @@ import useLoginGithub from '../hooks/useLoginGithub';
 import useLoginGoogle from '../hooks/useLoginGoogle';
 
 const SignInForm = () => {
-	const [loginWithGitHub, activeGithub, setActiveGithub] = useLoginGithub();
-	const [login, activeGoogle, setActiveGoogle] = useLoginGoogle();
-
-	const selectGoogle = () => {
-		setActiveGoogle(true);
-		login();
-	};
-
-	const selectGithub = () => {
-		loginWithGitHub();
-		setActiveGithub(!activeGithub);
-	};
+	const [loginGitHub, activeGithub] = useLoginGithub();
+	const [loginGoogle, activeGoogle] = useLoginGoogle();
 
 	return (
 		<div>
@@ -52,12 +42,12 @@ const SignInForm = () => {
 				className='d-flex justify-content-center box'
 			>
 				{!activeGithub ? (
-					<LoginButton variant='primary' mr={24} onClick={selectGithub}>
+					<LoginButton variant='primary' mr={24} onClick={loginGitHub}>
 						<GitHubIcon />
 						<ButtonText variant='two'>Github</ButtonText>
 					</LoginButton>
 				) : (
-					<LoginButton variant='active' mr={24} onClick={selectGithub}>
+					<LoginButton variant='active' mr={24} onClick={loginGitHub}>
 						<GitHubIcon />
 						<ButtonText variant='two'>Github</ButtonText>
 					</LoginButton>
@@ -66,7 +56,7 @@ const SignInForm = () => {
 					<LoginButton
 						variant='primary'
 						className='g_id_signin'
-						onClick={() => selectGoogle()}
+						onClick={loginGoogle}
 					>
 						<GoogleIcon />
 						<ButtonText variant='two'>Google</ButtonText>

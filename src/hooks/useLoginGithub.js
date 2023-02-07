@@ -22,6 +22,7 @@ const useLoginGithub = () => {
 								`${process.env.REACT_APP_API_URL}/getTokenGithub?code=${codeParams}`
 							);
 							const data = response.data;
+							console.log(data);
 							if (data.data) {
 								localStorage.setItem('accessTokenGithub', data.data);
 								getDataByGithub();
@@ -64,7 +65,12 @@ const useLoginGithub = () => {
 		);
 	};
 
-	return [loginWithGitHub, activeGithub, setActiveGithub];
+	const selectGithub = () => {
+		loginWithGitHub();
+		setActiveGithub(!activeGithub);
+	};
+
+	return [selectGithub, activeGithub];
 };
 
 export default useLoginGithub;
