@@ -18,7 +18,6 @@ const useSearchClasses = () => {
 
 	const selectClass = (e) => {
 		setClasse(e);
-		console.log(classe);
 	};
 
 	return [selectedApp, classes, handleChange, classe, selectClass];

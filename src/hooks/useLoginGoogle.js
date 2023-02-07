@@ -33,9 +33,8 @@ const useLoginGoogle = () => {
 	}, []);
 
 	// Obtenemos token google y datos del usuario
-	const login = useGoogleLogin({
+	const loginWithGoogle = useGoogleLogin({
 		onSuccess: async (credentialResponse) => {
-			setActiveGoogle(!activeGoogle);
 			localStorage.setItem(
 				'accessTokenGoogle',
 				credentialResponse.access_token
@@ -57,7 +56,15 @@ const useLoginGoogle = () => {
 		},
 	});
 
-	return [login, activeGoogle, setActiveGoogle];
+	const selectGoogle = () => {
+		setActiveGoogle(true);
+		setTimeout(function () {
+			setActiveGoogle(false);
+			loginWithGoogle();
+		}, 250);
+	};
+
+	return [selectGoogle, activeGoogle];
 };
 
 export default useLoginGoogle;

@@ -60,12 +60,6 @@
 	}
 
 }
-@media only screen and (max-width:1280px){
-	.add-app{
-		display: none !important;
-	}
-
-}
 @media only screen and (max-width:1150px){
 	.apps-full{
 		display: none;
@@ -96,6 +90,9 @@
 		width: 140px !important;
 	}
 	.tabs{
+		display: none !important;
+	}
+	.add-app{
 		display: none !important;
 	}
 }
