@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 const useGeneralLogin = () => {
 	const navigate = useNavigate();
 	const registry = async (user) => {
-		console.log(user);
 		try {
 			const response = await axios.post(
 				`${process.env.REACT_APP_API_URL}/login`,
