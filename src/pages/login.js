@@ -11,7 +11,7 @@ const Login = () => {
 					<SignInForm />
 				</div>
 				<div className='d-flex justify-content-center container-policies'>
-					<Text variant='one' ml={25} mr={25}>
+					<Text variant='one' ml={24} mr={24}>
 						By logging in or signing up, you agree to abide by our policies
 						including our{' '}
 						<TextLink variant='one' href='https://www.codojo.io/use-policy'>
