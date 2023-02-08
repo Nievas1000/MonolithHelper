@@ -1,5 +1,5 @@
 import { Container } from 'design-kit-codojo';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DateApp from '../components/DateApp';
 import DropdownClasses from '../components/DropdownClasses';
@@ -11,6 +11,9 @@ const Home = () => {
 	const [activeLogout, setActiveLogout] = useState(false);
 	const apps = useSelector((state) => state.allApps);
 	useApp();
+	useEffect(() => {
+		document.title = 'My Apps | Codojo';
+	}, []);
 	return (
 		<div className='container-my-app'>
 			<NavBar
