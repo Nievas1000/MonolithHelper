@@ -5,7 +5,7 @@ import DateApp from '../components/DateApp';
 import DropdownClasses from '../components/DropdownClasses';
 import Graph from '../components/Graph';
 import useApp from '../hooks/useApp';
-import InfoApp from '../components/InfoApp';
+import InfoApp from './InfoApp';
 import NavBar from '../components/NavBar';
 
 const Home = () => {
