@@ -5,9 +5,11 @@ import DateApp from '../components/DateApp';
 import DropdownClasses from '../components/DropdownClasses';
 import NavBar from '../components/NavBar';
 import useApp from '../hooks/useApp';
+import InfoApp from '../components/InfoApp';
 
 const Home = () => {
 	const [activeDropdown, setActiveDropdown] = useState(false);
+	const [activeInfo, setActiveInfo] = useState(false);
 	const [activeLogout, setActiveLogout] = useState(false);
 	const apps = useSelector((state) => state.allApps);
 	useApp();
@@ -21,7 +23,11 @@ const Home = () => {
 				activeDropdown={activeDropdown}
 				setActiveLogout={setActiveLogout}
 				activeLogout={activeLogout}
+				activeInfo={activeInfo}
+				setActiveInfo={setActiveInfo}
 			/>
+			{activeInfo && <InfoApp/>  }
+
 			<DateApp />
 			{apps.length > 0 ? (
 				<Container ml={32} mt={24} className='container-home'>

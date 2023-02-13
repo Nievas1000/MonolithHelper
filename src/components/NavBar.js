@@ -11,12 +11,17 @@ import {
 	MiniArrowIconExpand,
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
+import {NavLink } from 'react-router-dom';
 import useApp from '../hooks/useApp';
 import DropdownApps from './DropdownApps';
 import NavBarTabs from './NavBarTabs';
 import PersonalZone from './PersonalZone';
 
-const NavBar = ({ setActiveDropdown, activeDropdown }) => {
+
+
+
+
+const NavBar = ({ setActiveDropdown, activeDropdown, activeInfo, setActiveInfo }) => {
 	const apps = useSelector((state) => state.allApps);
 	useApp();
 	return (
@@ -43,12 +48,17 @@ const NavBar = ({ setActiveDropdown, activeDropdown }) => {
 						) : null}
 					</Tab>
 				) : null}
-				<AddApplication className='add-app'>
-					<AddIcon />
-					<Text variant='three' color={colors.primary.two}>
-						Add application
-					</Text>
-				</AddApplication>
+
+				<NavLink style={({isActive}) => ({backgroundColor: isActive ? colors.background.one : 'transparent'})} className='link' to={'/how-to-add-application'}>
+					<AddApplication className='add-app' onClick={() => activeInfo ? setActiveInfo(false) : setActiveInfo(true)}>
+
+						<AddIcon />
+						<Text variant='three' color={colors.primary.two}>
+							Add application
+						</Text>
+
+					</AddApplication>
+				</NavLink>
 			</ContainerTabs>
 			<PersonalZone />
 		</NavBarContainer>
