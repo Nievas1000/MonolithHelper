@@ -2,7 +2,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/home';
 import Login from './pages/login';
 import ProtectedRoute from './components/ProtectedRoute';
-import InfoApp from './components/InfoApp';
+
 
 
 
@@ -30,26 +30,18 @@ function App() {
 							<Home />
 						</ProtectedRoute>
 
+
 					}
 				/>
 
 				<Route
 					path='/how-to-add-application'
 					element={
-
-
 						<ProtectedRoute>
-
-
-							<InfoApp />
+							<Home />
 						</ProtectedRoute>
-
-
 					}
 				/>
-
-
-
 
 			</Routes>
 		</div>

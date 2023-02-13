@@ -1,6 +1,5 @@
 
 import { colors, ContainerInfoAddApplication, Subtitle, Text, DownloadIcon } from 'design-kit-codojo';
-import NavBar from './NavBar';
 
 
 const InfoApp = () => {
@@ -12,7 +11,6 @@ const InfoApp = () => {
 
    
     <div className='containerApp'>
-    <NavBar/>
     <ContainerInfoAddApplication>
 
 
