@@ -26,8 +26,9 @@ function App() {
 				<Route
 					path='/my-app'
 					element={
-
-						<Home />
+						<ProtectedRoute>
+							<Home />
+						</ProtectedRoute>
 
 					}
 				/>
@@ -36,11 +37,13 @@ function App() {
 					path='/how-to-add-application'
 					element={
 
-						
-							
+
+						<ProtectedRoute>
+
 
 							<InfoApp />
-						
+						</ProtectedRoute>
+
 
 					}
 				/>
