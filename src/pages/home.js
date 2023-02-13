@@ -5,7 +5,7 @@ import DateApp from '../components/DateApp';
 import DropdownClasses from '../components/DropdownClasses';
 import NavBar from '../components/NavBar';
 import useApp from '../hooks/useApp';
-import InfoApp from '../components/InfoApp';
+import InfoApp from './InfoApp';
 
 const Home = () => {
 	const [activeDropdown, setActiveDropdown] = useState(false);

@@ -7,15 +7,15 @@ describe('Test to login with Google', function () {
 	});
 });
 
-// describe('Test visit my app without being logged in', function () {
-// 	beforeEach(() => {
-// 		cy.visit('https://app.codojo.io/my-app');
-// 	});
-// 	it('redirect to login', function () {
-// 		cy.contains('Get started for free');
-// 		cy.contains('Monolith to microservices in 60 seconds');
-// 	});
-// });
+describe('Test visit my app without being logged in', function () {
+	beforeEach(() => {
+		cy.visit('https://app.codojo.io/my-app');
+	});
+	it('redirect to login', function () {
+		cy.contains('Get started for free');
+		cy.contains('Monolith to microservices in 60 seconds');
+	});
+});
 
 describe('Test to login with Github', function () {
 	beforeEach(() => {
