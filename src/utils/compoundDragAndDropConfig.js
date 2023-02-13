@@ -1,8 +1,6 @@
 import cytoscape from 'cytoscape';
 import compoundDragAndDrop from 'cytoscape-compound-drag-and-drop';
-import popper from 'cytoscape-popper';
 
-cytoscape.use(popper);
 cytoscape.use(compoundDragAndDrop);
 /* eslint-disable */
 
@@ -39,11 +37,6 @@ export const compoundDragAndDropConfig = (cy) => {
 		if (isParentOfOneChild(dropTarget)) {
 			removeParent(dropTarget);
 		}
-	});
-	cy.on('cdnddrop', function (event, dropTarget) {
-		cy.$(':parent').css({
-			label: '',
-		});
 	});
 	cy.on('remove', function (event) {
 		removeParentsOfOneChild();

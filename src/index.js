@@ -4,6 +4,7 @@ import './index.css';
 import './css/NavBar.css';
 import './css/Login.css';
 import './css/Home.css';
+import './css/AddApplication.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GoogleOAuthProvider } from '@react-oauth/google';

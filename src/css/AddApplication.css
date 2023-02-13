@@ -1,0 +1,45 @@
+
+.center{
+	text-align: center;
+}
+
+.link {
+text-decoration: none;
+}
+
+.download {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 0 auto;
+	margin-left: 4em !important;
+	
+}
+
+.containerApp{
+flex-direction: column;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow-x: hidden;
+overflow-y: auto;
+background-color: #131514;
+
+}
+
+.containerUserKey{
+	margin-left: 5.8em;
+	margin-top: 0em;
+}
+
+.containertext{
+	margin-left: 2em;
+	margin-top: 0em;
+	
+	
+}
+
+
+	
+	/* top: 50%;
+    transform: translateY(-50%); */

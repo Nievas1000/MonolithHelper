@@ -5,11 +5,11 @@ import { useEffect } from 'react';
 import useNodes from './useNodes';
 import compoundDragAndDropConfig from '../utils/compoundDragAndDropConfig';
 
-const useCytoscope = (container) => {
+const useCytoscope = (container, degree) => {
 	const state = useSelector((state) => state);
 	const app = state.selectedApp;
 	const classe = state.selectedClass;
-	const [edges, nodes] = useNodes();
+	const [edges, nodes] = useNodes(degree);
 	useEffect(() => {
 		if (app) {
 			if (container) {
@@ -57,7 +57,8 @@ const useCytoscope = (container) => {
 				compoundDragAndDropConfig(cy);
 			}
 		}
-	}, [classe, app]);
+	}, [classe, app, nodes]);
+	return [nodes];
 };
 
 export default useCytoscope;

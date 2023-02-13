@@ -9,6 +9,7 @@
 	overflow-x: hidden;
 	max-height: 265px;
 }
+
 .container-classes::-webkit-scrollbar{
 	width: 4px;
 	height: 4px;

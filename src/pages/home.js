@@ -1,13 +1,17 @@
 import { Container } from 'design-kit-codojo';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DateApp from '../components/DateApp';
 import DropdownClasses from '../components/DropdownClasses';
-import ContainerNavbar from '../components/ContainerNavBar';
 import Graph from '../components/Graph';
 import useApp from '../hooks/useApp';
+import InfoApp from '../components/InfoApp';
+import NavBar from '../components/NavBar';
 
 const Home = () => {
+	const [activeDropdown, setActiveDropdown] = useState(false);
+	const [activeInfo, setActiveInfo] = useState(false);
+	const [activeLogout, setActiveLogout] = useState(false);
 	const apps = useSelector((state) => state.allApps);
 	useApp();
 	useEffect(() => {
@@ -15,7 +19,15 @@ const Home = () => {
 	}, []);
 	return (
 		<div className='container-my-app'>
-			<ContainerNavbar />
+			<NavBar
+				setActiveDropdown={setActiveDropdown}
+				activeDropdown={activeDropdown}
+				setActiveLogout={setActiveLogout}
+				activeLogout={activeLogout}
+				activeInfo={activeInfo}
+				setActiveInfo={setActiveInfo}
+			/>
+			{activeInfo && <InfoApp />}
 			<DateApp />
 			{apps.length > 0 ? (
 				<div>
