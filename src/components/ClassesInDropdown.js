@@ -5,7 +5,13 @@ const ClassesInDropdown = ({
 	selectedApp,
 	classes,
 	selectClass,
+	setShowClasses,
+	showClasses,
 }) => {
+	const handleDrop = (classe) => {
+		selectClass(classe);
+		setShowClasses(false);
+	};
 	return (
 		<div>
 			{selectedApp && classes.length === 0
@@ -14,7 +20,7 @@ const ClassesInDropdown = ({
 							<TabDropdown
 								variant={selectedClass === classe ? 'active' : 'primary'}
 								key={classe}
-								onClick={() => selectClass(classe)}
+								onClick={() => handleDrop(classe)}
 							>
 								<Text variant='two' mt={12}>
 									{classe.length > 40
@@ -29,7 +35,7 @@ const ClassesInDropdown = ({
 							<TabDropdown
 								variant={selectedClass === classe ? 'active' : 'primary'}
 								key={classe}
-								onClick={() => selectClass(classe)}
+								onClick={() => handleDrop(classe)}
 							>
 								<Text variant='two' mt={12}>
 									{classe.length > 40
