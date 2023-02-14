@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import useNodes from './useNodes';
 import compoundDragAndDropConfig from '../utils/compoundDragAndDropConfig';
 
+// Hook para darle forma al grafico, aqui definimos los label, el estilo del node, el estilo de los edges, es estilo del cuadrado que puede crear el usuario
 const useCytoscope = (container, degree) => {
 	const state = useSelector((state) => state);
 	const app = state.selectedApp;

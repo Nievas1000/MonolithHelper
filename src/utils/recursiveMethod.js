@@ -1,6 +1,6 @@
 import { colors } from 'design-kit-codojo';
 
-// Metodo recursivo para buscar las relaciones de los nodos dependiendo el degree establecido por el usuario
+// Metodo recursivo para buscar las relaciones de los nodos dependiendo el degree establecido por el usuario, recorremos todas las relaciones de la apliacion, buscando la similitud con los nodos seleccionados
 export const recursiveMethod = (nodes, pos, edges, app) => {
 	const max = nodes.length;
 	for (let i = 1; i < max; i++) {
