@@ -6,8 +6,6 @@ import {
 	OpenAppTab,
 	ContainerTabs,
 	CodojoLogoColor,
-	AddApplication,
-	AddIcon,
 	MiniArrowIconExpand,
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
@@ -68,17 +66,6 @@ const NavBar = ({
 						</Text>
 					</AddApplication>
 				</NavLink> */}
-				<AddApplication
-					className='add-app'
-					/* onClick={() =>
-						activeInfo ? setActiveInfo(false) : setActiveInfo(true)
-					} */
-				>
-					<AddIcon />
-					<Text variant='three' color={colors.primary.two}>
-						Add application
-					</Text>
-				</AddApplication>
 			</ContainerTabs>
 			<PersonalZone />
 		</NavBarContainer>
