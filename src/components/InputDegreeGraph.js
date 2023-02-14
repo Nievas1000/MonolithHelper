@@ -1,9 +1,6 @@
 import { LessDegreeIcon, PlusDegreeIcon, InputDegree } from 'design-kit-codojo';
-import { useRef } from 'react';
 
 const InputDegreeGraph = ({ degree, setDegree }) => {
-	const ref = useRef();
-	console.log(ref);
 	return (
 		<div>
 			<div className='d-flex justify-content-center container-degree'>
@@ -17,7 +14,6 @@ const InputDegreeGraph = ({ degree, setDegree }) => {
 						max='5'
 						value={degree}
 						onChange={(e) => setDegree(e.target.value)}
-						ref={ref}
 					/>
 					<span className='plus'>
 						<PlusDegreeIcon />
