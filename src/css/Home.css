@@ -79,6 +79,9 @@ input[type="range"]::-webkit-slider-thumb {
     font-size: 15px;
     color: #282A29;
 }
+.level-degree{
+    color: #ABABAB;
+}
 @media only screen and (max-width:600px){
     .container-home{
         margin-left: 0 !important;
