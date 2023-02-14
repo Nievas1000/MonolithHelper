@@ -6,6 +6,7 @@ const initialState = {
 	dropdown: [],
 	initialApps: [],
 	selectedApp: null,
+	selectedClass: 'Select class...',
 };
 
 const reducer = (state = initialState, action) => {
@@ -54,6 +55,11 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				selectedApp: action.payload,
+			};
+		case 'SELECT_CLASS':
+			return {
+				...state,
+				selectedClass: action.payload,
 			};
 		default:
 			return state;

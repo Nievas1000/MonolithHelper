@@ -8,12 +8,13 @@ import {
 	SearchIcon,
 } from 'design-kit-codojo';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import useSearchClasses from '../hooks/useSearchClasses';
 import ClassesInDropdown from './ClassesInDropdown';
 const DropdownClasses = () => {
+	const selectedClass = useSelector((state) => state.selectedClass);
 	const [showClasses, setShowClasses] = useState(false);
-	const [selectedApp, classes, handleChange, selectedClass, selectClass] =
-		useSearchClasses();
+	const [selectedApp, classes, handleChange, selectClass] = useSearchClasses();
 	return (
 		<div className='d-block'>
 			<SelectClasses
@@ -28,7 +29,7 @@ const DropdownClasses = () => {
 				{showClasses ? <ArrowIconLess /> : <ArrowIconExpand />}
 			</SelectClasses>
 			{showClasses ? (
-				<ContainerClasses>
+				<ContainerClasses className='drop-classes'>
 					<div className='search-classes'>
 						<InputSearchClass
 							placeholder='Search classe...'
@@ -45,6 +46,8 @@ const DropdownClasses = () => {
 							selectedApp={selectedApp}
 							classes={classes}
 							selectClass={selectClass}
+							setShowClasses={setShowClasses}
+							showClasses={showClasses}
 						/>
 					</div>
 				</ContainerClasses>
