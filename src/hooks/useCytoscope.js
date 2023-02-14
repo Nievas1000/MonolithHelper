@@ -49,7 +49,7 @@ const useCytoscope = (container, degree) => {
 								width: 3,
 								'line-color': colors.grey.five,
 								'target-arrow-shape': 'triangle',
-								'curve-style': 'bezier',
+								'curve-style': 'unbundled-bezier',
 							},
 						},
 					],

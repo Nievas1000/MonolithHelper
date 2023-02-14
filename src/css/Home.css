@@ -39,8 +39,56 @@
     height: 700px;
     display: block;
   }
+input[type="range"]::-webkit-slider-thumb {
+    background: url('../../public/iconDegree.png') #47BC82;
+    background-size: 65%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container-degree{
+    position: relative;
+}
+.input-degree{
+    z-index: 1;
+}
+.input-degree span{
+    position: absolute;
+    font-size: 45px;
+    color: #8A8A8A;
+    margin-top: -24px;
+}
+.plus{
+    margin-left: 7px;
+}
+.less{
+    margin-left: -20px;
+}
+.range-labels{
+    position: absolute;
+    display: flex;
+    list-style: none;
+    color: white;
+    top: 55%;
+    left: 49%;
+    transform: translate(-50%, -41%);
+    text-align: center;
+}
+.range-labels *{
+    margin: 35px;
+    font-size: 15px;
+    color: #282A29;
+}
 @media only screen and (max-width:600px){
     .container-home{
         margin-left: 0 !important;
+    }
+    #cy {
+        width: 100%;
+        height: 650px;
+        display: block;
+      }
+    .range-labels {
+        margin-left: -15px;
     }
 }

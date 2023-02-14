@@ -6,7 +6,6 @@ import { recursiveMethod } from '../utils/recursiveMethod';
 const useNodes = (recursiveNodes = 0) => {
 	const state = useSelector((state) => state);
 	const app = state.selectedApp;
-	console.log(app);
 	const classe = state.selectedClass;
 	let pos = -150;
 	const nodes =
@@ -105,8 +104,8 @@ const useNodes = (recursiveNodes = 0) => {
 	relationsExtends.map((x) => (x !== null ? edges.push(x) : null));
 	usedClasses.map((x) => (x !== null ? edges.push(x) : null));
 
-	if (recursiveNodes > 0) {
-		for (let i = 0; i < recursiveNodes; i++) {
+	if (recursiveNodes > 1 && recursiveNodes <= 5) {
+		for (let i = 0; i < recursiveNodes - 1; i++) {
 			recursiveMethod(nodes, pos, edges, app);
 		}
 	}
