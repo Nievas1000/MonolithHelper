@@ -82,6 +82,14 @@ input[type="range"]::-webkit-slider-thumb {
 .level-degree{
     color: #ABABAB;
 }
+.target-popper {
+    display: none;
+    color: white;
+    z-index: 2;
+}
+.active{
+    display: block;
+}
 @media only screen and (max-width:600px){
     .container-home{
         margin-left: 0 !important;

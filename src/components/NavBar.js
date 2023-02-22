@@ -28,7 +28,7 @@ const NavBar = ({
 				<OpenAppTab className='open-app'>
 					<CodojoLogoColor />
 					<Text variant='three' color={colors.grey.five} mt={13}>
-						Open applications
+						Applications
 					</Text>
 				</OpenAppTab>
 				<NavBarTabs />
