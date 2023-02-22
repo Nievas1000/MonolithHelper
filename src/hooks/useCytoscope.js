@@ -9,12 +9,14 @@ import compoundDragAndDropConfig from '../utils/compoundDragAndDropConfig';
 const useCytoscope = (container, degree) => {
 	const state = useSelector((state) => state);
 	const app = state.selectedApp;
+	console.log(app);
 	const classe = state.selectedClass;
 	const [edges, nodes] = useNodes(degree);
+	let cy;
 	useEffect(() => {
 		if (app) {
 			if (container) {
-				const cy = cytoscape({
+				cy = cytoscape({
 					container,
 					elements: [...nodes, ...edges],
 					maxZoom: 1.5,
@@ -31,9 +33,30 @@ const useCytoscope = (container, degree) => {
 								'border-style': 'solid',
 								'border-width': '2px',
 								'border-color': 'data(selectBorder)',
-								label: 'data(selectName)',
-								color: colors.grey.six,
-								'text-margin-x': '80px',
+								label: 'data(id)',
+								color: colors.grey.ten,
+								'text-margin-x': '10px',
+								'text-margin-y': '40px',
+								'font-size': 10,
+							},
+						},
+						{
+							selector: 'node[logo]',
+							style: {
+								'background-image': 'data(logo)',
+								'border-width': '0px',
+								'background-color': '#1E1E1E',
+								label: 'data(id)',
+								color: colors.grey.ten,
+								'text-margin-x': '10px',
+								'text-margin-y': '40px',
+								'font-size': 10,
+							},
+						},
+						{
+							selector: 'node[extend]',
+							style: {
+								'border-style': 'dashed',
 							},
 						},
 						{
@@ -41,6 +64,7 @@ const useCytoscope = (container, degree) => {
 							style: {
 								'background-color': '#1E1E1E',
 								'border-color': 'grey',
+								width: '20px',
 								label: '',
 							},
 						},
@@ -58,8 +82,8 @@ const useCytoscope = (container, degree) => {
 				compoundDragAndDropConfig(cy);
 			}
 		}
+		console.log(cy);
 	}, [classe, app, nodes]);
-	return [nodes];
 };
 
 export default useCytoscope;

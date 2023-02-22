@@ -1,33 +1,39 @@
 import { colors } from 'design-kit-codojo';
+import interfaceIcon from '../utils/graphIcons/Interface.svg';
+import databaseIcon from '../utils/graphIcons/Database.svg';
 
 // Metodo recursivo para buscar las relaciones de los nodos dependiendo el degree establecido por el usuario, recorremos todas las relaciones de la apliacion, buscando la similitud con los nodos seleccionados
-export const recursiveMethod = (nodes, pos, edges, app) => {
+export const recursiveMethod = (nodes, posX, edges, app) => {
 	const max = nodes.length;
+	let posY = 350;
 	for (let i = 1; i < max; i++) {
 		const relationsExtends = app.relationsExtends.map((node) => {
 			if (nodes[i].data.id !== node.classe) {
 				return null;
 			}
-			if (nodes.find((data) => data.data.id === node.extend) === undefined) {
+			if (
+				nodes.find((data) => data.data.id === node.extend.name) === undefined
+			) {
 				nodes.push({
 					data: {
-						id: node.extend,
-						selectName: '',
+						id: node.extend.name,
 						selectColor: colors.background.two,
 						selectBorder: colors.primary.two,
+						extend: true,
 					},
 					position: {
-						x: pos,
-						y: Math.random() * (100 - 200) + 100,
+						x: posX,
+						y: Math.random() * (posY - 450) + posY,
 					},
 				});
 			}
-			pos += 80;
+			posY += 20;
+			posX += 110;
 			return {
 				data: {
-					id: `${node.classe}-${node.extend}`,
+					id: `${node.classe}-${node.extend.name}`,
 					source: node.classe,
-					target: node.extend,
+					target: node.extend.name,
 				},
 			};
 		});
@@ -35,26 +41,28 @@ export const recursiveMethod = (nodes, pos, edges, app) => {
 			if (nodes[i].data.id !== node.classe) {
 				return null;
 			}
-			if (nodes.find((data) => data.data.id === node.implement) === undefined) {
+			if (
+				nodes.find((data) => data.data.id === node.implement.name) === undefined
+			) {
 				nodes.push({
 					data: {
-						id: node.implement,
-						selectName: '',
-						selectColor: colors.background.two,
-						selectBorder: colors.primary.two,
+						id: node.implement.name,
+						logo: interfaceIcon,
+						parent: 'parent',
 					},
 					position: {
-						x: pos,
-						y: Math.random() * (100 - 200) + 100,
+						x: posX,
+						y: Math.random() * (posY - 450) + posY,
 					},
 				});
 			}
-			pos += 80;
+			posY += 20;
+			posX += 110;
 			return {
 				data: {
-					id: `${node.classe}-${node.extend}`,
+					id: `${node.classe}-${node.implement.name}`,
 					source: node.classe,
-					target: node.implement,
+					target: node.implement.name,
 				},
 			};
 		});
@@ -63,33 +71,58 @@ export const recursiveMethod = (nodes, pos, edges, app) => {
 				if (nodes[i].data.id !== node.classe) {
 					return null;
 				}
-				if (nodes.find((data) => data.data.id === child) === undefined) {
+				if (nodes.find((data) => data.data.id === child.name) === undefined) {
 					nodes.push({
 						data: {
-							id: child,
-							selectName: '',
+							id: child.name,
 							selectColor: colors.background.two,
 							selectBorder: colors.primary.two,
 						},
 						position: {
-							x: pos,
-							y: Math.random() * (100 - 200) + 100,
+							x: posX,
+							y: Math.random() * (posY - 450) + posY,
 						},
 					});
 				}
-				pos += 80;
+				posY += 20;
+				posX += 110;
 				return {
 					data: {
-						id: `${node.classe}-${child}`,
+						id: `${node.classe}-${child.name}`,
 						source: node.classe,
-						target: child,
+						target: child.name,
 					},
 				};
 			})
 		);
+		const tables = app.tables.map((node) => {
+			if (nodes[i].data.id !== node.classe) {
+				return null;
+			}
+			nodes.push({
+				data: {
+					id: node.table,
+					logo: databaseIcon,
+				},
+				position: {
+					x: posX,
+					y: Math.random() * (posY - 450) + posY,
+				},
+			});
+			posY += 20;
+			posX += 110;
+			return {
+				data: {
+					id: `${node.classe}-${node.table}`,
+					source: node.classe,
+					target: node.table,
+				},
+			};
+		});
 		relationsImplements.map((x) => (x !== null ? edges.push(x) : null));
 		relationsExtends.map((x) => (x !== null ? edges.push(x) : null));
 		usedClasses.map((x) => (x !== null ? edges.push(x) : null));
+		tables.map((x) => (x !== null ? edges.push(x) : null));
 	}
 	return [edges, nodes];
 };
