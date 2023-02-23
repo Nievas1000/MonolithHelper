@@ -7,6 +7,7 @@ import {
 } from 'design-kit-codojo';
 
 const InfoApp = () => {
+	const userApplicationKey = localStorage.getItem('userAppKey');
 	return (
 		<div className='containerApp'>
 			<ContainerInfoAddApplication>
@@ -32,7 +33,7 @@ const InfoApp = () => {
 				<br />
 				<div className='containerUserKey'>
 					<Text variant='two' color={colors.grey.four} ml={-4} mt={-4}>
-						Your USER_APPLICATION_KEY = USERKEY{}
+						Your USER_APPLICATION_KEY = {userApplicationKey}
 					</Text>
 				</div>
 				<br />
