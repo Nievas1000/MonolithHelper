@@ -34,7 +34,7 @@ function App() {
 					element={
 						<ProtectedRoute>
 							<InfoApp />
-						</ProtectedRoute>
+							</ProtectedRoute>
 					}
 				/>
 			</Routes>
