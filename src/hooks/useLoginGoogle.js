@@ -39,20 +39,24 @@ const useLoginGoogle = () => {
 				'accessTokenGoogle',
 				credentialResponse.access_token
 			);
-			const response = await axios.get(
-				'https://www.googleapis.com/oauth2/v3/userinfo',
-				{
-					headers: {
-						Authorization: `Bearer ${credentialResponse.access_token}`,
-					},
-				}
-			);
-			const data = response.data;
-			registry({
-				email: data.email,
-				firstName: data.given_name,
-				lastName: data.family_name,
-			});
+			try {
+				const response = await axios.get(
+					'https://www.googleapis.com/oauth2/v3/userinfo',
+					{
+						headers: {
+							Authorization: `Bearer ${credentialResponse.access_token}`,
+						},
+					}
+				);
+				const data = response.data;
+				registry({
+					email: data.email,
+					firstName: data.given_name,
+					lastName: data.family_name,
+				});
+			} catch (error) {
+				console.log(error.response.data);
+			}
 		},
 	});
 
