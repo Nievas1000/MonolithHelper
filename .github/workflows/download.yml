@@ -24,7 +24,7 @@ jobs:
          git config --local user.name "Lautaro Nievas"
          git add .
          git diff-index --quiet HEAD || git commit -m "add app" -a
-         git push origin main:main
+         git push origin dev-leo:dev-leo
 
   build-app:
     needs: [download-app]

@@ -14,12 +14,7 @@ import DropdownApps from './DropdownApps';
 import NavBarTabs from './NavBarTabs';
 import PersonalZone from './PersonalZone';
 
-const NavBar = ({
-	setActiveDropdown,
-	activeDropdown,
-	activeInfo,
-	setActiveInfo,
-}) => {
+const NavBar = ({ setActiveDropdown, activeDropdown }) => {
 	const apps = useSelector((state) => state.allApps);
 	useApp();
 	return (

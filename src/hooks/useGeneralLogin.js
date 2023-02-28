@@ -8,7 +8,6 @@ const useGeneralLogin = () => {
 		try {
 			const response = await axios.post(
 				`${process.env.REACT_APP_API_URL}/login`,
-				user,
 				{
 					headers: {
 						'x-api-key': process.env.REACT_APP_API_GATEWAY_TOKEN,
@@ -21,7 +20,7 @@ const useGeneralLogin = () => {
 				navigate('/my-app');
 			}
 		} catch (error) {
-			console.log(error);
+			console.error(error.response.data);
 		}
 	};
 	return [registry];
