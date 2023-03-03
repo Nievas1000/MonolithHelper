@@ -14,7 +14,7 @@ jobs:
         with:
           command: sync
           source: s3://${{secrets.AWS_S3_BUCKET_APP}}/
-          destination: ./public/app/
+          destination: ./src/app/
           aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws_region: ${{secrets.AWS_REGION}}
@@ -40,7 +40,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: app
-          path: public/app/Codojo.jar
+          path: src/app/SendToCodojo.jar
 
   update-app:
     needs: [build-app]
