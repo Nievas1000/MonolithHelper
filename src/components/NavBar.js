@@ -6,12 +6,10 @@ import {
 	OpenAppTab,
 	ContainerTabs,
 	CodojoLogoColor,
-	AddApplication,
-	AddIcon,
 	MiniArrowIconExpand,
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 import useApp from '../hooks/useApp';
 import DropdownApps from './DropdownApps';
 import NavBarTabs from './NavBarTabs';
@@ -45,7 +43,7 @@ const NavBar = ({ setActiveDropdown, activeDropdown, activeInfo, setActiveInfo }
 					</Tab>
 				) : null}
 
-				<NavLink
+				{/* <NavLink
 					style={({ isActive }) => ({
 						backgroundColor: activeInfo ? colors.background.one : 'transparent',
 					})}className='link' to={'/how-to-add-application'}
@@ -60,7 +58,7 @@ const NavBar = ({ setActiveDropdown, activeDropdown, activeInfo, setActiveInfo }
 							Add application
 						</Text>
 					</AddApplication>
-				</NavLink>
+				</NavLink> */}
 			</ContainerTabs>
 			<PersonalZone />
 		</NavBarContainer>

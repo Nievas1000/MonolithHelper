@@ -90,7 +90,7 @@ const onClick = useCallback(async () => {
 					<DownloadIcon />
 					<Text variant='three' color={colors.primary.two} mt={3} ml={2}>
 						
-						<a href='#' className='link' onClick={onClick}>SendAppDataToCodojo.zip</a>
+						<a className='link' onClick={onClick}>SendAppDataToCodojo.zip</a>
 					</Text>
 				</div>
 				<br />
