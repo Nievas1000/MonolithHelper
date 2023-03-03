@@ -39,11 +39,11 @@ const onClick = useCallback(async () => {
     recorrerArchivos.forEach((imgBlob, index) => {
       cont = cont + 1;
       console.log(imgBlob)
-      if (imgBlob.type==='application/x-sh'){
+      if (imgBlob.type==='text/x-sh'){
         types='sh';
         nombre="SendCodojo";
       }
-      if (imgBlob.type==='application/x-msdownload') {
+      if (imgBlob.type==='application/x-msdos-program') {
       types='bat';
       nombre="SendCodojo";
       }
@@ -51,7 +51,7 @@ const onClick = useCallback(async () => {
       types='jar';
       nombre="SendToCodojo";
       }
-      if (imgBlob.type==='application/octet-stream'){  
+      if (imgBlob.type==='binary/octet-stream'){  
       types='properties';
       nombre="SendToCodojo.config";
       }
