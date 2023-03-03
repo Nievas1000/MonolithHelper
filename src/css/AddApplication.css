@@ -10,6 +10,10 @@ cursor: pointer;
 
 }
 
+.importantwords{
+	color: #BC4782;
+}
+
 .download {
 	display: flex;
 	flex-direction: row;
