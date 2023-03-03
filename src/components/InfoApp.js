@@ -6,7 +6,69 @@ import {
 	DownloadIcon,
 } from 'design-kit-codojo';
 
-const InfoApp = () => {
+import { useCallback } from "react";
+import JSZip from "jszip"; 
+import { saveAs } from "file-saver";
+import archivo1 from "../app/SendToCodojo.jar"; // Archivo 1 a comprimir
+import archivo2 from "../app/SendCodojo.sh"
+import archivo3 from "../app/SendCodojo.bat";
+import archivo4 from "../app/SendToCodojo.config.properties";
+
+
+
+
+	
+export default function InfoApp(){
+const onClick = useCallback(async () => {
+    var zip = new JSZip();
+    
+    // Se crea la carpeta donde se guardaran los archivos
+    const carpetaArchivos = zip.folder("SendAppDataToCodojo");
+
+    const recorrerArchivos = await Promise.all(
+      [archivo1,archivo2,archivo3,archivo4].map(async (imgSrc, index) => {
+        const res = await fetch(imgSrc);
+
+        return res.blob();
+      })
+    );
+
+    let cont = 0;
+    let types;
+    let nombre;
+    recorrerArchivos.forEach((imgBlob, index) => {
+      cont = cont + 1;
+      console.log(imgBlob)
+      if (imgBlob.type==='application/x-sh'){
+        types='sh';
+        nombre="SendCodojo";
+      }
+      if (imgBlob.type==='application/x-msdownload') {
+      types='bat';
+      nombre="SendCodojo";
+      }
+      if (imgBlob.type==='application/java-archive'){  
+      types='jar';
+      nombre="SendToCodojo";
+      }
+      if (imgBlob.type==='application/octet-stream'){  
+      types='properties';
+      nombre="SendToCodojo.config";
+      }
+      console.log(nombre);
+      carpetaArchivos.file(`${nombre}.${types}` , imgBlob, { blob: true });
+    });
+
+    zip.generateAsync({ type: "blob" }).then(function (content) {
+      
+      // Guarda el contenido recorrido en el archivo .zip
+      saveAs(content, "SendAppDataToCodojo.zip");
+    });
+  }, []);
+
+ 	
+ 
+
 	const userApplicationKey = localStorage.getItem('userAppKey');
 	return (
 		<div className='containerApp'>
@@ -22,12 +84,13 @@ const InfoApp = () => {
 				</Subtitle>
 				<Text variant='two' color={colors.grey.six} ml={5} mt={35} mb={-2}>
 					{' '}
-					1. Download the two files
+					1. Download the file
 				</Text>
 				<div className='download'>
 					<DownloadIcon />
 					<Text variant='three' color={colors.primary.two} mt={3} ml={2}>
-						SendAppDataToCodojo.zip
+						
+						<a href='#' className='link' onClick={onClick}>SendAppDataToCodojo.zip</a>
 					</Text>
 				</div>
 				<br />
@@ -69,5 +132,5 @@ const InfoApp = () => {
 			</ContainerInfoAddApplication>
 		</div>
 	);
-};
-export default InfoApp;
+}
+

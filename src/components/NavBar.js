@@ -6,15 +6,18 @@ import {
 	OpenAppTab,
 	ContainerTabs,
 	CodojoLogoColor,
+	AddApplication,
+	AddIcon,
 	MiniArrowIconExpand,
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom'
 import useApp from '../hooks/useApp';
 import DropdownApps from './DropdownApps';
 import NavBarTabs from './NavBarTabs';
 import PersonalZone from './PersonalZone';
 
-const NavBar = ({ setActiveDropdown, activeDropdown }) => {
+const NavBar = ({ setActiveDropdown, activeDropdown, activeInfo, setActiveInfo }) => {
 	const apps = useSelector((state) => state.allApps);
 	useApp();
 	return (
@@ -42,16 +45,13 @@ const NavBar = ({ setActiveDropdown, activeDropdown }) => {
 					</Tab>
 				) : null}
 
-				{/* <NavLink
+				<NavLink
 					style={({ isActive }) => ({
-						backgroundColor: isActive ? colors.background.one : 'transparent',
-					})}
-					className='link'
-					to={'/how-to-add-application'}
+						backgroundColor: activeInfo ? colors.background.one : 'transparent',
+					})}className='link' to={'/how-to-add-application'}
 				>
 					<AddApplication
-						className='add-app'
-						onClick={() =>
+						className='add-app' onClick={() =>
 							activeInfo ? setActiveInfo(false) : setActiveInfo(true)
 						}
 					>
@@ -60,7 +60,7 @@ const NavBar = ({ setActiveDropdown, activeDropdown }) => {
 							Add application
 						</Text>
 					</AddApplication>
-				</NavLink> */}
+				</NavLink>
 			</ContainerTabs>
 			<PersonalZone />
 		</NavBarContainer>
