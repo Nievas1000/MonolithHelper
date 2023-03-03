@@ -17,10 +17,10 @@ import archivo4 from "../app/SendToCodojo.config.properties";
 
 
 
-	
+
 export default function InfoApp(){
 const onClick = useCallback(async () => {
-    var zip = new JSZip();
+	const zip = new JSZip();
     
     // Se crea la carpeta donde se guardaran los archivos
     const carpetaArchivos = zip.folder("SendAppDataToCodojo");
