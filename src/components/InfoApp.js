@@ -86,11 +86,11 @@ const onClick = useCallback(async () => {
 					{' '}
 					1. Download the file
 				</Text>
-				<div className='download'>
+				<div className='download link'>
 					<DownloadIcon />
-					<Text variant='three' color={colors.primary.two} mt={3} ml={2}>
+					<Text variant='three' onClick={onClick} color={colors.primary.two} mt={3} ml={2}>
 						
-						<a className='link' onClick={onClick}>SendAppDataToCodojo.zip</a>
+						SendAppDataToCodojo.zip
 					</Text>
 				</div>
 				<br />

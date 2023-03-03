@@ -3,9 +3,11 @@
 	text-align: center;
 }
 
-.link {
+.link  {
 text-decoration: none;
 color: #47BC82;
+cursor: pointer;
+
 }
 
 .download {

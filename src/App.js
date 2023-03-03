@@ -34,9 +34,9 @@ function App() {
 				<Route
 					path='/how-to-add-application'
 					element={
-						<ProtectedRoute>
+						
 							<InfoApp/>
-							</ProtectedRoute>
+							
 							
 					}
 				/>
