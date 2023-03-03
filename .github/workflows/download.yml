@@ -40,7 +40,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: app
-          path: src/app/SendToCodojo.jar
+          path: src/app/SendCodojo.bat
 
   update-app:
     needs: [build-app]
