@@ -110,15 +110,16 @@ const onClick = useCallback(async () => {
 						3. Open the SendToCodojo.properties file, complete the instructions
 						in the file, and save any edits. It is important to maintain the
 						same filename. <br />
-						4. Execute the jar file on the command line by typing the following:
+						4.Execute SendCodojo.sh on a Linux system, or SendCodojo.bat for Windows systems.
+						 This script will examine the uncompiled code for application and table relationships. 
+						 Results will automatically be sent to Codojo.
 					</Text>
 
 					<Text variant='two' color={colors.grey.four} ml={4} mt={0}>
 						{' '}
 						The jar file will execute successfully with JAVA version 8 to
 						17.JAVA_HOME environment variable will need to be set for the file
-						to execute successfully. The jar file automatically sends
-						application information to Codojo. Login to see the results.{' '}
+						to execute successfully.{' '}
 					</Text>
 				</div>
 
