@@ -1,3 +1,3 @@
 #!/bin/bash
 java -jar SendToCodojo.jar
-pause
+read -rsp $'Press enter to continue...\n'
