@@ -1,6 +1,8 @@
-import { createTheme } from '@material-ui/core';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Switch } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { colors } from 'design-kit-codojo';
 
 export const useSwitchStatus = () => {
 	const [checked, setChecked] = useState(true);
@@ -28,12 +30,15 @@ export const useSwitchStatus = () => {
 				break;
 		}
 	};
-	const theme = createTheme({
-		palette: {
-			primary: {
-				main: '#47BC82', // Cambia el color de la pista
+	const CustomSwitch = styled(Switch)({
+		'& .MuiSwitch-switchBase': {
+			'&.Mui-checked + .MuiSwitch-track': {
+				backgroundColor: colors.primary.two,
 			},
 		},
+		'& .MuiSwitch-thumb': {
+			backgroundColor: colors.primary.two,
+		},
 	});
-	return [theme, checked, handledCheckedState];
+	return [CustomSwitch, checked, handledCheckedState];
 };
