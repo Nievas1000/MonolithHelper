@@ -110,7 +110,7 @@ jobs:
         with:
           name: build
           path: build
-      - run: npm install
+      - run: npm install --legacy-peer-deps
       - name: E2E Test
         uses: cypress-io/github-action@v4
         env:
