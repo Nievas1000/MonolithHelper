@@ -1,9 +1,6 @@
 import cytoscape from 'cytoscape';
 import compoundDragAndDrop from 'cytoscape-compound-drag-and-drop';
-import popper from 'cytoscape-popper';
 import { colors } from 'design-kit-codojo';
-
-cytoscape.use(popper);
 cytoscape.use(compoundDragAndDrop);
 /* eslint-disable */
 

@@ -17,9 +17,6 @@
 		"bootstrap": "^5.2.2",
 		"cytoscape": "^3.23.0",
 		"cytoscape-compound-drag-and-drop": "^1.1.0",
-		"cytoscape-dagre": "^2.5.0",
-		"cytoscape-fcose": "^2.2.0",
-		"cytoscape-popper": "^1.0.7",
 		"design-kit-codojo": "^1.1.8",
 		"dotenv": "^16.0.3",
 		"env-cmd": "^10.1.0",
@@ -33,7 +30,6 @@
 		"react-redux": "^8.0.5",
 		"react-router-dom": "^6.4.3",
 		"redux": "^4.2.1",
-		"tippy.js": "^6.2.1",
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
