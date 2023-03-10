@@ -7,6 +7,7 @@ import Graph from '../components/Graph';
 import useApp from '../hooks/useApp';
 import InfoApp from '../components/InfoApp';
 import NavBar from '../components/NavBar';
+import ButtonsSwitchZone from '../components/ButtonsSwitchZone';
 
 const Home = () => {
 	const [activeDropdown, setActiveDropdown] = useState(false);
@@ -28,8 +29,9 @@ const Home = () => {
 			{apps.length > 0 && !activeInfo ? (
 				<div>
 					<DateApp />
-					<Container ml={32} mt={24} className='container-home'>
+					<Container ml={32} mt={24} className='container-home d-flex'>
 						<DropdownClasses />
+						<ButtonsSwitchZone />
 					</Container>
 					<Graph />
 				</div>
