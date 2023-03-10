@@ -75,7 +75,7 @@ jobs:
         with:
           node-version: '16'
       - name: Install Dependencies 
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: 'Create env file'
         run: |
           echo "${{ secrets.ENV_FILE }}" > .env
