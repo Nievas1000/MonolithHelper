@@ -9,7 +9,6 @@ import compoundDragAndDropConfig from '../utils/compoundDragAndDropConfig';
 const useCytoscope = (container, degree) => {
 	const state = useSelector((state) => state);
 	const app = state.selectedApp;
-	console.log(app);
 	const classe = state.selectedClass;
 	const [edges, nodes] = useNodes(degree);
 	let cy;
@@ -82,7 +81,6 @@ const useCytoscope = (container, degree) => {
 				compoundDragAndDropConfig(cy);
 			}
 		}
-		console.log(cy);
 	}, [classe, app, nodes]);
 };
 

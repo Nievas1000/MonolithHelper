@@ -4,6 +4,7 @@
 	"private": true,
 	"module": "true",
 	"dependencies": {
+		"@material-ui/core": "^4.12.4",
 		"@react-oauth/google": "^0.6.0",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^13.4.0",
@@ -77,6 +78,4 @@
 		"react-refresh": "^0.14.0",
 		"react-scripts": "^5.0.1"
 	}
-
-	
 }

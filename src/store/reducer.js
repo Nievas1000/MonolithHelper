@@ -7,6 +7,11 @@ const initialState = {
 	initialApps: [],
 	selectedApp: null,
 	selectedClass: 'Select class...',
+	infoGraph: {
+		interfaces: true,
+		extends: true,
+		tables: true,
+	},
 };
 
 const reducer = (state = initialState, action) => {
@@ -60,6 +65,30 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				selectedClass: action.payload,
+			};
+		case 'SET_INTERFACES':
+			return {
+				...state,
+				infoGraph: {
+					...state.infoGraph,
+					interfaces: !state.infoGraph.interfaces,
+				},
+			};
+		case 'SET_EXTENDS':
+			return {
+				...state,
+				infoGraph: {
+					...state.infoGraph,
+					extends: !state.infoGraph.extends,
+				},
+			};
+		case 'SET_TABLES':
+			return {
+				...state,
+				infoGraph: {
+					...state.infoGraph,
+					tables: !state.infoGraph.tables,
+				},
 			};
 		default:
 			return state;

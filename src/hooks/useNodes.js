@@ -7,9 +7,13 @@ import databaseIcon from '../utils/graphIcons/Database.svg';
 // Con este hook le creamos los nodes y edges mediante las relaciones extraidas del json de la app seleccionada
 const useNodes = (recursiveNodes = 0) => {
 	const state = useSelector((state) => state);
+	const nodesToShow = state.infoGraph;
 	const app = state.selectedApp;
 	const classe = state.selectedClass;
 	let pos = -150;
+	let relationsExtends = [];
+	let relationsImplements = [];
+	let tables = [];
 	const nodes =
 		classe === 'Select class...'
 			? []
@@ -23,54 +27,58 @@ const useNodes = (recursiveNodes = 0) => {
 						position: { x: 10.66666666666671, y: 100.00000000000006 },
 					},
 			  ];
-	const relationsExtends = app.relationsExtends.map((node) => {
-		if (classe !== node.classe) {
-			return null;
-		}
-		nodes.push({
-			data: {
-				id: node.extend.name,
-				selectColor: colors.background.two,
-				selectBorder: colors.primary.two,
-				extend: true,
-			},
-			position: {
-				x: pos,
-				y: Math.random() * (350 - 450) + 350,
-			},
+	if (nodesToShow.extends) {
+		relationsExtends = app.relationsExtends.map((node) => {
+			if (classe !== node.classe) {
+				return null;
+			}
+			nodes.push({
+				data: {
+					id: node.extend.name,
+					selectColor: colors.background.two,
+					selectBorder: colors.primary.two,
+					extend: true,
+				},
+				position: {
+					x: pos,
+					y: Math.random() * (350 - 450) + 350,
+				},
+			});
+			pos += 110;
+			return {
+				data: {
+					id: `${node.classe}-${node.extend.name}`,
+					source: node.classe,
+					target: node.extend.name,
+				},
+			};
 		});
-		pos += 110;
-		return {
-			data: {
-				id: `${node.classe}-${node.extend.name}`,
-				source: node.classe,
-				target: node.extend.name,
-			},
-		};
-	});
-	const relationsImplements = app.relationsImplement.map((node) => {
-		if (classe !== node.classe) {
-			return null;
-		}
-		nodes.push({
-			data: {
-				id: node.implement.name,
-				logo: interfaceIcon,
-			},
-			position: {
-				x: pos,
-				y: Math.random() * (350 - 450) + 350,
-			},
+	}
+	if (nodesToShow.interfaces) {
+		relationsImplements = app.relationsImplement.map((node) => {
+			if (classe !== node.classe) {
+				return null;
+			}
+			nodes.push({
+				data: {
+					id: node.implement.name,
+					logo: interfaceIcon,
+				},
+				position: {
+					x: pos,
+					y: Math.random() * (350 - 450) + 350,
+				},
+			});
+			pos += 110;
+			return {
+				data: {
+					id: `${node.classe}-${node.implement.name}`,
+					source: node.classe,
+					target: node.implement.name,
+				},
+			};
 		});
-		pos += 110;
-		return {
-			data: {
-				id: `${node.classe}-${node.implement.name}`,
-				source: node.classe,
-				target: node.implement.name,
-			},
-		};
-	});
+	}
 	const usedClasses = app.usedClasses.flatMap((node) =>
 		node.use.map((child) => {
 			if (classe !== node.classe) {
@@ -97,29 +105,31 @@ const useNodes = (recursiveNodes = 0) => {
 			};
 		})
 	);
-	const tables = app.tables.map((node) => {
-		if (classe !== node.classe) {
-			return null;
-		}
-		nodes.push({
-			data: {
-				id: node.table,
-				logo: databaseIcon,
-			},
-			position: {
-				x: pos,
-				y: Math.random() * (350 - 450) + 350,
-			},
+	if (nodesToShow.tables) {
+		tables = app.tables.map((node) => {
+			if (classe !== node.classe) {
+				return null;
+			}
+			nodes.push({
+				data: {
+					id: node.table,
+					logo: databaseIcon,
+				},
+				position: {
+					x: pos,
+					y: Math.random() * (350 - 450) + 350,
+				},
+			});
+			pos += 110;
+			return {
+				data: {
+					id: `${node.classe}-${node.table}`,
+					source: node.classe,
+					target: node.table,
+				},
+			};
 		});
-		pos += 110;
-		return {
-			data: {
-				id: `${node.classe}-${node.table}`,
-				source: node.classe,
-				target: node.table,
-			},
-		};
-	});
+	}
 	const edges = [];
 	relationsImplements.map((x) => (x !== null ? edges.push(x) : null));
 	relationsExtends.map((x) => (x !== null ? edges.push(x) : null));
@@ -128,7 +138,7 @@ const useNodes = (recursiveNodes = 0) => {
 
 	if (recursiveNodes > 1 && recursiveNodes <= 5) {
 		for (let i = 0; i < recursiveNodes - 1; i++) {
-			recursiveMethod(nodes, pos, edges, app);
+			recursiveMethod(nodes, pos, edges, app, nodesToShow);
 		}
 	}
 	return [edges, nodes];
