@@ -55,6 +55,9 @@
 .tab-responsive{
 	display: none;
 }
+.logo-login{
+	font-family: 'Play', sans-serif;
+}
 @media only screen and (max-width:1410px){
 	.settigns{
 		display: none !important;

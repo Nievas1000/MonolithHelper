@@ -3,13 +3,14 @@ import interfaceIcon from '../utils/graphIcons/Interface.svg';
 import databaseIcon from '../utils/graphIcons/Database.svg';
 
 // Metodo recursivo para buscar las relaciones de los nodos dependiendo el degree establecido por el usuario, recorremos todas las relaciones de la apliacion, buscando la similitud con los nodos seleccionados
-export const recursiveMethod = (nodes, posX, edges, app, nodesToShow) => {
+export const recursiveMethod = (nodes, edges, app, nodesToShow) => {
 	const max = nodes.length;
-	let posY = 350;
+	let posY = 450;
 	let relationsExtends = [];
 	let relationsImplements = [];
 	let tables = [];
 	for (let i = 1; i < max; i++) {
+		let posX = -150;
 		if (nodesToShow.extends) {
 			relationsExtends = app.relationsExtends.map((node) => {
 				if (nodes[i].data.id !== node.classe) {
@@ -31,8 +32,8 @@ export const recursiveMethod = (nodes, posX, edges, app, nodesToShow) => {
 						},
 					});
 				}
-				posY += 20;
-				posX += 110;
+				posY += 40;
+				posX += 150;
 				return {
 					data: {
 						id: `${node.classe}-${node.extend.name}`,
@@ -64,7 +65,7 @@ export const recursiveMethod = (nodes, posX, edges, app, nodesToShow) => {
 					});
 				}
 				posY += 20;
-				posX += 110;
+				posX += 150;
 				return {
 					data: {
 						id: `${node.classe}-${node.implement.name}`,
@@ -93,7 +94,7 @@ export const recursiveMethod = (nodes, posX, edges, app, nodesToShow) => {
 					});
 				}
 				posY += 20;
-				posX += 110;
+				posX += 150;
 				return {
 					data: {
 						id: `${node.classe}-${child.name}`,
@@ -119,7 +120,7 @@ export const recursiveMethod = (nodes, posX, edges, app, nodesToShow) => {
 					},
 				});
 				posY += 20;
-				posX += 110;
+				posX += 150;
 				return {
 					data: {
 						id: `${node.classe}-${node.table}`,
@@ -134,5 +135,4 @@ export const recursiveMethod = (nodes, posX, edges, app, nodesToShow) => {
 		usedClasses.map((x) => (x !== null ? edges.push(x) : null));
 		tables.map((x) => (x !== null ? edges.push(x) : null));
 	}
-	return [edges, nodes];
 };

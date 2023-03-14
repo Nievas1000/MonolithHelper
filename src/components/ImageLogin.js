@@ -22,7 +22,7 @@ const ImageLogin = () => {
 					className='d-flex justify-content-center align-items-center'
 					variant='center'
 				>
-					<Title variant='two' color={colors.grey.ten}>
+					<Title variant='two' color={colors.grey.ten} className='logo-login'>
 						Codojo
 					</Title>
 				</Container>
@@ -31,7 +31,7 @@ const ImageLogin = () => {
 					variant='center'
 					mt={12}
 				>
-					<Text variant='two' color={colors.grey.ten}>
+					<Text variant='one' color={colors.grey.ten} className='logo-login'>
 						The Platform for Software Architects
 					</Text>
 				</Container>

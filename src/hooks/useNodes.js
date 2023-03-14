@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { recursiveMethod } from '../utils/recursiveMethod';
 import interfaceIcon from '../utils/graphIcons/Interface.svg';
 import databaseIcon from '../utils/graphIcons/Database.svg';
+import metricOfClass from '../utils/metricsOfClass';
 
 // Con este hook le creamos los nodes y edges mediante las relaciones extraidas del json de la app seleccionada
 const useNodes = (recursiveNodes = 0) => {
@@ -14,6 +15,9 @@ const useNodes = (recursiveNodes = 0) => {
 	let relationsExtends = [];
 	let relationsImplements = [];
 	let tables = [];
+	const metricEdges = [];
+	const metricNodes = [];
+	const metricTables = [];
 	const nodes =
 		classe === 'Select class...'
 			? []
@@ -32,6 +36,11 @@ const useNodes = (recursiveNodes = 0) => {
 			if (classe !== node.classe) {
 				return null;
 			}
+			metricNodes.push({
+				data: {
+					id: node.extend.name,
+				},
+			});
 			nodes.push({
 				data: {
 					id: node.extend.name,
@@ -84,6 +93,15 @@ const useNodes = (recursiveNodes = 0) => {
 			if (classe !== node.classe) {
 				return null;
 			}
+			if (
+				metricNodes.find((data) => data.data.id === child.name) === undefined
+			) {
+				metricNodes.push({
+					data: {
+						id: child.name,
+					},
+				});
+			}
 			nodes.push({
 				data: {
 					id: child.name,
@@ -110,6 +128,11 @@ const useNodes = (recursiveNodes = 0) => {
 			if (classe !== node.classe) {
 				return null;
 			}
+			metricTables.push({
+				data: {
+					id: node.table,
+				},
+			});
 			nodes.push({
 				data: {
 					id: node.table,
@@ -130,18 +153,31 @@ const useNodes = (recursiveNodes = 0) => {
 			};
 		});
 	}
+	// Zona en la que creamos los arreglos para hacer la recursividad de las metricas
+	relationsExtends.map((x) => (x !== null ? metricEdges.push(x) : null));
+	usedClasses.map((x) => (x !== null ? metricEdges.push(x) : null));
+	const nonEncapsulates = metricOfClass(
+		metricNodes,
+		metricEdges,
+		app,
+		classe,
+		metricTables
+	);
+
+	// Zona para mostrar los nodes
 	const edges = [];
 	relationsImplements.map((x) => (x !== null ? edges.push(x) : null));
 	relationsExtends.map((x) => (x !== null ? edges.push(x) : null));
 	usedClasses.map((x) => (x !== null ? edges.push(x) : null));
 	tables.map((x) => (x !== null ? edges.push(x) : null));
 
+	// Zona para manejar el nivel de los degree
 	if (recursiveNodes > 1 && recursiveNodes <= 5) {
 		for (let i = 0; i < recursiveNodes - 1; i++) {
-			recursiveMethod(nodes, pos, edges, app, nodesToShow);
+			recursiveMethod(nodes, edges, app, nodesToShow);
 		}
 	}
-	return [edges, nodes];
+	return [edges, nodes, nonEncapsulates];
 };
 
 export default useNodes;
