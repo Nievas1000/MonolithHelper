@@ -80,6 +80,8 @@ const metricOfClass = (nodes, edges, app, classe, tables) => {
 		relationsExtends.map((x) => (x !== null ? edges.push(x) : null));
 		usedClasses.map((x) => (x !== null ? edges.push(x) : null));
 	}
+
+	// Recorremos para encontrar las clases non-encapsulated
 	edges.forEach((edge) => {
 		const currentNode = { id: edge.data.id, node: edge.data.target };
 		edges.forEach((edge2) => {

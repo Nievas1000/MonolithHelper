@@ -153,12 +153,7 @@ const useNodes = (recursiveNodes = 0) => {
 			};
 		});
 	}
-	const edges = [];
-	relationsImplements.map((x) => (x !== null ? edges.push(x) : null));
-	relationsExtends.map((x) => (x !== null ? edges.push(x) : null));
-	usedClasses.map((x) => (x !== null ? edges.push(x) : null));
-	tables.map((x) => (x !== null ? edges.push(x) : null));
-
+	// Zona en la que creamos los arreglos para hacer la recursividad de las metricas
 	relationsExtends.map((x) => (x !== null ? metricEdges.push(x) : null));
 	usedClasses.map((x) => (x !== null ? metricEdges.push(x) : null));
 	const nonEncapsulates = metricOfClass(
@@ -168,6 +163,15 @@ const useNodes = (recursiveNodes = 0) => {
 		classe,
 		metricTables
 	);
+
+	// Zona para mostrar los nodes
+	const edges = [];
+	relationsImplements.map((x) => (x !== null ? edges.push(x) : null));
+	relationsExtends.map((x) => (x !== null ? edges.push(x) : null));
+	usedClasses.map((x) => (x !== null ? edges.push(x) : null));
+	tables.map((x) => (x !== null ? edges.push(x) : null));
+
+	// Zona para manejar el nivel de los degree
 	if (recursiveNodes > 1 && recursiveNodes <= 5) {
 		for (let i = 0; i < recursiveNodes - 1; i++) {
 			recursiveMethod(nodes, edges, app, nodesToShow);
