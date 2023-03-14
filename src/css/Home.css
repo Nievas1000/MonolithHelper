@@ -95,9 +95,11 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: #1E1E1E;
     margin-top: -30px;
 }
+.metric{
+    background: #1E1E1E;
+}
 .container-metrics{
     width: 324px;
-    height: 250;
     background: #212322;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 5px 5px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
@@ -113,5 +115,11 @@ input[type="range"]::-webkit-slider-thumb {
       }
     .range-labels {
         margin-left: -15px;
+    }
+    .container-switch{
+        display: none;
+    }
+    .metric{
+        display: none !important;
     }
 }

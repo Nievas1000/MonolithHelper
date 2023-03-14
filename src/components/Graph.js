@@ -11,7 +11,7 @@ const Graph = () => {
 		<div>
 			<div className='d-flex'>
 				<div id='cy'></div>
-				<div className='d-flex align-items-center'>
+				<div className='d-flex align-items-center metric'>
 					<MetricOfClass metric={metric} classe={classe} />
 				</div>
 			</div>

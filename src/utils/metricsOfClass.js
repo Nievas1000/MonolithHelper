@@ -1,5 +1,6 @@
 import { colors } from 'design-kit-codojo';
 
+// Metodo encargado de recorrer las clases para definir si son o no encapsuladas
 const metricOfClass = (nodes, edges, app, classe, tables) => {
 	let relationsExtends = [];
 	const nonEncapsulates = [];

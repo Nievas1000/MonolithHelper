@@ -31,7 +31,9 @@ const Home = () => {
 					<DateApp />
 					<Container ml={32} mt={24} className='container-home d-flex'>
 						<DropdownClasses />
-						<ButtonsSwitchZone />
+						<div className='container-switch'>
+							<ButtonsSwitchZone />
+						</div>
 					</Container>
 					<Graph />
 				</div>
