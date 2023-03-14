@@ -10,7 +10,7 @@ const useCytoscope = (container, degree) => {
 	const state = useSelector((state) => state);
 	const app = state.selectedApp;
 	const classe = state.selectedClass;
-	const [edges, nodes] = useNodes(degree);
+	const [edges, nodes, metric] = useNodes(degree);
 	let cy;
 	useEffect(() => {
 		if (app) {
@@ -82,6 +82,7 @@ const useCytoscope = (container, degree) => {
 			}
 		}
 	}, [classe, app, nodes]);
+	return [metric, classe];
 };
 
 export default useCytoscope;

@@ -12,6 +12,12 @@ const initialState = {
 		extends: true,
 		tables: true,
 	},
+	metricOfClass: {
+		encapsulatedClasses: 0,
+		nonEncapsulatedClasses: 0,
+		encapsulatedTables: 0,
+		nonEncapsulatedTables: 0,
+	},
 };
 
 const reducer = (state = initialState, action) => {
@@ -89,6 +95,11 @@ const reducer = (state = initialState, action) => {
 					...state.infoGraph,
 					tables: !state.infoGraph.tables,
 				},
+			};
+		case 'SET_METRIC':
+			return {
+				...state,
+				metricOfClass: action.payload,
 			};
 		default:
 			return state;
