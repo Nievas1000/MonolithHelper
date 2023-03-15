@@ -45,7 +45,7 @@ const useNodes = (recursiveNodes = 0) => {
 				data: {
 					id: node.extend.name,
 					selectColor: colors.background.two,
-					selectBorder: colors.primary.two,
+					selectBorder: colors.complementary.four,
 					extend: true,
 				},
 				position: {
