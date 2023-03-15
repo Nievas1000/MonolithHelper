@@ -5,11 +5,10 @@ import InputDegreeGraph from './InputDegreeGraph';
 
 const Graph = () => {
 	const [degree, setDegree] = useState(0);
-	const [metric /* classe */] = useCytoscope(
+	/* const [metric, classe] =  */ useCytoscope(
 		document.getElementById('cy'),
 		degree
 	);
-	console.log(metric);
 	return (
 		<div>
 			<div className='d-flex'>

@@ -30,7 +30,7 @@ const DropdownApps = ({ setActiveDropdown }) => {
 									key={app.applicationName}
 									onClick={() => remove(app)}
 								>
-									<Text variant='two' mt={12}>
+									<Text variant='two' mt={12} title={app.applicationName}>
 										{app.applicationName.length > 25
 											? `${app.applicationName.substring(0, 25)}...`
 											: app.applicationName}

@@ -12,12 +12,6 @@ const initialState = {
 		extends: true,
 		tables: true,
 	},
-	metricOfClass: {
-		encapsulatedClasses: 0,
-		nonEncapsulatedClasses: 0,
-		encapsulatedTables: 0,
-		nonEncapsulatedTables: 0,
-	},
 };
 
 const reducer = (state = initialState, action) => {
@@ -37,6 +31,9 @@ const reducer = (state = initialState, action) => {
 				}),
 				dropdown: action.payload.slice(3),
 				selectedApp: action.payload[0],
+				selectedClass: state.selectedApp
+					? state.selectedApp.classes[0][0]
+					: state.selectedClass,
 			};
 		case 'ADD_DROPDOWN':
 			return {
@@ -66,40 +63,12 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				selectedApp: action.payload,
+				selectedClass: 'Select class...',
 			};
 		case 'SELECT_CLASS':
 			return {
 				...state,
 				selectedClass: action.payload,
-			};
-		case 'SET_INTERFACES':
-			return {
-				...state,
-				infoGraph: {
-					...state.infoGraph,
-					interfaces: !state.infoGraph.interfaces,
-				},
-			};
-		case 'SET_EXTENDS':
-			return {
-				...state,
-				infoGraph: {
-					...state.infoGraph,
-					extends: !state.infoGraph.extends,
-				},
-			};
-		case 'SET_TABLES':
-			return {
-				...state,
-				infoGraph: {
-					...state.infoGraph,
-					tables: !state.infoGraph.tables,
-				},
-			};
-		case 'SET_METRIC':
-			return {
-				...state,
-				metricOfClass: action.payload,
 			};
 		default:
 			return state;

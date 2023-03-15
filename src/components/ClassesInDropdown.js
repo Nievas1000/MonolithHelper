@@ -22,7 +22,7 @@ const ClassesInDropdown = ({
 								key={classe}
 								onClick={() => handleDrop(classe)}
 							>
-								<Text variant='two' mt={12}>
+								<Text variant='two' mt={12} alt={'Hola'} title={classe}>
 									{classe.length > 40
 										? `${classe.substring(0, 40)}...`
 										: classe}
