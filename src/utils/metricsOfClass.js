@@ -6,27 +6,27 @@ const metricOfClass = (nodes, edges, app, classe, tables) => {
 	const nonEncapsulates = [];
 	const nonEncapsulatesTables = [];
 	for (let i = 0; i < nodes.length; i++) {
-		relationsExtends = app.relationsExtends.map((node) => {
-			if (nodes[i].data.id !== node.classe) {
-				return null;
-			}
-			if (
-				nodes.find((data) => data.data.id === node.extend.name) === undefined
-			) {
-				nodes.push({
+		relationsExtends = app.relationsExtends.flatMap((node) =>
+			node.extend.map((child) => {
+				if (nodes[i].data.id !== node.classe) {
+					return null;
+				}
+				if (nodes.find((data) => data.data.id === child.name) === undefined) {
+					nodes.push({
+						data: {
+							id: child.name,
+						},
+					});
+				}
+				return {
 					data: {
-						id: node.extend.name,
+						id: `${node.classe}-${child.name}`,
+						source: node.classe,
+						target: child.name,
 					},
-				});
-			}
-			return {
-				data: {
-					id: `${node.classe}-${node.extend.name}`,
-					source: node.classe,
-					target: node.extend.name,
-				},
-			};
-		});
+				};
+			})
+		);
 
 		const usedClasses = app.usedClasses.flatMap((node) =>
 			node.use.map((child) => {

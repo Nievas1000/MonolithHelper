@@ -32,36 +32,38 @@ const useNodes = (recursiveNodes = 0) => {
 					},
 			  ];
 	if (nodesToShow.extends) {
-		relationsExtends = app.relationsExtends.map((node) => {
-			if (classe !== node.classe) {
-				return null;
-			}
-			metricNodes.push({
-				data: {
-					id: node.extend.name,
-				},
-			});
-			nodes.push({
-				data: {
-					id: node.extend.name,
-					selectColor: colors.background.two,
-					selectBorder: colors.complementary.four,
-					extend: true,
-				},
-				position: {
-					x: pos,
-					y: Math.random() * (350 - 450) + 350,
-				},
-			});
-			pos += 110;
-			return {
-				data: {
-					id: `${node.classe}-${node.extend.name}`,
-					source: node.classe,
-					target: node.extend.name,
-				},
-			};
-		});
+		relationsExtends = app.relationsExtends.flatMap((node) =>
+			node.extend.map((child) => {
+				if (classe !== node.classe) {
+					return null;
+				}
+				metricNodes.push({
+					data: {
+						id: child.name,
+					},
+				});
+				nodes.push({
+					data: {
+						id: child.name,
+						selectColor: colors.background.two,
+						selectBorder: colors.complementary.four,
+						extend: true,
+					},
+					position: {
+						x: pos,
+						y: Math.random() * (350 - 450) + 350,
+					},
+				});
+				pos += 110;
+				return {
+					data: {
+						id: `${node.classe}-${child.name}`,
+						source: node.classe,
+						target: child.name,
+					},
+				};
+			})
+		);
 	}
 	if (nodesToShow.interfaces) {
 		relationsImplements = app.relationsImplement.map((node) => {

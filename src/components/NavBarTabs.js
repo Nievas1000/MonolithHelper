@@ -21,7 +21,7 @@ const NavBarTabs = () => {
 									onClick={() => selectApp(app)}
 								>
 									<LeafIcon />
-									<Text variant='three' mt={13}>
+									<Text variant='three' mt={13} title={app.applicationName}>
 										{app.applicationName.length > 35
 											? `${app.applicationName.substring(0, 35)}...`
 											: app.applicationName}
