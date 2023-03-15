@@ -18,6 +18,7 @@ const useNodes = (recursiveNodes = 0) => {
 	const metricEdges = [];
 	const metricNodes = [];
 	const metricTables = [];
+	const extendToNonUse = [];
 	const nodes =
 		classe === 'Select class...'
 			? []
@@ -31,17 +32,23 @@ const useNodes = (recursiveNodes = 0) => {
 						position: { x: 10.66666666666671, y: 100.00000000000006 },
 					},
 			  ];
-	if (nodesToShow.extends) {
-		relationsExtends = app.relationsExtends.flatMap((node) =>
-			node.extend.map((child) => {
-				if (classe !== node.classe) {
-					return null;
-				}
-				metricNodes.push({
-					data: {
-						id: child.name,
-					},
-				});
+	relationsExtends = app.relationsExtends.flatMap((node) =>
+		node.extend.map((child) => {
+			if (classe !== node.classe) {
+				return null;
+			}
+			metricNodes.push({
+				data: {
+					id: child.name,
+				},
+			});
+			extendToNonUse.push({
+				data: {
+					id: child.name,
+				},
+			});
+			pos += 110;
+			if (!nodesToShow.extends) {
 				nodes.push({
 					data: {
 						id: child.name,
@@ -54,7 +61,6 @@ const useNodes = (recursiveNodes = 0) => {
 						y: Math.random() * (350 - 450) + 350,
 					},
 				});
-				pos += 110;
 				return {
 					data: {
 						id: `${node.classe}-${child.name}`,
@@ -62,9 +68,11 @@ const useNodes = (recursiveNodes = 0) => {
 						target: child.name,
 					},
 				};
-			})
-		);
-	}
+			} else {
+				return null;
+			}
+		})
+	);
 	if (nodesToShow.interfaces) {
 		relationsImplements = app.relationsImplement.map((node) => {
 			if (classe !== node.classe) {
@@ -104,25 +112,31 @@ const useNodes = (recursiveNodes = 0) => {
 					},
 				});
 			}
-			nodes.push({
-				data: {
-					id: child.name,
-					selectColor: colors.background.two,
-					selectBorder: colors.primary.two,
-				},
-				position: {
-					x: pos,
-					y: Math.random() * (350 - 450) + 350,
-				},
-			});
-			pos += 110;
-			return {
-				data: {
-					id: `${node.classe}-${child.name}`,
-					source: node.classe,
-					target: child.name,
-				},
-			};
+			if (
+				extendToNonUse.find((data) => data.data.id === child.name) === undefined
+			) {
+				nodes.push({
+					data: {
+						id: child.name,
+						selectColor: colors.background.two,
+						selectBorder: colors.primary.two,
+					},
+					position: {
+						x: pos,
+						y: Math.random() * (350 - 450) + 350,
+					},
+				});
+				pos += 110;
+				return {
+					data: {
+						id: `${node.classe}-${child.name}`,
+						source: node.classe,
+						target: child.name,
+					},
+				};
+			} else {
+				return null;
+			}
 		})
 	);
 	if (nodesToShow.tables) {
