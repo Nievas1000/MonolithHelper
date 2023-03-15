@@ -48,7 +48,7 @@ const useNodes = (recursiveNodes = 0) => {
 				},
 			});
 			pos += 110;
-			if (!nodesToShow.extends) {
+			if (nodesToShow.extends) {
 				nodes.push({
 					data: {
 						id: child.name,
