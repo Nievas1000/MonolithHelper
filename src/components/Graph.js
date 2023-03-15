@@ -11,9 +11,9 @@ const Graph = () => {
 		<div>
 			<div className='d-flex'>
 				<div id='cy'></div>
-				<div className='d-flex align-items-center metric'>
+				{/* <div className='d-flex align-items-center metric'>
 					<MetricOfClass metric={metric} classe={classe} />
-				</div>
+				</div> */}
 			</div>
 			<div className='degree'>
 				<InputDegreeGraph degree={degree} setDegree={setDegree} />

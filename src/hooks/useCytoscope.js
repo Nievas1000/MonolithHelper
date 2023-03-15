@@ -53,12 +53,6 @@ const useCytoscope = (container, degree) => {
 							},
 						},
 						{
-							selector: 'node[extend]',
-							style: {
-								'border-style': 'dashed',
-							},
-						},
-						{
 							selector: ':parent',
 							style: {
 								'background-color': '#1E1E1E',
