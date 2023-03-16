@@ -10,9 +10,6 @@ const ButtonsSwitchZone = () => {
 				<SwitchButton value={'Interfaces'} />
 			</Container>
 			<Container ml={32}>
-				<SwitchButton value={'Extends'} />
-			</Container>
-			<Container ml={32}>
 				<SwitchButton value={'Tables'} />
 			</Container>
 		</div>

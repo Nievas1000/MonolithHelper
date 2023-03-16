@@ -62,11 +62,7 @@ const metricOfClass = (nodes, edges, app, classe, tables) => {
 					},
 				});
 			} else {
-				nonEncapsulatesTables.push({
-					data: {
-						id: node.table,
-					},
-				});
+				nonEncapsulatesTables.push(node.table);
 			}
 			return {
 				data: {
@@ -97,6 +93,7 @@ const metricOfClass = (nodes, edges, app, classe, tables) => {
 		});
 	});
 	return {
+		interfaces: [],
 		nonEncapsulatedClasses: nonEncapsulates.length,
 		encapsulatedClasses:
 			nonEncapsulates.length > 0
@@ -107,6 +104,7 @@ const metricOfClass = (nodes, edges, app, classe, tables) => {
 				? tables.length - nonEncapsulatesTables.length
 				: tables.length,
 		nonEncapsulatedTables: nonEncapsulatesTables.length,
+		nonEncapsulatedData: nonEncapsulates.concat(nonEncapsulatesTables),
 	};
 };
 

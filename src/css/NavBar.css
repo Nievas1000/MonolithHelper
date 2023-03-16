@@ -58,6 +58,15 @@
 .logo-login{
 	font-family: 'Play', sans-serif;
 }
+.moment{
+	width: 100px !important;
+	height: 32px !important;
+	margin-top: 10px;
+}
+.moment *{
+	margin: 4px;
+	margin-left: -5px;
+}
 @media only screen and (max-width:1410px){
 	.settigns{
 		display: none !important;

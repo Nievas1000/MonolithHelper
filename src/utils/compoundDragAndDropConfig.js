@@ -57,6 +57,14 @@ export const compoundDragAndDropConfig = (cy) => {
 			});
 		}
 	});
+	cy.nodes().on('mouseover', function (event) {
+		const node = event.target;
+		node.style('label', node.data().id);
+	});
+	cy.nodes().on('mouseout', function (event) {
+		const node = event.target;
+		node.style('label', '');
+	});
 	/* cy.on('cdnddrop', function (event, dropTarget, dropSibling) {
 		dropTarget.children().map((e) => {
 			const index = parents.findIndex(

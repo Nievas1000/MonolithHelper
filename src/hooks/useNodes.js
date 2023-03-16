@@ -2,7 +2,8 @@ import { colors } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
 import { recursiveMethod } from '../utils/recursiveMethod';
 import interfaceIcon from '../utils/graphIcons/Interface.svg';
-import databaseIcon from '../utils/graphIcons/Database.svg';
+import table from '../utils/graphIcons/Table.svg';
+import nonEncapsulatedTable from '../utils/graphIcons/NonEncapsulatedTable.svg';
 import metricOfClass from '../utils/metricsOfClass';
 
 // Con este hook le creamos los nodes y edges mediante las relaciones extraidas del json de la app seleccionada
@@ -48,29 +49,44 @@ const useNodes = (recursiveNodes = 0) => {
 				},
 			});
 			pos += 110;
-			if (nodesToShow.extends) {
-				nodes.push({
-					data: {
-						id: child.name,
-						selectColor: colors.background.two,
-						selectBorder: colors.complementary.four,
-						extend: true,
-					},
-					position: {
-						x: pos,
-						y: Math.random() * (350 - 450) + 350,
-					},
-				});
-				return {
-					data: {
-						id: `${node.classe}-${child.name}`,
-						source: node.classe,
-						target: child.name,
-					},
-				};
-			} else {
-				return null;
+			if (metricNodes.length > 0) {
+				if (
+					metricNodes.find((data) => data.data.id === child.name) === undefined
+				) {
+					nodes.push({
+						data: {
+							id: child.name,
+							selectColor: colors.background.two,
+							selectBorder: colors.feedback.warning,
+							extend: true,
+						},
+						position: {
+							x: pos,
+							y: Math.random() * (350 - 450) + 350,
+						},
+					});
+				} else {
+					nodes.push({
+						data: {
+							id: child.name,
+							selectColor: colors.background.two,
+							selectBorder: colors.primary.two,
+							extend: true,
+						},
+						position: {
+							x: pos,
+							y: Math.random() * (350 - 450) + 350,
+						},
+					});
+				}
 			}
+			return {
+				data: {
+					id: `${node.classe}-${child.name}`,
+					source: node.classe,
+					target: child.name,
+				},
+			};
 		})
 	);
 	if (nodesToShow.interfaces) {
@@ -82,6 +98,7 @@ const useNodes = (recursiveNodes = 0) => {
 				data: {
 					id: node.implement.name,
 					logo: interfaceIcon,
+					interface: true,
 				},
 				position: {
 					x: pos,
@@ -152,7 +169,8 @@ const useNodes = (recursiveNodes = 0) => {
 			nodes.push({
 				data: {
 					id: node.table,
-					logo: databaseIcon,
+					logo: table,
+					table: true,
 				},
 				position: {
 					x: pos,
@@ -179,7 +197,6 @@ const useNodes = (recursiveNodes = 0) => {
 		classe,
 		metricTables
 	);
-
 	// Zona para mostrar los nodes
 	const edges = [];
 	relationsImplements.map((x) => (x !== null ? edges.push(x) : null));
@@ -193,6 +210,22 @@ const useNodes = (recursiveNodes = 0) => {
 			recursiveMethod(nodes, edges, app, nodesToShow);
 		}
 	}
+	nodes.forEach((node) => {
+		if (
+			nonEncapsulates.nonEncapsulatedData.find(
+				(data) => data === node.data.id
+			) !== undefined
+		) {
+			if (node.data.table) {
+				node.data.logo = nonEncapsulatedTable;
+			} else {
+				node.data.selectBorder = '#F9D758';
+			}
+		}
+		if (node.data.interface) {
+			nonEncapsulates.interfaces.push(node.data.id);
+		}
+	});
 	return [edges, nodes, nonEncapsulates];
 };
 
