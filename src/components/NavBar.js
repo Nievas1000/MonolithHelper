@@ -30,7 +30,7 @@ const NavBar = ({
 			<ContainerTabs>
 				<OpenAppTab className='open-app'>
 					<CodojoLogoColor />
-					<Text variant='three' color={colors.grey.five} mt={13}>
+					<Text variant='one' color={colors.grey.five} mt={13}>
 						Applications
 					</Text>
 				</OpenAppTab>
@@ -40,7 +40,7 @@ const NavBar = ({
 						variant='more'
 						onClick={() => setActiveDropdown(!activeDropdown)}
 					>
-						<Text variant='three' color={colors.grey.five} mt={12}>
+						<Text variant='one' color={colors.grey.five} mt={12}>
 							more...
 						</Text>
 						<MiniArrowIconExpand />
@@ -64,7 +64,7 @@ const NavBar = ({
 						}
 					>
 						<AddIcon />
-						<Text variant='three' color={colors.primary.two}>
+						<Text variant='one' color={colors.primary.two}>
 							Add application
 						</Text>
 					</AddApplication>

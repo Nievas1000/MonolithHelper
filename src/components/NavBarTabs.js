@@ -1,4 +1,10 @@
-import { Tab, Text, LeafIcon, CrossIcon } from 'design-kit-codojo';
+import {
+	Tab,
+	Text,
+	LeafIcon,
+	CrossIcon,
+	LeafIconActive,
+} from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
 import useDropdownMenu from '../hooks/useDropdownMenu';
 const NavBarTabs = () => {
@@ -20,8 +26,18 @@ const NavBarTabs = () => {
 									}
 									onClick={() => selectApp(app)}
 								>
-									<LeafIcon />
-									<Text variant='three' mt={13} title={app.applicationName}>
+									{selectedApp.applicationName === app.applicationName ? (
+										<LeafIconActive />
+									) : (
+										<LeafIcon />
+									)}
+
+									<Text
+										variant='one'
+										mt={13}
+										title={app.applicationName}
+										mr='4px'
+									>
 										{app.applicationName.length > 35
 											? `${app.applicationName.substring(0, 35)}...`
 											: app.applicationName}
