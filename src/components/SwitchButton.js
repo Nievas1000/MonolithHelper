@@ -5,7 +5,7 @@ export const SwitchButton = ({ value }) => {
 	const [CustomSwitch, checked, handledCheckedState] = useSwitchStatus();
 	return (
 		<div className='d-flex'>
-			<Text variant='three' color={colors.grey.six} mt={2}>
+			<Text variant='two' color={colors.grey.six} mt={2}>
 				{value}
 			</Text>
 			<CustomSwitch
