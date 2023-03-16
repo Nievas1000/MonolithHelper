@@ -3,7 +3,10 @@ import { colors } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useNodes from './useNodes';
-import compoundDragAndDropConfig from '../utils/compoundDragAndDropConfig';
+/* import compoundDragAndDropConfig from '../utils/compoundDragAndDropConfig'; */
+import fcose from 'cytoscape-fcose';
+
+cytoscape.use(fcose);
 
 // Hook para darle forma al grafico, aqui definimos los label, el estilo del node, el estilo de los edges, es estilo del cuadrado que puede crear el usuario
 const useCytoscope = (container, degree) => {
@@ -11,16 +14,16 @@ const useCytoscope = (container, degree) => {
 	const app = state.selectedApp;
 	const classe = state.selectedClass;
 	const [edges, nodes, metric] = useNodes(degree);
-	let cy;
+	/* let cy; */
 	useEffect(() => {
 		if (app) {
 			if (container) {
-				cy = cytoscape({
+				cytoscape({
 					container,
 					elements: [...nodes, ...edges],
 					maxZoom: 1.5,
 					layout: {
-						name: 'preset',
+						name: 'fcose',
 						animate: false,
 					},
 
@@ -67,12 +70,12 @@ const useCytoscope = (container, degree) => {
 								width: 3,
 								'line-color': colors.grey.five,
 								'target-arrow-shape': 'triangle',
-								'curve-style': 'unbundled-bezier',
+								'curve-style': 'bezier',
 							},
 						},
 					],
 				});
-				compoundDragAndDropConfig(cy);
+				/* compoundDragAndDropConfig(cy); */
 			}
 		}
 	}, [classe, app, nodes]);

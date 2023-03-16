@@ -1,21 +1,18 @@
 import useCytoscope from '../hooks/useCytoscope';
 import { useState } from 'react';
 import InputDegreeGraph from './InputDegreeGraph';
-/* import { MetricOfClass } from './MetricOfClass'; */
+import { MetricOfClass } from './MetricOfClass';
 
 const Graph = () => {
 	const [degree, setDegree] = useState(0);
-	/* const [metric, classe] =  */ useCytoscope(
-		document.getElementById('cy'),
-		degree
-	);
+	const [metric, classe] = useCytoscope(document.getElementById('cy'), degree);
 	return (
 		<div>
 			<div className='d-flex'>
 				<div id='cy'></div>
-				{/* <div className='d-flex align-items-center metric'>
+				<div className='d-flex align-items-center metric'>
 					<MetricOfClass metric={metric} classe={classe} />
-				</div> */}
+				</div>
 			</div>
 			<div className='degree'>
 				<InputDegreeGraph degree={degree} setDegree={setDegree} />

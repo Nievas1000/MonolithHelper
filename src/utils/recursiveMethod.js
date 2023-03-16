@@ -1,6 +1,6 @@
 import { colors } from 'design-kit-codojo';
 import interfaceIcon from '../utils/graphIcons/Interface.svg';
-import databaseIcon from '../utils/graphIcons/Database.svg';
+import table from '../utils/graphIcons/Table.svg';
 
 // Metodo recursivo para buscar las relaciones de los nodos dependiendo el degree establecido por el usuario, recorremos todas las relaciones de la apliacion, buscando la similitud con los nodos seleccionados
 export const recursiveMethod = (nodes, edges, app, nodesToShow) => {
@@ -11,38 +11,36 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow) => {
 	let tables = [];
 	for (let i = 1; i < max; i++) {
 		let posX = -150;
-		if (nodesToShow.extends) {
-			relationsExtends = app.relationsExtends.flatMap((node) =>
-				node.extend.map((child) => {
-					if (nodes[i].data.id !== node.classe) {
-						return null;
-					}
-					if (nodes.find((data) => data.data.id === child.name) === undefined) {
-						nodes.push({
-							data: {
-								id: child.name,
-								selectColor: colors.background.two,
-								selectBorder: colors.complementary.four,
-								extend: true,
-							},
-							position: {
-								x: posX,
-								y: Math.random() * (posY - 450) + posY,
-							},
-						});
-					}
-					posY += 40;
-					posX += 150;
-					return {
+		relationsExtends = app.relationsExtends.flatMap((node) =>
+			node.extend.map((child) => {
+				if (nodes[i].data.id !== node.classe) {
+					return null;
+				}
+				if (nodes.find((data) => data.data.id === child.name) === undefined) {
+					nodes.push({
 						data: {
-							id: `${node.classe}-${child.name}`,
-							source: node.classe,
-							target: child.name,
+							id: child.name,
+							selectColor: colors.background.two,
+							selectBorder: colors.primary.two,
+							extend: true,
 						},
-					};
-				})
-			);
-		}
+						position: {
+							x: posX,
+							y: Math.random() * (posY - 450) + posY,
+						},
+					});
+				}
+				posY += 40;
+				posX += 150;
+				return {
+					data: {
+						id: `${node.classe}-${child.name}`,
+						source: node.classe,
+						target: child.name,
+					},
+				};
+			})
+		);
 		if (nodesToShow.interfaces) {
 			relationsImplements = app.relationsImplement.map((node) => {
 				if (nodes[i].data.id !== node.classe) {
@@ -57,6 +55,7 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow) => {
 							id: node.implement.name,
 							logo: interfaceIcon,
 							parent: 'parent',
+							interface: true,
 						},
 						position: {
 							x: posX,
@@ -112,7 +111,8 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow) => {
 				nodes.push({
 					data: {
 						id: node.table,
-						logo: databaseIcon,
+						logo: table,
+						table: true,
 					},
 					position: {
 						x: posX,

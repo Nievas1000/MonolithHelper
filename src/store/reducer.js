@@ -9,7 +9,6 @@ const initialState = {
 	selectedClass: 'Select class...',
 	infoGraph: {
 		interfaces: true,
-		extends: true,
 		tables: true,
 	},
 };
@@ -76,14 +75,6 @@ const reducer = (state = initialState, action) => {
 				infoGraph: {
 					...state.infoGraph,
 					interfaces: !state.infoGraph.interfaces,
-				},
-			};
-		case 'SET_EXTENDS':
-			return {
-				...state,
-				infoGraph: {
-					...state.infoGraph,
-					extends: !state.infoGraph.extends,
 				},
 			};
 		case 'SET_TABLES':

@@ -1,7 +1,8 @@
 import {
 	ArrowIconExpand,
 	colors,
-	ContainerSignOut,
+	ContainerPersonalZone,
+	LogOutIcon,
 	/* Settings, */
 	Text,
 	UserIcon,
@@ -28,11 +29,12 @@ const PersonalZone = () => {
 			</UserTab>
 			{activeLogout ? (
 				<div className='signout' onClick={handleLogout}>
-					<ContainerSignOut>
+					<ContainerPersonalZone className='moment'>
 						<Text variant='two' color={colors.grey.six} ml={14}>
+							<LogOutIcon />
 							Sign Out
 						</Text>{' '}
-					</ContainerSignOut>
+					</ContainerPersonalZone>
 				</div>
 			) : null}
 		</div>

@@ -16,12 +16,6 @@ export const useSwitchStatus = () => {
 					payload: 'interface',
 				});
 				break;
-			case 'Extends':
-				dispatch({
-					type: 'SET_EXTENDS',
-					payload: 'extends',
-				});
-				break;
 			case 'Tables':
 				dispatch({
 					type: 'SET_TABLES',
