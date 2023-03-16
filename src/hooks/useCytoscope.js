@@ -24,6 +24,7 @@ const useCytoscope = (container, degree) => {
 					maxZoom: 1.5,
 					layout: {
 						name: 'fcose',
+						idealEdgeLength: 120,
 						animate: false,
 					},
 
