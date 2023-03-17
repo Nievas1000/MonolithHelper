@@ -2,8 +2,7 @@ import {
 	ArrowIconExpand,
 	colors,
 	ContainerPersonalZone,
-	LogOutIcon,
-	/* Settings, */
+	/* LogOutIcon, */
 	Text,
 	UserIcon,
 	UserTab,
@@ -18,11 +17,6 @@ const PersonalZone = () => {
 	};
 	return (
 		<div className='right-navbar'>
-			{/* <Settings className='settigns'>
-				<Text variant='three' color={colors.grey.five} mt={12}>
-					Settings
-				</Text>
-			</Settings> */}
 			<UserTab className='user' onClick={() => setActiveLogout(!activeLogout)}>
 				<UserIcon />
 				<ArrowIconExpand />
@@ -31,7 +25,7 @@ const PersonalZone = () => {
 				<div className='signout' onClick={handleLogout}>
 					<ContainerPersonalZone className='moment'>
 						<Text variant='two' color={colors.grey.six} ml={14}>
-							<LogOutIcon />
+							{/* <LogOutIcon /> */}
 							Sign Out
 						</Text>{' '}
 					</ContainerPersonalZone>

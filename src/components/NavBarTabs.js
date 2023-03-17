@@ -32,19 +32,16 @@ const NavBarTabs = () => {
 										<LeafIcon />
 									)}
 
-									<Text
-										variant='one'
-										mt={13}
-										title={app.applicationName}
-										mr='4px'
-									>
+									<Text variant='three' mt={13} title={app.applicationName}>
 										{app.applicationName.length > 35
 											? `${app.applicationName.substring(0, 35)}...`
 											: app.applicationName}
 									</Text>
-									<div onClick={() => addAppToDropdown(app)} className='mb-1'>
-										<CrossIcon />
-									</div>
+									{state.allApps.length > 3 ? (
+										<div onClick={() => addAppToDropdown(app)} className='mb-1'>
+											<CrossIcon />
+										</div>
+									) : null}
 								</Tab>
 							</div>
 						);
