@@ -30,7 +30,7 @@ const NavBar = ({
 			<ContainerTabs>
 				<OpenAppTab className='open-app'>
 					<CodojoLogoColor />
-					<Text variant='one' color={colors.grey.five} mt={13}>
+					<Text variant='three' color={colors.grey.five} mt={13}>
 						Applications
 					</Text>
 				</OpenAppTab>
