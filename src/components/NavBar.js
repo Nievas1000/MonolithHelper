@@ -40,7 +40,7 @@ const NavBar = ({
 						variant='more'
 						onClick={() => setActiveDropdown(!activeDropdown)}
 					>
-						<Text variant='one' color={colors.grey.five} mt={12}>
+						<Text variant='two' color={colors.grey.five} mt={12}>
 							more...
 						</Text>
 						<MiniArrowIconExpand />
@@ -64,7 +64,7 @@ const NavBar = ({
 						}
 					>
 						<AddIcon />
-						<Text variant='one' color={colors.primary.two}>
+						<Text variant='three' color={colors.primary.two}>
 							Add application
 						</Text>
 					</AddApplication>
