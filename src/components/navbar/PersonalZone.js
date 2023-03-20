@@ -5,7 +5,7 @@ import {
 	UserTab,
 } from 'design-kit-codojo';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+/* import { NavLink } from 'react-router-dom'; */
 import { LogoutDropdownUser } from './LogoutDropdownUser';
 import { SettingsDropdownUser } from './SettingsDropdownUser';
 
@@ -22,9 +22,7 @@ const PersonalZone = () => {
 			{activeLogout ? (
 				<div className='signout'>
 					<ContainerPersonalZone className='container-personal'>
-						<NavLink to='/settings'>
-							<SettingsDropdownUser setHover={setHover} hover={hover} />
-						</NavLink>
+						<SettingsDropdownUser setHover={setHover} hover={hover} />
 						<hr className='line-personal' />
 						<LogoutDropdownUser setHover={setHover} hover={hover} />
 					</ContainerPersonalZone>
