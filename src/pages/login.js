@@ -1,6 +1,6 @@
 import { Text, TextLink } from 'design-kit-codojo';
-import ImageLogin from '../components/ImageLogin';
-import SignInForm from '../components/SignInForm';
+import ImageLogin from '../components/login/ImageLogin';
+import SignInForm from '../components/login/SignInForm';
 
 const Login = () => {
 	return (

@@ -1,5 +1,5 @@
 .container-my-app{
-	background-color: #1E1E1E;
+	background-color: #131514;
 	height: 100vh;
 	width: 100%;
 }
@@ -28,10 +28,8 @@
 .signout{
 	right: 0;
 	position: absolute;
-	margin-top: 39px;
-	margin-right: 10px;
+	margin-top: 32px;
 	cursor: pointer;
-	z-index: 1;
 }
 .container-apps{
 	overflow-x: hidden;
@@ -58,13 +56,22 @@
 .logo-login{
 	font-family: 'Play', sans-serif;
 }
-.moment{
-	width: 100px !important;
-	height: 32px !important;
+.line-personal{
+	border: 1px solid #2F3130;
+	margin-top: 53px;
+	margin-left: 15px;
+	width: 208px;
+	position: fixed;
 }
-.moment *{
-	margin: 4px;
-	margin-left: -5px;
+.container-personal{
+	z-index: 2;
+	position: relative;
+}
+.more-mobile{
+	display: none;
+}
+.setting-drop > *:hover{
+	color: #47BC82;
 }
 @media only screen and (max-width:1410px){
 	.settigns{
@@ -95,6 +102,17 @@
 	}
 	.tab-responsive{
 		display: block;
+	}
+	.more-mobile{
+		display: block;
+	}
+}
+@media only screen and (max-width:699px){
+	.container-personal{
+		height: 96vh !important;
+		margin-top: 0px !important;
+		margin-right: 0px !important;
+		border-radius: 0px !important;
 	}
 }
 @media only screen and (max-width:600px){

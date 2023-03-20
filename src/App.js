@@ -2,9 +2,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/home';
 import Login from './pages/login';
 import ProtectedRoute from './components/ProtectedRoute';
-
-
-
+import Settings from './pages/settings';
 
 function App() {
 	const location = useLocation();
@@ -31,13 +29,13 @@ function App() {
 					}
 				/>
 
+				<Route path='/how-to-add-application' element={<Home />} />
 				<Route
-					path='/how-to-add-application'
+					path='/settings'
 					element={
-						
-							<Home/>
-						
-							
+						<ProtectedRoute>
+							<Settings />
+						</ProtectedRoute>
 					}
 				/>
 			</Routes>

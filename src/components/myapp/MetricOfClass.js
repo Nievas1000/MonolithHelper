@@ -12,7 +12,7 @@ import {
 
 export const MetricOfClass = ({ metric, classe }) => {
 	return (
-		<Container className='container-metrics'>
+		<Container className='container-metrics' bg={colors.background.four}>
 			<Text
 				variant='one'
 				color={colors.grey.ten}

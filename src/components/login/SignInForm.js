@@ -9,8 +9,8 @@ import {
 	ButtonText,
 	GitHubIcon,
 } from 'design-kit-codojo';
-import useLoginGithub from '../hooks/useLoginGithub';
-import useLoginGoogle from '../hooks/useLoginGoogle';
+import useLoginGithub from '../../hooks/useLoginGithub';
+import useLoginGoogle from '../../hooks/useLoginGoogle';
 
 const SignInForm = () => {
 	const [loginGitHub, activeGithub] = useLoginGithub();
