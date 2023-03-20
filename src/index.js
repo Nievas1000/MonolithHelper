@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import './css/NavBar.css';
+import './css/Settings.css';
 import './css/Login.css';
 import './css/Home.css';
 import './css/AddApplication.css';

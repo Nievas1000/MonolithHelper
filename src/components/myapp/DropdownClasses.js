@@ -9,7 +9,7 @@ import {
 } from 'design-kit-codojo';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import useSearchClasses from '../hooks/useSearchClasses';
+import useSearchClasses from '../../hooks/useSearchClasses';
 import ClassesInDropdown from './ClassesInDropdown';
 const DropdownClasses = () => {
 	const selectedClass = useSelector((state) => state.selectedClass);

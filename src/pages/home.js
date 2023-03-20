@@ -1,13 +1,13 @@
 import { Container } from 'design-kit-codojo';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import DateApp from '../components/DateApp';
-import DropdownClasses from '../components/DropdownClasses';
-import Graph from '../components/Graph';
+import DateApp from '../components/myapp/DateApp';
+import DropdownClasses from '../components/myapp/DropdownClasses';
+import Graph from '../components/myapp/Graph';
 import useApp from '../hooks/useApp';
 import InfoApp from '../components/InfoApp';
-import NavBar from '../components/NavBar';
-import ButtonsSwitchZone from '../components/ButtonsSwitchZone';
+import NavBar from '../components/navbar/NavBar';
+import ButtonsSwitchZone from '../components/myapp/ButtonsSwitchZone';
 
 const Home = () => {
 	const [activeDropdown, setActiveDropdown] = useState(false);

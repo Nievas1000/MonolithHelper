@@ -6,7 +6,7 @@ import {
 	LeafIconActive,
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
-import useDropdownMenu from '../hooks/useDropdownMenu';
+import useDropdownMenu from '../../hooks/useDropdownMenu';
 const NavBarTabs = () => {
 	const state = useSelector((state) => state);
 	const apps = state.initialApps;

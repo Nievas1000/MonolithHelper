@@ -6,7 +6,7 @@ import {
 	TabDropdown,
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
-import useDropdownMenu from '../hooks/useDropdownMenu';
+import useDropdownMenu from '../../hooks/useDropdownMenu';
 
 const DropdownApps = ({ setActiveDropdown }) => {
 	const state = useSelector((state) => state);

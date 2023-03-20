@@ -12,7 +12,7 @@ import {
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import useApp from '../hooks/useApp';
+import useApp from '../../hooks/useApp';
 import DropdownApps from './DropdownApps';
 import NavBarTabs from './NavBarTabs';
 import PersonalZone from './PersonalZone';
@@ -22,6 +22,7 @@ const NavBar = ({
 	activeDropdown,
 	activeInfo,
 	setActiveInfo,
+	settings = false,
 }) => {
 	const apps = useSelector((state) => state.allApps);
 	useApp();
@@ -35,7 +36,7 @@ const NavBar = ({
 					</Text>
 				</OpenAppTab>
 				<NavBarTabs />
-				{apps.length > 3 ? (
+				{apps.length > 3 && !settings ? (
 					<Tab
 						variant='more'
 						onClick={() => setActiveDropdown(!activeDropdown)}
@@ -48,6 +49,22 @@ const NavBar = ({
 							<DropdownApps setActiveDropdown={setActiveDropdown} />
 						) : null}
 					</Tab>
+				) : null}
+				{!settings ? (
+					<div className='more-mobile'>
+						<Tab
+							variant='more'
+							onClick={() => setActiveDropdown(!activeDropdown)}
+						>
+							<Text variant='two' color={colors.grey.five} mt={12}>
+								more...
+							</Text>
+							<MiniArrowIconExpand />
+							{activeDropdown ? (
+								<DropdownApps setActiveDropdown={setActiveDropdown} />
+							) : null}
+						</Tab>
+					</div>
 				) : null}
 
 				<NavLink

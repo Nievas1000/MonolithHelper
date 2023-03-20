@@ -1,4 +1,4 @@
-import useCytoscope from '../hooks/useCytoscope';
+import useCytoscope from '../../hooks/useCytoscope';
 import { useState } from 'react';
 import InputDegreeGraph from './InputDegreeGraph';
 import { MetricOfClass } from './MetricOfClass';
