@@ -1,7 +1,7 @@
 import {
 	colors,
-	LogOutIcon,
-	LogoutIconActive,
+	/* LogOutIcon,
+	LogoutIconActive, */
 	PersonalZoneTab,
 	Text,
 } from 'design-kit-codojo';
@@ -21,7 +21,7 @@ export const LogoutDropdownUser = ({ setHover, hover }) => {
 					className='setting-drop'
 					onMouseLeave={() => setHover({ logout: false, settings: false })}
 				>
-					<LogoutIconActive />
+					{/* <LogoutIconActive /> */}
 					<Text variant='two' color={colors.primary.two} ml={10} mt={11}>
 						Sign Out
 					</Text>{' '}
@@ -34,7 +34,7 @@ export const LogoutDropdownUser = ({ setHover, hover }) => {
 					className='setting-drop'
 					onMouseEnter={() => setHover({ logout: true, settings: false })}
 				>
-					<LogOutIcon />
+					{/* <LogOutIcon /> */}
 					<Text variant='two' color={colors.grey.five} ml={10} mt={11}>
 						Sign Out
 					</Text>{' '}
