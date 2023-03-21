@@ -7,7 +7,7 @@ import {
 import { useState } from 'react';
 /* import { NavLink } from 'react-router-dom'; */
 import { LogoutDropdownUser } from './LogoutDropdownUser';
-import { SettingsDropdownUser } from './SettingsDropdownUser';
+/* import { SettingsDropdownUser } from './SettingsDropdownUser'; */
 
 const PersonalZone = () => {
 	const [activeLogout, setActiveLogout] = useState(false);
@@ -22,8 +22,8 @@ const PersonalZone = () => {
 			{activeLogout ? (
 				<div className='signout'>
 					<ContainerPersonalZone className='container-personal'>
-						<SettingsDropdownUser setHover={setHover} hover={hover} />
-						<hr className='line-personal' />
+						{/* <SettingsDropdownUser setHover={setHover} hover={hover} />
+						<hr className='line-personal' /> */}
 						<LogoutDropdownUser setHover={setHover} hover={hover} />
 					</ContainerPersonalZone>
 				</div>

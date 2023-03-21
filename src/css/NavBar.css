@@ -70,8 +70,13 @@
 .more-mobile{
 	display: none;
 }
-.setting-drop > *:hover{
-	color: #47BC82;
+.container-personal{
+	height: 40px !important;
+	width: 100px !important;
+}
+.fkAaSm{
+	margin-top: 0 !important;
+	margin-left: 12px !important;
 }
 @media only screen and (max-width:1410px){
 	.settigns{
