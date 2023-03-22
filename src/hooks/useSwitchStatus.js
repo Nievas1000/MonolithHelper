@@ -29,6 +29,12 @@ export const useSwitchStatus = () => {
 			'&.Mui-checked + .MuiSwitch-track': {
 				backgroundColor: colors.primary.two,
 			},
+			'&:not(.Mui-checked) + .MuiSwitch-track': {
+				backgroundColor: '#FFFFFF',
+			},
+			'&:not(.Mui-checked) .MuiSwitch-thumb': {
+				backgroundColor: '#ffffff',
+			},
 		},
 		'& .MuiSwitch-thumb': {
 			backgroundColor: colors.primary.two,

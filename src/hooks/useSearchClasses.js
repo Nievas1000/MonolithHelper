@@ -16,11 +16,13 @@ const useSearchClasses = () => {
 		setClasses(data);
 	};
 
-	const selectClass = (e) => {
+	const selectClass = (e, setShowClasses) => {
 		dispatch({
 			type: 'SELECT_CLASS',
 			payload: e,
 		});
+		setShowClasses(false);
+		setClasses(selectedApp.classes[0]);
 	};
 
 	return [selectedApp, classes, handleChange, selectClass];

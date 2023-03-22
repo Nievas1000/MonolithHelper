@@ -9,7 +9,7 @@ const ClassesInDropdown = ({
 	showClasses,
 }) => {
 	const handleDrop = (classe) => {
-		selectClass(classe);
+		selectClass(classe, setShowClasses);
 		setShowClasses(false);
 	};
 	return (
