@@ -7,9 +7,9 @@ import {
 	TabMenuSettings,
 	ContainerSettingOpition,
 	ContainerDeleteOption,
-	DeleteAccountButton,
 	Container,
 	AccountMaintenanceIcon,
+	Button,
 } from 'design-kit-codojo';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -24,6 +24,7 @@ const Settings = () => {
 			<div className='container-settings' style={{ position: 'absolute' }}>
 				<Subtitle
 					variant='one'
+					className='cursor'
 					color={colors.grey.ten}
 					mt={28}
 					ml={24}
@@ -54,15 +55,14 @@ const Settings = () => {
 								<Subtitle variant='one' color={colors.grey.ten}>
 									Delete my account
 								</Subtitle>
-								<Subtitle variant='two' color={colors.grey.ten}>
-									Once you delete your account, there is no going back. Please
-									be certain
+								<Subtitle variant='two' color={colors.grey.six}>
+									There is no going back. Please be certain.
 								</Subtitle>
 							</div>
 							<div className='d-flex align-items-center'>
-								<DeleteAccountButton
+								<Button
 									className='container-delete-account'
-									variant='primary'
+									variant='delete'
 									onClick={() => setIsOpen(true)}
 								>
 									<ButtonText
@@ -72,7 +72,7 @@ const Settings = () => {
 									>
 										Delete
 									</ButtonText>
-								</DeleteAccountButton>
+								</Button>
 							</div>
 						</ContainerDeleteOption>
 					</ContainerSettingOpition>

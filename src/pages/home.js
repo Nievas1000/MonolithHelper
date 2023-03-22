@@ -8,6 +8,7 @@ import useApp from '../hooks/useApp';
 import InfoApp from '../components/InfoApp';
 import NavBar from '../components/navbar/NavBar';
 import ButtonsSwitchZone from '../components/myapp/ButtonsSwitchZone';
+import { PopUpDeletedApp } from '../components/myapp/PopUpDeletedApp';
 
 const Home = () => {
 	const [activeDropdown, setActiveDropdown] = useState(false);
@@ -38,6 +39,7 @@ const Home = () => {
 					<Graph />
 				</div>
 			) : null}
+			<PopUpDeletedApp />
 		</div>
 	);
 };

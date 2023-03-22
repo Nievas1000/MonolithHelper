@@ -11,6 +11,7 @@ const initialState = {
 		interfaces: true,
 		tables: true,
 	},
+	deletedApp: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -86,6 +87,33 @@ const reducer = (state = initialState, action) => {
 					tables: !state.infoGraph.tables,
 				},
 			};
+		case 'SET_DELETE_APP':
+			return {
+				...state,
+				deletedApp: action.payload.delete,
+			};
+		case 'CHANGE_APP':
+			if (state.initialApps.length === 1) {
+				return {
+					...state,
+					initialApps: state.initialApps.filter(
+						(ele) => ele.applicationName !== action.payload
+					),
+					selectedClass: 'Select class...',
+				};
+			} else {
+				return {
+					...state,
+					initialApps: state.initialApps.filter(
+						(ele) => ele.applicationName !== action.payload
+					),
+					selectedApp:
+						state.initialApps[0].applicationName === action.payload
+							? state.initialApps[0 + 1]
+							: state.initialApps[0],
+					selectedClass: state.initialApps[0].classes[0][0],
+				};
+			}
 		default:
 			return state;
 	}

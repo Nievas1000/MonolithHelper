@@ -1,23 +1,21 @@
 import {
+	Button,
 	ButtonText,
 	colors,
 	Container,
-	DeleteAccountButton,
 	Subtitle,
 	Title,
 } from 'design-kit-codojo';
-import Navbar from '../navbar/NavBar';
 
 export const SettingsMobile = ({ setIsOpen, navigate }) => {
 	return (
 		<div>
-			<Navbar settings={true} />
 			<Container ml={32}>
 				<div style={{ position: 'absolute' }}>
 					<Subtitle
 						variant='one'
 						color={colors.grey.ten}
-						mt={28}
+						mt={60}
 						onClick={() => navigate(-1)}
 					>
 						&lt; Back
@@ -35,12 +33,11 @@ export const SettingsMobile = ({ setIsOpen, navigate }) => {
 						Delete my account
 					</Subtitle>
 					<Subtitle variant='two' color={colors.grey.ten}>
-						Once you delete your account, there is no going back. Please be
-						certain.
+						There is no going back. Please be certain.
 					</Subtitle>
-					<DeleteAccountButton
+					<Button
 						className='container-delete-account'
-						variant='primary'
+						variant='delete'
 						onClick={() => setIsOpen(true)}
 						mt={16}
 					>
@@ -52,7 +49,7 @@ export const SettingsMobile = ({ setIsOpen, navigate }) => {
 						>
 							Delete
 						</ButtonText>
-					</DeleteAccountButton>
+					</Button>
 				</div>
 			</Container>
 		</div>

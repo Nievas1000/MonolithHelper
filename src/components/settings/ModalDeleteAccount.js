@@ -1,12 +1,12 @@
 import axios from 'axios';
 import {
 	Subtitle,
-	DeleteAccountButton,
 	ButtonText,
 	colors,
 	ContainerModalDeleteAccount,
 	DeleteAccountIcon,
 	CrossModalIcon,
+	Button,
 } from 'design-kit-codojo';
 import { useState } from 'react';
 
@@ -53,7 +53,7 @@ const ModalDeleteAccount = ({ setIsOpen }) => {
 			<Subtitle variant='one' mt={32} ml={32} color={colors.grey.ten}>
 				<DeleteAccountIcon /> Delete Account
 			</Subtitle>
-			<Subtitle variant='two' ml={32} color={colors.grey.ten}>
+			<Subtitle variant='two' ml={32} color={colors.grey.six}>
 				This action cannot be undone.
 			</Subtitle>
 			<Subtitle variant='two' color={colors.grey.five} mt={24} ml={32}>
@@ -64,17 +64,17 @@ const ModalDeleteAccount = ({ setIsOpen }) => {
 				className='input-delete-account'
 				onChange={handleDelete}
 			/>
-			<DeleteAccountButton
+			<Button
 				mt={24}
 				ml={24}
-				variant='primary'
+				variant='delete'
 				className='container-delete-account-modal'
 				onClick={deleteUser}
 			>
 				<ButtonText variant='one' mt={11} color={colors.feedback.error}>
 					Delete
 				</ButtonText>
-			</DeleteAccountButton>
+			</Button>
 		</ContainerModalDeleteAccount>
 	);
 };
