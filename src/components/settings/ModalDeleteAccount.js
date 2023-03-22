@@ -71,7 +71,7 @@ const ModalDeleteAccount = ({ setIsOpen }) => {
 				className='container-delete-account-modal'
 				onClick={deleteUser}
 			>
-				<ButtonText variant='one' mt={11} color={colors.feedback.error}>
+				<ButtonText variant='one' mt={11}>
 					Delete
 				</ButtonText>
 			</Button>
