@@ -22,7 +22,6 @@ const NavBar = ({
 	activeDropdown,
 	activeInfo,
 	setActiveInfo,
-	settings = false,
 }) => {
 	const apps = useSelector((state) => state.allApps);
 	useApp();
@@ -36,7 +35,7 @@ const NavBar = ({
 					</Text>
 				</OpenAppTab>
 				<NavBarTabs />
-				{apps.length > 3 && !settings ? (
+				{apps.length > 3 ? (
 					<Tab
 						variant='more'
 						onClick={() => setActiveDropdown(!activeDropdown)}
@@ -49,22 +48,6 @@ const NavBar = ({
 							<DropdownApps setActiveDropdown={setActiveDropdown} />
 						) : null}
 					</Tab>
-				) : null}
-				{!settings ? (
-					<div className='more-mobile'>
-						<Tab
-							variant='more'
-							onClick={() => setActiveDropdown(!activeDropdown)}
-						>
-							<Text variant='two' color={colors.grey.five} mt={12}>
-								more...
-							</Text>
-							<MiniArrowIconExpand />
-							{activeDropdown ? (
-								<DropdownApps setActiveDropdown={setActiveDropdown} />
-							) : null}
-						</Tab>
-					</div>
 				) : null}
 
 				<NavLink

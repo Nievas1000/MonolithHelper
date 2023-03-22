@@ -36,7 +36,6 @@
 .settings-modal{
     display: none;
 }
-
 @media only screen and (max-width:1430px){
     .menu-settings-options{
         width: 918px !important;

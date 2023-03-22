@@ -8,6 +8,9 @@ body{
 	overflow-x: hidden;
   overflow-y: auto;
 }
+.cursor{
+	cursor: pointer;
+}
 .App{
     height: 100vh;
 	background: #131514;

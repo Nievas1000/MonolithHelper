@@ -48,7 +48,7 @@ const useCytoscope = (container, degree) => {
 							style: {
 								'background-image': 'data(logo)',
 								'border-width': '0px',
-								'background-color': '#1E1E1E',
+								'background-color': '#131514',
 								label: 'data(id)',
 								color: colors.grey.ten,
 								'text-margin-x': '10px',

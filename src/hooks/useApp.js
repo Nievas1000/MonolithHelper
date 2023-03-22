@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 const useApp = () => {
 	const userApplicationKey = localStorage.getItem('userAppKey');
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		const getDataApp = async () => {
 			try {
