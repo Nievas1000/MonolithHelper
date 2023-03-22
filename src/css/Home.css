@@ -4,6 +4,7 @@
 }
 .drop-classes{
     z-index: 1;
+    width: auto !important;
 }
 .container-classes{
 	overflow-x: hidden;
@@ -139,5 +140,9 @@ input[type="range"]::-webkit-slider-thumb {
     }
     .metric{
         display: none !important;
+    }
+    .container-classes{
+        overflow: auto;
+        max-width: 365px;
     }
 }

@@ -8,24 +8,24 @@ const ClassesInDropdown = ({
 	setShowClasses,
 	showClasses,
 }) => {
+	const classesInit = selectedApp.classes[0].sort();
 	const handleDrop = (classe) => {
 		selectClass(classe, setShowClasses);
 		setShowClasses(false);
 	};
 	return (
-		<div>
+		<div className='w'>
 			{selectedApp && classes.length === 0
-				? selectedApp.classes[0].map((classe) => {
+				? classesInit.map((classe) => {
 						return (
 							<TabDropdown
+								className='s'
 								variant={selectedClass === classe ? 'active' : 'primary'}
 								key={classe}
 								onClick={() => handleDrop(classe)}
 							>
 								<Text variant='two' mt={12} alt={'Hola'} title={classe}>
-									{classe.length > 40
-										? `${classe.substring(0, 40)}...`
-										: classe}
+									{classe}
 								</Text>
 							</TabDropdown>
 						);
@@ -38,9 +38,7 @@ const ClassesInDropdown = ({
 								onClick={() => handleDrop(classe)}
 							>
 								<Text variant='two' mt={12}>
-									{classe.length > 40
-										? `${classe.substring(0, 40)}...`
-										: classe}
+									{classe}
 								</Text>
 							</TabDropdown>
 						);
