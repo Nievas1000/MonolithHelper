@@ -1,28 +1,32 @@
 import { colors } from 'design-kit-codojo';
 
 // Metodo encargado de recorrer las clases para definir si son o no encapsuladas
-const metricOfClass = (nodes, edges, app, classe, tables) => {
+const metricOfClass = (nodes, edges, app, classe, tables, getName) => {
 	let relationsExtends = [];
 	const nonEncapsulates = [];
 	const nonEncapsulatesTables = [];
 	for (let i = 0; i < nodes.length; i++) {
 		relationsExtends = app.relationsExtends.flatMap((node) =>
 			node.extend.map((child) => {
-				if (nodes[i].data.id !== node.classe) {
+				const classNameNode = getName(node.classe);
+				if (nodes[i].data.id !== classNameNode) {
 					return null;
 				}
-				if (nodes.find((data) => data.data.id === child.name) === undefined) {
+				const classNameChild = getName(child.name);
+				if (
+					nodes.find((data) => data.data.id === classNameChild) === undefined
+				) {
 					nodes.push({
 						data: {
-							id: child.name,
+							id: classNameChild,
 						},
 					});
 				}
 				return {
 					data: {
-						id: `${node.classe}-${child.name}`,
-						source: node.classe,
-						target: child.name,
+						id: `${classNameNode}-${classNameChild}`,
+						source: classNameNode,
+						target: classNameChild,
 					},
 				};
 			})
@@ -30,13 +34,17 @@ const metricOfClass = (nodes, edges, app, classe, tables) => {
 
 		const usedClasses = app.usedClasses.flatMap((node) =>
 			node.use.map((child) => {
-				if (nodes[i].data.id !== node.classe) {
+				const classNameNode = getName(node.classe);
+				if (nodes[i].data.id !== classNameNode) {
 					return null;
 				}
-				if (nodes.find((data) => data.data.id === child.name) === undefined) {
+				const classNameChild = getName(child.name);
+				if (
+					nodes.find((data) => data.data.id === classNameChild) === undefined
+				) {
 					nodes.push({
 						data: {
-							id: child.name,
+							id: classNameChild,
 							selectColor: colors.background.two,
 							selectBorder: colors.primary.two,
 						},
@@ -44,31 +52,33 @@ const metricOfClass = (nodes, edges, app, classe, tables) => {
 				}
 				return {
 					data: {
-						id: `${node.classe}-${child.name}`,
-						source: node.classe,
-						target: child.name,
+						id: `${classNameNode}-${classNameChild}`,
+						source: classNameNode,
+						target: classNameChild,
 					},
 				};
 			})
 		);
 		app.tables.map((node) => {
-			if (nodes[i].data.id !== node.classe) {
+			const classNameNode = getName(node.classe);
+			if (nodes[i].data.id !== classNameNode) {
 				return null;
 			}
-			if (tables.find((data) => data.data.id === node.table) === undefined) {
+			const tableName = getName(node.table);
+			if (tables.find((data) => data.data.id === tableName) === undefined) {
 				tables.push({
 					data: {
-						id: node.table,
+						id: tableName,
 					},
 				});
 			} else {
-				nonEncapsulatesTables.push(node.table);
+				nonEncapsulatesTables.push(tableName);
 			}
 			return {
 				data: {
-					id: `${node.classe}-${node.table}`,
-					source: node.classe,
-					target: node.table,
+					id: `${classNameNode}-${tableName}`,
+					source: classNameNode,
+					target: tableName,
 				},
 			};
 		});

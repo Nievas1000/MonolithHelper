@@ -3,7 +3,7 @@ import { colors } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useNodes from './useNodes';
-/* import compoundDragAndDropConfig from '../utils/compoundDragAndDropConfig'; */
+import compoundDragAndDropConfig from '../utils/compoundDragAndDropConfig';
 import fcose from 'cytoscape-fcose';
 
 cytoscape.use(fcose);
@@ -14,11 +14,11 @@ const useCytoscope = (container, degree) => {
 	const app = state.selectedApp;
 	const classe = state.selectedClass;
 	const [edges, nodes, metric] = useNodes(degree);
-	/* let cy; */
+	let cy;
 	useEffect(() => {
 		if (app) {
 			if (container) {
-				cytoscape({
+				cy = cytoscape({
 					container,
 					elements: [...nodes, ...edges],
 					maxZoom: 1.5,
@@ -76,7 +76,7 @@ const useCytoscope = (container, degree) => {
 						},
 					],
 				});
-				/* compoundDragAndDropConfig(cy); */
+				compoundDragAndDropConfig(cy);
 			}
 		}
 	}, [classe, app, nodes]);

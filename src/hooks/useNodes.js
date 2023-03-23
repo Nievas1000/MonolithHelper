@@ -6,6 +6,12 @@ import table from '../utils/graphIcons/Table.svg';
 import nonEncapsulatedTable from '../utils/graphIcons/NonEncapsulatedTable.svg';
 import metricOfClass from '../utils/metricsOfClass';
 
+const getName = (name) => {
+	const cadena = name.split('.');
+	const className = cadena[cadena.length - 1];
+
+	return className;
+};
 // Con este hook le creamos los nodes y edges mediante las relaciones extraidas del json de la app seleccionada
 const useNodes = (recursiveNodes = 0) => {
 	const state = useSelector((state) => state);
@@ -20,15 +26,17 @@ const useNodes = (recursiveNodes = 0) => {
 	const metricNodes = [];
 	const metricTables = [];
 	const extendToNonUse = [];
+	const className = getName(classe);
 	const nodes =
 		classe === 'Select class...'
 			? []
 			: [
 					{
 						data: {
-							id: classe,
+							id: className,
 							selectColor: colors.primary.two,
 							selectBorder: colors.grey.ten,
+							path: classe,
 						},
 						position: { x: 10.66666666666671, y: 100.00000000000006 },
 					},
@@ -38,27 +46,32 @@ const useNodes = (recursiveNodes = 0) => {
 			if (classe !== node.classe) {
 				return null;
 			}
+			const classNameChild = getName(child.name);
+			const classNameNode = getName(node.classe);
 			metricNodes.push({
 				data: {
-					id: child.name,
+					id: classNameChild,
 				},
 			});
 			extendToNonUse.push({
 				data: {
-					id: child.name,
+					id: classNameChild,
 				},
 			});
 			pos += 110;
+
 			if (metricNodes.length > 0) {
 				if (
-					metricNodes.find((data) => data.data.id === child.name) === undefined
+					metricNodes.find((data) => data.data.id === classNameChild) ===
+					undefined
 				) {
 					nodes.push({
 						data: {
-							id: child.name,
+							id: classNameChild,
 							selectColor: colors.background.two,
 							selectBorder: colors.feedback.warning,
 							extend: true,
+							path: child.name,
 						},
 						position: {
 							x: pos,
@@ -68,10 +81,11 @@ const useNodes = (recursiveNodes = 0) => {
 				} else {
 					nodes.push({
 						data: {
-							id: child.name,
+							id: classNameChild,
 							selectColor: colors.background.two,
 							selectBorder: colors.primary.two,
 							extend: true,
+							path: child.name,
 						},
 						position: {
 							x: pos,
@@ -82,9 +96,9 @@ const useNodes = (recursiveNodes = 0) => {
 			}
 			return {
 				data: {
-					id: `${node.classe}-${child.name}`,
-					source: node.classe,
-					target: child.name,
+					id: `${classNameNode}-${classNameChild}`,
+					source: classNameNode,
+					target: classNameChild,
 				},
 			};
 		})
@@ -94,11 +108,14 @@ const useNodes = (recursiveNodes = 0) => {
 			if (classe !== node.classe) {
 				return null;
 			}
+			const classNameImplement = getName(node.implement.name);
+			const classNameNode = getName(node.classe);
 			nodes.push({
 				data: {
-					id: node.implement.name,
+					id: classNameImplement,
 					logo: interfaceIcon,
 					interface: true,
+					path: node.implement.name,
 				},
 				position: {
 					x: pos,
@@ -108,9 +125,9 @@ const useNodes = (recursiveNodes = 0) => {
 			pos += 110;
 			return {
 				data: {
-					id: `${node.classe}-${node.implement.name}`,
-					source: node.classe,
-					target: node.implement.name,
+					id: `${classNameNode}-${classNameImplement}`,
+					source: classNameNode,
+					target: classNameImplement,
 				},
 			};
 		});
@@ -120,23 +137,28 @@ const useNodes = (recursiveNodes = 0) => {
 			if (classe !== node.classe) {
 				return null;
 			}
+			const classNameChild = getName(child.name);
+			const classNameNode = getName(node.classe);
 			if (
-				metricNodes.find((data) => data.data.id === child.name) === undefined
+				metricNodes.find((data) => data.data.id === classNameChild) ===
+				undefined
 			) {
 				metricNodes.push({
 					data: {
-						id: child.name,
+						id: classNameChild,
 					},
 				});
 			}
 			if (
-				extendToNonUse.find((data) => data.data.id === child.name) === undefined
+				extendToNonUse.find((data) => data.data.id === classNameChild) ===
+				undefined
 			) {
 				nodes.push({
 					data: {
-						id: child.name,
+						id: classNameChild,
 						selectColor: colors.background.two,
 						selectBorder: colors.primary.two,
+						path: child.name,
 					},
 					position: {
 						x: pos,
@@ -146,9 +168,9 @@ const useNodes = (recursiveNodes = 0) => {
 				pos += 110;
 				return {
 					data: {
-						id: `${node.classe}-${child.name}`,
-						source: node.classe,
-						target: child.name,
+						id: `${classNameNode}-${classNameChild}`,
+						source: classNameNode,
+						target: classNameChild,
 					},
 				};
 			} else {
@@ -161,16 +183,19 @@ const useNodes = (recursiveNodes = 0) => {
 			if (classe !== node.classe) {
 				return null;
 			}
+			const tableName = getName(node.table);
+			const classNameNode = getName(node.classe);
 			metricTables.push({
 				data: {
-					id: node.table,
+					id: tableName,
 				},
 			});
 			nodes.push({
 				data: {
-					id: node.table,
+					id: tableName,
 					logo: table,
 					table: true,
+					path: node.table,
 				},
 				position: {
 					x: pos,
@@ -180,9 +205,9 @@ const useNodes = (recursiveNodes = 0) => {
 			pos += 110;
 			return {
 				data: {
-					id: `${node.classe}-${node.table}`,
-					source: node.classe,
-					target: node.table,
+					id: `${classNameNode}-${tableName}`,
+					source: classNameNode,
+					target: tableName,
 				},
 			};
 		});
@@ -194,8 +219,9 @@ const useNodes = (recursiveNodes = 0) => {
 		metricNodes,
 		metricEdges,
 		app,
-		classe,
-		metricTables
+		className,
+		metricTables,
+		getName
 	);
 	// Zona para mostrar los nodes
 	const edges = [];
@@ -207,7 +233,7 @@ const useNodes = (recursiveNodes = 0) => {
 	// Zona para manejar el nivel de los degree
 	if (recursiveNodes > 1 && recursiveNodes <= 5) {
 		for (let i = 0; i < recursiveNodes - 1; i++) {
-			recursiveMethod(nodes, edges, app, nodesToShow);
+			recursiveMethod(nodes, edges, app, nodesToShow, getName);
 		}
 	}
 	nodes.forEach((node) => {
