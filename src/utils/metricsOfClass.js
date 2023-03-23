@@ -107,7 +107,7 @@ const metricOfClass = (nodes, edges, app, classe, tables, getName) => {
 		nonEncapsulatedClasses: nonEncapsulates.length,
 		encapsulatedClasses:
 			nonEncapsulates.length > 0
-				? nodes.length - nonEncapsulates.length - 1
+				? nodes.length - nonEncapsulates.length
 				: nodes.length,
 		encapsulatedTables:
 			nonEncapsulatesTables.length > 0
@@ -115,6 +115,7 @@ const metricOfClass = (nodes, edges, app, classe, tables, getName) => {
 				: tables.length,
 		nonEncapsulatedTables: nonEncapsulatesTables.length,
 		nonEncapsulatedData: nonEncapsulates.concat(nonEncapsulatesTables),
+		showNodes: 0,
 	};
 };
 

@@ -6,13 +6,13 @@ const ClassesInDropdown = ({
 	classes,
 	selectClass,
 	setShowClasses,
-	showClasses,
 }) => {
 	const classesInit = selectedApp.classes[0].sort();
 	const handleDrop = (classe) => {
 		selectClass(classe, setShowClasses);
 		setShowClasses(false);
 	};
+	console.log(classes);
 	return (
 		<div className='w'>
 			{selectedApp && classes.length === 0
