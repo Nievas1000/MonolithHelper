@@ -223,6 +223,7 @@ const useNodes = (recursiveNodes = 0) => {
 		metricTables,
 		getName
 	);
+
 	// Zona para mostrar los nodes
 	const edges = [];
 	relationsImplements.map((x) => (x !== null ? edges.push(x) : null));
@@ -252,6 +253,7 @@ const useNodes = (recursiveNodes = 0) => {
 			nonEncapsulates.interfaces.push(node.data.id);
 		}
 	});
+	nonEncapsulates.showNodes = nodes.length;
 	return [edges, nodes, nonEncapsulates];
 };
 

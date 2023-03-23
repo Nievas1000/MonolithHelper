@@ -5,7 +5,7 @@ cytoscape.use(compoundDragAndDrop); */
 /* eslint-disable */
 
 // Aqui esta toda la configuracion necesaria para que el usuario puede crear un cuadro y poder juntar los nodos
-export const compoundDragAndDropConfig = (cy) => {
+export const compoundDragAndDropConfig = (cy, handleClass) => {
 	cy.nodes().on('mouseover', function (event) {
 		const node = event.target;
 		node.style('label', node.data().path);
@@ -13,6 +13,10 @@ export const compoundDragAndDropConfig = (cy) => {
 	cy.nodes().on('mouseout', function (event) {
 		const node = event.target;
 		node.style('label', '');
+	});
+	cy.on('dblclick', 'node', function (event) {
+		const node = event.target.data().path;
+		handleClass(node);
 	});
 	/* const options = {
 		grabbedNode: (node) => true,

@@ -47,7 +47,6 @@ const DropdownClasses = () => {
 							classes={classes}
 							selectClass={selectClass}
 							setShowClasses={setShowClasses}
-							showClasses={showClasses}
 						/>
 					</div>
 				</ContainerClasses>
