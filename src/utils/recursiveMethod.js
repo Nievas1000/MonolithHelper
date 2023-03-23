@@ -3,7 +3,7 @@ import interfaceIcon from '../utils/graphIcons/Interface.svg';
 import table from '../utils/graphIcons/Table.svg';
 
 // Metodo recursivo para buscar las relaciones de los nodos dependiendo el degree establecido por el usuario, recorremos todas las relaciones de la apliacion, buscando la similitud con los nodos seleccionados
-export const recursiveMethod = (nodes, edges, app, nodesToShow) => {
+export const recursiveMethod = (nodes, edges, app, nodesToShow, getName) => {
 	const max = nodes.length;
 	let posY = 450;
 	let relationsExtends = [];
@@ -13,16 +13,21 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow) => {
 		let posX = -150;
 		relationsExtends = app.relationsExtends.flatMap((node) =>
 			node.extend.map((child) => {
-				if (nodes[i].data.id !== node.classe) {
+				const classNameNode = getName(node.classe);
+				if (nodes[i].data.id !== classNameNode) {
 					return null;
 				}
-				if (nodes.find((data) => data.data.id === child.name) === undefined) {
+				const classNameChild = getName(child.name);
+				if (
+					nodes.find((data) => data.data.id === classNameChild) === undefined
+				) {
 					nodes.push({
 						data: {
-							id: child.name,
+							id: classNameChild,
 							selectColor: colors.background.two,
 							selectBorder: colors.primary.two,
 							extend: true,
+							path: child.name,
 						},
 						position: {
 							x: posX,
@@ -34,28 +39,31 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow) => {
 				posX += 150;
 				return {
 					data: {
-						id: `${node.classe}-${child.name}`,
-						source: node.classe,
-						target: child.name,
+						id: `${classNameNode}-${classNameChild}`,
+						source: classNameNode,
+						target: classNameChild,
 					},
 				};
 			})
 		);
 		if (nodesToShow.interfaces) {
 			relationsImplements = app.relationsImplement.map((node) => {
-				if (nodes[i].data.id !== node.classe) {
+				const classNameNode = getName(node.classe);
+				if (nodes[i].data.id !== classNameNode) {
 					return null;
 				}
+				const classNameImplement = getName(node.implement.name);
 				if (
-					nodes.find((data) => data.data.id === node.implement.name) ===
+					nodes.find((data) => data.data.id === classNameImplement) ===
 					undefined
 				) {
 					nodes.push({
 						data: {
-							id: node.implement.name,
+							id: classNameImplement,
 							logo: interfaceIcon,
 							parent: 'parent',
 							interface: true,
+							path: node.implement.name,
 						},
 						position: {
 							x: posX,
@@ -67,24 +75,29 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow) => {
 				posX += 150;
 				return {
 					data: {
-						id: `${node.classe}-${node.implement.name}`,
-						source: node.classe,
-						target: node.implement.name,
+						id: `${classNameNode}-${classNameImplement}`,
+						source: classNameNode,
+						target: classNameImplement,
 					},
 				};
 			});
 		}
 		const usedClasses = app.usedClasses.flatMap((node) =>
 			node.use.map((child) => {
-				if (nodes[i].data.id !== node.classe) {
+				const classNameNode = getName(node.classe);
+				if (nodes[i].data.id !== classNameNode) {
 					return null;
 				}
-				if (nodes.find((data) => data.data.id === child.name) === undefined) {
+				const classNameChild = getName(child.name);
+				if (
+					nodes.find((data) => data.data.id === classNameChild) === undefined
+				) {
 					nodes.push({
 						data: {
-							id: child.name,
+							id: classNameChild,
 							selectColor: colors.background.two,
 							selectBorder: colors.primary.two,
+							path: child.name,
 						},
 						position: {
 							x: posX,
@@ -96,23 +109,26 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow) => {
 				posX += 150;
 				return {
 					data: {
-						id: `${node.classe}-${child.name}`,
-						source: node.classe,
-						target: child.name,
+						id: `${classNameNode}-${classNameChild}`,
+						source: classNameNode,
+						target: classNameChild,
 					},
 				};
 			})
 		);
 		if (nodesToShow.tables) {
 			tables = app.tables.map((node) => {
-				if (nodes[i].data.id !== node.classe) {
+				const classNameNode = getName(node.classe);
+				if (nodes[i].data.id !== classNameNode) {
 					return null;
 				}
+				const tableName = getName(node.table);
 				nodes.push({
 					data: {
-						id: node.table,
+						id: tableName,
 						logo: table,
 						table: true,
+						path: node.table,
 					},
 					position: {
 						x: posX,
@@ -123,9 +139,9 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow) => {
 				posX += 150;
 				return {
 					data: {
-						id: `${node.classe}-${node.table}`,
-						source: node.classe,
-						target: node.table,
+						id: `${classNameNode}-${tableName}`,
+						source: classNameNode,
+						target: tableName,
 					},
 				};
 			});

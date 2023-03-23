@@ -4,7 +4,7 @@ import InputDegreeGraph from './InputDegreeGraph';
 import { MetricOfClass } from './MetricOfClass';
 
 const Graph = () => {
-	const [degree, setDegree] = useState(0);
+	const [degree, setDegree] = useState(1);
 	const [metric, classe] = useCytoscope(document.getElementById('cy'), degree);
 	return (
 		<div>

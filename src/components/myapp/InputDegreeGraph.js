@@ -28,7 +28,7 @@ const InputDegreeGraph = ({ degree, setDegree }) => {
 				</ul>
 			</div>
 			<span className='level-degree d-flex justify-content-center mt-3'>
-				{degree} st Degree
+				{degree > 1 ? `${degree} Degrees` : `${degree} Degree`}
 			</span>
 		</div>
 	);
