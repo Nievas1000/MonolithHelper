@@ -10,7 +10,9 @@ import useDropdownMenu from '../../hooks/useDropdownMenu';
 const NavBarTabs = () => {
 	const state = useSelector((state) => state);
 	const apps = state.initialApps;
+	
 	const selectedApp = state.selectedApp;
+	const info=state.info;
 	const [selectApp, addAppToDropdown] = useDropdownMenu();
 	return (
 		<div className='tabs d-flex'>
@@ -20,10 +22,11 @@ const NavBarTabs = () => {
 							<div key={app.applicationName} className='apps-full'>
 								<Tab
 									variant={
-										selectedApp.applicationName === app.applicationName
+										selectedApp.applicationName === app.applicationName && !info
 											? 'active'
 											: 'primary'
 									}
+									
 									onClick={() => selectApp(app)}
 								>
 									{selectedApp.applicationName === app.applicationName ? (
