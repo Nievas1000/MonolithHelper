@@ -67,7 +67,9 @@ const reducer = (state = initialState, action) => {
 				selectedApp: action.payload,
 				selectedClass: action.payload.classes[0][0],
 				info:false,
+				
 			};
+			
 			case 'ADD':
 				return {
 					...state,				

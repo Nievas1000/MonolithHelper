@@ -10,6 +10,7 @@ cytoscape.use(fcose);
 
 // Hook para darle forma al grafico, aqui definimos los label, el estilo del node, el estilo de los edges, es estilo del cuadrado que puede crear el usuario
 const useCytoscope = (container, degree) => {
+	
 	const state = useSelector((state) => state);
 	const app = state.selectedApp;
 	const classe = state.selectedClass;
@@ -17,6 +18,7 @@ const useCytoscope = (container, degree) => {
 	/* let cy; */
 	useEffect(() => {
 		if (app) {
+			container=document.getElementById('cy')
 			if (container) {
 				cytoscape({
 					container,

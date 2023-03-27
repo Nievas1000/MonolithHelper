@@ -6,6 +6,7 @@ import { MetricOfClass } from './MetricOfClass';
 const Graph = () => {
 	const [degree, setDegree] = useState(0);
 	const [metric, classe] = useCytoscope(document.getElementById('cy'), degree);
+	
 	return (
 		<div>
 			<div className='d-flex'>
