@@ -29,7 +29,7 @@ export const MetricOfClass = ({ metric, classe }) => {
 					metric.encapsulatedTables +
 					metric.nonEncapsulatedTables +
 					metric.encapsulatedClasses}{' '}
-				({metric.showNodes - 1} shown)
+				resources ({metric.showNodes - 1} shown)
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={16} mt='4px'>
 				<SmallInterfaceIcon /> {metric.interfaces.length}

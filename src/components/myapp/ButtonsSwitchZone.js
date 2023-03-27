@@ -6,9 +6,6 @@ const ButtonsSwitchZone = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<div className='d-flex'>
-			<Text variant='two' color={colors.grey.four} mt='6px' mr={16} ml={16}>
-				Show
-			</Text>
 			<Container ml={16}>
 				<SwitchButton value={'Interfaces'} />
 			</Container>
