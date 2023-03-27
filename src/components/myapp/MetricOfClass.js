@@ -24,7 +24,12 @@ export const MetricOfClass = ({ metric, classe }) => {
 				{classe.length > 35 ? `${classe.substring(0, 35)}...` : classe}
 			</Text>
 			<Text variant='two' color={colors.grey.six} ml={15} mt={26}>
-				Utilizes
+				Utilizes{' '}
+				{metric.nonEncapsulatedClasses +
+					metric.encapsulatedTables +
+					metric.nonEncapsulatedTables +
+					metric.encapsulatedClasses}{' '}
+				resources ({metric.showNodes - 1} shown)
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={16} mt='4px'>
 				<SmallInterfaceIcon /> {metric.interfaces.length}

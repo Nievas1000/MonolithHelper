@@ -1,12 +1,24 @@
-import cytoscape from 'cytoscape';
+/* import cytoscape from 'cytoscape';
 import compoundDragAndDrop from 'cytoscape-compound-drag-and-drop';
 import { colors } from 'design-kit-codojo';
-cytoscape.use(compoundDragAndDrop);
+cytoscape.use(compoundDragAndDrop); */
 /* eslint-disable */
 
 // Aqui esta toda la configuracion necesaria para que el usuario puede crear un cuadro y poder juntar los nodos
-export const compoundDragAndDropConfig = (cy) => {
-	const options = {
+export const compoundDragAndDropConfig = (cy, handleClass) => {
+	cy.nodes().on('mouseover', function (event) {
+		const node = event.target;
+		node.style('label', node.data().path);
+	});
+	cy.nodes().on('mouseout', function (event) {
+		const node = event.target;
+		node.style('label', '');
+	});
+	cy.on('dblclick', 'node', function (event) {
+		const node = event.target.data().path;
+		handleClass(node);
+	});
+	/* const options = {
 		grabbedNode: (node) => true,
 		dropTarget: (dropTarget, grabbedNode) => true,
 		dropSibling: (dropSibling, grabbedNode) => true,
@@ -56,15 +68,7 @@ export const compoundDragAndDropConfig = (cy) => {
 				},
 			});
 		}
-	});
-	cy.nodes().on('mouseover', function (event) {
-		const node = event.target;
-		node.style('label', node.data().id);
-	});
-	cy.nodes().on('mouseout', function (event) {
-		const node = event.target;
-		node.style('label', '');
-	});
+	}); */
 	/* cy.on('cdnddrop', function (event, dropTarget, dropSibling) {
 		dropTarget.children().map((e) => {
 			const index = parents.findIndex(
