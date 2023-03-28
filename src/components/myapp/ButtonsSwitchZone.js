@@ -10,7 +10,7 @@ const ButtonsSwitchZone = () => {
 				<SwitchButton value={'Interfaces'} />
 			</Container>
 			<Container ml={32}>
-				<SwitchButton value={'Tables'} />
+				<SwitchButton value={'Datastores'} />
 			</Container>
 			<Container className='cursor' ml={34} mt={11}>
 				<Container className='d-flex' onClick={() => setIsOpen(!isOpen)}>
