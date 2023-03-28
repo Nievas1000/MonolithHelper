@@ -6,7 +6,7 @@ const ButtonsSwitchZone = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<div className='d-flex'>
-			<Container ml={16}>
+			<Container ml={33}>
 				<SwitchButton value={'Interfaces'} />
 			</Container>
 			<Container ml={32}>
