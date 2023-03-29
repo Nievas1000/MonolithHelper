@@ -38,20 +38,20 @@ export const MetricOfClass = ({ metric, classe }) => {
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={15} mt={-11}>
 				<SmallEncapsulatedIcon /> {metric.encapsulatedClasses}
-				{metric.encapsulatedClasses === 1  ? ' exclusively class' : ' exclusively classes'}
+				{metric.encapsulatedClasses === 1  ? ' exclusive class' : ' exclusive classes'}
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={15} mt={-11}>
 				<SmallNonEncapsulatedIcon /> {metric.nonEncapsulatedClasses}
-					{metric.nonEncapsulatedClasses === 1 ? ' non-exclusively class ' : ' non-exclusively classes'}
+					{metric.nonEncapsulatedClasses === 1 ? ' non-exclusive class ' : ' non-exclusive classes'}
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={17} mt={-11}>
 				<SmallEncapsulatedTableIcon /> {metric.encapsulatedTables}
 				
-				{metric.encapsulatedTables === 1 ? ' exclusively datastore ': ' exclusively datastores '}
+				{metric.encapsulatedTables === 1 ? ' exclusive datastore ': ' exclusive datastores '}
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={17} mt={-11}>
 				<SmallNonEncapsulatedTableIcon /> {metric.nonEncapsulatedTables}			
-				{metric.nonEncapsulatedTables === 1 ? ' non-exclusively datastore ' : ' non-exclusively datastores '}
+				{metric.nonEncapsulatedTables === 1 ? ' non-exclusive datastore ' : ' non-exclusive datastores '}
 			</Text>
 		</Container>
 	);
