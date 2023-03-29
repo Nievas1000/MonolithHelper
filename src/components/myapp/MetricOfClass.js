@@ -33,31 +33,25 @@ export const MetricOfClass = ({ metric, classe }) => {
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={16} mt='4px'>
 				<SmallInterfaceIcon /> {metric.interfaces.length}
-				{metric.interfaces.lenth > 1 ? ' interfaces' : ' interface'}
+				{metric.interfaces.length === 1  ? ' interface' : ' interfaces'}
+
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={15} mt={-11}>
 				<SmallEncapsulatedIcon /> {metric.encapsulatedClasses}
-				{metric.encapsulatedClasses > 1
-					? ' encapsulated classes'
-					: ' encapsulated classe'}
+				{metric.encapsulatedClasses === 1  ? ' exclusively class' : ' exclusively classes'}
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={15} mt={-11}>
 				<SmallNonEncapsulatedIcon /> {metric.nonEncapsulatedClasses}
-				{metric.nonEncapsulatedClasses.length
-					? ' non-encapsulated classes'
-					: ' non-encapsulated classe'}
+					{metric.nonEncapsulatedClasses === 1 ? ' non-exclusively class ' : ' non-exclusively classes'}
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={17} mt={-11}>
 				<SmallEncapsulatedTableIcon /> {metric.encapsulatedTables}
-				{metric.encapsulatedTables.length > 1
-					? ' encapsulated tables'
-					: ' encapsulated table'}
+				
+				{metric.encapsulatedTables === 1 ? ' exclusively datastore ': ' exclusively datastores '}
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={17} mt={-11}>
-				<SmallNonEncapsulatedTableIcon /> {metric.nonEncapsulatedTables}
-				{metric.nonEncapsulatedTables.length > 1
-					? ' non-encapsulated tables'
-					: ' non-encapsulated table'}
+				<SmallNonEncapsulatedTableIcon /> {metric.nonEncapsulatedTables}			
+				{metric.nonEncapsulatedTables === 1 ? ' non-exclusively datastore ' : ' non-exclusively datastores '}
 			</Text>
 		</Container>
 	);
