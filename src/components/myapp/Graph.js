@@ -5,7 +5,6 @@ import { MetricOfClass } from './MetricOfClass';
 import { useDispatch } from 'react-redux';
 
 const Graph = () => {
-
 	const [degree, setDegree] = useState(1);
 	const dispatch = useDispatch();
 	const handleClass = (node) => {

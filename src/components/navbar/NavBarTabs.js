@@ -10,9 +10,9 @@ import useDropdownMenu from '../../hooks/useDropdownMenu';
 const NavBarTabs = () => {
 	const state = useSelector((state) => state);
 	const apps = state.initialApps;
-	
+
 	const selectedApp = state.selectedApp;
-	const info=state.info;
+	const info = state.info;
 	const [selectApp, addAppToDropdown] = useDropdownMenu();
 	return (
 		<div className='tabs d-flex'>
@@ -26,8 +26,9 @@ const NavBarTabs = () => {
 											? 'active'
 											: 'primary'
 									}
-									
-									onClick={() => selectApp(app)}
+									onClick={
+										apps[0].classes.length === 0 ? null : () => selectApp(app)
+									}
 								>
 									{selectedApp.applicationName === app.applicationName ? (
 										<LeafIconActive />
