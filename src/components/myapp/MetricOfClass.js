@@ -33,31 +33,34 @@ export const MetricOfClass = ({ metric, classe }) => {
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={16} mt='4px'>
 				<SmallInterfaceIcon /> {metric.interfaces.length}
-				{metric.interfaces.lenth > 1 ? ' interfaces' : ' interface'}
+				{metric.interfaces.length > 1 ? ' interfaces' : ''}
+				{metric.interfaces.length === 0  ? ' interfaces' : ''}
+				{metric.interfaces.length === 1  ? ' interface' : ''}
+
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={15} mt={-11}>
 				<SmallEncapsulatedIcon /> {metric.encapsulatedClasses}
-				{metric.encapsulatedClasses > 1
-					? ' encapsulated classes'
-					: ' encapsulated classe'}
+				{metric.encapsulatedClasses > 1	? ' classes exclusively': ''}
+				{metric.encapsulatedClasses === 0  ? ' classes' : ''}
+				{metric.encapsulatedClasses === 1  ? ' class exclusively' : ''}
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={15} mt={-11}>
 				<SmallNonEncapsulatedIcon /> {metric.nonEncapsulatedClasses}
-				{metric.nonEncapsulatedClasses.length
-					? ' non-encapsulated classes'
-					: ' non-encapsulated classe'}
+				{metric.nonEncapsulatedClasses > 1 ? ' classes non-exclusively' : ''}
+				{metric.nonEncapsulatedClasses === 0 ? ' classes non-exclusively' : ''}
+				{metric.nonEncapsulatedClasses === 1 ? ' class non-exclusively' : ''}
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={17} mt={-11}>
 				<SmallEncapsulatedTableIcon /> {metric.encapsulatedTables}
-				{metric.encapsulatedTables.length > 1
-					? ' encapsulated tables'
-					: ' encapsulated table'}
+				{metric.encapsulatedTables > 1 ? ' datastores exclusively': ''}
+				{metric.encapsulatedTables === 0 ? ' datastores exclusively': ''}
+				{metric.encapsulatedTables === 1 ? ' datastore exclusively': ''}
 			</Text>
 			<Text variant='three' color={colors.grey.ten} ml={17} mt={-11}>
 				<SmallNonEncapsulatedTableIcon /> {metric.nonEncapsulatedTables}
-				{metric.nonEncapsulatedTables.length > 1
-					? ' non-encapsulated tables'
-					: ' non-encapsulated table'}
+				{metric.nonEncapsulatedTables > 1 ? ' datastores non-exclusively' : ''}
+				{metric.nonEncapsulatedTables === 0 ? ' datastores non-exclusively' : ''}
+				{metric.nonEncapsulatedTables === 1 ? ' datastore non-exclusively' : ''}
 			</Text>
 		</Container>
 	);
