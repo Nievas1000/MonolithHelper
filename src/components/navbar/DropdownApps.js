@@ -28,7 +28,9 @@ const DropdownApps = ({ setActiveDropdown }) => {
 								<TabDropdown
 									variant='primary'
 									key={app.applicationName}
-									onClick={() => remove(app)}
+									onClick={
+										apps[0].classes.length === 0 ? null : () => remove(app)
+									}
 								>
 									<Text variant='two' mt={12} title={app.applicationName}>
 										{app.applicationName.length > 25

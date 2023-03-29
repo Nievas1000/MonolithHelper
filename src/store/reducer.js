@@ -12,7 +12,7 @@ const initialState = {
 		tables: true,
 	},
 	deletedApp: false,
-	info:false
+	info: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -32,9 +32,6 @@ const reducer = (state = initialState, action) => {
 				}),
 				dropdown: action.payload.slice(3),
 				selectedApp: action.payload[0],
-				selectedClass: state.selectedApp
-					? state.selectedApp.classes[0][0]
-					: state.selectedClass,
 			};
 		case 'ADD_DROPDOWN':
 			return {
@@ -66,18 +63,14 @@ const reducer = (state = initialState, action) => {
 				...state,
 				selectedApp: action.payload,
 				selectedClass: action.payload.classes[0][0],
-				info:false,
-				
+				info: false,
 			};
-			
-			case 'ADD':
-				return {
-					...state,				
-					info:true,
-					
-					
-					
-				};	
+
+		case 'ADD':
+			return {
+				...state,
+				info: true,
+			};
 		case 'SELECT_CLASS':
 			return {
 				...state,
