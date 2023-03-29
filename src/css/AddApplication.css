@@ -27,7 +27,6 @@ cursor: pointer;
 flex-direction: column;
 display: flex;
 align-items: center;
-height: 100vh;
 overflow-x: hidden;
 overflow-y: auto;
 background-color: #131514;
