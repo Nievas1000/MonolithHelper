@@ -1,3 +1,5 @@
+
+
 import {
 	Tab,
 	Text,
@@ -12,6 +14,7 @@ import {
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useAddapp } from '../../hooks/useAddapp';
 import useApp from '../../hooks/useApp';
 import DropdownApps from './DropdownApps';
 import NavBarTabs from './NavBarTabs';
@@ -24,6 +27,10 @@ const NavBar = ({
 	setActiveInfo,
 }) => {
 	const apps = useSelector((state) => state.allApps);
+	const[addApplication]=useAddapp();
+	const info = useSelector((state)=> state.info);
+
+	
 	useApp();
 	return (
 		<NavBarContainer>
@@ -52,15 +59,15 @@ const NavBar = ({
 
 				<NavLink
 					style={({ isActive }) => ({
-						backgroundColor: activeInfo ? colors.background.one : 'transparent',
+						backgroundColor: info ? colors.background.one : 'transparent',
 					})}
 					className='link'
 					to={'/how-to-add-application'}
 				>
 					<AddApplication
 						className='add-app'
-						onClick={() =>
-							activeInfo ? setActiveInfo(false) : setActiveInfo(true)
+						onClick={() => addApplication()
+							
 						}
 					>
 						<AddIcon />

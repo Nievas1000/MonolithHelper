@@ -118,7 +118,7 @@ const onClick = useCallback(async () => {
 					<Text variant='two' color={colors.grey.four} ml={4} mt={0}>
 						{' '}
 						The jar file will execute successfully with JAVA version 8 to
-						17.JAVA_HOME environment variable will need to be set for the file
+						17. JAVA_HOME environment variable will need to be set for the file
 						to execute successfully.{' '}
 					</Text>
 				</div>
