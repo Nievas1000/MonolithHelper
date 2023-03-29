@@ -24,19 +24,23 @@ const Home = () => {
 				setActiveDropdown={setActiveDropdown}
 				activeDropdown={activeDropdown}
 			/>
-			{info && <InfoApp/>}
-			{apps.length > 0 && !info ? (
-				<div>
-					<DateApp />
-					<Container ml={32} mt={24} className='container-home d-flex'>
-						<DropdownClasses />
-						<div className='container-switch'>
-							<ButtonsSwitchZone />
-						</div>
-					</Container>
+			{activeInfo && <InfoApp />}
+			<div>
+				<DateApp />
+				<Container ml={32} mt={24} className='container-home d-flex'>
+					{apps.length > 0 && !activeInfo ? <DropdownClasses /> : null}
+					<div className='container-switch'>
+						<ButtonsSwitchZone />
+					</div>
+				</Container>
+				{apps.length > 0 && !activeInfo ? (
 					<Graph />
-				</div>
-			) : null}
+				) : (
+					<div className='d-flex justify-content-center align-items-center spinner'>
+						<img src='./spinner.gif' />
+					</div>
+				)}
+			</div>
 			<PopUpDeletedApp />
 		</div>
 	);

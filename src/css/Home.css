@@ -113,6 +113,13 @@ input[type="range"]::-webkit-slider-thumb {
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
+.spinner{
+    height: 700px;
+}
+.spinner img{
+    width: 120px;
+    height: 110px;
+}
 @keyframes slideUp {
     from {
       bottom: -5;
