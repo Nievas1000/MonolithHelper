@@ -13,7 +13,7 @@ import { PopUpDeletedApp } from '../components/myapp/PopUpDeletedApp';
 const Home = () => {
 	const [activeDropdown, setActiveDropdown] = useState(false);
 	const apps = useSelector((state) => state.allApps);
-	const info = useSelector((state)=> state.info)
+	const activeInfo = useSelector((state) => state.info);
 	useApp();
 	useEffect(() => {
 		document.title = 'My Apps | Codojo';
