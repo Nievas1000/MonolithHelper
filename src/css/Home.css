@@ -110,7 +110,7 @@ input[type="range"]::-webkit-slider-thumb {
     position: absolute;
     right: 0;
     animation-name: slideUp;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
 }
 .spinner{
@@ -122,11 +122,11 @@ input[type="range"]::-webkit-slider-thumb {
 }
 @keyframes slideUp {
     from {
-      bottom: -5;
+      bottom: 0;
       opacity: 0;
     }
     to {
-      bottom: 20;
+      bottom: 40px;
       opacity: 1;
     }
   }

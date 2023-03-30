@@ -6,7 +6,7 @@ const DateApp = () => {
 	return (
 		<div className='date-app'>
 			{selectedApp ? (
-				<Text variant='three' color={colors.grey.three} mt={15} mr={35}>
+				<Text variant='three' color={colors.grey.five} mt={15} mr={35}>
 					Code received
 					{' ' + new Date(selectedApp.date).getDate() + ' '}
 					{' ' +

@@ -36,9 +36,12 @@
 .settings-modal{
     display: none;
 }
+.menu-settings-options{
+    width: 1250px !important;
+}
 @media only screen and (max-width:1430px){
     .menu-settings-options{
-        width: 918px !important;
+        width: 1050px !important;
     }
     .menu-settings{
         width: 290px !important;
@@ -51,9 +54,9 @@
     }
 }
 
-@media only screen and (max-width:1280px){
+@media only screen and (max-width:1350px){
     .menu-settings-options{
-        width: 680px !important;
+        width: 950px !important;
     }
     .menu-settings{
         width: 290px !important;
@@ -63,9 +66,9 @@
     }
 }
 
-@media only screen and (max-width:1024px){
+@media only screen and (max-width:1250px){
     .menu-settings-options{
-        width: 642px !important;
+        width: 950px !important;
     }
     .menu-settings{
         width: 210px !important;
@@ -75,6 +78,17 @@
     }
     .info-delete{
         width: 382px !important;
+    }
+}
+
+@media only screen and (max-width:1150px){
+    .menu-settings-options{
+        width: 850px !important;
+    }
+}
+@media only screen and (max-width:1024px){
+    .menu-settings-options{
+        width: 750px !important;
     }
 }
 

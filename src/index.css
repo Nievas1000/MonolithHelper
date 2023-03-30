@@ -17,7 +17,17 @@ body{
 }
 @font-face {
 	font-family: 'Play';
-	src: url('./fonts/Play-Regular.ttf') format('truetype');
+	src: url('./fonts/Play/Play-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('./fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+p, h1, h2, h3, h4, h5, h6{
+	font-family: 'Roboto', sans-serif;
 }
