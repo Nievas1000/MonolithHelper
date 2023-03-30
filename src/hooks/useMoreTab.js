@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 // Agregamos app al menu dropdown mediante el dispatch de redux
-const useDropdownMenu = () => {
+const useMoreTab = () => {
 	const dispatch = useDispatch();
 	const selectApp = (app) => {
 		dispatch({
@@ -25,4 +25,4 @@ const useDropdownMenu = () => {
 	return [selectApp, addAppToDropdown, remove];
 };
 
-export default useDropdownMenu;
+export default useMoreTab;

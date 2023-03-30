@@ -12,8 +12,9 @@ import { PopUpDeletedApp } from '../components/myapp/PopUpDeletedApp';
 const Home = () => {
 	const [activeDropdown, setActiveDropdown] = useState(false);
 	const classe = useSelector((state) => state.selectedClass);
+	const app = useSelector((state) => state.selectedApp);
 	const activeInfo = useSelector((state) => state.info);
-
+	console.log(app);
 	useEffect(() => {
 		document.title = 'My Apps | Codojo';
 	}, []);
@@ -23,25 +24,28 @@ const Home = () => {
 				setActiveDropdown={setActiveDropdown}
 				activeDropdown={activeDropdown}
 			/>
-			{activeInfo ? <InfoApp/> : 
-			
-			<div>
-				<DateApp />
-				<Container ml={32} mt={24} className='container-home d-flex'>
-					{classe !== 'Select class...' ? <DropdownClasses /> : null}
-					<div className='container-switch'>
-						<ButtonsSwitchZone />
-					</div>
-				</Container>
-				{classe !== 'Select class...' ? (
-					<Graph />
-				) : (
-					<div className='d-flex justify-content-center align-items-center spinner'>
-						<Spinner />
-					</div>
-				)}
-			</div>
-}
+			{activeInfo ? (
+				<InfoApp />
+			) : (
+				<div>
+					<DateApp />
+					<Container ml={32} mt={24} className='container-home d-flex'>
+						{classe !== 'Select class...' && app.classes.length > 0 ? (
+							<DropdownClasses />
+						) : null}
+						<div className='container-switch'>
+							<ButtonsSwitchZone />
+						</div>
+					</Container>
+					{classe !== 'Select class...' && app.classes.length > 0 ? (
+						<Graph />
+					) : (
+						<div className='d-flex justify-content-center align-items-center spinner'>
+							<Spinner />
+						</div>
+					)}
+				</div>
+			)}
 			<PopUpDeletedApp />
 		</div>
 	);

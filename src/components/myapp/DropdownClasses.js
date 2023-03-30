@@ -7,29 +7,30 @@ import {
 	InputSearchClass,
 	SearchIcon,
 } from 'design-kit-codojo';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import useDropdown from '../../hooks/useDropdown';
 import useSearchClasses from '../../hooks/useSearchClasses';
 import ClassesInDropdown from './ClassesInDropdown';
 const DropdownClasses = () => {
 	const selectedClass = useSelector((state) => state.selectedClass);
-	const [showClasses, setShowClasses] = useState(false);
 	const [selectedApp, classes, handleChange, selectClass] = useSearchClasses();
+	const [showDropdow, setShowDropdown, divRefSon, divRefFather] = useDropdown();
 	return (
 		<div className='d-block'>
 			<SelectClasses
-				variant={showClasses ? 'active' : 'primary'}
-				onClick={() => setShowClasses(!showClasses)}
+				variant={showDropdow ? 'active' : 'primary'}
+				onClick={() => setShowDropdown(!showDropdow)}
+				ref={divRefFather}
 			>
 				<Text variant='two' mt={14} mr={22}>
 					{selectedClass.length > 15
 						? `${selectedClass.substring(0, 15)}...`
 						: selectedClass}
 				</Text>
-				{showClasses ? <ArrowIconLess /> : <ArrowIconExpand />}
+				{showDropdow ? <ArrowIconLess /> : <ArrowIconExpand />}
 			</SelectClasses>
-			{showClasses ? (
-				<ContainerClasses className='drop-classes'>
+			{showDropdow ? (
+				<ContainerClasses className='drop-classes' ref={divRefSon}>
 					<div className='search-classes'>
 						<InputSearchClass
 							placeholder='Search classe...'
@@ -46,7 +47,7 @@ const DropdownClasses = () => {
 							selectedApp={selectedApp}
 							classes={classes}
 							selectClass={selectClass}
-							setShowClasses={setShowClasses}
+							setShowClasses={setShowDropdown}
 						/>
 					</div>
 				</ContainerClasses>
