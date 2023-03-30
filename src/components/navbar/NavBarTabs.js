@@ -6,14 +6,14 @@ import {
 	LeafIconActive,
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
-import useDropdownMenu from '../../hooks/useDropdownMenu';
+import useMoreTab from '../../hooks/useMoreTab';
 const NavBarTabs = () => {
 	const state = useSelector((state) => state);
 	const apps = state.initialApps;
 
 	const selectedApp = state.selectedApp;
 	const info = state.info;
-	const [selectApp, addAppToDropdown] = useDropdownMenu();
+	const [selectApp, addAppToDropdown] = useMoreTab();
 	return (
 		<div className='tabs d-flex'>
 			{apps
@@ -36,7 +36,7 @@ const NavBarTabs = () => {
 										<LeafIcon />
 									)}
 
-									<Text variant='three' mt={13} title={app.applicationName}>
+									<Text variant='two' mt={17} title={app.applicationName}>
 										{app.applicationName.length > 35
 											? `${app.applicationName.substring(0, 35)}...`
 											: app.applicationName}

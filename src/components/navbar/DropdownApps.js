@@ -6,15 +6,15 @@ import {
 	TabDropdown,
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
-import useDropdownMenu from '../../hooks/useDropdownMenu';
+import useMoreTab from '../../hooks/useMoreTab';
 
-const DropdownApps = ({ setActiveDropdown }) => {
+const DropdownApps = ({ setActiveDropdown, divRefSon }) => {
 	const state = useSelector((state) => state);
 	const apps = state.dropdown;
 	const allApps = state.allApps;
-	const [selectApp, , remove] = useDropdownMenu();
+	const [selectApp, , remove] = useMoreTab();
 	return (
-		<ContainerMoreApps className='dropdownmy'>
+		<ContainerMoreApps className='dropdownmy' ref={divRefSon}>
 			<div className='flex'>
 				<Text variant='three' mr={64} color={colors.grey.six} mt={12}>
 					More applications

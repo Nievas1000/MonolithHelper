@@ -1,5 +1,3 @@
-
-
 import {
 	Tab,
 	Text,
@@ -16,21 +14,17 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useAddapp } from '../../hooks/useAddapp';
 import useApp from '../../hooks/useApp';
+import useDropdown from '../../hooks/useDropdown';
 import DropdownApps from './DropdownApps';
 import NavBarTabs from './NavBarTabs';
 import PersonalZone from './PersonalZone';
 
-const NavBar = ({
-	setActiveDropdown,
-	activeDropdown,
-	activeInfo,
-	setActiveInfo,
-}) => {
+const NavBar = () => {
 	const apps = useSelector((state) => state.allApps);
-	const[addApplication]=useAddapp();
-	const info = useSelector((state)=> state.info);
+	const [addApplication] = useAddapp();
+	const info = useSelector((state) => state.info);
+	const [showDropdow, setShowDropdown, divRefSon, divRefFather] = useDropdown();
 
-	
 	useApp();
 	return (
 		<NavBarContainer>
@@ -45,14 +39,18 @@ const NavBar = ({
 				{apps.length > 3 ? (
 					<Tab
 						variant='more'
-						onClick={() => setActiveDropdown(!activeDropdown)}
+						onClick={() => setShowDropdown(!showDropdow)}
+						ref={divRefFather}
 					>
-						<Text variant='two' color={colors.grey.five} mt={12}>
+						<Text variant='two' color={colors.grey.five} mt={16}>
 							more...
 						</Text>
 						<MiniArrowIconExpand />
-						{activeDropdown ? (
-							<DropdownApps setActiveDropdown={setActiveDropdown} />
+						{showDropdow ? (
+							<DropdownApps
+								setActiveDropdown={showDropdow}
+								divRefSon={divRefSon}
+							/>
 						) : null}
 					</Tab>
 				) : null}
@@ -64,14 +62,9 @@ const NavBar = ({
 					className='link'
 					to={'/how-to-add-application'}
 				>
-					<AddApplication
-						className='add-app'
-						onClick={() => addApplication()
-							
-						}
-					>
+					<AddApplication className='add-app' onClick={() => addApplication()}>
 						<AddIcon />
-						<Text variant='three' color={colors.primary.two}>
+						<Text variant='two' color={colors.primary.two}>
 							Add application
 						</Text>
 					</AddApplication>

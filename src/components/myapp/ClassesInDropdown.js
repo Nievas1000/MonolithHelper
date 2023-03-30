@@ -12,7 +12,6 @@ const ClassesInDropdown = ({
 		selectClass(classe, setShowClasses);
 		setShowClasses(false);
 	};
-	console.log(classes);
 	return (
 		<div className='w'>
 			{selectedApp && classes.length === 0
