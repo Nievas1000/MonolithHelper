@@ -42,7 +42,7 @@ const useNodes = (recursiveNodes = 0) => {
 					},
 			  ];
 	relationsExtends = app.relationsExtends.flatMap((node) =>
-		node.extend.map((child) => {
+		node.uses.map((child) => {
 			if (classe !== node.classe) {
 				return null;
 			}
@@ -133,7 +133,7 @@ const useNodes = (recursiveNodes = 0) => {
 		});
 	}
 	const usedClasses = app.usedClasses.flatMap((node) =>
-		node.use.map((child) => {
+		node.uses.map((child) => {
 			if (classe !== node.classe) {
 				return null;
 			}

@@ -12,7 +12,7 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow, getName) => {
 	for (let i = 1; i < max; i++) {
 		let posX = -150;
 		relationsExtends = app.relationsExtends.flatMap((node) =>
-			node.extend.map((child) => {
+			node.uses.map((child) => {
 				const classNameNode = getName(node.classe);
 				if (nodes[i].data.id !== classNameNode) {
 					return null;
@@ -83,7 +83,7 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow, getName) => {
 			});
 		}
 		const usedClasses = app.usedClasses.flatMap((node) =>
-			node.use.map((child) => {
+			node.uses.map((child) => {
 				const classNameNode = getName(node.classe);
 				if (nodes[i].data.id !== classNameNode) {
 					return null;

@@ -7,7 +7,7 @@ const metricOfClass = (nodes, edges, app, classe, tables, getName) => {
 	const nonEncapsulatesTables = [];
 	for (let i = 0; i < nodes.length; i++) {
 		relationsExtends = app.relationsExtends.flatMap((node) =>
-			node.extend.map((child) => {
+			node.uses.map((child) => {
 				const classNameNode = getName(node.classe);
 				if (nodes[i].data.id !== classNameNode) {
 					return null;
@@ -33,7 +33,7 @@ const metricOfClass = (nodes, edges, app, classe, tables, getName) => {
 		);
 
 		const usedClasses = app.usedClasses.flatMap((node) =>
-			node.use.map((child) => {
+			node.uses.map((child) => {
 				const classNameNode = getName(node.classe);
 				if (nodes[i].data.id !== classNameNode) {
 					return null;
