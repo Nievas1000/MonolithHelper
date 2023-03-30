@@ -53,7 +53,7 @@ const Settings = () => {
 						<ContainerDeleteOption variant='primary'>
 							<div className='info-delete'>
 								<Subtitle variant='one' color={colors.grey.ten}>
-									Delete my account
+									Delete Account
 								</Subtitle>
 								<Subtitle variant='two' color={colors.grey.six}>
 									There is no going back. Please be certain.
