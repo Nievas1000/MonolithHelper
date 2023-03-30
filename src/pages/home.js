@@ -23,7 +23,8 @@ const Home = () => {
 				setActiveDropdown={setActiveDropdown}
 				activeDropdown={activeDropdown}
 			/>
-			{activeInfo && <InfoApp />}
+			{activeInfo ? <InfoApp/> : 
+			
 			<div>
 				<DateApp />
 				<Container ml={32} mt={24} className='container-home d-flex'>
@@ -40,6 +41,7 @@ const Home = () => {
 					</div>
 				)}
 			</div>
+}
 			<PopUpDeletedApp />
 		</div>
 	);
