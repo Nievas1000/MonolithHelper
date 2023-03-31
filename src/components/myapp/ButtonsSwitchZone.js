@@ -1,9 +1,9 @@
 import { colors, Container, MoreIcon, Text } from 'design-kit-codojo';
-import { useState } from 'react';
+import useDropdown from '../../hooks/useDropdown';
 import { DeleteApplication } from './DeleteApplication';
 import { SwitchButton } from './SwitchButton';
 const ButtonsSwitchZone = () => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [showDropdow, setShowDropdown, divRefSon, divRefFather] = useDropdown();
 	return (
 		<div className='d-flex'>
 			<Container ml={33}>
@@ -13,13 +13,21 @@ const ButtonsSwitchZone = () => {
 				<SwitchButton value={'Datastores'} />
 			</Container>
 			<Container className='cursor' ml={34} mt={11}>
-				<Container className='d-flex' onClick={() => setIsOpen(!isOpen)}>
+				<Container
+					className='d-flex'
+					onClick={() => setShowDropdown(!showDropdow)}
+					ref={divRefFather}
+				>
 					<MoreIcon />
 					<Text variant='two' color={colors.primary.two} ml={10} mt='-3px'>
 						More...
 					</Text>
 				</Container>
-				{isOpen ? <DeleteApplication setClose={setIsOpen} /> : null}
+				{showDropdow ? (
+					<div ref={divRefSon}>
+						<DeleteApplication setClose={setShowDropdown} />
+					</div>
+				) : null}
 			</Container>
 		</div>
 	);
