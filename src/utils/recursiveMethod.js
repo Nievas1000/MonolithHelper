@@ -47,40 +47,42 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow, getName) => {
 			})
 		);
 		if (nodesToShow.interfaces) {
-			relationsImplements = app.relationsImplement.map((node) => {
-				const classNameNode = getName(node.classe);
-				if (nodes[i].data.id !== classNameNode) {
-					return null;
-				}
-				const classNameImplement = getName(node.implement.name);
-				if (
-					nodes.find((data) => data.data.id === classNameImplement) ===
-					undefined
-				) {
-					nodes.push({
+			relationsImplements = app.relationsImplement.flatMap((node) =>
+				node.uses.map((child) => {
+					const classNameNode = getName(node.classe);
+					if (nodes[i].data.id !== classNameNode) {
+						return null;
+					}
+					const classNameImplement = getName(child.name);
+					if (
+						nodes.find((data) => data.data.id === classNameImplement) ===
+						undefined
+					) {
+						nodes.push({
+							data: {
+								id: classNameImplement,
+								logo: interfaceIcon,
+								parent: 'parent',
+								interface: true,
+								path: child.name,
+							},
+							position: {
+								x: posX,
+								y: Math.random() * (posY - 450) + posY,
+							},
+						});
+					}
+					posY += 20;
+					posX += 150;
+					return {
 						data: {
-							id: classNameImplement,
-							logo: interfaceIcon,
-							parent: 'parent',
-							interface: true,
-							path: node.implement.name,
+							id: `${classNameNode}-${classNameImplement}`,
+							source: classNameNode,
+							target: classNameImplement,
 						},
-						position: {
-							x: posX,
-							y: Math.random() * (posY - 450) + posY,
-						},
-					});
-				}
-				posY += 20;
-				posX += 150;
-				return {
-					data: {
-						id: `${classNameNode}-${classNameImplement}`,
-						source: classNameNode,
-						target: classNameImplement,
-					},
-				};
-			});
+					};
+				})
+			);
 		}
 		const usedClasses = app.usedClasses.flatMap((node) =>
 			node.uses.map((child) => {
@@ -117,34 +119,35 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow, getName) => {
 			})
 		);
 		if (nodesToShow.tables) {
-			tables = app.tables.map((node) => {
-				const classNameNode = getName(node.classe);
-				if (nodes[i].data.id !== classNameNode) {
-					return null;
-				}
-				const tableName = getName(node.table);
-				nodes.push({
-					data: {
-						id: tableName,
-						logo: table,
-						table: true,
-						path: node.table,
-					},
-					position: {
-						x: posX,
-						y: Math.random() * (posY - 450) + posY,
-					},
-				});
-				posY += 20;
-				posX += 150;
-				return {
-					data: {
-						id: `${classNameNode}-${tableName}`,
-						source: classNameNode,
-						target: tableName,
-					},
-				};
-			});
+			tables = app.tables.flatMap((node) =>
+				node.uses.map((child) => {
+					const classNameNode = getName(node.classe);
+					if (nodes[i].data.id !== classNameNode) {
+						return null;
+					}
+					nodes.push({
+						data: {
+							id: child.name,
+							logo: table,
+							table: true,
+							path: child.name,
+						},
+						position: {
+							x: posX,
+							y: Math.random() * (posY - 450) + posY,
+						},
+					});
+					posY += 20;
+					posX += 150;
+					return {
+						data: {
+							id: `${classNameNode}-${child.name}`,
+							source: classNameNode,
+							target: child.name,
+						},
+					};
+				})
+			);
 		}
 		relationsImplements.map((x) => (x !== null ? edges.push(x) : null));
 		relationsExtends.map((x) => (x !== null ? edges.push(x) : null));

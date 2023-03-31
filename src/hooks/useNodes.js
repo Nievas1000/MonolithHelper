@@ -104,33 +104,35 @@ const useNodes = (recursiveNodes = 0) => {
 		})
 	);
 	if (nodesToShow.interfaces) {
-		relationsImplements = app.relationsImplement.map((node) => {
-			if (classe !== node.classe) {
-				return null;
-			}
-			const classNameImplement = getName(node.implement.name);
-			const classNameNode = getName(node.classe);
-			nodes.push({
-				data: {
-					id: classNameImplement,
-					logo: interfaceIcon,
-					interface: true,
-					path: node.implement.name,
-				},
-				position: {
-					x: pos,
-					y: Math.random() * (350 - 450) + 350,
-				},
-			});
-			pos += 110;
-			return {
-				data: {
-					id: `${classNameNode}-${classNameImplement}`,
-					source: classNameNode,
-					target: classNameImplement,
-				},
-			};
-		});
+		relationsImplements = app.relationsImplement.flatMap((node) =>
+			node.uses.map((child) => {
+				if (classe !== node.classe) {
+					return null;
+				}
+				const classNameImplement = getName(child.name);
+				const classNameNode = getName(node.classe);
+				nodes.push({
+					data: {
+						id: classNameImplement,
+						logo: interfaceIcon,
+						interface: true,
+						path: child.name,
+					},
+					position: {
+						x: pos,
+						y: Math.random() * (350 - 450) + 350,
+					},
+				});
+				pos += 110;
+				return {
+					data: {
+						id: `${classNameNode}-${classNameImplement}`,
+						source: classNameNode,
+						target: classNameImplement,
+					},
+				};
+			})
+		);
 	}
 	const usedClasses = app.usedClasses.flatMap((node) =>
 		node.uses.map((child) => {
@@ -179,38 +181,46 @@ const useNodes = (recursiveNodes = 0) => {
 		})
 	);
 	if (nodesToShow.tables) {
-		tables = app.tables.map((node) => {
-			if (classe !== node.classe) {
-				return null;
-			}
-			const tableName = getName(node.table);
-			const classNameNode = getName(node.classe);
-			metricTables.push({
-				data: {
-					id: tableName,
-				},
-			});
-			nodes.push({
-				data: {
-					id: tableName,
-					logo: table,
-					table: true,
-					path: node.table,
-				},
-				position: {
-					x: pos,
-					y: Math.random() * (350 - 450) + 350,
-				},
-			});
-			pos += 110;
-			return {
-				data: {
-					id: `${classNameNode}-${tableName}`,
-					source: classNameNode,
-					target: tableName,
-				},
-			};
-		});
+		tables = app.tables.flatMap((node) =>
+			node.uses.map((child) => {
+				if (classe !== node.classe) {
+					return null;
+				}
+				const classNameNode = getName(node.classe);
+				if (metricTables.length > 0) {
+					if (
+						metricTables.find((data) => data.data.id === child.name) ===
+						undefined
+					) {
+						metricTables.push({
+							data: {
+								id: child.name,
+							},
+						});
+					}
+				}
+				nodes.push({
+					data: {
+						id: child.name,
+						logo: table,
+						table: true,
+						path: child.name,
+					},
+					position: {
+						x: pos,
+						y: Math.random() * (350 - 450) + 350,
+					},
+				});
+				pos += 110;
+				return {
+					data: {
+						id: `${classNameNode}-${child.name}`,
+						source: classNameNode,
+						target: child.name,
+					},
+				};
+			})
+		);
 	}
 	// Zona en la que creamos los arreglos para hacer la recursividad de las metricas
 	relationsExtends.map((x) => (x !== null ? metricEdges.push(x) : null));
