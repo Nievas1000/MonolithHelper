@@ -125,18 +125,20 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow, getName) => {
 					if (nodes[i].data.id !== classNameNode) {
 						return null;
 					}
-					nodes.push({
-						data: {
-							id: child.name,
-							logo: table,
-							table: true,
-							path: child.name,
-						},
-						position: {
-							x: posX,
-							y: Math.random() * (posY - 450) + posY,
-						},
-					});
+					if (nodes.find((data) => data.data.id === child.name) === undefined) {
+						nodes.push({
+							data: {
+								id: child.name,
+								logo: table,
+								table: true,
+								path: child.name,
+							},
+							position: {
+								x: posX,
+								y: Math.random() * (posY - 450) + posY,
+							},
+						});
+					}
 					posY += 20;
 					posX += 150;
 					return {

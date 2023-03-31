@@ -14,7 +14,6 @@ const Home = () => {
 	const classe = useSelector((state) => state.selectedClass);
 	const app = useSelector((state) => state.selectedApp);
 	const activeInfo = useSelector((state) => state.info);
-	console.log(app);
 	useEffect(() => {
 		document.title = 'My Apps | Codojo';
 	}, []);

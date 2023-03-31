@@ -6,6 +6,7 @@ import {
 	ContainerClasses,
 	InputSearchClass,
 	SearchIcon,
+	colors,
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
 import useDropdown from '../../hooks/useDropdown';
@@ -22,7 +23,7 @@ const DropdownClasses = () => {
 				onClick={() => setShowDropdown(!showDropdow)}
 				ref={divRefFather}
 			>
-				<Text variant='two' mt={14} mr={22}>
+				<Text variant='two' mt={14} mr={22} color={colors.grey.nine}>
 					{selectedClass.length > 15
 						? `${selectedClass.substring(0, 15)}...`
 						: selectedClass}

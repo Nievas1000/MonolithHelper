@@ -25,6 +25,7 @@ const useNodes = (recursiveNodes = 0) => {
 	const metricEdges = [];
 	const metricNodes = [];
 	const metricTables = [];
+	const metricInterfaces = [];
 	const extendToNonUse = [];
 	const className = getName(classe);
 	const nodes =
@@ -111,6 +112,13 @@ const useNodes = (recursiveNodes = 0) => {
 				}
 				const classNameImplement = getName(child.name);
 				const classNameNode = getName(node.classe);
+				if (
+					metricInterfaces.find(
+						(data) => data.data.id === classNameImplement
+					) === undefined
+				) {
+					metricInterfaces.push(classNameImplement);
+				}
 				nodes.push({
 					data: {
 						id: classNameImplement,
@@ -187,17 +195,14 @@ const useNodes = (recursiveNodes = 0) => {
 					return null;
 				}
 				const classNameNode = getName(node.classe);
-				if (metricTables.length > 0) {
-					if (
-						metricTables.find((data) => data.data.id === child.name) ===
-						undefined
-					) {
-						metricTables.push({
-							data: {
-								id: child.name,
-							},
-						});
-					}
+				if (
+					metricTables.find((data) => data.data.id === child.name) === undefined
+				) {
+					metricTables.push({
+						data: {
+							id: child.name,
+						},
+					});
 				}
 				nodes.push({
 					data: {
@@ -231,6 +236,7 @@ const useNodes = (recursiveNodes = 0) => {
 		app,
 		className,
 		metricTables,
+		metricInterfaces,
 		getName
 	);
 
@@ -240,7 +246,6 @@ const useNodes = (recursiveNodes = 0) => {
 	relationsExtends.map((x) => (x !== null ? edges.push(x) : null));
 	usedClasses.map((x) => (x !== null ? edges.push(x) : null));
 	tables.map((x) => (x !== null ? edges.push(x) : null));
-
 	// Zona para manejar el nivel de los degree
 	if (recursiveNodes > 1 && recursiveNodes <= 5) {
 		for (let i = 0; i < recursiveNodes - 1; i++) {
@@ -258,9 +263,6 @@ const useNodes = (recursiveNodes = 0) => {
 			} else {
 				node.data.selectBorder = '#F9D758';
 			}
-		}
-		if (node.data.interface) {
-			nonEncapsulates.interfaces.push(node.data.id);
 		}
 	});
 	nonEncapsulates.showNodes = nodes.length;
