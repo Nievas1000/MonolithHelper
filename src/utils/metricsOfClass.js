@@ -59,29 +59,30 @@ const metricOfClass = (nodes, edges, app, classe, tables, getName) => {
 				};
 			})
 		);
-		app.tables.map((node) => {
-			const classNameNode = getName(node.classe);
-			if (nodes[i].data.id !== classNameNode) {
-				return null;
-			}
-			const tableName = getName(node.table);
-			if (tables.find((data) => data.data.id === tableName) === undefined) {
-				tables.push({
+		app.tables.flatMap((node) =>
+			node.uses.map((child) => {
+				const classNameNode = getName(node.classe);
+				if (nodes[i].data.id !== classNameNode) {
+					return null;
+				}
+				if (tables.find((data) => data.data.id === child.name) === undefined) {
+					tables.push({
+						data: {
+							id: child.name,
+						},
+					});
+				} else {
+					nonEncapsulatesTables.push(child.name);
+				}
+				return {
 					data: {
-						id: tableName,
+						id: `${classNameNode}-${child.name}`,
+						source: classNameNode,
+						target: child.name,
 					},
-				});
-			} else {
-				nonEncapsulatesTables.push(tableName);
-			}
-			return {
-				data: {
-					id: `${classNameNode}-${tableName}`,
-					source: classNameNode,
-					target: tableName,
-				},
-			};
-		});
+				};
+			})
+		);
 
 		relationsExtends.map((x) => (x !== null ? edges.push(x) : null));
 		usedClasses.map((x) => (x !== null ? edges.push(x) : null));
