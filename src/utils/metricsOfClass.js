@@ -142,7 +142,6 @@ const metricOfClass = (
 			}
 		});
 	});
-	console.log(nonEncapsulates);
 	return {
 		interfaces,
 		nonEncapsulatedClasses: nonEncapsulates.length,
