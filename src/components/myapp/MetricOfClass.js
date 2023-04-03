@@ -10,9 +10,11 @@ import {
 	SmallInterfaceIcon,
 } from 'design-kit-codojo';
 
+
 export const MetricOfClass = ({ metric, classe }) => {
 	return (
 		<Container className='container-metrics' bg={colors.background.four}>
+			
 			<Text
 				variant='one'
 				color={colors.grey.nine}

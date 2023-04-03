@@ -1,15 +1,21 @@
 import axios from 'axios';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 // Hook que usamos para obtener los datos de las aplicaciones que tiene un usaurio mediante la userApplicationKey que esta almacenada en el localStorage y la aplicacion demo
 const useApp = () => {
 	const userApplicationKey = localStorage.getItem('userAppKey');
+	const state = useSelector((state) => state);
+	
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const getDataApp = async () => {
+
+
 			try {
+				if(!state.info){
 				const responseDemo = await axios.post(
 					`${process.env.REACT_APP_API_URL}/app`,
 					{
@@ -42,13 +48,17 @@ const useApp = () => {
 						payload: data,
 					});
 				}
+			}
 			} catch (error) {
 				console.log(error);
 			}
 		};
 		getDataApp();
 		const getFullApp = async () => {
+			
 			try {
+			
+					
 				const responseDemo = await axios.post(
 					`${process.env.REACT_APP_API_URL}/app`,
 					{
@@ -76,19 +86,24 @@ const useApp = () => {
 					}
 				);
 				data = data.concat(response.data.body);
+				
+				
 				if (data.length > 0) {
 					dispatch({
 						type: 'INITIAL_APPS',
 						payload: data,
 					});
+					if(!state.info){
 					dispatch({
 						type: 'SELECT_APP',
 						payload: data[0],
 					});
 				}
+				}
 			} catch (error) {
 				console.log(error);
 			}
+			
 		};
 		getFullApp();
 	}, []);
