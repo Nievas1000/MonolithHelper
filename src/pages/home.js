@@ -9,45 +9,80 @@ import NavBar from '../components/navbar/NavBar';
 import ButtonsSwitchZone from '../components/myapp/ButtonsSwitchZone';
 import { PopUpDeletedApp } from '../components/myapp/PopUpDeletedApp';
 
+
+
+
+
+
 const Home = () => {
 	const [activeDropdown, setActiveDropdown] = useState(false);
 	const classe = useSelector((state) => state.selectedClass);
 	const app = useSelector((state) => state.selectedApp);
 	const activeInfo = useSelector((state) => state.info);
+
+	
+	if(!activeInfo){
+		history.pushState(null, "", "my-app");
+		
+	}
+
+
+ 
+	
+	
+
+
 	useEffect(() => {
 		document.title = 'My Apps | Codojo';
 	}, []);
-	return (
+	return ( 
 		<div className='container-my-app'>
 			<NavBar
 				setActiveDropdown={setActiveDropdown}
 				activeDropdown={activeDropdown}
 			/>
+
+			
 			{activeInfo ? (
 				<InfoApp />
-			) : (
-				<div>
-					<DateApp />
-					<Container ml={32} mt={24} className='container-home d-flex'>
-						{classe !== 'Select class...' && app.classes.length > 0 ? (
-							<DropdownClasses />
-						) : null}
-						<div className='container-switch'>
-							<ButtonsSwitchZone />
+				
+			) : ( 
+			
+				
+		  
+				
+                        
+					
+					
+
+						<div>
+							
+							
+							<DateApp />
+							<Container ml={32} mt={24} className='container-home d-flex'>
+								{classe !== 'Select class...' && app.classes.length > 0 ? (
+									<DropdownClasses />
+								) : null}
+								<div className='container-switch'>
+									<ButtonsSwitchZone />
+								</div>
+							</Container>
+							{classe !== 'Select class...' && app.classes.length > 0 ? (
+								<Graph />
+							) : (
+								<div className='d-flex justify-content-center align-items-center spinner'>
+									<Spinner />
+								</div>
+							)}
+
 						</div>
-					</Container>
-					{classe !== 'Select class...' && app.classes.length > 0 ? (
-						<Graph />
-					) : (
-						<div className='d-flex justify-content-center align-items-center spinner'>
-							<Spinner />
-						</div>
-					)}
-				</div>
+						 
 			)}
-			<PopUpDeletedApp />
-		</div>
-	);
+						<PopUpDeletedApp />
+
+					</div>
+
+					);
 };
 
-export default Home;
+					export default Home;

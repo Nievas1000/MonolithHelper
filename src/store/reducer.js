@@ -71,6 +71,12 @@ const reducer = (state = initialState, action) => {
 				...state,
 				info: true,
 			};
+
+			case 'HOW':
+				return {
+					...state,
+					info: true,
+				};
 		case 'SELECT_CLASS':
 			return {
 				...state,
