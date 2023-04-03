@@ -100,7 +100,12 @@ const metricOfClass = (
 						},
 					});
 				} else {
-					nonEncapsulatesTables.push(child.name);
+					if (
+						nonEncapsulatesTables.find((data) => data === child.name) ===
+						undefined
+					) {
+						nonEncapsulatesTables.push(child.name);
+					}
 				}
 				return {
 					data: {
@@ -128,7 +133,8 @@ const metricOfClass = (
 			if (
 				currentNode.id !== edge2.data.id &&
 				currentNode.node === edge2.data.target &&
-				currentNode.node !== classe
+				currentNode.node !== classe &&
+				edge.data.interface === undefined
 			) {
 				if (!nonEncapsulates.includes(currentNode.node)) {
 					nonEncapsulates.push(currentNode.node);
@@ -136,6 +142,7 @@ const metricOfClass = (
 			}
 		});
 	});
+	console.log(nonEncapsulates);
 	return {
 		interfaces,
 		nonEncapsulatedClasses: nonEncapsulates.length,
