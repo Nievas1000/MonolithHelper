@@ -12,15 +12,25 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/reducer';
+import { PostHogProvider } from 'posthog-js/react';
+
+const options = {
+	api_host: process.env.REACT_APP_PUBLIC_POSTHOG_HOST,
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<BrowserRouter>
-		<GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
-			<Provider store={store}>
-				<App />
-			</Provider>
-		</GoogleOAuthProvider>
+		<PostHogProvider
+			apiKey={process.env.REACT_APP_PUBLIC_POSTHOG_KEY}
+			options={options}
+		>
+			<GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+				<Provider store={store}>
+					<App />
+				</Provider>
+			</GoogleOAuthProvider>
+		</PostHogProvider>
 	</BrowserRouter>
 );
 
