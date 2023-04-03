@@ -12,6 +12,7 @@ const metricOfClass = (
 ) => {
 	let relationsExtends = [];
 	let relationsImplement = [];
+	const utilizesClasses = [];
 	const nonEncapsulates = [];
 	const nonEncapsulatesTables = [];
 	for (let i = 0; i < nodes.length; i++) {
@@ -27,6 +28,12 @@ const metricOfClass = (
 					classNameChild !== classe
 				) {
 					nodes.push({
+						data: {
+							id: classNameChild,
+						},
+					});
+				} else {
+					utilizesClasses.push({
 						data: {
 							id: classNameChild,
 						},
@@ -75,6 +82,12 @@ const metricOfClass = (
 							id: classNameChild,
 							selectColor: colors.background.two,
 							selectBorder: colors.primary.two,
+						},
+					});
+				} else {
+					utilizesClasses.push({
+						data: {
+							id: classNameChild,
 						},
 					});
 				}
@@ -137,6 +150,7 @@ const metricOfClass = (
 				edge.data.interface === undefined
 			) {
 				if (!nonEncapsulates.includes(currentNode.node)) {
+					console.log(currentNode);
 					nonEncapsulates.push(currentNode.node);
 				}
 			}
@@ -147,7 +161,7 @@ const metricOfClass = (
 		nonEncapsulatedClasses: nonEncapsulates.length,
 		encapsulatedClasses:
 			nonEncapsulates.length > 0
-				? nodes.length - nonEncapsulates.length
+				? utilizesClasses.length - nonEncapsulates.length
 				: nodes.length,
 		encapsulatedTables:
 			nonEncapsulatesTables.length > 0
