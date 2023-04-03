@@ -19,6 +19,7 @@ const Home = () => {
 	const classe = useSelector((state) => state.selectedClass);
 	const app = useSelector((state) => state.selectedApp);
 	const activeInfo = useSelector((state) => state.info);
+
 	
 	if(!activeInfo){
 		history.pushState(null, "", "my-app");
@@ -29,6 +30,8 @@ const Home = () => {
  
 	
 	
+
+
 	useEffect(() => {
 		document.title = 'My Apps | Codojo';
 	}, []);

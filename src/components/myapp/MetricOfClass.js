@@ -31,6 +31,7 @@ export const MetricOfClass = ({ metric, classe }) => {
 				{metric.nonEncapsulatedClasses +
 					metric.encapsulatedTables +
 					metric.nonEncapsulatedTables +
+					metric.interfaces.length +
 					metric.encapsulatedClasses}{' '}
 				resources ({metric.showNodes - 1} shown)
 			</Text>

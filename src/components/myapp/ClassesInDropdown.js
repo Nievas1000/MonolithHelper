@@ -1,4 +1,4 @@
-import { Text, TabDropdown } from 'design-kit-codojo';
+import { Text, TabDropdown, colors } from 'design-kit-codojo';
 
 const ClassesInDropdown = ({
 	selectedClass,
@@ -23,7 +23,13 @@ const ClassesInDropdown = ({
 								key={classe}
 								onClick={() => handleDrop(classe)}
 							>
-								<Text variant='two' mt={12} alt={'Hola'} title={classe}>
+								<Text
+									variant='two'
+									color={colors.grey.nine}
+									mt={12}
+									alt={'Hola'}
+									title={classe}
+								>
 									{classe}
 								</Text>
 							</TabDropdown>

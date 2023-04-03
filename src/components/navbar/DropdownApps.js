@@ -32,7 +32,12 @@ const DropdownApps = ({ setActiveDropdown, divRefSon }) => {
 										apps[0].classes.length === 0 ? null : () => remove(app)
 									}
 								>
-									<Text variant='two' mt={12} title={app.applicationName}>
+									<Text
+										variant='two'
+										mt={12}
+										title={app.applicationName}
+										color={colors.grey.nine}
+									>
 										{app.applicationName.length > 25
 											? `${app.applicationName.substring(0, 25)}...`
 											: app.applicationName}

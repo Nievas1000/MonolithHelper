@@ -16,7 +16,7 @@ export const useSwitchStatus = () => {
 					payload: 'interface',
 				});
 				break;
-			case 'Tables':
+			case 'Datastores':
 				dispatch({
 					type: 'SET_TABLES',
 					payload: 'tables',
