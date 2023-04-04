@@ -27,4 +27,4 @@ jobs:
       - name: Install Dependencies 
         run: npm ci
       - name: Execute test
-        run: npx cypress run --spec "cypress/e2e/test.spec.js"
+        run: npx cypress run --spec "cypress/e2e/loginAndLogout.cy.js"
