@@ -112,10 +112,10 @@ const useNodes = (recursiveNodes = 0) => {
 				}
 				const classNameImplement = getName(child.name);
 				const classNameNode = getName(node.classe);
+				console.log(metricInterfaces);
 				if (
-					metricInterfaces.find(
-						(data) => data.data.id === classNameImplement
-					) === undefined
+					metricInterfaces.find((data) => data === classNameImplement) ===
+					undefined
 				) {
 					metricInterfaces.push(classNameImplement);
 				}
