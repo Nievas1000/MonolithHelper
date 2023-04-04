@@ -150,7 +150,6 @@ const metricOfClass = (
 				edge.data.interface === undefined
 			) {
 				if (!nonEncapsulates.includes(currentNode.node)) {
-					console.log(currentNode);
 					nonEncapsulates.push(currentNode.node);
 				}
 			}
