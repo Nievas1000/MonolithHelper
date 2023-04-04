@@ -1,8 +1,8 @@
 name: Login and Logout CI
 
 on:
-  push:
-    branches: [dev-lautaro]
+  schedule:
+    - cron: "0 */4 * * *"
 
 jobs:
 # Cancel Previous Redundant Builds
