@@ -7,6 +7,18 @@ describe('Test to login with Google', function () {
 	});
 });
 
+describe('Test Log in and Log out', function () {
+	beforeEach(() => {
+		cy.visit('http://localhost:3000/login');
+		window.localStorage.setItem('userAppKey', '12525');
+	});
+	it('enter /my-app and log out', function () {
+		cy.get('div.user').click();
+		cy.contains('Sign Out').click();
+		cy.contains('Codojo');
+	});
+});
+
 describe('Test visit my app without being logged in', function () {
 	beforeEach(() => {
 		cy.visit('https://app.codojo.io/my-app');
