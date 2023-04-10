@@ -15,7 +15,7 @@ const Graph = () => {
 		
 		dispatch({
 			type: 'SELECT_CLASS',
-			payload: node,
+			payload: node.path,
 		});
 	};
 
@@ -31,7 +31,7 @@ const Graph = () => {
 			<div className='d-flex'>
 				<div id='cy'></div>
 				<div className='d-flex align-items-center metric'>
-					<MetricOfClass metric={metric} classe={classe} />
+					<MetricOfClass metric={metric} classe={classe} dispatch={dispatch} />
 				</div>
 			</div>
 			<div className='degree'>

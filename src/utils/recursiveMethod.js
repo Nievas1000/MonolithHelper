@@ -28,6 +28,7 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow, getName) => {
 							selectBorder: colors.primary.two,
 							extend: true,
 							path: child.name,
+							classe: true,
 						},
 						position: {
 							x: posX,
@@ -100,6 +101,7 @@ export const recursiveMethod = (nodes, edges, app, nodesToShow, getName) => {
 							selectColor: colors.background.two,
 							selectBorder: colors.primary.two,
 							path: child.name,
+							classe: true,
 						},
 						position: {
 							x: posX,

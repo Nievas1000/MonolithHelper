@@ -84,6 +84,7 @@ const useNodes = (recursiveNodes = 0) => {
 							selectBorder: colors.feedback.warning,
 							extend: true,
 							path: child.name,
+							classe: true,
 						},
 						position: {
 							x: pos,
@@ -98,6 +99,7 @@ const useNodes = (recursiveNodes = 0) => {
 							selectBorder: colors.primary.two,
 							extend: true,
 							path: child.name,
+							classe: true,
 						},
 						position: {
 							x: pos,
@@ -204,6 +206,7 @@ const useNodes = (recursiveNodes = 0) => {
 						selectColor: colors.background.two,
 						selectBorder: colors.primary.two,
 						path: child.name,
+						classe: true,
 					},
 					position: {
 						x: pos,
@@ -305,7 +308,7 @@ const useNodes = (recursiveNodes = 0) => {
 	nonEncapsulates.showNodes = nodes.length;
 	nonEncapsulates.fathers = fathers;
 	nonEncapsulates.className = className;
-	return [edges, nodes, nonEncapsulates];
+	return [edges, nodes, nonEncapsulates, getName];
 };
 
 export default useNodes;

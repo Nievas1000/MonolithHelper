@@ -4,19 +4,61 @@ import { colors } from 'design-kit-codojo';
 cytoscape.use(compoundDragAndDrop); */
 /* eslint-disable */
 
+import { colors } from 'design-kit-codojo';
+
 // Aqui esta toda la configuracion necesaria para que el usuario puede crear un cuadro y poder juntar los nodos
-export const compoundDragAndDropConfig = (cy, handleClass) => {
+export const compoundDragAndDropConfig = (cy, handleClass, metric) => {
+	cy.style().selector('.parent-node').style({
+		'background-color': colors.grey.four,
+		label: metric.fathers.length,
+		'text-valign': 'center',
+		'text-halign': 'center',
+		'text-wrap': 'wrap',
+		'text-max-width': '80px',
+		'font-size': '12px',
+		'border-style': 'solid',
+		'border-width': '2px',
+		'border-color': colors.grey.six,
+		color: colors.grey.seven,
+	});
+	cy.add({
+		group: 'nodes',
+		data: {
+			id: metric.fathers.length,
+			data: true,
+		},
+		classes: 'parent-node',
+		position: {
+			x: 150,
+			y: cy.nodes()[0].position().y,
+		},
+	});
+
+	cy.add({
+		group: 'edges',
+		data: {
+			id: 'arista1',
+			source: metric.fathers.length,
+			target: metric.className,
+		},
+	});
 	cy.nodes().on('mouseover', function (event) {
 		const node = event.target;
-		node.style('label', node.data().path);
+		if (node.data().classe || node.data().interface) {
+			node.style('label', node.data().path);
+		}
 	});
 	cy.nodes().on('mouseout', function (event) {
 		const node = event.target;
-		node.style('label', '');
+		if (node.data().classe || node.data().interface) {
+			node.style('label', '');
+		}
 	});
 	cy.on('dblclick', 'node', function (event) {
-		const node = event.target.data().path;
-		handleClass(node);
+		const node = event.target.data();
+		if (node.classe) {
+			handleClass(node);
+		}
 	});
 	/* const options = {
 		grabbedNode: (node) => true,

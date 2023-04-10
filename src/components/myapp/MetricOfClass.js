@@ -13,8 +13,7 @@ import {
 import { ToolTipMetrics } from './ToolTipMetrics';
 import { useState } from 'react';
 
-
-export const MetricOfClass = ({ metric, classe }) => {
+export const MetricOfClass = ({ metric, classe, dispatch }) => {
 	const [tooltip, setTooltip] = useState({
 		father: false,
 		interfaces: false,
@@ -65,7 +64,11 @@ export const MetricOfClass = ({ metric, classe }) => {
 				&nbsp;classes
 			</Text>
 			{tooltip.father ? (
-				<ToolTipMetrics classes={metric.fathers}>
+				<ToolTipMetrics
+					classes={metric.fathers}
+					dispatch={dispatch}
+					execute={true}
+				>
 					The below classes reference {metric.className} and will need to be
 					refactored if this class moves to a microservice
 				</ToolTipMetrics>
@@ -110,7 +113,11 @@ export const MetricOfClass = ({ metric, classe }) => {
 					: ' exclusive classes'}
 			</Text>
 			{tooltip.exlusiveClasses ? (
-				<ToolTipMetrics classes={metric.exlusiveClasses}>
+				<ToolTipMetrics
+					classes={metric.exlusiveClasses}
+					dispatch={dispatch}
+					execute={true}
+				>
 					Is only used by this proposed microservice. No refactoring is
 					required. {metric.className} can be eliminated from the monolith when
 					it is migrated to a microservice.
@@ -132,7 +139,11 @@ export const MetricOfClass = ({ metric, classe }) => {
 					: ' non-exclusive classes'}
 			</Text>
 			{tooltip.nonEcxlusiveClasses ? (
-				<ToolTipMetrics classes={metric.nonEcxlusiveClasses}>
+				<ToolTipMetrics
+					classes={metric.nonEcxlusiveClasses}
+					dispatch={dispatch}
+					execute={true}
+				>
 					A non-exclusive class has relationships with other classes outside
 					this proposed microservice. The below classes must be refactored
 					before {metric.className} is migrated to a microservice and eliminated
