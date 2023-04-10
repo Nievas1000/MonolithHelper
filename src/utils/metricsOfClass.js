@@ -12,9 +12,8 @@ const metricOfClass = (
 ) => {
 	let relationsExtends = [];
 	let relationsImplement = [];
-	const utilizesClasses = [];
-	const nonEncapsulates = [];
-	const nonEncapsulatesTables = [];
+	const nonEcxlusiveClasses = [];
+	const nonEcxlusiveTables = [];
 	for (let i = 0; i < nodes.length; i++) {
 		relationsExtends = app.relationsExtends.flatMap((node) =>
 			node.uses.map((child) => {
@@ -32,17 +31,12 @@ const metricOfClass = (
 							id: classNameChild,
 						},
 					});
-				} else {
-					utilizesClasses.push({
-						data: {
-							id: classNameChild,
-						},
-					});
 				}
 				return {
 					data: {
 						id: `${classNameNode}-${classNameChild}`,
 						source: classNameNode,
+						path: child.name,
 						target: classNameChild,
 					},
 				};
@@ -60,6 +54,7 @@ const metricOfClass = (
 						id: `${classNameNode}-${classNameChild}`,
 						source: classNameNode,
 						target: classNameChild,
+						path: child.name,
 						interface: true,
 					},
 				};
@@ -84,17 +79,12 @@ const metricOfClass = (
 							selectBorder: colors.primary.two,
 						},
 					});
-				} else {
-					utilizesClasses.push({
-						data: {
-							id: classNameChild,
-						},
-					});
 				}
 				return {
 					data: {
 						id: `${classNameNode}-${classNameChild}`,
 						source: classNameNode,
+						path: child.name,
 						target: classNameChild,
 					},
 				};
@@ -106,18 +96,19 @@ const metricOfClass = (
 				if (nodes[i].data.id !== classNameNode) {
 					return null;
 				}
-				if (tables.find((data) => data.data.id === child.name) === undefined) {
+				if (tables.find((data) => data.path === child.name) === undefined) {
 					tables.push({
-						data: {
-							id: child.name,
-						},
+						path: child.name,
 					});
 				} else {
 					if (
-						nonEncapsulatesTables.find((data) => data === child.name) ===
+						nonEcxlusiveTables.find((data) => data.path === child.name) ===
 						undefined
 					) {
-						nonEncapsulatesTables.push(child.name);
+						nonEcxlusiveTables.push({
+							path: child.name,
+							table: true,
+						});
 					}
 				}
 				return {
@@ -135,12 +126,29 @@ const metricOfClass = (
 		usedClasses.map((x) => (x !== null ? edges.push(x) : null));
 	}
 	// Recorremos para encontrar las clases non-encapsulated
+	const arr = [];
 	edges.forEach((edge) => {
 		const currentNode = { id: edge.data.id, node: edge.data.target };
 		if (edge.data.interface !== undefined) {
-			if (!interfaces.includes(currentNode.node)) {
-				interfaces.push(currentNode.node);
+			if (
+				interfaces.find((data) => data.className === currentNode.node) ===
+				undefined
+			) {
+				interfaces.push({
+					className: currentNode.node,
+					path: edge.data.path,
+				});
 			}
+		}
+		if (
+			arr.find((data) => data.className === currentNode.node) === undefined &&
+			edge.data.interface === undefined &&
+			currentNode.node !== classe
+		) {
+			arr.push({
+				className: currentNode.node,
+				path: edge.data.path,
+			});
 		}
 		edges.forEach((edge2) => {
 			if (
@@ -149,26 +157,39 @@ const metricOfClass = (
 				currentNode.node !== classe &&
 				edge.data.interface === undefined
 			) {
-				if (!nonEncapsulates.includes(currentNode.node)) {
-					nonEncapsulates.push(currentNode.node);
+				if (
+					nonEcxlusiveClasses.find(
+						(data) => data.className === currentNode.node
+					) === undefined
+				) {
+					nonEcxlusiveClasses.push({
+						className: currentNode.node,
+						path: edge.data.path,
+					});
 				}
 			}
 		});
 	});
+	const exlusiveClasses = arr.filter(
+		(ele) =>
+			nonEcxlusiveClasses.find((data) => data.className === ele.className) ===
+			undefined
+	);
+	const exclusiveTables = tables.filter(
+		(ele) =>
+			nonEcxlusiveTables.find((data) => data.path === ele.path) === undefined &&
+			ele.path
+	);
 	return {
 		interfaces,
-		nonEncapsulatedClasses: nonEncapsulates.length,
-		encapsulatedClasses:
-			nonEncapsulates.length > 0
-				? utilizesClasses.length - nonEncapsulates.length
-				: nodes.length,
-		encapsulatedTables:
-			nonEncapsulatesTables.length > 0
-				? tables.length - nonEncapsulatesTables.length
-				: tables.length,
-		nonEncapsulatedTables: nonEncapsulatesTables.length,
-		nonEncapsulatedData: nonEncapsulates.concat(nonEncapsulatesTables),
+		nonEcxlusiveClasses,
+		exlusiveClasses,
+		exclusiveTables: exclusiveTables.length > 0 ? exclusiveTables : tables,
+		nonEcxlusiveTables,
+		nonEncapsulatedData: nonEcxlusiveClasses.concat(nonEcxlusiveTables),
 		showNodes: 0,
+		fathers: null,
+		className: null,
 	};
 };
 

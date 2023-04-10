@@ -27,6 +27,7 @@ const useNodes = (recursiveNodes = 0) => {
 	const metricTables = [];
 	const metricInterfaces = [];
 	const extendToNonUse = [];
+	const fathers = [];
 	const className = getName(classe);
 	const nodes =
 		classe === 'Select class...'
@@ -44,11 +45,21 @@ const useNodes = (recursiveNodes = 0) => {
 			  ];
 	relationsExtends = app.relationsExtends.flatMap((node) =>
 		node.uses.map((child) => {
+			const classNameChild = getName(child.name);
+			const classNameNode = getName(node.classe);
+			if (
+				fathers.find((data) => data.className === classNameNode) ===
+					undefined &&
+				classe === child.name
+			) {
+				fathers.push({
+					className: classNameNode,
+					path: node.classe,
+				});
+			}
 			if (classe !== node.classe) {
 				return null;
 			}
-			const classNameChild = getName(child.name);
-			const classNameNode = getName(node.classe);
 			metricNodes.push({
 				data: {
 					id: classNameChild,
@@ -100,6 +111,7 @@ const useNodes = (recursiveNodes = 0) => {
 					id: `${classNameNode}-${classNameChild}`,
 					source: classNameNode,
 					target: classNameChild,
+					path: child.name,
 				},
 			};
 		})
@@ -107,16 +119,30 @@ const useNodes = (recursiveNodes = 0) => {
 	if (nodesToShow.interfaces) {
 		relationsImplements = app.relationsImplement.flatMap((node) =>
 			node.uses.map((child) => {
-				if (classe !== node.classe) {
-					return null;
-				}
 				const classNameImplement = getName(child.name);
 				const classNameNode = getName(node.classe);
 				if (
-					metricInterfaces.find((data) => data === classNameImplement) ===
-					undefined
+					fathers.find((data) => data.className === classNameNode) ===
+						undefined &&
+					classe === child.name
 				) {
-					metricInterfaces.push(classNameImplement);
+					fathers.push({
+						className: classNameNode,
+						path: node.classe,
+					});
+				}
+				if (classe !== node.classe) {
+					return null;
+				}
+				if (
+					metricInterfaces.find(
+						(data) => data.className === classNameImplement
+					) === undefined
+				) {
+					metricInterfaces.push({
+						className: classNameImplement,
+						path: child.name,
+					});
 				}
 				nodes.push({
 					data: {
@@ -143,11 +169,21 @@ const useNodes = (recursiveNodes = 0) => {
 	}
 	const usedClasses = app.usedClasses.flatMap((node) =>
 		node.uses.map((child) => {
+			const classNameChild = getName(child.name);
+			const classNameNode = getName(node.classe);
+			if (
+				fathers.find((data) => data.className === classNameNode) ===
+					undefined &&
+				classe === child.name
+			) {
+				fathers.push({
+					className: classNameNode,
+					path: node.classe,
+				});
+			}
 			if (classe !== node.classe) {
 				return null;
 			}
-			const classNameChild = getName(child.name);
-			const classNameNode = getName(node.classe);
 			if (
 				metricNodes.find((data) => data.data.id === classNameChild) ===
 				undefined
@@ -180,6 +216,7 @@ const useNodes = (recursiveNodes = 0) => {
 						id: `${classNameNode}-${classNameChild}`,
 						source: classNameNode,
 						target: classNameChild,
+						path: child.name,
 					},
 				};
 			} else {
@@ -200,6 +237,7 @@ const useNodes = (recursiveNodes = 0) => {
 					metricTables.push({
 						data: {
 							id: child.name,
+							path: child.name,
 						},
 					});
 				}
@@ -254,7 +292,7 @@ const useNodes = (recursiveNodes = 0) => {
 	nodes.forEach((node) => {
 		if (
 			nonEncapsulates.nonEncapsulatedData.find(
-				(data) => data === node.data.id
+				(data) => data.className === node.data.id
 			) !== undefined
 		) {
 			if (node.data.table) {
@@ -265,6 +303,8 @@ const useNodes = (recursiveNodes = 0) => {
 		}
 	});
 	nonEncapsulates.showNodes = nodes.length;
+	nonEncapsulates.fathers = fathers;
+	nonEncapsulates.className = className;
 	return [edges, nodes, nonEncapsulates];
 };
 

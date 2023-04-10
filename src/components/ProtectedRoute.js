@@ -20,25 +20,26 @@ const ProtectedRoute = ({ children }) => {
 							},
 						}
 					);
-					console.log(response);
 					if (response.data.message === 'User exist!') {
 						setUserExist(true);
 					}
 				} catch (error) {
 					setUserExist(false);
 				}
+			} else {
+				return <Navigate to='/login' />;
 			}
 		};
 		getUser();
-	});
+	}, []);
 	const location = useLocation();
 	if (
-		(userExist && location.pathname === '/login') ||
+		(userExist && location.pathname === '/login' && userApplicationKey) ||
 		location.pathname === '/'
 	) {
 		return <Navigate to='/my-app' />;
 	}
-	if (!userExist && location.pathname !== '/login') {
+	if (!userExist && location.pathname !== '/login' && !userApplicationKey) {
 		return <Navigate to='/login' />;
 	}
 	return children;
