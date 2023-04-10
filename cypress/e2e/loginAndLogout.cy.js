@@ -6,6 +6,6 @@ describe('Test Log in and Log out', function () {
 	it('enter /my-app and log out', function () {
 		cy.get('div.user').click();
 		cy.contains('Sign Out').click();
-		cy.contains('Codojo');
+		cy.contains('Login');
 	});
 });

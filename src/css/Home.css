@@ -99,9 +99,11 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .metric{
     background: #131514;
+    width: 341px;
 }
 .container-metrics{
-    width: 324px;
+    width: 341px;
+    height: auto;
     background: #131514;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 5px 5px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
@@ -119,6 +121,44 @@ input[type="range"]::-webkit-slider-thumb {
 .spinner svg{
     width: 120px;
     height: 110px;
+}
+.container-classes-metric{
+    justify-content: center;
+    width: 320px;
+    height: auto;
+    max-height: 241px;
+    border-radius: 8px;
+}
+.container-father{
+    text-align: left;
+    direction: ltr;
+    display: flex;
+  flex-wrap: wrap;
+}
+.fathers{
+    font-size: 10px !important;
+    line-height: 18px !important;
+    word-break: break-all;
+}
+.fathers-metric{
+    width: 320px;
+    height: auto;
+    max-height: 85px;
+    overflow-y: scroll;
+    direction: rtl;
+}
+.fathers-metric::-webkit-scrollbar{
+	width: 4px;
+	height: 4px;
+	margin-top: 20px;
+	background-color: #343635;
+}
+.fathers-metric::-webkit-scrollbar-thumb{
+	background: #47BC82;
+	border-radius: 2px;
+}
+.myclass{
+    word-break: break-all;
 }
 @keyframes slideUp {
     from {

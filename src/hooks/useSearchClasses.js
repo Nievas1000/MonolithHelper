@@ -13,19 +13,25 @@ const useSearchClasses = () => {
 			const textData = text.toUpperCase();
 			return itemData.indexOf(textData) > -1;
 		});
-		setClasses(data);
+		if (data.length === 0) {
+			setClasses(['No results found']);
+		} else {
+			setClasses(data);
+		}
 	};
 
 	const selectClass = (e, setShowClasses) => {
-		dispatch({
-			type: 'SELECT_CLASS',
-			payload: e,
-		});
-		setShowClasses(false);
-		setClasses([]);
+		if (e !== 'No results found') {
+			dispatch({
+				type: 'SELECT_CLASS',
+				payload: e,
+			});
+			setShowClasses(false);
+			setClasses(selectedApp.classes[0]);
+		}
 	};
 
-	return [selectedApp, classes, handleChange, selectClass];
+	return [selectedApp, classes, handleChange, selectClass, setClasses];
 };
 
 export default useSearchClasses;
