@@ -10,7 +10,7 @@ const Graph = () => {
 	const handleClass = (node) => {
 		dispatch({
 			type: 'SELECT_CLASS',
-			payload: node,
+			payload: node.path,
 		});
 	};
 	const [metric, classe] = useCytoscope(
