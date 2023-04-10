@@ -37,6 +37,7 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 	};
 	return (
 		<Container className='container-metrics' bg={colors.background.four}>
+			
 			<Text
 				variant='one'
 				color={tooltip.father ? colors.primary.two : colors.grey.nine}

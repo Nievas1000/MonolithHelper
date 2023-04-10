@@ -13,10 +13,12 @@ cytoscape.use(fcose);
 const useCytoscope = (container, degree, handleClass) => {
 	const state = useSelector((state) => state);
 	const app = state.selectedApp;
-	const classe = state.selectedClass;
+	const classe = state.selectedClass;	
 	const [edges, nodes, metric] = useNodes(degree);
+	
 	let cy;
 	useEffect(() => {
+		
 		if (app) {
 			container = document.getElementById('cy');
 			if (container) {
@@ -81,6 +83,8 @@ const useCytoscope = (container, degree, handleClass) => {
 				compoundDragAndDropConfig(cy, handleClass, metric);
 			}
 		}
+
+	
 	}, [classe, app, nodes]);
 	return [metric, classe];
 };

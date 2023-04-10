@@ -1,8 +1,13 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
+import { useAddapp } from '../hooks/useAddapp';
+
+
+
 
 const ProtectedRoute = ({ children }) => {
+	const [addApplication] = useAddapp();
 	const userApplicationKey = localStorage.getItem('userAppKey');
 	const [userExist, setUserExist] = useState(false);
 	useEffect(() => {
@@ -42,6 +47,14 @@ const ProtectedRoute = ({ children }) => {
 	if (!userExist && location.pathname !== '/login' && !userApplicationKey) {
 		return <Navigate to='/login' />;
 	}
+
+	
+	if (userApplicationKey && location.pathname === '/how-to-add-application') {
+
+		addApplication();
+		
+	}
+
 	return children;
 };
 
