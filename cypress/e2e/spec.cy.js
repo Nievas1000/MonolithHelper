@@ -15,7 +15,7 @@ describe('Test Log in and Log out', function () {
 	it('enter /my-app and log out', function () {
 		cy.get('div.user').click();
 		cy.contains('Sign Out').click();
-		cy.contains('Codojo');
+		cy.contains('Login');
 	});
 });
 
@@ -53,10 +53,10 @@ describe('Test to login with Github', function () {
 describe('Test url', function () {
 	it('Use Policy', () => {
 		cy.visit('https://www.codojo.io/use-policy');
-		cy.contains('Codojo');
+		cy.contains('Login');
 	});
 	it('Privacity Policy', () => {
 		cy.visit('https://www.codojo.io/privacy');
-		cy.contains('Codojo');
+		cy.contains('Login');
 	});
 });
