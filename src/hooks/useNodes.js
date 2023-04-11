@@ -234,14 +234,10 @@ const useNodes = (recursiveNodes = 0) => {
 					return null;
 				}
 				const classNameNode = getName(node.classe);
-				if (
-					metricTables.find((data) => data.data.id === child.name) === undefined
-				) {
+				if (metricTables.find((data) => data.id === child.name) === undefined) {
 					metricTables.push({
-						data: {
-							id: child.name,
-							path: child.name,
-						},
+						id: child.name,
+						path: child.name,
 					});
 				}
 				nodes.push({

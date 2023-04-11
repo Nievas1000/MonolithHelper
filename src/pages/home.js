@@ -33,7 +33,7 @@ const Home = () => {
 
 
 	useEffect(() => {
-		document.title = 'My Apps | Codojo';
+		document.title = 'My Apps | Taffi';
 	}, []);
 	return ( 
 		<div className='container-my-app'>

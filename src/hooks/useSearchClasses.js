@@ -27,10 +27,11 @@ const useSearchClasses = () => {
 				payload: e,
 			});
 			setShowClasses(false);
-			setClasses(selectedApp.classes[0]);
+			setClasses([]);
+		} else {
+			setClasses([]);
 		}
 	};
-
 	return [selectedApp, classes, handleChange, selectClass, setClasses];
 };
 
