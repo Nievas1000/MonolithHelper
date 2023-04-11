@@ -53,7 +53,7 @@ const onClick = useCallback(async () => {
       }
       if (imgBlob.type==='binary/octet-stream'){  
       types='properties';
-      nombre="SendToTaffi.config";
+      nombre="SendToCodojo.config";
       }
       console.log(nombre);
       carpetaArchivos.file(`${nombre}.${types}` , imgBlob, { blob: true });
