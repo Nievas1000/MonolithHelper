@@ -49,7 +49,7 @@ const onClick = useCallback(async () => {
       }
       if (imgBlob.type==='application/java-archive'){  
       types='jar';
-      nombre="SendToTaffi";
+      nombre="SendToCodojo";
       }
       if (imgBlob.type==='binary/octet-stream'){  
       types='properties';
