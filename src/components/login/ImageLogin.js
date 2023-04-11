@@ -23,7 +23,7 @@ const ImageLogin = () => {
 					variant='center'
 				>
 					<Title variant='two' color={colors.grey.ten} className='logo-login'>
-						Codojo
+						Taffi
 					</Title>
 				</Container>
 				<Container

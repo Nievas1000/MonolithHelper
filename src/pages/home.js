@@ -15,7 +15,7 @@ const Home = () => {
 	const app = useSelector((state) => state.selectedApp);
 	const activeInfo = useSelector((state) => state.info);
 	useEffect(() => {
-		document.title = 'My Apps | Codojo';
+		document.title = 'My Apps | Taffi';
 	}, []);
 	return (
 		<div className='container-my-app'>

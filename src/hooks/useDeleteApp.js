@@ -27,7 +27,6 @@ export const useDeleteApp = () => {
 					},
 				}
 			);
-			console.log(response);
 			if (response.data.statusCode === 200) {
 				dispatch({
 					type: 'CHANGE_APP',

@@ -14,7 +14,7 @@ const ClassesInDropdown = ({
 	};
 	return (
 		<div className='w'>
-			{selectedApp && classes.length === 0
+			{classesInit && classes.length === 0
 				? classesInit.map((classe) => {
 						return (
 							<TabDropdown
@@ -27,7 +27,6 @@ const ClassesInDropdown = ({
 									variant='two'
 									color={colors.grey.nine}
 									mt={12}
-									alt={'Hola'}
 									title={classe}
 								>
 									{classe}
