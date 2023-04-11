@@ -7,31 +7,45 @@ import {
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
 import useMoreTab from '../../hooks/useMoreTab';
+
 const NavBarTabs = () => {
 	const state = useSelector((state) => state);
 	const apps = state.initialApps;
-
 	const selectedApp = state.selectedApp;
 	const info = state.info;
 	const [selectApp, addAppToDropdown] = useMoreTab();
+	
 	return (
+
 		<div className='tabs d-flex'>
+			
 			{apps
 				? apps.map((app) => {
 						return (
+							
 							<div key={app.applicationName} className='apps-full'>
+								
+								
+								
 								<Tab
 									variant={
 										selectedApp.applicationName === app.applicationName && !info
 											? 'active'
 											: 'primary'
 									}
+									
 									onClick={
+										
 										apps[0].classes.length === 0 ? null : () => selectApp(app)
+										
 									}
+									
+									
+									
 								>
 									{selectedApp.applicationName === app.applicationName ? (
 										<LeafIconActive />
+										
 									) : (
 										<LeafIcon />
 									)}
