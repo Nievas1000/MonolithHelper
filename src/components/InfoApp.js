@@ -90,7 +90,7 @@ const onClick = useCallback(async () => {
 					<DownloadIcon />
 					<Text variant='three' onClick={onClick} color={colors.primary.two} mt={3} ml={2}>
 						
-						SendAppDataToCodojo.zip
+						SendAppDataToTaffi.zip
 					</Text>
 				</div>
 				<br />
@@ -107,12 +107,12 @@ const onClick = useCallback(async () => {
 						<br />
 						Example: /apps/foo/bar/myJavaProject/{'{ zip file contents }'}
 						<br />
-						3. Open the <span className='importantwords'>SendToCodojo.properties</span> file, complete the instructions
+						3. Open the <span className='importantwords'>SendToTaffi.properties</span> file, complete the instructions
 						in the file, and save any edits. It is important to maintain the
 						same filename. <br />
-						4.Execute <span className='importantwords'>SendCodojo.sh</span> on a Linux system, or <span className='importantwords'>SendCodojo.bat </span> for Windows systems.
+						4.Execute <span className='importantwords'>SendTaffi.sh</span> on a Linux system, or <span className='importantwords'>SendTaffi.bat </span> for Windows systems.
 						 This script will examine the uncompiled code for application and table relationships. 
-						 Results will automatically be sent to Codojo.
+						 Results will automatically be sent to Taffi.
 					</Text>
 
 					<Text variant='two' color={colors.grey.four} ml={4} mt={0}>
