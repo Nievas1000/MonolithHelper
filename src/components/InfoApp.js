@@ -23,7 +23,7 @@ const onClick = useCallback(async () => {
 	const zip = new JSZip();
     
     // Se crea la carpeta donde se guardaran los archivos
-    const carpetaArchivos = zip.folder("SendAppDataToCodojo");
+    const carpetaArchivos = zip.folder("SendAppDataToTaffi");
 
     const recorrerArchivos = await Promise.all(
       [archivo1,archivo2,archivo3,archivo4].map(async (imgSrc, index) => {
@@ -41,19 +41,19 @@ const onClick = useCallback(async () => {
       console.log(imgBlob)
       if (imgBlob.type==='text/x-sh'){
         types='sh';
-        nombre="SendCodojo";
+        nombre="SendTaffi";
       }
       if (imgBlob.type==='application/x-msdos-program') {
       types='bat';
-      nombre="SendCodojo";
+      nombre="SendTaffi";
       }
       if (imgBlob.type==='application/java-archive'){  
       types='jar';
-      nombre="SendToCodojo";
+      nombre="SendToTaffi";
       }
       if (imgBlob.type==='binary/octet-stream'){  
       types='properties';
-      nombre="SendToCodojo.config";
+      nombre="SendToTaffi.config";
       }
       console.log(nombre);
       carpetaArchivos.file(`${nombre}.${types}` , imgBlob, { blob: true });
@@ -62,7 +62,7 @@ const onClick = useCallback(async () => {
     zip.generateAsync({ type: "blob" }).then(function (content) {
       
       // Guarda el contenido recorrido en el archivo .zip
-      saveAs(content, "SendAppDataToCodojo.zip");
+      saveAs(content, "SendAppDataToTaffi.zip");
     });
   }, []);
 
