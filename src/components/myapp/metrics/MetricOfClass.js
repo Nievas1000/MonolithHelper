@@ -2,67 +2,26 @@ import {
 	colors,
 	Container,
 	Text,
-	SmallSelectedClassIcon,
 	SmallEncapsulatedIcon,
 	SmallNonEncapsulatedIcon,
 	SmallNonEncapsulatedTableIcon,
 	SmallEncapsulatedTableIcon,
 	SmallInterfaceIcon,
-	CircleMetrics,
 } from 'design-kit-codojo';
 import { ToolTipMetrics } from './ToolTipMetrics';
-import { useState } from 'react';
+import { useMetrics } from '../../../hooks/useMetrics';
+import { MetricsTitle } from './MetricsTitle';
 
 export const MetricOfClass = ({ metric, classe, dispatch }) => {
-	const [tooltip, setTooltip] = useState({
-		father: false,
-		interfaces: false,
-		exlusiveClasses: false,
-		nonEcxlusiveClasses: false,
-		exclusiveTables: false,
-		nonEcxlusiveTables: false,
-	});
-	const handleTooltipClick = (tooltipName) => {
-		setTooltip((prevTooltip) => {
-			const newTooltip = {
-				[tooltipName]: !prevTooltip[tooltipName],
-			};
-			Object.keys(prevTooltip).forEach((key) => {
-				if (key !== tooltipName) {
-					newTooltip[key] = false;
-				}
-			});
-			return newTooltip;
-		});
-	};
+	const [tooltip, handleTooltipClick] = useMetrics();
 	return (
 		<Container className='container-metrics' bg={colors.background.four}>
-			
-			<Text
-				variant='one'
-				color={tooltip.father ? colors.primary.two : colors.grey.nine}
-				fontWeight={500}
-				ml={15}
-				mt={15}
-				title={classe}
-				className='d-flex cursor myclass'
-				onClick={() => handleTooltipClick('father')}
-			>
-				<SmallSelectedClassIcon />
-				{metric.className.length > 16
-					? `${metric.className.substring(0, 16)}...`
-					: metric.className}{' '}
-				called by&nbsp;
-				<CircleMetrics
-					variant='primary'
-					className='d-flex justify-content-center aling-items-center'
-				>
-					<span style={{ fontSize: '8px', marginTop: '-4px' }}>
-						{metric.fathers.length}
-					</span>
-				</CircleMetrics>
-				&nbsp;classes
-			</Text>
+			<MetricsTitle
+				metric={metric}
+				classe={classe}
+				tooltip={tooltip}
+				handleTooltipClick={handleTooltipClick}
+			/>
 			{tooltip.father ? (
 				<ToolTipMetrics
 					classes={metric.fathers}

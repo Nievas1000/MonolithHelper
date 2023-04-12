@@ -1,5 +1,5 @@
 import { colors, Text } from 'design-kit-codojo';
-import { useSwitchStatus } from '../../hooks/useSwitchStatus';
+import { useSwitchStatus } from '../../../hooks/useSwitchStatus';
 
 export const SwitchButton = ({ value }) => {
 	const [CustomSwitch, checked, handledCheckedState] = useSwitchStatus();

@@ -9,8 +9,8 @@ import {
 	colors,
 } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
-import useDropdown from '../../hooks/useDropdown';
-import useSearchClasses from '../../hooks/useSearchClasses';
+import useDropdown from '../../../hooks/useDropdown';
+import useSearchClasses from '../../../hooks/useSearchClasses';
 import ClassesInDropdown from './ClassesInDropdown';
 const DropdownClasses = () => {
 	const selectedClass = useSelector((state) => state.selectedClass);
