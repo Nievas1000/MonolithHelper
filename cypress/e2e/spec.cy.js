@@ -9,7 +9,7 @@ describe('Test to login with Google', function () {
 
 describe('Test Log in and Log out', function () {
 	beforeEach(() => {
-		cy.visit('https://app.codojo.io/login');
+		cy.visit('https://app.taffi.io/login');
 		window.localStorage.setItem('userAppKey', '12525');
 	});
 	it('enter /my-app and log out', function () {
@@ -21,7 +21,7 @@ describe('Test Log in and Log out', function () {
 
 describe('Test visit my app without being logged in', function () {
 	beforeEach(() => {
-		cy.visit('https://app.codojo.io/my-app');
+		cy.visit('https://app.taffi.io/my-app');
 	});
 	it('redirect to login', function () {
 		cy.contains('Get started for free');
@@ -52,11 +52,11 @@ describe('Test to login with Github', function () {
 
 describe('Test url', function () {
 	it('Use Policy', () => {
-		cy.visit('https://www.codojo.io/use-policy');
+		cy.visit('https://www.taffi.io/use-policy');
 		cy.contains('Login');
 	});
 	it('Privacity Policy', () => {
-		cy.visit('https://www.codojo.io/privacy');
+		cy.visit('https://www.taffi.io/privacy');
 		cy.contains('Login');
 	});
 });
