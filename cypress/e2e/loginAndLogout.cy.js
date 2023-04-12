@@ -1,6 +1,6 @@
 describe('Test Log in and Log out', function () {
 	beforeEach(() => {
-		cy.visit('https://app.codojo.io/login');
+		cy.visit('https://app.taffi.io/login');
 		window.localStorage.setItem('userAppKey', '12525');
 	});
 	it('enter /my-app and log out', function () {
