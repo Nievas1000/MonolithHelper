@@ -1,6 +1,6 @@
 import { colors, Container, MoreIcon, Text } from 'design-kit-codojo';
-import useDropdown from '../../hooks/useDropdown';
-import { DeleteApplication } from './DeleteApplication';
+import useDropdown from '../../../hooks/useDropdown';
+import { DeleteApplication } from '../deleteApp/DeleteApplication';
 import { SwitchButton } from './SwitchButton';
 const ButtonsSwitchZone = () => {
 	const [showDropdow, setShowDropdown, divRefSon, divRefFather] = useDropdown();

@@ -7,7 +7,7 @@ import {
 	Container,
 } from 'design-kit-codojo';
 import { useState } from 'react';
-import { useDeleteApp } from '../../hooks/useDeleteApp';
+import { useDeleteApp } from '../../../hooks/useDeleteApp';
 
 export const ButtonsModalDeleteApp = ({ setIsOpen, setClose }) => {
 	const [hover, setHover] = useState({ confirm: false, cancel: false });

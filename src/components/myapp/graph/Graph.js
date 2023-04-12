@@ -1,18 +1,14 @@
-import useCytoscope from '../../hooks/useCytoscope';
+import useCytoscope from '../../../hooks/useCytoscope';
 import { useState } from 'react';
 import InputDegreeGraph from './InputDegreeGraph';
-import { MetricOfClass } from './MetricOfClass';
-import { useDispatch} from 'react-redux';
-
+import { useDispatch } from 'react-redux';
+import { MetricOfClass } from '../metrics/MetricOfClass';
 
 const Graph = () => {
 	const [degree, setDegree] = useState(1);
 	const dispatch = useDispatch();
-	
-	
-	
+
 	const handleClass = (node) => {
-		
 		dispatch({
 			type: 'SELECT_CLASS',
 			payload: node.path,
@@ -24,10 +20,9 @@ const Graph = () => {
 		degree,
 		handleClass
 	);
-	
+
 	return (
 		<div>
-			
 			<div className='d-flex'>
 				<div id='cy'></div>
 				<div className='d-flex align-items-center metric'>
@@ -37,10 +32,7 @@ const Graph = () => {
 			<div className='degree'>
 				<InputDegreeGraph degree={degree} setDegree={setDegree} />
 			</div>
-		
 		</div>
-			
-		
 	);
 };
 

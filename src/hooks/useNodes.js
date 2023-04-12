@@ -291,7 +291,7 @@ const useNodes = (recursiveNodes = 0) => {
 	nodes.forEach((node) => {
 		if (
 			nonEncapsulates.nonEncapsulatedData.find(
-				(data) => data.className === node.data.id
+				(data) => data.className === node.data.id || data.path === node.data.id
 			) !== undefined
 		) {
 			if (node.data.table) {

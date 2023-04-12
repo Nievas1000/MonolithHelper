@@ -8,7 +8,7 @@ import {
 	colors,
 } from 'design-kit-codojo';
 import { ButtonsModalDeleteApp } from './ButtonsModalDeleteApp';
-import useDropdown from '../../hooks/useDropdown';
+import useDropdown from '../../../hooks/useDropdown';
 
 export const DeleteApplication = ({ setClose }) => {
 	const [showDropdow, setShowDropdown, divRefSon, divRefFather] = useDropdown();
