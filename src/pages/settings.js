@@ -11,7 +11,7 @@ import {
 	AccountMaintenanceIcon,
 	Button,
 } from 'design-kit-codojo';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ModalDeleteAccount from '../components/settings/ModalDeleteAccount';
 import { SettingsMobile } from '../components/settings/SettingsMobile';
@@ -19,6 +19,9 @@ import { SettingsMobile } from '../components/settings/SettingsMobile';
 const Settings = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const navigate = useNavigate();
+	useEffect(() => {
+		document.title = 'Settings | Taffi';
+	}, []);
 	return (
 		<div>
 			<div className='container-settings' style={{ position: 'absolute' }}>
@@ -50,7 +53,10 @@ const Settings = () => {
 						variant='primary'
 						className='menu-settings-options'
 					>
-						<ContainerDeleteOption variant='primary'>
+						<ContainerDeleteOption
+							variant='primary'
+							style={{ position: 'relative' }}
+						>
 							<div className='info-delete'>
 								<Subtitle variant='one' color={colors.grey.ten}>
 									Delete Account

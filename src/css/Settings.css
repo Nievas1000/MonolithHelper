@@ -1,3 +1,7 @@
+.container-settings{
+    background-color: #131514;
+    width: 100%;
+}
 .delete-account-button:hover{
     color: white !important;
 }
