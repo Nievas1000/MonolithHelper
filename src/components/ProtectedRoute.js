@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAddapp } from '../hooks/useAddapp';
+import { useDispatch} from 'react-redux';
 
 
 
@@ -10,6 +11,8 @@ const ProtectedRoute = ({ children }) => {
 	const [addApplication] = useAddapp();
 	const userApplicationKey = localStorage.getItem('userAppKey');
 	const [userExist, setUserExist] = useState(false);
+	const dispatch = useDispatch();
+
 	useEffect(() => {
 		const getUser = async () => {
 			if (userApplicationKey) {
@@ -27,6 +30,7 @@ const ProtectedRoute = ({ children }) => {
 					);
 					if (response.data.message === 'User exist!') {
 						setUserExist(true);
+						
 					}
 				} catch (error) {
 					setUserExist(false);
@@ -42,9 +46,17 @@ const ProtectedRoute = ({ children }) => {
 		(userExist && location.pathname === '/login' && userApplicationKey) ||
 		location.pathname === '/'
 	) {
+		
 		return <Navigate to='/my-app' />;
 	}
 	if (!userExist && location.pathname !== '/login' && !userApplicationKey) {
+		if(location.pathname==='/how-to-add-application'){
+			dispatch({
+				type: 'URL',
+				url: '/how-to-add-application',
+			});
+
+		}
 		return <Navigate to='/login' />;
 	}
 
@@ -54,6 +66,7 @@ const ProtectedRoute = ({ children }) => {
 		addApplication();
 		
 	}
+
 
 	return children;
 };

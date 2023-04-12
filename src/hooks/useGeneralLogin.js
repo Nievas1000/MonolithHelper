@@ -1,9 +1,11 @@
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // Hook que es usado para hacer el login del usuario y registrarlo si no lo esta aun
 const useGeneralLogin = () => {
 	const navigate = useNavigate();
+	const state = useSelector((state) => state);
 	const registry = async (user) => {
 		try {
 			const response = await axios.post(
@@ -16,9 +18,14 @@ const useGeneralLogin = () => {
 				}
 			);
 			const data = response.data;
-			if (response.status === 200) {
+			if (response.status === 200 && state.url==='') {
 				localStorage.setItem('userAppKey', data.message.USER_APPLICATION_KEY);
 				navigate('/my-app');
+			}
+
+			if(response.status === 200 && state.url==='/how-to-add-application'){
+				localStorage.setItem('userAppKey', data.message.USER_APPLICATION_KEY);
+				navigate('/how-to-add-application');
 			}
 		} catch (error) {
 			console.error(error.response.data);
