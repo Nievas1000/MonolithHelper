@@ -13,6 +13,7 @@ const initialState = {
 	},
 	deletedApp: false,
 	info: false,
+	url: '' ,
 };
 
 const reducer = (state = initialState, action) => {
@@ -58,6 +59,7 @@ const reducer = (state = initialState, action) => {
 				selectedApp: action.payload,
 				selectedClass: action.payload.classes[0][0],
 			};
+			
 		case 'SELECT_APP':
 			return {
 				...state,
@@ -71,6 +73,12 @@ const reducer = (state = initialState, action) => {
 				...state,
 				info: true,
 			};
+
+			case 'URL':
+				return {
+					...state,
+					url: '/how-to-add-application',
+				};	
 
 			case 'HOW':
 				return {
