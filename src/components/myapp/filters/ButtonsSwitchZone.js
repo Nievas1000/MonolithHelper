@@ -6,13 +6,13 @@ const ButtonsSwitchZone = () => {
 	const [showDropdow, setShowDropdown, divRefSon, divRefFather] = useDropdown();
 	return (
 		<div className='d-flex'>
-			<Container ml={33}>
+			<Container ml={33} className='interface-switch'>
 				<SwitchButton value={'Interfaces'} />
 			</Container>
-			<Container ml={32}>
+			<Container ml={32} className='datastore-switch'>
 				<SwitchButton value={'Datastores'} />
 			</Container>
-			<Container className='cursor' ml={34} mt={11}>
+			<Container className='cursor switch-more' ml={34} mt={11}>
 				<Container
 					className='d-flex'
 					onClick={() => setShowDropdown(!showDropdow)}

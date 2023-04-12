@@ -3,6 +3,7 @@ import { useState } from 'react';
 import InputDegreeGraph from './InputDegreeGraph';
 import { useDispatch } from 'react-redux';
 import { MetricOfClass } from '../metrics/MetricOfClass';
+import { Container } from 'design-kit-codojo';
 
 const Graph = () => {
 	const [degree, setDegree] = useState(1);
@@ -32,6 +33,13 @@ const Graph = () => {
 			<div className='degree'>
 				<InputDegreeGraph degree={degree} setDegree={setDegree} />
 			</div>
+			<Container
+				className='d-flex justify-content-center metric-mobile'
+				mt={70}
+				mb={35}
+			>
+				<MetricOfClass metric={metric} classe={classe} dispatch={dispatch} />
+			</Container>
 		</div>
 	);
 };

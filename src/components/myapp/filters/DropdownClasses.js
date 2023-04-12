@@ -24,10 +24,17 @@ const DropdownClasses = () => {
 				variant={showDropdow ? 'active' : 'primary'}
 				onClick={() => setShowDropdown(!showDropdow)}
 				ref={divRefFather}
+				className='button-dropdown-classes'
 			>
-				<Text variant='two' mt={14} mr={22} color={colors.grey.nine}>
+				<Text
+					variant='two'
+					mt={14}
+					mr={22}
+					color={colors.grey.nine}
+					className='selected-in-dropdown'
+				>
 					{selectedClass.length > 15
-						? `${selectedClass.substring(0, 15)}...`
+						? `${selectedClass.substring(0, 13)}...`
 						: selectedClass}
 				</Text>
 				{showDropdow ? <ArrowIconLess /> : <ArrowIconExpand />}
