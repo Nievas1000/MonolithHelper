@@ -12,6 +12,7 @@ const InputDegreeGraph = ({ degree, setDegree }) => {
 						type='range'
 						min='1'
 						max='5'
+						className='line-degree'
 						value={degree}
 						onChange={(e) => setDegree(e.target.value)}
 					/>
