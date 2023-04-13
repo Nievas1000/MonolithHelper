@@ -9,6 +9,7 @@ import { NavLink } from 'react-router-dom';
 import useDropdown from '../../hooks/useDropdown';
 import { LogoutDropdownUser } from './LogoutDropdownUser';
 import { SettingsDropdownUser } from './SettingsDropdownUser';
+import { UserMenuMobile } from './UserMenuMobile';
 
 const PersonalZone = () => {
 	const [showDropdow, setShowDropdown, divRefSon, divRefFather] = useDropdown();
@@ -34,6 +35,13 @@ const PersonalZone = () => {
 						<LogoutDropdownUser setHover={setHover} hover={hover} />
 					</ContainerPersonalZone>
 				</div>
+			) : null}
+			{showDropdow ? (
+				<UserMenuMobile
+					setShowDropdown={setShowDropdown}
+					showDropdow={showDropdow}
+					divRefFather={divRefFather}
+				/>
 			) : null}
 		</div>
 	);

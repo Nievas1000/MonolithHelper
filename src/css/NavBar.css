@@ -69,6 +69,19 @@
 .more-mobile{
 	display: none;
 }
+.mobile-user-menu{
+	display: none;
+	height: 105vh;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	position: fixed;
+	z-index: 2;
+}
+.mobile-user-menu svg path{
+	fill: #8A8A8A
+}
 @media only screen and (max-width:1410px){
 	.settigns{
 		display: none !important;
@@ -103,14 +116,6 @@
 		display: block;
 	}
 }
-@media only screen and (max-width:699px){
-	.container-personal{
-		height: 96vh !important;
-		margin-top: 0px !important;
-		margin-right: 0px !important;
-		border-radius: 0px !important;
-	}
-}
 @media only screen and (max-width:600px){
 	.open-app{
 		width: 140px !important;
@@ -120,5 +125,11 @@
 	}
 	.add-app{
 		display: none !important;
+	}
+	.signout{
+		display: none;
+	}
+	.mobile-user-menu{
+		display: block;
 	}
 }

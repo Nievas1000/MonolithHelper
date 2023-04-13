@@ -227,4 +227,7 @@ input[type="range"]::-webkit-slider-thumb {
     .line-degree{
         width: 250px !important;
     }
+    .container-metrics{
+        margin-bottom: 35px;
+    }
 }

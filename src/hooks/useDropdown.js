@@ -13,7 +13,9 @@ const useDropdown = (data = null) => {
 			) {
 				// Si se hizo clic fuera del div, ocultarlo
 				setShowDropdown(false);
-				data([]);
+				if (data !== null) {
+					data([]);
+				}
 			}
 		}
 
