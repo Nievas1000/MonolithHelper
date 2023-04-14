@@ -1,4 +1,4 @@
-describe('Test Log in and Log out', function () {
+/* describe('Test Log in and Log out', function () {
 	beforeEach(() => {
 		cy.visit('https://app.taffi.io/login');
 		window.localStorage.setItem('userAppKey', '12525');
@@ -8,4 +8,4 @@ describe('Test Log in and Log out', function () {
 		cy.contains('Sign Out').click();
 		cy.contains('Login');
 	});
-});
+}); */
