@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import useGeneralLogin from './useGeneralLogin';
+import { useDispatch } from 'react-redux';
 
 // Hook para obtener un token de github mediante su api, que luego usamos ese token para obtener los datos del usuario con una consulta al backend, para poder hacer el login
 const useLoginGithub = () => {
 	const [activeGithub, setActiveGithub] = useState(false);
 	const [registry] = useGeneralLogin();
+	const dispatch = useDispatch();
 	useEffect(() => {
 		try {
 			const queryString = window.location.search;
@@ -59,6 +61,14 @@ const useLoginGithub = () => {
 			email: data.data.login,
 			firstName: data.data.name,
 			lastName: 'null',
+		});
+		dispatch({
+			type: 'SET_USER',
+			payload: {
+				email: data.data.login,
+				firstName: data.data.name,
+				lastName: null,
+			},
 		});
 	};
 
