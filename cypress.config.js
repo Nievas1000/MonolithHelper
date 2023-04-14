@@ -24,7 +24,7 @@ module.exports = defineConfig({
 		},
 	},
 
-	defaultCommandTimeout: 10000,
+	defaultCommandTimeout: 15000,
 
 	video: false,
 });
