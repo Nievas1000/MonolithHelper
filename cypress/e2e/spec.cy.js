@@ -7,7 +7,7 @@ describe('Test to login with Google', function () {
 	});
 });
 
-/* describe('Test Log in and Log out', function () {
+describe('Test Log in and Log out', function () {
 	beforeEach(() => {
 		cy.visit('https://app.taffi.io/login');
 		window.localStorage.setItem('userAppKey', '12525');
@@ -75,9 +75,8 @@ describe('Test for the number of applications of a user', function () {
 			failOnStatusCode: false,
 		}).then((resp) => {
 			const { body, status } = resp;
-			cy.log(body);
 			expect(body.body.length).to.deep.equal(3);
 			expect(status).to.eq(200);
 		});
 	});
-}); */
+});
