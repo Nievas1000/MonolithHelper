@@ -28,7 +28,6 @@ describe('Test visit my app without being logged in', function () {
 		cy.contains('Monolith to microservices in 60 seconds');
 	});
 });
-
 describe('Test to login with Github', function () {
 	beforeEach(() => {
 		cy.visit(
