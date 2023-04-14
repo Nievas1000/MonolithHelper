@@ -9,10 +9,10 @@ import {
 import { useCallback } from 'react';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
-import archivo1 from '../app/SendToCodojo.jar'; // Archivo 1 a comprimir
-import archivo2 from '../app/SendCodojo.sh';
-import archivo3 from '../app/SendCodojo.bat';
-import archivo4 from '../app/SendToCodojo.config.properties';
+import archivo1 from '../app/SendToTaffi.jar'; // Archivo 1 a comprimir
+import archivo2 from '../app/SendTaffi.sh';
+import archivo3 from '../app/SendTaffi.bat';
+import archivo4 from '../app/SendToTaffi.config.properties';
 
 export default function InfoApp() {
 	const onClick = useCallback(async () => {
