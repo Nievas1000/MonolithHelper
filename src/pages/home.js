@@ -28,11 +28,13 @@ const Home = () => {
 
 	useEffect(() => {
 		document.title = 'My Apps | Taffi';
-		posthog.identify(userApplicationKey, {
-			firstName: user.firstName,
-			email: user.email,
-			lastName: user.lastName,
-		});
+		if (user !== null) {
+			posthog.identify(userApplicationKey, {
+				firstName: user.firstName,
+				email: user.email,
+				lastName: user.lastName,
+			});
+		}
 	}, []);
 
 	return (
