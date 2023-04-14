@@ -35,7 +35,7 @@ export const ToolTipMetrics = (props) => {
 									ml={20}
 									mb='5px'
 								>
-									{index + 1}.{father.path}
+									{index + 1}. {father.path}
 								</Text>
 							</Container>
 						);

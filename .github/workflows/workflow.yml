@@ -118,6 +118,9 @@ jobs:
           CYPRESS_googleClientId: ${{secrets.GOOGLE_CLIENT_ID}}
           CYPRESS_googleRefreshToken: ${{secrets.GOOGLE_REFRESH_TOKEN}}
           CYPRESS_googleClientSecret: ${{secrets.GOOGLE_CLIENT_SECRET}}
+          CYPRESS_getAppsUrl: ${{secrets.REACT_APP_API_TEST_URL}}
+          CYPRESS_getAppsToken: ${{secrets.API_GATEWAY_TOKEN}}
+
       - name: Send Slack Notification on Failure
         if: ${{ failure() }}
         uses: 8398a7/action-slack@v3
