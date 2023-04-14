@@ -57,7 +57,7 @@ export default function InfoApp() {
 
 		zip.generateAsync({ type: 'blob' }).then(function (content) {
 			// Guarda el contenido recorrido en el archivo .zip
-			saveAs(content, 'SendAppDataToCodojo.zip');
+			saveAs(content, 'SendAppDataToTaffi.zip');
 		});
 	}, []);
 
