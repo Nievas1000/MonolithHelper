@@ -113,6 +113,8 @@ jobs:
       - run: npm install
       - name: E2E Test
         uses: cypress-io/github-action@v4
+        with:
+          spec: cypress/e2e/spec.cy.js
         env:
           CYPRESS_githubClientId: ${{secrets.CLIENT_GITHUB_ID}}
           CYPRESS_googleClientId: ${{secrets.GOOGLE_CLIENT_ID}}
