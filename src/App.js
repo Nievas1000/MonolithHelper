@@ -4,20 +4,12 @@ import Login from './pages/login';
 import ProtectedRoute from './components/ProtectedRoute';
 import Settings from './pages/settings';
 
-
-
 function App() {
 	const location = useLocation();
-	
 
 	if (location.pathname === '/') {
 		return <Navigate to='/login' />;
 	}
-
-	
-
-	
-
 
 	return (
 		<div className='App'>
@@ -40,13 +32,15 @@ function App() {
 					}
 				/>
 
-				<Route path='/how-to-add-application' element={
-					<ProtectedRoute>
-				<Home/>
-				</ProtectedRoute>
-				
-				} />
-				
+				<Route
+					path='/how-to-add-application'
+					element={
+						<ProtectedRoute>
+							<Home />
+						</ProtectedRoute>
+					}
+				/>
+
 				<Route
 					path='/settings'
 					element={

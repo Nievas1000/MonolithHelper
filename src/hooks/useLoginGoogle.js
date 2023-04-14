@@ -2,11 +2,13 @@ import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import useGeneralLogin from './useGeneralLogin';
+import { useDispatch } from 'react-redux';
 
 // Hook para obtener los datos de un usuario mediante el oauth de google y luego hacer el login o registrar al usuario
 const useLoginGoogle = () => {
 	const [activeGoogle, setActiveGoogle] = useState(false);
 	const [registry] = useGeneralLogin();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (localStorage.getItem('accessTokenGoogle')) {
@@ -26,6 +28,14 @@ const useLoginGoogle = () => {
 					email: data.email,
 					firstName: data.given_name,
 					lastName: data.family_name,
+				});
+				dispatch({
+					type: 'SET_USER',
+					payload: {
+						email: data.email,
+						firstName: data.given_name,
+						lastName: data.family_name,
+					},
 				});
 			};
 			loginGoogle();
@@ -49,10 +59,19 @@ const useLoginGoogle = () => {
 					}
 				);
 				const data = response.data;
+				console.log(data);
 				registry({
 					email: data.email,
 					firstName: data.given_name,
 					lastName: data.family_name,
+				});
+				dispatch({
+					type: 'SET_USER',
+					payload: {
+						email: data.email,
+						firstName: data.given_name,
+						lastName: data.family_name,
+					},
 				});
 			} catch (error) {
 				console.log(error.response.data);

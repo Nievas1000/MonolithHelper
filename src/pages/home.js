@@ -8,12 +8,19 @@ import InfoApp from '../components/InfoApp';
 import NavBar from '../components/navbar/NavBar';
 import ButtonsSwitchZone from '../components/myapp/filters/ButtonsSwitchZone';
 import { PopUpDeletedApp } from '../components/myapp/deleteApp/PopUpDeletedApp';
+import useLoginGoogle from '../hooks/useLoginGoogle';
+import useLoginGithub from '../hooks/useLoginGithub';
+import { posthog } from 'posthog-js';
 
 const Home = () => {
 	const [activeDropdown, setActiveDropdown] = useState(false);
+	const userApplicationKey = localStorage.getItem('userAppKey');
 	const classe = useSelector((state) => state.selectedClass);
 	const app = useSelector((state) => state.selectedApp);
 	const activeInfo = useSelector((state) => state.info);
+	const user = useSelector((state) => state.user);
+	useLoginGoogle();
+	useLoginGithub();
 
 	if (!activeInfo) {
 		history.pushState(null, '', 'my-app');
@@ -21,7 +28,13 @@ const Home = () => {
 
 	useEffect(() => {
 		document.title = 'My Apps | Taffi';
+		posthog.identify(userApplicationKey, {
+			firstName: user.firstName,
+			email: user.email,
+			lastName: user.lastName,
+		});
 	}, []);
+
 	return (
 		<div className='container-my-app'>
 			<NavBar
