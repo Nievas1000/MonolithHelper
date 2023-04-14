@@ -52,3 +52,22 @@ Cypress.Commands.add('loginByGoogleApiFail', () => {
 		expect(status).to.eq(401);
 	});
 });
+
+Cypress.Commands.add('getUserApps', () => {
+	cy.request({
+		method: 'POST',
+		url: `${Cypress.env('getAppsUrl')}/app`,
+		body: {
+			type: 'demo',
+			userApplicationKey: '12525',
+		},
+		headers: {
+			'x-api-key': Cypress.env('getAppsToken'),
+		},
+		failOnStatusCode: false,
+	}).then((resp) => {
+		const { body, status } = resp;
+		expect(body.body.length).to.deep.equal(3);
+		expect(status).to.eq(200);
+	});
+});

@@ -60,3 +60,9 @@ describe('Test url', function () {
 		cy.contains('Login');
 	});
 });
+
+describe('Test for the number of applications of a user', function () {
+	it('User apps Test', function () {
+		cy.getUserApps();
+	});
+});
