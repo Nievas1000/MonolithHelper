@@ -17,7 +17,7 @@ describe('Test to login with Google', function () {
 		cy.contains('Sign Out').click();
 		cy.contains('Login');
 	});
-}); */
+});
 
 describe('Test visit my app without being logged in', function () {
 	beforeEach(() => {
@@ -60,7 +60,7 @@ describe('Test url', function () {
 	});
 });
 
-/* describe('Test for the number of applications of a user', function () {
+describe('Test for the number of applications of a user', function () {
 	it('User apps Test', function () {
 		cy.request({
 			method: 'POST',
