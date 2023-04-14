@@ -1,4 +1,4 @@
-/* describe('Test to login with Google', function () {
+describe('Test to login with Google', function () {
 	it('Google success test', function () {
 		cy.loginByGoogleApiSucces();
 	});
@@ -60,12 +60,12 @@ describe('Test url', function () {
 		cy.contains('Login');
 	});
 });
- */
+
 describe('Test for the number of applications of a user', function () {
 	it('User apps Test', function () {
 		cy.request({
 			method: 'POST',
-			url: `${Cypress.env('getAppsUrl')}/app`,
+			url: Cypress.env('getAppsUrl'),
 			body: {
 				type: 'demo',
 				userApplicationKey: '12525',
