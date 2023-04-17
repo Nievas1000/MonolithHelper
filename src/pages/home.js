@@ -35,6 +35,9 @@ const Home = () => {
 				lastName: user.lastName,
 			});
 		}
+		posthog.capture('Loaded page', {
+			record_video: true,
+		});
 	}, []);
 
 	return (
