@@ -1,3 +1,4 @@
+import { posthog } from 'posthog-js';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -8,6 +9,7 @@ const useSearchClasses = () => {
 	const [classes, setClasses] = useState([]);
 	const handleChange = (e) => {
 		const text = e.target.value;
+		posthog.capture('Input Classes', { value: text });
 		const data = selectedApp.classes[0].filter((item) => {
 			const itemData = item.toUpperCase();
 			const textData = text.toUpperCase();
