@@ -26,22 +26,21 @@ const PersonalZone = () => {
 				<ArrowIconExpand />
 			</UserTab>
 			{showDropdow ? (
-				<div className='signout' ref={divRefSon}>
-					<ContainerPersonalZone className='container-personal'>
-						<NavLink to='/settings'>
-							<SettingsDropdownUser setHover={setHover} hover={hover} />
-						</NavLink>
-						<hr className='line-personal' />
-						<LogoutDropdownUser setHover={setHover} hover={hover} />
-					</ContainerPersonalZone>
+				<div ref={divRefSon}>
+					<div className='signout'>
+						<ContainerPersonalZone className='container-personal'>
+							<NavLink to='/settings'>
+								<SettingsDropdownUser setHover={setHover} hover={hover} />
+							</NavLink>
+							<hr className='line-personal' />
+							<LogoutDropdownUser setHover={setHover} hover={hover} />
+						</ContainerPersonalZone>
+					</div>
+					<UserMenuMobile
+						setShowDropdown={setShowDropdown}
+						showDropdow={showDropdow}
+					/>
 				</div>
-			) : null}
-			{showDropdow ? (
-				<UserMenuMobile
-					setShowDropdown={setShowDropdown}
-					showDropdow={showDropdow}
-					divRefFather={divRefFather}
-				/>
 			) : null}
 		</div>
 	);
