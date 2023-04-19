@@ -35,18 +35,6 @@ const Home = () => {
 				lastName: user.lastName,
 			});
 		}
-		posthog.capture('Video Started', {
-			session_recording: {
-				blockClass: 'ph-no-capture',
-				blockSelector: null,
-				ignoreClass: 'ph-ignore-input',
-				maskAllInputs: false,
-				maskInputOptions: {},
-				maskInputFn: null,
-				slimDOMOptions: {},
-				collectFonts: false,
-			},
-		});
 	}, []);
 
 	return (

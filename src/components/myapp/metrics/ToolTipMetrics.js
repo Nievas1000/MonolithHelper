@@ -30,7 +30,7 @@ export const ToolTipMetrics = (props) => {
 							>
 								<Text
 									variant='three'
-									className='fathers'
+									className='fathers metrics-items'
 									color={colors.grey.nine}
 									ml={20}
 									mb='5px'
