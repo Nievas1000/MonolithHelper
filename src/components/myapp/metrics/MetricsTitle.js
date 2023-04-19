@@ -19,7 +19,7 @@ export const MetricsTitle = ({
 					className={
 						metric.fathers.length <= 0
 							? 'd-flex cursor myclass'
-							: 'd-flex cursor myclass '
+							: 'd-flex cursor myclass metrics-items'
 					}
 					onClick={
 						metric.fathers.length > 0
