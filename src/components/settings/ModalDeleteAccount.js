@@ -28,7 +28,6 @@ const ModalDeleteAccount = ({ setIsOpen }) => {
 						},
 					}
 				);
-				console.log(response);
 				if (response.status === 200) {
 					localStorage.clear();
 					window.location.href = 'https://www.codojo.io/';

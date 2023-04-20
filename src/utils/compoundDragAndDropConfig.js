@@ -29,8 +29,14 @@ export const compoundDragAndDropConfig = (cy, handleClass, metric) => {
 		},
 		classes: 'parent-node',
 		position: {
-			x: cy.nodes()[0].position().x + 20,
-			y: cy.nodes()[0].position().y + 70,
+			x:
+				cy.nodes().length > 1
+					? cy.nodes()[1].position().x + 20
+					: cy.nodes()[0].position().x + 20,
+			y:
+				cy.nodes().length > 1
+					? cy.nodes()[1].position().y + 50
+					: cy.nodes()[0].position().y + 50,
 		},
 	});
 

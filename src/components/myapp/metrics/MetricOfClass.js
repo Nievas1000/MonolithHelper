@@ -22,7 +22,7 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 				tooltip={tooltip}
 				handleTooltipClick={handleTooltipClick}
 			/>
-			{tooltip.father ? (
+			{tooltip.father && metric.fathers.length > 0 ? (
 				<ToolTipMetrics
 					classes={metric.fathers}
 					dispatch={dispatch}
