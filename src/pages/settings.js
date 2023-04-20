@@ -23,7 +23,7 @@ const Settings = () => {
 		document.title = 'Settings | Taffi';
 	}, []);
 	return (
-		<div>
+		<div className='settings'>
 			<div className='container-settings' style={{ position: 'absolute' }}>
 				<Subtitle
 					variant='one'
