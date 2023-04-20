@@ -11,7 +11,11 @@ export const MetricsTitle = ({
 			{metric.className.length <= 20 ? (
 				<Text
 					variant='one'
-					color={tooltip.father ? colors.primary.two : colors.grey.nine}
+					color={
+						tooltip.father && metric.fathers.length > 0
+							? colors.primary.two
+							: colors.grey.nine
+					}
 					fontWeight={500}
 					ml={15}
 					mt={15}
@@ -33,7 +37,11 @@ export const MetricsTitle = ({
 			) : (
 				<Text
 					variant='one'
-					color={tooltip.father ? colors.primary.two : colors.grey.nine}
+					color={
+						tooltip.father && metric.fathers.length > 0
+							? colors.primary.two
+							: colors.grey.nine
+					}
 					fontWeight={500}
 					ml={15}
 					mt={15}
