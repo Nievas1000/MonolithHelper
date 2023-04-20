@@ -11,13 +11,25 @@ export const MetricsTitle = ({
 			{metric.className.length <= 20 ? (
 				<Text
 					variant='one'
-					color={tooltip.father ? colors.primary.two : colors.grey.nine}
+					color={
+						tooltip.father && metric.fathers.length > 0
+							? colors.primary.two
+							: colors.grey.nine
+					}
 					fontWeight={500}
 					ml={15}
 					mt={15}
 					title={classe}
-					className='d-flex cursor myclass'
-					onClick={() => handleTooltipClick('father')}
+					className={
+						metric.fathers.length <= 0
+							? 'd-flex cursor myclass'
+							: 'd-flex cursor myclass metrics-items'
+					}
+					onClick={
+						metric.fathers.length > 0
+							? () => handleTooltipClick('father')
+							: null
+					}
 				>
 					<SmallSelectedClassIcon />
 					{metric.className} called by {metric.fathers.length} classes
@@ -25,13 +37,21 @@ export const MetricsTitle = ({
 			) : (
 				<Text
 					variant='one'
-					color={tooltip.father ? colors.primary.two : colors.grey.nine}
+					color={
+						tooltip.father && metric.fathers.length > 0
+							? colors.primary.two
+							: colors.grey.nine
+					}
 					fontWeight={500}
 					ml={15}
 					mt={15}
 					title={classe}
 					className='d-flex cursor myclass'
-					onClick={() => handleTooltipClick('father')}
+					onClick={
+						metric.fathers.length > 0
+							? () => handleTooltipClick('father')
+							: null
+					}
 				>
 					<SmallSelectedClassIcon />
 					{metric.className.length > 30

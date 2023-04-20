@@ -22,7 +22,7 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 				tooltip={tooltip}
 				handleTooltipClick={handleTooltipClick}
 			/>
-			{tooltip.father ? (
+			{tooltip.father && metric.fathers.length > 0 ? (
 				<ToolTipMetrics
 					classes={metric.fathers}
 					dispatch={dispatch}
@@ -46,7 +46,7 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 				color={tooltip.interfaces ? colors.primary.two : colors.grey.nine}
 				ml={16}
 				mt='4px'
-				className='cursor'
+				className='cursor metrics-items'
 				onClick={() => handleTooltipClick('interfaces')}
 			>
 				<SmallInterfaceIcon /> {metric.interfaces.length}
@@ -54,8 +54,7 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 			</Text>
 			{tooltip.interfaces ? (
 				<ToolTipMetrics classes={metric.interfaces}>
-					Is only used by this proposed microservice. No refactoring is
-					required.
+					Interfaces needed if {metric.className} was moved to a microservice
 				</ToolTipMetrics>
 			) : null}
 			<Text
@@ -63,7 +62,7 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 				color={tooltip.exlusiveClasses ? colors.primary.two : colors.grey.nine}
 				ml={15}
 				mt={-11}
-				className='cursor'
+				className='cursor metrics-items'
 				onClick={() => handleTooltipClick('exlusiveClasses')}
 			>
 				<SmallEncapsulatedIcon /> {metric.exlusiveClasses.length}
@@ -77,9 +76,8 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 					dispatch={dispatch}
 					execute={true}
 				>
-					Is only used by this proposed microservice. No refactoring is
-					required. {metric.className} can be eliminated from the monolith when
-					it is migrated to a microservice.
+					These classes do not need to be refactored to move {metric.className}{' '}
+					to a microservice
 				</ToolTipMetrics>
 			) : null}
 			<Text
@@ -89,7 +87,7 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 				}
 				ml={15}
 				mt={-11}
-				className='cursor'
+				className='cursor metrics-items'
 				onClick={() => handleTooltipClick('nonEcxlusiveClasses')}
 			>
 				<SmallNonEncapsulatedIcon /> {metric.nonEcxlusiveClasses.length}
@@ -103,10 +101,8 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 					dispatch={dispatch}
 					execute={true}
 				>
-					A non-exclusive class has relationships with other classes outside
-					this proposed microservice. The below classes must be refactored
-					before {metric.className} is migrated to a microservice and eliminated
-					from the monolith.
+					These classes would need to be refactored to move {metric.className}{' '}
+					to a microservice
 				</ToolTipMetrics>
 			) : null}
 			<Text
@@ -114,7 +110,7 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 				color={tooltip.exclusiveTables ? colors.primary.two : colors.grey.nine}
 				ml={17}
 				mt={-11}
-				className='cursor'
+				className='cursor metrics-items'
 				onClick={() => handleTooltipClick('exclusiveTables')}
 			>
 				<SmallEncapsulatedTableIcon /> {metric.exclusiveTables.length}
@@ -124,8 +120,9 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 			</Text>
 			{tooltip.exclusiveTables ? (
 				<ToolTipMetrics classes={metric.exclusiveTables}>
-					An exclusive datastore is only used by this proposed microservice. No
-					refactoring is required.
+					If this class were to become a microservice, exclusive tables would be
+					referenced by only the new microservice. The monolith would not need
+					direct access to this data.
 				</ToolTipMetrics>
 			) : null}
 			<Text
@@ -135,7 +132,7 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 				}
 				ml={17}
 				mt={-11}
-				className='cursor'
+				className='cursor metrics-items'
 				onClick={() => handleTooltipClick('nonEcxlusiveTables')}
 			>
 				<SmallNonEncapsulatedTableIcon /> {metric.nonEcxlusiveTables.length}
@@ -145,10 +142,8 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 			</Text>
 			{tooltip.nonEcxlusiveTables ? (
 				<ToolTipMetrics classes={metric.nonEcxlusiveTables}>
-					A non-exclusive datastore is utilized with other classes that are not
-					required for this microservice. Consider refactoring the below classes
-					so that when {metric.className} is a microservice there would be only
-					one service communicating with this datastore.
+					If this class were to become a microservice, non-exclusive tables
+					would be referenced by both the monolith and the new microservice.
 				</ToolTipMetrics>
 			) : null}
 		</Container>

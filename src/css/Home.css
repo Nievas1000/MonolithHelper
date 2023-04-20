@@ -160,8 +160,12 @@ input[type="range"]::-webkit-slider-thumb {
 .myclass{
     word-break: break-all;
 }
+.metrics-items:hover{
+    color:#47BC82;
+}
 .metric-mobile{
     display: none !important;
+    background-color: #131514;
 }
 @keyframes slideUp {
     from {

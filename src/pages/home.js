@@ -21,7 +21,6 @@ const Home = () => {
 	const user = useSelector((state) => state.user);
 	useLoginGoogle();
 	useLoginGithub();
-
 	if (!activeInfo) {
 		history.pushState(null, '', 'my-app');
 	}
@@ -35,18 +34,6 @@ const Home = () => {
 				lastName: user.lastName,
 			});
 		}
-		posthog.capture('Video Started', {
-			session_recording: {
-				blockClass: 'ph-no-capture',
-				blockSelector: null,
-				ignoreClass: 'ph-ignore-input',
-				maskAllInputs: false,
-				maskInputOptions: {},
-				maskInputFn: null,
-				slimDOMOptions: {},
-				collectFonts: false,
-			},
-		});
 	}, []);
 
 	return (

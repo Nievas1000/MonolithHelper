@@ -58,14 +58,18 @@ const reducer = (state = initialState, action) => {
 						? state.initialApps.splice(1)
 						: [...state.initialApps],
 				selectedApp: action.payload,
-				selectedClass: action.payload.classes[0][0],
+				selectedClass: action.payload.mainClass
+					? action.payload.mainClass
+					: action.payload.classes[0][0],
 			};
 
 		case 'SELECT_APP':
 			return {
 				...state,
 				selectedApp: action.payload,
-				selectedClass: action.payload.classes[0][0],
+				selectedClass: action.payload.mainClass
+					? action.payload.mainClass
+					: action.payload.classes[0][0],
 				info: false,
 			};
 
