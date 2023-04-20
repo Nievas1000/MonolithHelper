@@ -34,7 +34,6 @@ export default function InfoApp() {
 		let nombre;
 		recorrerArchivos.forEach((imgBlob, index) => {
 			cont = cont + 1;
-			console.log(imgBlob);
 			if (imgBlob.type === 'text/x-sh') {
 				types = 'sh';
 				nombre = 'SendCodojo';
@@ -51,7 +50,6 @@ export default function InfoApp() {
 				types = 'properties';
 				nombre = 'SendToCodojo.config';
 			}
-			console.log(nombre);
 			carpetaArchivos.file(`${nombre}.${types}`, imgBlob, { blob: true });
 		});
 

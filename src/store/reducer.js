@@ -64,7 +64,6 @@ const reducer = (state = initialState, action) => {
 			};
 
 		case 'SELECT_APP':
-			console.log(action.payload);
 			return {
 				...state,
 				selectedApp: action.payload,

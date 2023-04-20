@@ -59,7 +59,6 @@ const useLoginGoogle = () => {
 					}
 				);
 				const data = response.data;
-				console.log(data);
 				registry({
 					email: data.email,
 					firstName: data.given_name,
