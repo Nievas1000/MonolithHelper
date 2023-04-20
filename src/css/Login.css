@@ -54,6 +54,9 @@
 .icon-taffi-mobile{
 	display: none !important;
 }
+.buttons-login-mobile{
+	display: none !important;
+}
 @media only screen and (max-width:890px){
 	.container-img{
 		display: none;
@@ -107,7 +110,16 @@
 	.text-mobile-login{
 		color: #EEEEEE !important;
 	}
-	.buttons-mobile-login{
-		background: #FFFFFF !important;
+	.buttons-login{
+		display: none !important;
+	}
+	.buttons-login-mobile{
+		display: flex !important;
+	}
+	.mobile_active path{
+		fill: white;
+	}
+	.mobile_inactive path{
+		fill: #47BC82;
 	}
 }
