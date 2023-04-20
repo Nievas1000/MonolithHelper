@@ -8,8 +8,8 @@ import { colors } from 'design-kit-codojo';
 
 // Aqui esta toda la configuracion necesaria para que el usuario puede crear un cuadro y poder juntar los nodos
 export const compoundDragAndDropConfig = (cy, handleClass, metric) => {
-	/* cy.style().selector('.parent-node').style({
-		'background-color': colors.grey.four,
+	cy.style().selector('.parent-node').style({
+		'background-color': colors.background.one,
 		label: metric.fathers.length,
 		'text-valign': 'center',
 		'text-halign': 'center',
@@ -19,7 +19,7 @@ export const compoundDragAndDropConfig = (cy, handleClass, metric) => {
 		'border-style': 'solid',
 		'border-width': '2px',
 		'border-color': colors.grey.six,
-		color: colors.grey.seven,
+		color: colors.grey.six,
 	});
 	cy.add({
 		group: 'nodes',
@@ -29,8 +29,8 @@ export const compoundDragAndDropConfig = (cy, handleClass, metric) => {
 		},
 		classes: 'parent-node',
 		position: {
-			x: 150,
-			y: cy.nodes()[0].position().y,
+			x: cy.nodes()[0].position().x + 20,
+			y: cy.nodes()[0].position().y + 70,
 		},
 	});
 
@@ -41,7 +41,7 @@ export const compoundDragAndDropConfig = (cy, handleClass, metric) => {
 			source: metric.fathers.length,
 			target: metric.className,
 		},
-	}); */
+	});
 	cy.nodes().on('mouseover', function (event) {
 		const node = event.target;
 		if (node.data().classe || node.data().interface) {

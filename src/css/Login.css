@@ -1,3 +1,17 @@
+.gradient-top-right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: none;
+}
+.gradient-bottom-left {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-bottom: 90px;
+	margin-left: -30px;
+	display: none;
+}
 .login-image-header{
 	position: absolute;
 	width: 100%;
@@ -37,6 +51,9 @@
 .container-policies p{
 	text-align: center;
 }
+.icon-taffi-mobile{
+	display: none !important;
+}
 @media only screen and (max-width:890px){
 	.container-img{
 		display: none;
@@ -62,14 +79,35 @@
 	}
 }
 @media only screen and (max-width:600px){
+	.container-information{
+		background-color: #121212;
+		height: 100vh;
+	}
 	.container-img{
 		display: none;
 	}
 	.sign-in{
-		height: 100vh;
+		height: 200px !important;
+		align-items: start;
+		padding-top: 132px;
 	}
 	.container-policies{
 		position: absolute;
 		bottom: 0;
+	}
+	.gradient-top-right {
+		display: block;
+	}
+	.gradient-bottom-left {
+		display: block;
+	}
+	.icon-taffi-mobile{
+		display: flex !important;
+	}
+	.text-mobile-login{
+		color: #EEEEEE !important;
+	}
+	.buttons-mobile-login{
+		background: #FFFFFF !important;
 	}
 }

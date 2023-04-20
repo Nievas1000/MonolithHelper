@@ -21,7 +21,7 @@ const Home = () => {
 	const user = useSelector((state) => state.user);
 	useLoginGoogle();
 	useLoginGithub();
-
+	console.log(app);
 	if (!activeInfo) {
 		history.pushState(null, '', 'my-app');
 	}

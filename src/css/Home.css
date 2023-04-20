@@ -165,6 +165,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .metric-mobile{
     display: none !important;
+    background-color: #131514;
 }
 @keyframes slideUp {
     from {

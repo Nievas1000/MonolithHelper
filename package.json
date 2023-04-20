@@ -19,7 +19,7 @@
 		"cytoscape-compound-drag-and-drop": "^1.1.0",
 		"cytoscape-dagre": "^2.5.0",
 		"cytoscape-fcose": "^2.2.0",
-		"design-kit-codojo": "^1.2.5",
+		"design-kit-codojo": "^1.2.10",
 		"dotenv": "^16.0.3",
 		"env-cmd": "^10.1.0",
 		"file-saver": "^2.0.5",

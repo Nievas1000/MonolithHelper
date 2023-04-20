@@ -18,11 +18,15 @@ const SignInForm = () => {
 
 	return (
 		<div>
-			<Title className='d-flex justify-content-center' variant='four' mb={2}>
+			<Title
+				className='d-flex justify-content-center text-mobile-login'
+				variant='four'
+				mb={2}
+			>
 				Get started for free
 			</Title>
 			<Subtitle
-				className='d-flex justify-content-center'
+				className='d-flex justify-content-center text-mobile-login'
 				variant='two'
 				color={colors.background.ten}
 				mb={32}
@@ -30,7 +34,7 @@ const SignInForm = () => {
 				No credit card required
 			</Subtitle>
 			<Text
-				className='d-flex justify-content-center'
+				className='d-flex justify-content-center text-mobile-login'
 				variant='two'
 				color={colors.grey.five}
 				mb={16}
@@ -42,12 +46,22 @@ const SignInForm = () => {
 				className='d-flex justify-content-center box'
 			>
 				{!activeGithub ? (
-					<LoginButton variant='primary' mr={24} onClick={loginGitHub}>
+					<LoginButton
+						variant='primary'
+						mr={24}
+						onClick={loginGitHub}
+						className='buttons-mobile-login'
+					>
 						<GitHubIcon />
 						<ButtonText variant='two'>Github</ButtonText>
 					</LoginButton>
 				) : (
-					<LoginButton variant='active' mr={24} onClick={loginGitHub}>
+					<LoginButton
+						variant='active'
+						mr={24}
+						onClick={loginGitHub}
+						className='buttons-mobile-login'
+					>
 						<GitHubIcon />
 						<ButtonText variant='two'>Github</ButtonText>
 					</LoginButton>
@@ -55,14 +69,14 @@ const SignInForm = () => {
 				{!activeGoogle ? (
 					<LoginButton
 						variant='primary'
-						className='g_id_signin'
+						className='g_id_signin buttons-mobile-login'
 						onClick={loginGoogle}
 					>
 						<GoogleIcon />
 						<ButtonText variant='two'>Google</ButtonText>
 					</LoginButton>
 				) : (
-					<LoginButton variant='active'>
+					<LoginButton variant='active' className='buttons-mobile-login'>
 						<GoogleIcon />
 						<ButtonText variant='two'>Google</ButtonText>
 					</LoginButton>
