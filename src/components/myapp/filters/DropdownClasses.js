@@ -19,7 +19,7 @@ const DropdownClasses = () => {
 	const [showDropdow, setShowDropdown, divRefSon, divRefFather] =
 		useDropdown(setClasses);
 	return (
-		<div className='d-block'>
+		<div className='d-block dropdown-container'>
 			<SelectClasses
 				variant={showDropdow ? 'active' : 'primary'}
 				onClick={() => setShowDropdown(!showDropdow)}
@@ -34,7 +34,18 @@ const DropdownClasses = () => {
 					className='selected-in-dropdown'
 				>
 					{selectedClass.length > 15
-						? `${selectedClass.substring(0, 13)}...`
+						? `${selectedClass.substring(0, 15)}...`
+						: selectedClass}
+				</Text>
+				<Text
+					variant='two'
+					mt={14}
+					mr={22}
+					color={colors.grey.nine}
+					className='selected-in-dropdown-mobile'
+				>
+					{selectedClass.length > 40
+						? `${selectedClass.substring(0, 40)}...`
 						: selectedClass}
 				</Text>
 				{showDropdow ? <ArrowIconLess /> : <ArrowIconExpand />}

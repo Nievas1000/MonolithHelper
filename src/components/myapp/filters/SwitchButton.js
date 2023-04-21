@@ -7,7 +7,7 @@ export const SwitchButton = ({ value }) => {
 		<div className='d-flex'>
 			<Text
 				className='switch-text'
-				variant='two'
+				variant='three'
 				color={colors.grey.five}
 				mt={2}
 			>
