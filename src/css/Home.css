@@ -169,6 +169,9 @@ input[type="range"]::-webkit-slider-thumb {
     display: none !important;
     background-color: #131514;
 }
+.container-step-desktop{
+    display: none;
+}
 @keyframes slideUp {
     from {
       bottom: 0;
@@ -242,7 +245,9 @@ input[type="range"]::-webkit-slider-thumb {
     .metric-mobile{
         display: flex !important;
         margin-top: 0px !important;
+        margin-bottom: 0px !important;
         padding-top: 70px;
+        padding-bottom: 30px;
     }
     .container-classes{
         overflow: auto;
@@ -256,5 +261,42 @@ input[type="range"]::-webkit-slider-thumb {
     }
     .spinner{
         height: 80vh;
+    }
+    .container-step-desktop{
+        display: block;
+        position: absolute;
+        padding-bottom: 25px;
+    }
+    .step-desktop{     
+        height: 75px !important;
+        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 5px 5px rgba(0, 0, 0, 0.2);
+    }
+    .step-desktop p{
+        padding-left: 37px;
+        padding-top: 13px;
+    }
+}
+@media only screen and (max-width:430px){
+    .step-desktop{
+        height: 100px !important;
+    }
+    .step-desktop p{
+        padding-left: 20px;
+        padding-top: 16px;
+    }
+}
+@media only screen and (max-width:375px){
+    .step-desktop{
+        height: 122px !important;
+    }
+    .step-desktop p{
+        padding-right: 33px;
+        padding-left: 31px;
+    }
+}
+@media only screen and (max-width:360px){
+    .step-desktop p{
+        padding-left: 40px;
+        padding-right: 40px;
     }
 }
