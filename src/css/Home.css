@@ -241,6 +241,8 @@ input[type="range"]::-webkit-slider-thumb {
     }
     .metric-mobile{
         display: flex !important;
+        margin-top: 0px !important;
+        padding-top: 70px;
     }
     .container-classes{
         overflow: auto;
@@ -251,5 +253,8 @@ input[type="range"]::-webkit-slider-thumb {
     }
     .container-metrics{
         margin-bottom: 35px;
+    }
+    .spinner{
+        height: 80vh;
     }
 }
