@@ -2,6 +2,9 @@
     position: absolute;
     right: 0;
 }
+
+
+/*Estilos del dropdown de clases*/
 .drop-classes{
     z-index: 1;
     width: auto !important;
@@ -37,19 +40,24 @@
     font-size: 12px;
     line-height: 18px;
 }
+
+/*Esilos del grafico*/
+
 #cy {
     width: 100%;
     height: 700px;
     display: block;
     background-color: #131514;
-  }
+}
+
+/*Estilos del degree del grafico*/
+
 input[type="range"]::-webkit-slider-thumb {
     background: url('../../public/iconDegree.png') #47BC82;
     background-size: 65%;
     background-position: center;
     background-repeat: no-repeat;
 }
-
 .container-degree{
     position: relative;
 }
@@ -87,6 +95,10 @@ input[type="range"]::-webkit-slider-thumb {
 .level-degree{
     color: #ABABAB;
 }
+.degree{
+    background-color: #131514;
+    margin-top: -30px;
+}
 .target-popper {
     display: none;
     color: white;
@@ -95,10 +107,9 @@ input[type="range"]::-webkit-slider-thumb {
 .active{
     display: block;
 }
-.degree{
-    background-color: #131514;
-    margin-top: -30px;
-}
+
+/*Estilos de metricas de las clases*/
+
 .metric{
     background: #131514;
     width: 341px;
@@ -117,13 +128,6 @@ input[type="range"]::-webkit-slider-thumb {
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
-.spinner{
-    height: 700px;
-}
-.spinner svg{
-    width: 120px;
-    height: 110px;
-}
 .container-classes-metric{
     justify-content: center;
     width: 320px;
@@ -135,7 +139,7 @@ input[type="range"]::-webkit-slider-thumb {
     text-align: left;
     direction: ltr;
     display: flex;
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 .fathers{
     font-size: 10px !important;
@@ -150,13 +154,13 @@ input[type="range"]::-webkit-slider-thumb {
     direction: rtl;
 }
 .fathers-metric::-webkit-scrollbar{
-	width: 4px;
+    width: 4px;
 	height: 4px;
 	margin-top: 20px;
 	background-color: #343635;
 }
 .fathers-metric::-webkit-scrollbar-thumb{
-	background: #47BC82;
+    background: #47BC82;
 	border-radius: 2px;
 }
 .myclass{
@@ -169,9 +173,38 @@ input[type="range"]::-webkit-slider-thumb {
     display: none !important;
     background-color: #131514;
 }
+.metric-table-title svg{
+    margin-right: 5px;
+}
+
+/*Estilos de metricas de las tablas*/
+
+.container-tables-metric{
+    justify-content: center;
+    width: 320px;
+    height: auto;
+    max-height: 241px;
+    border-radius: 8px;
+}
+.fathers-tables-metric{
+    max-height: 180px !important;
+}
+
+/*Estilos de spinner*/
+
+.spinner{
+    height: 700px;
+}
+.spinner svg{
+    width: 120px;
+    height: 110px;
+}
 .container-step-desktop{
     display: none;
 }
+
+/*Animacion del pop-up del delete app*/
+
 @keyframes slideUp {
     from {
       bottom: 0;
