@@ -2,6 +2,8 @@ import { colors } from 'design-kit-codojo';
 import { useSelector } from 'react-redux';
 import { recursiveMethod } from '../utils/recursiveMethod';
 import interfaceIcon from '../utils/graphIcons/Interface.svg';
+import Apiicon from '../utils/graphIcons/ApiIcon.svg';
+
 import table from '../utils/graphIcons/Table.svg';
 import nonEncapsulatedTable from '../utils/graphIcons/NonEncapsulatedTable.svg';
 import metricOfClass from '../utils/metricsOfClass';
@@ -22,6 +24,7 @@ const useNodes = (recursiveNodes = 0) => {
 	let relationsExtends = [];
 	let relationsImplements = [];
 	let tables = [];
+
 	const metricEdges = [];
 	const metricNodes = [];
 	const metricTables = [];
@@ -300,7 +303,19 @@ const useNodes = (recursiveNodes = 0) => {
 				node.data.selectBorder = '#F9D758';
 			}
 		}
+
+		if (app.endpoints) {
+			app.endpoints.forEach((nodes) => {
+				for (let i = 0; i < nodes.length; i++) {
+					const element = nodes[i];
+					if (element === node.data.path) {
+						node.data.logoapi = Apiicon;
+					}
+				}
+			});
+		}
 	});
+
 	nonEncapsulates.showNodes = nodes.length;
 	nonEncapsulates.fathers = fathers;
 	nonEncapsulates.className = className;

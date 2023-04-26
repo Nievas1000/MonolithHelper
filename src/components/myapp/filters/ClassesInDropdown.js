@@ -8,6 +8,8 @@ const ClassesInDropdown = ({
 	setShowClasses,
 }) => {
 	const classesInit = selectedApp.classes[0].sort();
+	const app = selectedApp;
+	const endpoints = app.endpoints;
 	const handleDrop = (classe) => {
 		selectClass(classe, setShowClasses);
 		setShowClasses(false);
@@ -29,7 +31,9 @@ const ClassesInDropdown = ({
 									mt={12}
 									title={classe}
 								>
-									{classe}
+									{endpoints[0].sort().includes(classe)
+										? classe + ' (API)'
+										: classe}
 								</Text>
 							</TabDropdown>
 						);
@@ -42,7 +46,9 @@ const ClassesInDropdown = ({
 								onClick={() => handleDrop(classe)}
 							>
 								<Text variant='two' mt={12}>
-									{classe}
+									{endpoints[0].sort().includes(classe)
+										? classe + ' (API)'
+										: classe}
 								</Text>
 							</TabDropdown>
 						);
