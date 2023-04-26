@@ -5,6 +5,7 @@ const initialState = {
 	allApps: [],
 	dropdown: [],
 	initialApps: [],
+	endpoints: [],
 	selectedApp: null,
 	selectedClass: 'Select class...',
 	infoGraph: {
@@ -89,6 +90,12 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				info: true,
+			};
+
+		case 'END':
+			return {
+				...state,
+				endpoints: action.payload,
 			};
 		case 'SELECT_CLASS':
 			return {

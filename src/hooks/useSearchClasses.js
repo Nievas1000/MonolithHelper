@@ -9,16 +9,25 @@ const useSearchClasses = () => {
 	const [classes, setClasses] = useState([]);
 	const handleChange = (e) => {
 		const text = e.target.value;
-		posthog.capture('Input Classes', { value: text });
-		const data = selectedApp.classes[0].filter((item) => {
-			const itemData = item.toUpperCase();
-			const textData = text.toUpperCase();
-			return itemData.indexOf(textData) > -1;
-		});
-		if (data.length === 0) {
-			setClasses(['No results found']);
+
+		if (
+			text.toUpperCase().includes('API') ||
+			text.toUpperCase().includes('ENDPOINT')
+		) {
+			setClasses(selectedApp.endpoints[0].sort());
 		} else {
-			setClasses(data);
+			posthog.capture('Input Classes', { value: text });
+			const data = selectedApp.classes[0].filter((item) => {
+				const itemData = item.toUpperCase();
+				const textData = text.toUpperCase();
+
+				return itemData.indexOf(textData) > -1;
+			});
+			if (data.length === 0) {
+				setClasses(['No results found']);
+			} else {
+				setClasses(data);
+			}
 		}
 	};
 

@@ -85,6 +85,12 @@ const useCytoscope = (container, degree, handleClass) => {
 									'curve-style': 'bezier',
 								},
 							},
+							{
+								selector: 'node[logoapi]',
+								style: {
+									'background-image': 'data(logoapi)',
+								},
+							},
 						],
 					});
 					compoundDragAndDropConfig(cy, handleClass, metric);
