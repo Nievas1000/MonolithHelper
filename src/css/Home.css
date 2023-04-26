@@ -2,6 +2,9 @@
     position: absolute;
     right: 0;
 }
+
+
+/*Estilos del dropdown de clases*/
 .drop-classes{
     z-index: 1;
     width: auto !important;
@@ -10,7 +13,9 @@
 	overflow-x: hidden;
 	max-height: 265px;
 }
-
+.selected-in-dropdown-mobile{
+    display: none !important;
+}
 .container-classes::-webkit-scrollbar{
 	width: 4px;
 	height: 4px;
@@ -35,19 +40,24 @@
     font-size: 12px;
     line-height: 18px;
 }
+
+/*Esilos del grafico*/
+
 #cy {
     width: 100%;
     height: 700px;
     display: block;
     background-color: #131514;
-  }
+}
+
+/*Estilos del degree del grafico*/
+
 input[type="range"]::-webkit-slider-thumb {
     background: url('../../public/iconDegree.png') #47BC82;
     background-size: 65%;
     background-position: center;
     background-repeat: no-repeat;
 }
-
 .container-degree{
     position: relative;
 }
@@ -85,6 +95,10 @@ input[type="range"]::-webkit-slider-thumb {
 .level-degree{
     color: #ABABAB;
 }
+.degree{
+    background-color: #131514;
+    margin-top: -30px;
+}
 .target-popper {
     display: none;
     color: white;
@@ -93,10 +107,9 @@ input[type="range"]::-webkit-slider-thumb {
 .active{
     display: block;
 }
-.degree{
-    background-color: #131514;
-    margin-top: -30px;
-}
+
+/*Estilos de metricas de las clases*/
+
 .metric{
     background: #131514;
     width: 341px;
@@ -115,13 +128,6 @@ input[type="range"]::-webkit-slider-thumb {
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
-.spinner{
-    height: 700px;
-}
-.spinner svg{
-    width: 120px;
-    height: 110px;
-}
 .container-classes-metric{
     justify-content: center;
     width: 320px;
@@ -133,7 +139,7 @@ input[type="range"]::-webkit-slider-thumb {
     text-align: left;
     direction: ltr;
     display: flex;
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 .fathers{
     font-size: 10px !important;
@@ -148,13 +154,13 @@ input[type="range"]::-webkit-slider-thumb {
     direction: rtl;
 }
 .fathers-metric::-webkit-scrollbar{
-	width: 4px;
+    width: 4px;
 	height: 4px;
 	margin-top: 20px;
 	background-color: #343635;
 }
 .fathers-metric::-webkit-scrollbar-thumb{
-	background: #47BC82;
+    background: #47BC82;
 	border-radius: 2px;
 }
 .myclass{
@@ -167,6 +173,38 @@ input[type="range"]::-webkit-slider-thumb {
     display: none !important;
     background-color: #131514;
 }
+.metric-table-title svg{
+    margin-right: 5px;
+}
+
+/*Estilos de metricas de las tablas*/
+
+.container-tables-metric{
+    justify-content: center;
+    width: 320px;
+    height: auto;
+    max-height: 241px;
+    border-radius: 8px;
+}
+.fathers-tables-metric{
+    max-height: 180px !important;
+}
+
+/*Estilos de spinner*/
+
+.spinner{
+    height: 700px;
+}
+.spinner svg{
+    width: 120px;
+    height: 110px;
+}
+.container-step-desktop{
+    display: none;
+}
+
+/*Animacion del pop-up del delete app*/
+
 @keyframes slideUp {
     from {
       bottom: 0;
@@ -186,6 +224,7 @@ input[type="range"]::-webkit-slider-thumb {
 @media only screen and (max-width:600px){
     .container-home{
         margin-left: 0 !important;
+        display: block !important;
     }
     #cy {
         width: 100%;
@@ -195,18 +234,33 @@ input[type="range"]::-webkit-slider-thumb {
     .switch-more{
         display: none !important;
     }
+    .dropdown-container{
+        display: flex !important;
+        justify-content: center;
+    }
+    .drop-classes{
+        margin-top: 44px;
+        width: 335px !important;
+    }
     .button-dropdown-classes{
-        width: 130px !important;
-        margin-left: 13px;
+        width: 324px !important;
     }
     .selected-in-dropdown{
         margin-right: 0px !important;
+        display: none !important;
+    }
+    .selected-in-dropdown-mobile{
+        margin-right: 0px !important;
+        display: flex !important;
+    }
+    .container-switch{
+        margin-top: 19px;
     }
     .interface-switch{
-        margin-left: 5px !important;
+        margin-left: 0px !important;
     }
     .datastore-switch{
-        margin-left: 0px !important;
+        margin-left: 57px !important;
     }
     .switch-text{
         font-size: 12px !important;
@@ -223,6 +277,10 @@ input[type="range"]::-webkit-slider-thumb {
     }
     .metric-mobile{
         display: flex !important;
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        padding-top: 70px;
+        padding-bottom: 30px;
     }
     .container-classes{
         overflow: auto;
@@ -233,5 +291,45 @@ input[type="range"]::-webkit-slider-thumb {
     }
     .container-metrics{
         margin-bottom: 35px;
+    }
+    .spinner{
+        height: 80vh;
+    }
+    .container-step-desktop{
+        display: block;
+        position: absolute;
+        padding-bottom: 25px;
+    }
+    .step-desktop{     
+        height: 75px !important;
+        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 5px 5px rgba(0, 0, 0, 0.2);
+    }
+    .step-desktop p{
+        padding-left: 37px;
+        padding-top: 13px;
+    }
+}
+@media only screen and (max-width:430px){
+    .step-desktop{
+        height: 100px !important;
+    }
+    .step-desktop p{
+        padding-left: 20px;
+        padding-top: 16px;
+    }
+}
+@media only screen and (max-width:375px){
+    .step-desktop{
+        height: 122px !important;
+    }
+    .step-desktop p{
+        padding-right: 33px;
+        padding-left: 31px;
+    }
+}
+@media only screen and (max-width:360px){
+    .step-desktop p{
+        padding-left: 40px;
+        padding-right: 40px;
     }
 }

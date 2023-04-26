@@ -1,8 +1,14 @@
-import { LessDegreeIcon, PlusDegreeIcon, InputDegree } from 'design-kit-codojo';
+import {
+	LessDegreeIcon,
+	PlusDegreeIcon,
+	InputDegree,
+	Container,
+	colors,
+} from 'design-kit-codojo';
 
 const InputDegreeGraph = ({ degree, setDegree }) => {
 	return (
-		<div>
+		<Container bg={colors.background.one}>
 			<div className='d-flex justify-content-center container-degree'>
 				<div className='input-degree'>
 					<span className='less'>
@@ -31,7 +37,7 @@ const InputDegreeGraph = ({ degree, setDegree }) => {
 			<span className='level-degree d-flex justify-content-center mt-3'>
 				{degree > 1 ? `${degree} degrees` : `${degree} degree`}
 			</span>
-		</div>
+		</Container>
 	);
 };
 

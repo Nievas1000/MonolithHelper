@@ -8,14 +8,8 @@ import table from '../utils/graphIcons/Table.svg';
 import nonEncapsulatedTable from '../utils/graphIcons/NonEncapsulatedTable.svg';
 import metricOfClass from '../utils/metricsOfClass';
 
-const getName = (name) => {
-	const cadena = name.split('.');
-	const className = cadena[cadena.length - 1];
-
-	return className;
-};
 // Con este hook le creamos los nodes y edges mediante las relaciones extraidas del json de la app seleccionada
-const useNodes = (recursiveNodes = 0) => {
+const useNodes = (recursiveNodes = 0, getName) => {
 	const state = useSelector((state) => state);
 	const nodesToShow = state.infoGraph;
 	const app = state.selectedApp;

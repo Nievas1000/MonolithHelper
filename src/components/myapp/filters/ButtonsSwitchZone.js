@@ -5,7 +5,7 @@ import { SwitchButton } from './SwitchButton';
 const ButtonsSwitchZone = () => {
 	const [showDropdow, setShowDropdown, divRefSon, divRefFather] = useDropdown();
 	return (
-		<div className='d-flex'>
+		<div className='d-flex justify-content-center '>
 			<Container ml={33} className='interface-switch'>
 				<SwitchButton value={'Interfaces'} />
 			</Container>
