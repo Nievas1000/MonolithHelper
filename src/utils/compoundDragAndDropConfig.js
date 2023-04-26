@@ -7,47 +7,54 @@ cytoscape.use(compoundDragAndDrop); */
 import { colors } from 'design-kit-codojo';
 
 // Aqui esta toda la configuracion necesaria para que el usuario puede crear un cuadro y poder juntar los nodos
-export const compoundDragAndDropConfig = (cy, handleClass, metric) => {
-	cy.style().selector('.parent-node').style({
-		'background-color': colors.background.one,
-		label: metric.fathers.length,
-		'text-valign': 'center',
-		'text-halign': 'center',
-		'text-wrap': 'wrap',
-		'text-max-width': '80px',
-		'font-size': '12px',
-		'border-style': 'solid',
-		'border-width': '2px',
-		'border-color': colors.grey.six,
-		color: colors.grey.six,
-	});
-	cy.add({
-		group: 'nodes',
-		data: {
-			id: metric.fathers.length,
-			data: true,
-		},
-		classes: 'parent-node',
-		position: {
-			x:
-				cy.nodes().length > 1
-					? cy.nodes()[1].position().x + 20
-					: cy.nodes()[0].position().x + 20,
-			y:
-				cy.nodes().length > 1
-					? cy.nodes()[1].position().y + 50
-					: cy.nodes()[0].position().y + 50,
-		},
-	});
+export const compoundDragAndDropConfig = (
+	cy,
+	handleClass,
+	metric,
+	table = false
+) => {
+	if (!table) {
+		cy.style().selector('.parent-node').style({
+			'background-color': colors.background.one,
+			label: metric.fathers.length,
+			'text-valign': 'center',
+			'text-halign': 'center',
+			'text-wrap': 'wrap',
+			'text-max-width': '80px',
+			'font-size': '12px',
+			'border-style': 'solid',
+			'border-width': '2px',
+			'border-color': colors.grey.six,
+			color: colors.grey.six,
+		});
+		cy.add({
+			group: 'nodes',
+			data: {
+				id: metric.fathers.length,
+				data: true,
+			},
+			classes: 'parent-node',
+			position: {
+				x:
+					cy.nodes().length > 1
+						? cy.nodes()[1].position().x + 20
+						: cy.nodes()[0].position().x + 20,
+				y:
+					cy.nodes().length > 1
+						? cy.nodes()[1].position().y + 50
+						: cy.nodes()[0].position().y + 50,
+			},
+		});
 
-	cy.add({
-		group: 'edges',
-		data: {
-			id: 'arista1',
-			source: metric.fathers.length,
-			target: metric.className,
-		},
-	});
+		cy.add({
+			group: 'edges',
+			data: {
+				id: 'arista1',
+				source: metric.fathers.length,
+				target: metric.className,
+			},
+		});
+	}
 	cy.nodes().on('mouseover', function (event) {
 		const node = event.target;
 		if (node.data().classe || node.data().interface) {
@@ -62,7 +69,7 @@ export const compoundDragAndDropConfig = (cy, handleClass, metric) => {
 	});
 	cy.on('dblclick', 'node', function (event) {
 		const node = event.target.data();
-		if (node.classe) {
+		if (node.classe || node.table) {
 			handleClass(node);
 		}
 	});

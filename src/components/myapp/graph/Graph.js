@@ -4,6 +4,7 @@ import InputDegreeGraph from './InputDegreeGraph';
 import { useDispatch } from 'react-redux';
 import { MetricOfClass } from '../metrics/MetricOfClass';
 import { Container } from 'design-kit-codojo';
+import { MetricOfTables } from '../metrics/MetricOfTables';
 
 const Graph = () => {
 	const [degree, setDegree] = useState(1);
@@ -16,19 +17,32 @@ const Graph = () => {
 		});
 	};
 
-	const [metric, classe] = useCytoscope(
+	const [metric, classe, table] = useCytoscope(
 		document.getElementById('cy'),
 		degree,
 		handleClass
 	);
-
 	return (
 		<div>
 			<div className='d-flex'>
 				<div id='cy'></div>
-				<div className='d-flex align-items-center metric'>
-					<MetricOfClass metric={metric} classe={classe} dispatch={dispatch} />
-				</div>
+				{!table ? (
+					<div className='d-flex align-items-center metric'>
+						<MetricOfClass
+							metric={metric}
+							classe={classe}
+							dispatch={dispatch}
+						/>
+					</div>
+				) : (
+					<div className='d-flex align-items-center metric'>
+						<MetricOfTables
+							classes={metric.parentClasses}
+							table={classe}
+							dispatch={dispatch}
+						/>
+					</div>
+				)}
 			</div>
 			<div className='degree'>
 				<InputDegreeGraph degree={degree} setDegree={setDegree} />
@@ -38,7 +52,15 @@ const Graph = () => {
 				mt={70}
 				mb={35}
 			>
-				<MetricOfClass metric={metric} classe={classe} dispatch={dispatch} />
+				{!table ? (
+					<MetricOfClass metric={metric} classe={classe} dispatch={dispatch} />
+				) : (
+					<MetricOfTables
+						classes={metric.parentClasses}
+						table={classe}
+						dispatch={dispatch}
+					/>
+				)}
 			</Container>
 		</div>
 	);
