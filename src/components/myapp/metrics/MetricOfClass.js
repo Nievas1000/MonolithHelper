@@ -119,7 +119,11 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 					: ' exclusive datastores '}
 			</Text>
 			{tooltip.exclusiveTables ? (
-				<ToolTipMetrics classes={metric.exclusiveTables}>
+				<ToolTipMetrics
+					classes={metric.exclusiveTables}
+					dispatch={dispatch}
+					execute={true}
+				>
 					If this class were to become a microservice, exclusive tables would be
 					referenced by only the new microservice. The monolith would not need
 					direct access to this data.
@@ -141,7 +145,11 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 					: ' non-exclusive datastores '}
 			</Text>
 			{tooltip.nonEcxlusiveTables ? (
-				<ToolTipMetrics classes={metric.nonEcxlusiveTables}>
+				<ToolTipMetrics
+					classes={metric.nonEcxlusiveTables}
+					dispatch={dispatch}
+					execute={true}
+				>
 					If this class were to become a microservice, non-exclusive tables
 					would be referenced by both the monolith and the new microservice.
 				</ToolTipMetrics>
