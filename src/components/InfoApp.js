@@ -14,9 +14,44 @@ import archivo2 from '../app/SendTaffi.sh';
 import archivo3 from '../app/SendTaffi.bat';
 import archivo4 from '../app/SendToTaffi.config.properties';
 
+/**
+ * @param {string}
+ * @param {string}
+ * @param {function}
+ */
+
+// las funciones de javascript en nodejs son asincronicas
+// por lo tanto lo que se quiera hacer debe hacerse dentro de la funcion que maneja el evento
+// si uno declara una variable arriba de la funcion, la manipula dentro y la quiere usar
+// despues afuera, se corre el riezgo de que nunca se realice la manipulacion.
+
+function leerarchivo(file) {
+	return new Promise((resolve, reject) => {
+		const archivo = new XMLHttpRequest();
+		archivo.open('GET', file, true);
+		archivo.onreadystatechange = function () {
+			if (archivo.readyState === 4) {
+				if (archivo.status === 200 || archivo.status === 0) {
+					const texto = archivo.responseText;
+					resolve(texto + 'holaa');
+				} else {
+					reject(
+						new Error(`Error al leer el archivo ${file}: ${archivo.statusText}`)
+					);
+				}
+			}
+		};
+		archivo.send(null);
+	});
+}
 export default function InfoApp() {
 	const onClick = useCallback(async () => {
 		const zip = new JSZip();
+		const text = await leerarchivo(archivo4);
+		const key = 'USER.APPLICATION.KEY ';
+		const newValue = localStorage.getItem('userAppKey');
+		const regex = new RegExp(`^${key}.+$`, 'm');
+		const newText = text.replace(regex, `${key + '= '}${newValue}`);
 
 		// Se crea la carpeta donde se guardaran los archivos
 		const carpetaArchivos = zip.folder('SendAppDataToTaffi');
@@ -24,7 +59,6 @@ export default function InfoApp() {
 		const recorrerArchivos = await Promise.all(
 			[archivo1, archivo2, archivo3, archivo4].map(async (imgSrc, index) => {
 				const res = await fetch(imgSrc);
-
 				return res.blob();
 			})
 		);
@@ -46,15 +80,16 @@ export default function InfoApp() {
 				types = 'jar';
 				nombre = 'SendToTaffi';
 			}
-			if (imgBlob.type === 'binary/octet-stream') {
-				types = 'properties';
-				nombre = 'SendToTaffi.config';
-			}
+
 			carpetaArchivos.file(`${nombre}.${types}`, imgBlob, { blob: true });
 		});
 
+		const blob = new Blob([newText], { type: 'text/plain;charset=utf-8' });
+		carpetaArchivos.file('SendToTaffi.config.properties', blob);
+
 		zip.generateAsync({ type: 'blob' }).then(function (content) {
 			// Guarda el contenido recorrido en el archivo .zip
+
 			saveAs(content, 'SendAppDataToTaffi.zip');
 		});
 	}, []);
