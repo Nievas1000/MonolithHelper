@@ -57,7 +57,7 @@ export default function InfoApp() {
 		const carpetaArchivos = zip.folder('SendAppDataToTaffi');
 
 		const recorrerArchivos = await Promise.all(
-			[archivo1, archivo2, archivo3, archivo4].map(async (imgSrc, index) => {
+			[archivo1, archivo2, archivo3].map(async (imgSrc, index) => {
 				const res = await fetch(imgSrc);
 				return res.blob();
 			})
