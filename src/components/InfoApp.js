@@ -33,7 +33,7 @@ function leerarchivo(file) {
 			if (archivo.readyState === 4) {
 				if (archivo.status === 200 || archivo.status === 0) {
 					const texto = archivo.responseText;
-					resolve(texto + 'holaa');
+					resolve(texto);
 				} else {
 					reject(
 						new Error(`Error al leer el archivo ${file}: ${archivo.statusText}`)
