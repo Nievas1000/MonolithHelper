@@ -24,7 +24,6 @@ const Home = ({ apis = false }) => {
 	const [api, setApi] = useState(false);
 	useLoginGoogle();
 	useLoginGithub();
-	console.log(app);
 	if (!activeInfo) {
 		history.pushState(null, '', 'my-app');
 	}
@@ -40,7 +39,6 @@ const Home = ({ apis = false }) => {
 		}
 		setApi(apis);
 	}, []);
-	console.log(api);
 	return (
 		<div className='container-my-app'>
 			<NavBar

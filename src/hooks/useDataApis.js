@@ -50,7 +50,8 @@ const analizeNonEncapsulated = (data, endpoint, dataApi, table) => {
 
 export const useDataApis = () => {
 	const app = useSelector((state) => state.selectedApp);
-	const endpoints = app.classes[0];
+	console.log(app);
+	const endpoints = app.endpoints[0];
 	const data = [];
 	for (let i = 0; i < 11; i++) {
 		const dataApi = {
