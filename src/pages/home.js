@@ -1,24 +1,27 @@
-import { Container, Spinner, Text, colors } from 'design-kit-codojo';
+import { Container } from 'design-kit-codojo';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import DateApp from '../components/myapp/DateApp';
-import DropdownClasses from '../components/myapp/filters/DropdownClasses';
-import Graph from '../components/myapp/graph/Graph';
+
 import InfoApp from '../components/InfoApp';
 import NavBar from '../components/navbar/NavBar';
-import ButtonsSwitchZone from '../components/myapp/filters/ButtonsSwitchZone';
+
 import { PopUpDeletedApp } from '../components/myapp/deleteApp/PopUpDeletedApp';
 import useLoginGoogle from '../hooks/useLoginGoogle';
 import useLoginGithub from '../hooks/useLoginGithub';
 import { posthog } from 'posthog-js';
+/* import { DropdownList } from '../components/myapp/graph/DropdownList'; */
+import { MyApp } from '../components/myapp/MyApp';
+import { NoApisModal } from '../components/apis/NoApisModal';
+import { ApiTable } from '../components/apis/ApiTable';
 
-const Home = () => {
+const Home = ({ apis = false }) => {
 	const [activeDropdown, setActiveDropdown] = useState(false);
 	const userApplicationKey = localStorage.getItem('userAppKey');
-	const classe = useSelector((state) => state.selectedClass);
 	const app = useSelector((state) => state.selectedApp);
 	const activeInfo = useSelector((state) => state.info);
 	const user = useSelector((state) => state.user);
+	const classe = useSelector((state) => state.selectedClass);
+	const [api, setApi] = useState(false);
 	useLoginGoogle();
 	useLoginGithub();
 	console.log(app);
@@ -35,8 +38,9 @@ const Home = () => {
 				lastName: user.lastName,
 			});
 		}
+		setApi(apis);
 	}, []);
-
+	console.log(api);
 	return (
 		<div className='container-my-app'>
 			<NavBar
@@ -48,40 +52,18 @@ const Home = () => {
 				<InfoApp />
 			) : (
 				<Container>
-					<DateApp />
-					<Container ml={32} mt={24} className='container-home d-flex'>
-						{classe !== 'Select class...' && app.classes.length > 0 ? (
-							<DropdownClasses />
-						) : null}
-						<div className='container-switch'>
-							<ButtonsSwitchZone />
-						</div>
-					</Container>
-					{classe !== 'Select class...' && app.classes.length > 0 ? (
-						<div>
-							<Graph />
-							{app.applicationName === 'Java Demo App' ? (
-								<Container
-									bg={colors.background.one}
-									className='container-step-desktop'
-								>
-									<Container
-										bg={colors.background.four}
-										className='step-desktop'
-									>
-										<Text variant='two' color={colors.grey.nine}>
-											Want to plan a microservice from your app? Login with a
-											computer and follow some simple steps to upload an app;
-											unfortunately, this feature is not available on mobile.
-										</Text>
-									</Container>
-								</Container>
-							) : null}
-						</div>
+					{/* {classe !== 'Select class...' ? (
+						<DropdownList setApi={setApi} api={api} />
+					) : null} */}
+
+					{classe !== 'Select class...' && api ? (
+						app.endpoints[0].length > 0 ? (
+							<ApiTable setApi={setApi} />
+						) : (
+							<NoApisModal setApi={setApi} />
+						)
 					) : (
-						<div className='d-flex justify-content-center align-items-center spinner'>
-							<Spinner />
-						</div>
+						<MyApp />
 					)}
 
 					<PopUpDeletedApp />

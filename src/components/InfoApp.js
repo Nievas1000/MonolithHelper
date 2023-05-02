@@ -3,7 +3,7 @@ import {
 	ContainerInfoAddApplication,
 	Subtitle,
 	Text,
-	DownloadIcon,
+	DownloadIconGreen,
 } from 'design-kit-codojo';
 
 import { useCallback } from 'react';
@@ -77,7 +77,7 @@ export default function InfoApp() {
 					1. Download the file
 				</Text>
 				<div className='download link'>
-					<DownloadIcon />
+					<DownloadIconGreen />
 					<Text
 						variant='three'
 						onClick={onClick}
