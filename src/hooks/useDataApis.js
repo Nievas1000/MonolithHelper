@@ -50,10 +50,9 @@ const analizeNonEncapsulated = (data, endpoint, dataApi, table) => {
 
 export const useDataApis = () => {
 	const app = useSelector((state) => state.selectedApp);
-	console.log(app);
 	const endpoints = app.endpoints[0];
 	const data = [];
-	for (let i = 0; i < 11; i++) {
+	for (let i = 0; i < endpoints.length; i++) {
 		const dataApi = {
 			path: endpoints[i],
 			className: getName(endpoints[i]),
