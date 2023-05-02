@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { MetricOfClass } from '../metrics/MetricOfClass';
 import { Container } from 'design-kit-codojo';
 import { MetricOfTables } from '../metrics/MetricOfTables';
+/* import { DropdownList } from './DropdownList'; */
 
 const Graph = () => {
 	const [degree, setDegree] = useState(1);
@@ -22,6 +23,7 @@ const Graph = () => {
 		degree,
 		handleClass
 	);
+
 	return (
 		<div>
 			<div className='d-flex'>

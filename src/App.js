@@ -27,7 +27,7 @@ function App() {
 					path='/my-app'
 					element={
 						<ProtectedRoute>
-							<Home />
+							<Home apis={false} />
 						</ProtectedRoute>
 					}
 				/>
@@ -40,7 +40,14 @@ function App() {
 						</ProtectedRoute>
 					}
 				/>
-
+				<Route
+					path='/api'
+					element={
+						<ProtectedRoute>
+							<Home apis={true} />
+						</ProtectedRoute>
+					}
+				/>
 				<Route
 					path='/settings'
 					element={

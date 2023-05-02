@@ -121,13 +121,6 @@ input[type="range"]::-webkit-slider-thumb {
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 5px 5px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 }
-.message-deleted-app{
-    position: absolute;
-    right: 0;
-    animation-name: slideUp;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-}
 .container-classes-metric{
     justify-content: center;
     width: 320px;
@@ -187,7 +180,8 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 8px;
 }
 .fathers-tables-metric{
-    max-height: 180px !important;
+    width: auto;
+    max-width: 180px !important;
 }
 
 /*Estilos de spinner*/
@@ -204,6 +198,13 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /*Animacion del pop-up del delete app*/
+.message-deleted-app{
+    position: absolute;
+    right: 0;
+    animation-name: slideUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
 
 @keyframes slideUp {
     from {
@@ -215,6 +216,147 @@ input[type="range"]::-webkit-slider-thumb {
       opacity: 1;
     }
   }
+  /*Menu desplegable izquierdo*/
+
+.container-list-apis{
+    position: absolute;
+}
+
+.list-apis{
+    width: 244px;
+    margin-left: -10px;
+    height: auto;
+    max-height: 230px;
+    background: #212322;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 5px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    z-index: 1000;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+.list-apis.closed {
+    transform: translateX(-214px);
+  }
+.container-close{
+    height: 124px;
+    position: absolute;
+    right: 0;
+    margin-right: -10px;
+}
+
+/*Estilos Tabla de las Apis*/
+.tooltip-table {
+    position: absolute;
+    margin-top: -80px;
+    margin-left: -80px;
+    width: 205px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    z-index: 9999;
+}
+.tooltip-table p{
+    font-size: 11px;
+}
+.container-apis{
+    height: 791px;
+    width: 1291px;
+    position: relative;
+    box-shadow: 0px -2px 18px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 21px;
+}
+.close-api-table{
+    position: absolute;
+    right: 0;
+}
+.table-wrapper {
+    overflow-y: scroll;
+    height: fit-content;
+    max-height: 600px;   
+    margin-top: 22px;
+    margin: 15px;
+    padding-bottom: 20px; 
+}
+.table-apis {   
+    min-width: max-content;   
+    border-spacing: 0px;
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-apis tbody{
+    background-color: #212322;
+}
+.table-apis th{
+    top: 0px;
+    color: #D0D0D0;
+    background-color: #181A19;
+    font-size: 14px;
+    line-height: 22px;
+    align-items: center;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+} 
+.table-apis th, table td {   
+    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.table-apis tr:not(:last-child) {
+    border-bottom: 3px solid #181A19;
+  }
+
+.table-apis td {
+    width: auto;
+    max-width: 150px;
+    height: 50px;
+    word-break: break-all;
+    color: #ABABAB;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+}
+.table-wrapper::-webkit-scrollbar{
+	width: 4px;
+	height: 4px;
+	background-color: #343635;
+}
+.table-wrapper::-webkit-scrollbar-track{
+    margin-left: 20px;
+}
+.table-wrapper::-webkit-scrollbar-thumb{
+	background: #47BC82;
+	border-radius: 2px;
+}
+
+/* Estilos Modal Non-Apis */
+
+.non-apis{
+    width: 100%;
+    height: 500px;
+}
+
+.container-modal-nonapis{
+    position: absolute;
+    width: 406px;
+    height: 174px;
+    background: #212322;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 5px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 32px;
+}
+
+.back-modal-nonapis{
+    border: 1px solid #47BC82;
+    border-radius: 8px;
+    width: 172px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    padding: 8px 16px;
+}
 @media only screen and (max-width:800px){
     .date-app{
         display: none;
