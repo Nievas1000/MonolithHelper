@@ -72,10 +72,10 @@ export const ApiTable = ({ setApi }) => {
 											<InfoIcon />
 										</div>{' '}
 									</th>
-									<th>Classes required</th>
 									<th>Non-exclusive classes</th>
-									<th>Datastores required</th>
+									<th>Classes required</th>
 									<th>Non-exclusive datastore</th>
+									<th>Datastores required</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -85,14 +85,14 @@ export const ApiTable = ({ setApi }) => {
 											<td>{api.path}</td>
 											<td>{api.className}</td>
 											<td>
-												{isNaN(api.dataExclusive)
+												{api.dataExclusive === -1
 													? '-'
 													: `${Math.ceil(api.dataExclusive)}%`}
 											</td>
-											<td>{api.releatedClasses.length}</td>
 											<td>{api.NonExclusiveClasses.length}</td>
-											<td>{api.tables.length}</td>
+											<td>{api.releatedClasses.length}</td>
 											<td>{api.NonExclusiveTables.length}</td>
+											<td>{api.tables.length}</td>
 										</tr>
 									);
 								})}

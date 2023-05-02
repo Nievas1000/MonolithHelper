@@ -109,5 +109,11 @@ export const useDataApis = () => {
 		dataApi.dataExclusive = (a / b) * 100;
 		data.push(dataApi);
 	}
-	return [data];
+	const apiData = data
+		.map((item) => ({
+			...item,
+			dataExclusive: isNaN(item.dataExclusive) ? -1 : item.dataExclusive,
+		}))
+		.sort((a, b) => b.dataExclusive - a.dataExclusive);
+	return [apiData];
 };
