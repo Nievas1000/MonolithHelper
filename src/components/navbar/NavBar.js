@@ -5,7 +5,6 @@ import {
 	colors,
 	OpenAppTab,
 	ContainerTabs,
-	CodojoLogoColor,
 	AddApplication,
 	AddIcon,
 	MiniArrowIconExpand,
@@ -30,7 +29,7 @@ const NavBar = () => {
 		<NavBarContainer>
 			<ContainerTabs>
 				<OpenAppTab className='open-app'>
-					<CodojoLogoColor />
+					<img src='./taffi.png' height={24} width={24} />
 					<Text variant='three' color={colors.grey.five} mt={13}>
 						Applications
 					</Text>

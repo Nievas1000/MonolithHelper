@@ -1,4 +1,6 @@
 import {
+	BurgerMenuIcon,
+	Container,
 	ArrowIconExpand,
 	ContainerPersonalZone,
 	UserIcon,
@@ -17,14 +19,15 @@ const PersonalZone = () => {
 
 	return (
 		<div className='right-navbar'>
-			<UserTab
-				className='user'
-				onClick={() => setShowDropdown(!showDropdow)}
-				ref={divRefFather}
-			>
-				<UserIcon />
-				<ArrowIconExpand />
-			</UserTab>
+			<div onClick={() => setShowDropdown(!showDropdow)} ref={divRefFather}>
+				<UserTab className='user'>
+					<UserIcon />
+					<ArrowIconExpand />
+				</UserTab>
+				<Container mr={20} mt='2px' className='user-mobile'>
+					<BurgerMenuIcon />
+				</Container>
+			</div>
 			{showDropdow ? (
 				<div ref={divRefSon}>
 					<div className='signout'>

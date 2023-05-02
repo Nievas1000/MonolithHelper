@@ -9,6 +9,12 @@
 	right: 0;
 	position: absolute;
 }
+.user{
+	display: block;
+}
+.user-mobile{
+	display: none;
+}
 .user *{
 	margin: 5px;
 }
@@ -126,6 +132,12 @@
 	}
 	.add-app{
 		display: none !important;
+	}
+	.user{
+		display: none !important;
+	}
+	.user-mobile{
+		display: block !important;
 	}
 	.signout{
 		display: none;
