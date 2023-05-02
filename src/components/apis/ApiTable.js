@@ -1,7 +1,7 @@
 import {
 	Container,
 	CrossIconWhite,
-	DownloadIconGray,
+	/* DownloadIconGray, */
 	InfoIcon,
 	Text,
 	Title,
@@ -43,7 +43,7 @@ export const ApiTable = ({ setApi }) => {
 					mb={58}
 				>
 					Classes with Endpoints&nbsp;
-					<DownloadIconGray />
+					{/* <DownloadIconGray /> */}
 				</Title>
 				<div className='outer-wrapper'>
 					<div className='table-wrapper'>
