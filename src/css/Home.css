@@ -109,7 +109,9 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /*Estilos de metricas de las clases*/
-
+.download-metric{
+    margin-top: -38px;
+}
 .metric{
     background: #131514;
     width: 341px;
@@ -168,6 +170,16 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .metric-table-title svg{
     margin-right: 5px;
+}
+.analysis-metrics{
+    height: 57px;
+    display: flex;
+    align-items: center;
+    border-top: 0.5px solid #181A19;
+    border-radius: 0px 0px 8px 8px;
+}
+.analysis-metrics svg{
+    margin-top: -1px;
 }
 
 /*Estilos de metricas de las tablas*/

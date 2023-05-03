@@ -108,6 +108,7 @@ const metricOfClass = (
 						nonEcxlusiveTables.push({
 							path: child.name,
 							table: true,
+							selectedClass: classe,
 						});
 					}
 				}
@@ -165,6 +166,7 @@ const metricOfClass = (
 					nonEcxlusiveClasses.push({
 						className: currentNode.node,
 						path: edge.data.path,
+						selectedClass: classe,
 					});
 				}
 			}

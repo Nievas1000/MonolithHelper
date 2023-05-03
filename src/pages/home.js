@@ -22,7 +22,6 @@ const Home = ({ apis = false }) => {
 	const user = useSelector((state) => state.user);
 	const classe = useSelector((state) => state.selectedClass);
 	const [api, setApi] = useState(false);
-	console.log(app);
 	useLoginGoogle();
 	useLoginGithub();
 	if (!activeInfo) {

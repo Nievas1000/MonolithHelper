@@ -7,6 +7,7 @@ import {
 	SmallNonEncapsulatedTableIcon,
 	SmallEncapsulatedTableIcon,
 	SmallInterfaceIcon,
+	SmallSelectedClassIcon,
 } from 'design-kit-codojo';
 import { ToolTipMetrics } from './ToolTipMetrics';
 import { useMetrics } from '../../../hooks/useMetrics';
@@ -99,7 +100,10 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 				<ToolTipMetrics
 					classes={metric.nonEcxlusiveClasses}
 					dispatch={dispatch}
+					className={metric.className}
 					execute={true}
+					download={true}
+					classe={true}
 				>
 					These classes would need to be refactored to move {metric.className}{' '}
 					to a microservice
@@ -148,12 +152,35 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 				<ToolTipMetrics
 					classes={metric.nonEcxlusiveTables}
 					dispatch={dispatch}
+					className={metric.className}
 					execute={true}
+					download={true}
 				>
 					If this class were to become a microservice, non-exclusive tables
 					would be referenced by both the monolith and the new microservice.
 				</ToolTipMetrics>
 			) : null}
+			<Container className='analysis-metrics' bg={colors.background.one}>
+				<Text
+					className='d-flex'
+					variant='three'
+					color={colors.grey.nine}
+					mt={12}
+					ml={9}
+				>
+					<span>
+						<SmallSelectedClassIcon />
+					</span>
+					{metric.nonEcxlusiveClasses.length === 0 &&
+						metric.nonEcxlusiveTables.length === 0 &&
+						`${metric.className} can move to a microservice. `}
+					{metric.nonEcxlusiveClasses.length === 0 &&
+						metric.nonEcxlusiveTables.length > 0 &&
+						`${metric.className} can be moved to a microservice but there will be multiple apps using the datastores.`}
+					{metric.nonEcxlusiveClasses.length > 0 &&
+						`${metric.className} cannot be moved to a microservice.`}
+				</Text>
+			</Container>
 		</Container>
 	);
 };

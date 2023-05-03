@@ -46,7 +46,11 @@ export const MetricsTitle = ({
 					ml={15}
 					mt={15}
 					title={classe}
-					className='d-flex cursor myclass'
+					className={
+						metric.fathers.length <= 0
+							? 'd-flex cursor myclass'
+							: 'd-flex cursor myclass metrics-items'
+					}
 					onClick={
 						metric.fathers.length > 0
 							? () => handleTooltipClick('father')

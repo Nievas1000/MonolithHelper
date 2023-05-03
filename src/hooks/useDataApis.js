@@ -12,7 +12,9 @@ const analizeRelations = (data, endpoint, dataApi, table) => {
 		node.uses.forEach((child) => {
 			if (endpoint === node.classe) {
 				if (!dataApi.releatedClasses.includes(child.name)) {
-					dataApi.releatedClasses.push(child.name);
+					if (!table) {
+						dataApi.releatedClasses.push(child.name);
+					}
 				}
 			}
 			if (!table) {
@@ -31,7 +33,11 @@ const analizeNonEncapsulated = (data, endpoint, dataApi, table) => {
 		node.uses.forEach((child) => {
 			if (endpoint === node.classe) {
 				if (!dataApi.releatedClasses.includes(child.name)) {
-					dataApi.releatedClasses.push(child.name);
+					if (table) {
+						dataApi.tables.push(child.name);
+					} else {
+						dataApi.releatedClasses.push(child.name);
+					}
 				} else {
 					if (table) {
 						if (!dataApi.NonExclusiveTables.includes(child.name)) {
@@ -110,10 +116,20 @@ export const useDataApis = () => {
 		data.push(dataApi);
 	}
 	const apiData = data
+		.sort((a, b) => {
+			if (isNaN(a.dataExclusive)) {
+				return 1;
+			} else if (isNaN(b.dataExclusive)) {
+				return -1;
+			} else {
+				return b.dataExclusive - a.dataExclusive;
+			}
+		})
 		.map((item) => ({
 			...item,
-			dataExclusive: isNaN(item.dataExclusive) ? -1 : item.dataExclusive,
-		}))
-		.sort((a, b) => b.dataExclusive - a.dataExclusive);
+			dataExclusive: isNaN(item.dataExclusive)
+				? '-'
+				: Math.ceil(item.dataExclusive),
+		}));
 	return [apiData];
 };

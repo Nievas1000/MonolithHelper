@@ -1,7 +1,7 @@
 import {
 	Container,
 	CrossIconWhite,
-	/* DownloadIconGray, */
+	DownloadIconGray,
 	InfoIcon,
 	Text,
 	Title,
@@ -9,10 +9,24 @@ import {
 } from 'design-kit-codojo';
 import { useDataApis } from '../../hooks/useDataApis';
 import { useEffect, useState } from 'react';
+import { CSVLink } from 'react-csv';
+import { useSelector } from 'react-redux';
 
 export const ApiTable = ({ setApi }) => {
 	const [data] = useDataApis();
 	const [showTooltip, setShowTooltip] = useState(false);
+	const app = useSelector((state) => state.selectedApp);
+	console.log(data);
+	const header = [
+		{ label: 'Package', key: 'path' },
+		{ label: 'ClassName', key: 'className' },
+		{ label: '%Exclusive', key: 'dataExclusive' },
+		{ label: 'Non-exlusive classes', key: 'NonExclusiveClasses.length' },
+		{ label: 'Classes required', key: 'releatedClasses.length' },
+		{ label: 'Non-exlusive datastore', key: 'NonExclusiveTables.length' },
+		{ label: 'Datastores required', key: 'tables.length' },
+	];
+
 	useEffect(() => {
 		history.pushState(null, '', 'api');
 	}, []);
@@ -43,7 +57,13 @@ export const ApiTable = ({ setApi }) => {
 					mb={58}
 				>
 					Classes with Endpoints&nbsp;
-					{/* <DownloadIconGray /> */}
+					<CSVLink
+						headers={header}
+						data={data}
+						filename={`${app.applicationName}_Endpoints`}
+					>
+						<DownloadIconGray />
+					</CSVLink>
 				</Title>
 				<div className='outer-wrapper'>
 					<div className='table-wrapper'>
@@ -85,9 +105,9 @@ export const ApiTable = ({ setApi }) => {
 											<td>{api.path}</td>
 											<td>{api.className}</td>
 											<td>
-												{api.dataExclusive === -1
+												{api.dataExclusive === '-'
 													? '-'
-													: `${Math.ceil(api.dataExclusive)}%`}
+													: `${api.dataExclusive}%`}
 											</td>
 											<td>{api.NonExclusiveClasses.length}</td>
 											<td>{api.releatedClasses.length}</td>
