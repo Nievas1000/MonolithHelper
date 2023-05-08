@@ -27,7 +27,7 @@ function App() {
 					path='/my-app'
 					element={
 						<ProtectedRoute>
-							<Home apis={false} />
+							<Home dataUrl={'my-app'} />
 						</ProtectedRoute>
 					}
 				/>
@@ -44,7 +44,15 @@ function App() {
 					path='/api'
 					element={
 						<ProtectedRoute>
-							<Home apis={true} />
+							<Home dataUrl={'api'} />
+						</ProtectedRoute>
+					}
+				/>
+				<Route
+					path='/datastores'
+					element={
+						<ProtectedRoute>
+							<Home dataUrl={'datastores'} />
 						</ProtectedRoute>
 					}
 				/>

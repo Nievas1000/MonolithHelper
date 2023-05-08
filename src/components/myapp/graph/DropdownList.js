@@ -4,7 +4,7 @@ import open from '../../../utils/imgIcons/open.png';
 import close from '../../../utils/imgIcons/back.png';
 import { useSelector } from 'react-redux';
 
-export const DropdownList = ({ setApi, api }) => {
+export const DropdownList = ({ setUrl, url }) => {
 	const app = useSelector((state) => state.selectedApp);
 	const [isOpen, setIsOpen] = useState(true);
 
@@ -23,17 +23,27 @@ export const DropdownList = ({ setApi, api }) => {
 					</Text>
 					<Text
 						variant='two'
-						color={api ? colors.primary.two : colors.grey.seven}
+						color={url === 'api' ? colors.primary.two : colors.grey.seven}
 						className='cursor'
-						onClick={() => setApi(true)}
+						onClick={() => setUrl('api')}
 					>
 						{app.endpoints[0].length} Endpoints
 					</Text>
 					<Text
 						variant='two'
+						color={
+							url === 'datastores' ? colors.primary.two : colors.grey.seven
+						}
+						className='cursor'
+						onClick={() => setUrl('datastores')}
+					>
+						{app.tablesNames[0].length} Datastores
+					</Text>
+					<Text
+						variant='two'
 						color={colors.grey.seven}
 						className='cursor'
-						onClick={() => setApi(false)}
+						onClick={() => setUrl('my-app')}
 					>
 						Go back to the graphic
 					</Text>

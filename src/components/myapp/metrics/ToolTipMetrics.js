@@ -17,6 +17,7 @@ export const ToolTipMetrics = (props) => {
 		{ label: 'Class', key: 'className' },
 	];
 	const headersTables = [{ label: 'Datastore', key: 'path' }];
+	console.log(props.classe);
 	return (
 		<div className='d-flex justify-content-center mb-4'>
 			<Container
@@ -30,15 +31,11 @@ export const ToolTipMetrics = (props) => {
 					<Text variant='three' ml={15} mt={11} color={colors.grey.nine}>
 						{props.children}
 					</Text>
-					{props.download && props.classes.length > 0 && (
+					{props.classes.length > 0 && (
 						<CSVLink
 							data={props.classes}
-							headers={props.classe ? headersClass : headersTables}
-							filename={
-								props.classe
-									? `${app.applicationName}_${props.className}_Non_Exclusive_Classes`
-									: `${app.applicationName}_${props.className}_Non_Exclusive_Datastores`
-							}
+							headers={!props.classe ? headersTables : headersClass}
+							filename={`${app.applicationName}_${props.className}_${props.type}`}
 						>
 							<Container className='download-metric cursor' mr='6px'>
 								<DownloadIconGray />

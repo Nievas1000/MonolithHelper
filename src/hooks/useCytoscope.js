@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import useNodes from './useNodes';
 import compoundDragAndDropConfig from '../utils/compoundDragAndDropConfig';
 import fcose from 'cytoscape-fcose';
-import { useTables } from './useTables';
+import { useTablesNodes } from './useTablesNodes';
 
 cytoscape.use(fcose);
 
@@ -22,7 +22,10 @@ const useCytoscope = (container, degree, handleClass) => {
 	const app = state.selectedApp;
 	const classe = state.selectedClass;
 	const [edges, nodes, metric] = useNodes(degree, getName);
-	const [edgesTables, nodesTables, metricTables] = useTables(degree, getName);
+	const [edgesTables, nodesTables, metricTables] = useTablesNodes(
+		degree,
+		getName
+	);
 	let cy;
 	if (!app.tablesNames[0].includes(classe)) {
 		useEffect(() => {

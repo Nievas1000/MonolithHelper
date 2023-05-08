@@ -28,6 +28,9 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 					classes={metric.fathers}
 					dispatch={dispatch}
 					execute={true}
+					className={metric.className}
+					type={'Fathers_Classes'}
+					classe={true}
 				>
 					The below classes reference {metric.className} and will need to be
 					refactored if this class moves to a microservice
@@ -54,7 +57,12 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 				{metric.interfaces.length === 1 ? ' interface' : ' interfaces'}
 			</Text>
 			{tooltip.interfaces ? (
-				<ToolTipMetrics classes={metric.interfaces}>
+				<ToolTipMetrics
+					classes={metric.interfaces}
+					className={metric.className}
+					type={'Interfaces'}
+					classe={true}
+				>
 					Interfaces needed if {metric.className} was moved to a microservice
 				</ToolTipMetrics>
 			) : null}
@@ -76,6 +84,9 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 					classes={metric.exlusiveClasses}
 					dispatch={dispatch}
 					execute={true}
+					className={metric.className}
+					type={'Exclusive_Classes'}
+					classe={true}
 				>
 					These classes do not need to be refactored to move {metric.className}{' '}
 					to a microservice
@@ -102,7 +113,7 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 					dispatch={dispatch}
 					className={metric.className}
 					execute={true}
-					download={true}
+					type={'Non_Exclusive_Classes'}
 					classe={true}
 				>
 					These classes would need to be refactored to move {metric.className}{' '}
@@ -127,6 +138,8 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 					classes={metric.exclusiveTables}
 					dispatch={dispatch}
 					execute={true}
+					className={metric.className}
+					type={'Exclusive_Tables'}
 				>
 					If this class were to become a microservice, exclusive tables would be
 					referenced by only the new microservice. The monolith would not need
@@ -154,7 +167,7 @@ export const MetricOfClass = ({ metric, classe, dispatch }) => {
 					dispatch={dispatch}
 					className={metric.className}
 					execute={true}
-					download={true}
+					type={'Non_Exclusive_Tables'}
 				>
 					If this class were to become a microservice, non-exclusive tables
 					would be referenced by both the monolith and the new microservice.

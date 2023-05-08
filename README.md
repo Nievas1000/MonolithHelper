@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Monolith Helper
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Monolithizer, a tool designed to help you transition from microservices to a monolithic architecture.
 
-## Available Scripts
+## Technologies
 
-In the project directory, you can run:
+- React
+- Redux
+- Cypress
+- Eslint
+- Prettier
+- Snyk
+- Cytoscape
+- Posthog
+- Bootstrap
+- Axios
+- GitHub Actions
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the repository: `git clone https://github.com/your-username/monolithizer.git`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm start`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Testing
 
-### `npm test`
+We use Cypress for end-to-end testing. To run the tests, use the following command:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run test:e2e` or `npm run cypress:open`
 
-### `npm run build`
+## Code Quality
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We use Eslint and Prettier to enforce code style and formatting. To run the linter and formatter, use the following command:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run lint`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Security
 
-### `npm run eject`
+We use Snyk to scan for vulnerabilities in our dependencies. To check for vulnerabilities, use the following command:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `npm run snyk`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Visualizing your microservices
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+We use Cytoscape to visualize your microservices, which makes it easier for you to see how they interact with each other.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Analytics
 
-## Learn More
+We use Posthog to collect analytics about how users are using the application.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Bootstrap
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+We use Bootstrap to make our application look great.
 
-### Code Splitting
+## HTTP requests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+We use Axios to make HTTP requests to external services.
 
-### Analyzing the Bundle Size
+## GitHub Actions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+We use GitHub Actions for continuous integration and continuous deployment.
 
-### Making a Progressive Web App
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+If you would like to contribute to Monolithizer, please read our contribution guidelines and code of conduct first.
 
-### Advanced Configuration
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Monolithizer is licensed under the MIT License.

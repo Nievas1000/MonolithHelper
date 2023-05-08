@@ -7,11 +7,22 @@ import {
 } from 'design-kit-codojo';
 
 const InputDegreeGraph = ({ degree, setDegree }) => {
+	const increaseDegree = () => {
+		if (degree < 5) {
+			setDegree(degree + 1);
+		}
+	};
+
+	const decreaseDegree = () => {
+		if (degree > 1) {
+			setDegree(degree - 1);
+		}
+	};
 	return (
 		<Container bg={colors.background.one}>
 			<div className='d-flex justify-content-center container-degree'>
 				<div className='input-degree'>
-					<span className='less'>
+					<span className='less cursor' onClick={decreaseDegree}>
 						<LessDegreeIcon />
 					</span>
 					<InputDegree
@@ -20,9 +31,9 @@ const InputDegreeGraph = ({ degree, setDegree }) => {
 						max='5'
 						className='line-degree'
 						value={degree}
-						onChange={(e) => setDegree(e.target.value)}
+						onChange={(e) => setDegree(Number(e.target.value))}
 					/>
-					<span className='plus'>
+					<span className='plus cursor' onClick={increaseDegree}>
 						<PlusDegreeIcon />
 					</span>
 				</div>

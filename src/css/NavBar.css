@@ -36,6 +36,7 @@
 	position: absolute;
 	margin-top: 32px;
 	cursor: pointer;
+	z-index: 999;
 }
 .container-apps{
 	overflow-x: hidden;
@@ -84,7 +85,7 @@
 	top: 0;
 	bottom: 0;
 	position: fixed;
-	z-index: 2;
+	z-index: 999;
 }
 .mobile-user-menu svg path{
 	fill: #8A8A8A

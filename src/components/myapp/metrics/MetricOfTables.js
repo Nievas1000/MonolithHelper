@@ -39,11 +39,7 @@ export const MetricOfTables = (data) => {
 					className='container-tables-metric'
 					bg={colors.background.eight}
 				>
-					<Container
-						className='fathers-metric fathers-tables-metric'
-						mt={11}
-						mb={9}
-					>
+					<Container className='fathers-metric' mt={11} mb={9}>
 						{data.classes.map((classe, index) => {
 							return (
 								<Container

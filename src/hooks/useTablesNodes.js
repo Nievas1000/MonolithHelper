@@ -5,7 +5,7 @@ import { colors } from 'design-kit-codojo';
 import { recursiveMethodTable } from '../utils/recursiveMethodTable';
 
 // Con este hook le creamos los nodes y edges en base a una tabla seleccionada
-export const useTables = (recursiveNodes = 0, getName) => {
+export const useTablesNodes = (recursiveNodes = 0, getName) => {
 	const state = useSelector((state) => state);
 	const app = state.selectedApp;
 	const classe = state.selectedClass;

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 export const NoApisModal = ({ setApi }) => {
 	useEffect(() => {
+		document.title = 'My Apps | Taffi';
 		history.pushState(null, '', 'api');
 	}, []);
 	return (

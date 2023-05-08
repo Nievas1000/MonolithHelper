@@ -7,28 +7,24 @@ import {
 	Title,
 	colors,
 } from 'design-kit-codojo';
-import { useDataApis } from '../../hooks/useDataApis';
 import { useEffect, useState } from 'react';
 import { CSVLink } from 'react-csv';
 import { useSelector } from 'react-redux';
+import { useDataDatastores } from '../hooks/useDataDatastore';
 
-export const ApiTable = ({ setUrl }) => {
-	const [data] = useDataApis();
+export const DatastoresTable = ({ setUrl }) => {
 	const [showTooltip, setShowTooltip] = useState(false);
+	const [data] = useDataDatastores();
 	const app = useSelector((state) => state.selectedApp);
-	const header = [
-		{ label: 'Package', key: 'path' },
-		{ label: 'ClassName', key: 'className' },
-		{ label: '%Exclusive', key: 'dataExclusive' },
-		{ label: 'Non-exlusive classes', key: 'NonExclusiveClasses.length' },
-		{ label: 'Classes required', key: 'releatedClasses.length' },
-		{ label: 'Non-exlusive datastore', key: 'NonExclusiveTables.length' },
-		{ label: 'Datastores required', key: 'tables.length' },
-	];
 
+	const header = [
+		{ label: 'Datastore', key: 'datastore' },
+		{ label: 'Classes Referencing Datastore', key: 'usedClasses.length' },
+		{ label: 'Apps using datastore', key: 'usedApps' },
+	];
 	useEffect(() => {
-		document.title = 'Endpoints | Taffi';
-		history.pushState(null, '', 'api');
+		document.title = 'Datastores | Taffi';
+		history.pushState(null, '', 'datastores');
 	}, []);
 	return (
 		<Container
@@ -37,7 +33,7 @@ export const ApiTable = ({ setUrl }) => {
 		>
 			<Container
 				bg={colors.background.two}
-				className='container-apis'
+				className='container-datastores-table'
 				mt={44}
 				ml={250}
 			>
@@ -56,11 +52,11 @@ export const ApiTable = ({ setUrl }) => {
 					mt={46}
 					mb={58}
 				>
-					Classes with Endpoints&nbsp;
+					Datastores&nbsp;
 					<CSVLink
-						headers={header}
 						data={data}
-						filename={`${app.applicationName}_Endpoints`}
+						headers={header}
+						filename={`${app.applicationName}_Datastores`}
 						target='_blank'
 					>
 						<DownloadIconGray />
@@ -71,22 +67,22 @@ export const ApiTable = ({ setUrl }) => {
 						<table className='table-apis'>
 							<thead>
 								<tr>
-									<th>Package</th>
-									<th>Class name</th>
-									<th className='d-flex'>
+									<th style={{ width: '180px' }}>Datastore</th>
+									<th className='d-flex justify-content-center'>
 										{showTooltip ? (
 											<Container
 												bg={colors.background.eight}
 												className='tooltip-table'
 												mt='-80px'
-												ml='-80px'
+												ml={10}
 											>
 												<Text variant='three' color={colors.grey.seven} mt={12}>
-													Non-exclusive / All classes & datastores
+													The sum of classes referencing the datastore from all
+													known applications
 												</Text>
 											</Container>
 										) : null}
-										%Exclusive&nbsp;
+										Classes Referencing Datastore&nbsp;
 										<div
 											onMouseEnter={() => setShowTooltip(true)}
 											onMouseLeave={() => setShowTooltip(false)}
@@ -95,27 +91,16 @@ export const ApiTable = ({ setUrl }) => {
 											<InfoIcon />
 										</div>{' '}
 									</th>
-									<th>Non-exclusive classes</th>
-									<th>Classes required</th>
-									<th>Non-exclusive datastore</th>
-									<th>Datastores required</th>
+									<th>Apps using datastore</th>
 								</tr>
 							</thead>
 							<tbody>
-								{data.map((api) => {
+								{data.map((data) => {
 									return (
-										<tr key={api.className}>
-											<td>{api.path}</td>
-											<td>{api.className}</td>
-											<td>
-												{api.dataExclusive === '-'
-													? '-'
-													: `${api.dataExclusive}%`}
-											</td>
-											<td>{api.NonExclusiveClasses.length}</td>
-											<td>{api.releatedClasses.length}</td>
-											<td>{api.NonExclusiveTables.length}</td>
-											<td>{api.tables.length}</td>
+										<tr key={data.datastore}>
+											<td>{data.datastore}</td>
+											<td>{data.usedClasses.length}</td>
+											<td>{data.usedApps}</td>
 										</tr>
 									);
 								})}
